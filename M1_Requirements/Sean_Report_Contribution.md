@@ -22,23 +22,6 @@ SQuaRE for systemic requirements. The proposal and requirements
 document should contain the sections listed below, and conform to the
 formatting rules listed at the end of this brief. 
 
-All team members are expected to contribute equally to the document and list
-their contributions in section 6 of the document. You should work on
-your document in your team's GitLab repository in a directory called
-"M1_Requirements". If more than one team member has contributed to a particular 
-commit, all those team member IDs should be included in the first line
-of the git commit message. ``git blame``, ``git diff``, file histories, etc. will be tools used to assess individual contributions, so everyone is encouraged to contribute individually, commit early and commit often. Any team wishing to separate individually contributed sections into a single file before collation into the single proposal document for submission is welcome to do so.
-
-## 3. Specific requirements  
-
-20 pages outlining the requirements of the system.
-You should apportion these these pages across the following 
-subsections to focus on the most important parts of your product.
-
-### 3.1 External interfaces
-
-See 9.5.10. for most systems this will be around one page.
-
 ### 3.2 Functions
 
 This is typically the longest subsection in the document - see 9.5.11.
@@ -47,43 +30,37 @@ for at least top ten focal use cases, write a short goal statement and
 use case body (up to seven pages).  Identify the use cases that
 comprise a minimum viable product.
 
-### 3.3 Usability Requirements
-
-See 9.5.12. for most systems this will be around one page.
-
-### 3.4 Performance requirements
-
-See 9.5.13. for most systems this will be around one page.
-Hardware projects also see section 9.4.6.
+Plug in webcam and software renders
+Select area for traffic lights
+Select area for bus detection
 
 
-### 3.5 Logical database requirements
+MVP: 
+    * Video input from consumer webcam using angle from Podcast
+    * User input for detecting intersection, define light with circle, define bus with a line that is crossed w/ User interface
+    * Output static image of moment offending occurs
+    * Works on windows
+Priority list:
+## END GOAL
+    * Consumer webcam and hardware, any intersection, any angle
+    * Plug in webcam, run program and auto detects intersection elements
+    * Output video of moment offending occurs
+    * User defined code when event occurs
+    * Works on Linux
+    
+### EXTRAS
+    * License plate detection
+    * Events of interest
+        * Police intervention
+        * Bus collisions w/ Pedestrians
+        * Near Misses
+    * OBS Integration
+    * Prediction/statistics based on time, weather etc
+    * Detecting different kinds of busses, other vehicles
+        * Reporting statistics of event to parent company (Or Traffic authority)
+        * could use licence plate detection
+    * Speed Detection
 
-See 9.5.14. for most systems, a focus on d) and e) is appropriate,
-such as an object-oriented domain analysis. You should provide an
-overview domain model (e.g.  a UML class diagram of approximately ten
-classes) and write a brief description of the responsibilities of each
-class in the model (3 pages).
-
-### 3.6 Design constraints
-
-see 9.5.15 and 9.5.16. for most systems, this will be around one page.
-
-### 3.7 Software system attributes
-
-Present the systemic (aka non-functional) requirements of the product
-(see ISO/IEC 25010).
-List up to twenty systemic requirements / attributes.
-Write a short natural language description of the top nonfunctional
-requirements (approx. five pages).
-
-
-### 3.8 Physical and Environmental Requirements 
-
-For systems with hardware components, identify the physical
-characteristics of that hardware (9.4.10) and environment conditions
-in which it must operate (9.4.11).  Depending on the project, this
-section may be from one page up to 5 pages.
 
 ### 3.10 Supporting information
 

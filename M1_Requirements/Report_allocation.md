@@ -1,5 +1,6 @@
 ENGR 301 Project 11 Project Proposal and Requirements Document
 
+* 1.0 Introduction - One page including 1.1 & 1.2
 * 1.1 Purpose - One Sentence
 * 1.2 - Scope - One paragraph
 * 1.3 - Product overview 

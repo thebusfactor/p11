@@ -21,9 +21,9 @@ ENGR 301 Project 11 Project Proposal and Requirements Document
 * 5.3 - Risks - Three page 
 * 6.1 - Assumptions and dependencies - One page
 
-* Brandon Scott-Hill:
-* Dylan Kumar: 
-* James Magallanes:
-* Kristen Tait: 
-* Nicholas Snellgrove:
-* Sean Stevenson:
+* Brandon Scott-Hill: 3.3 Usability Requirements, 3.4 Performance Requirements, 3.5 Logical Database Requirements Total Page Count: 4-5 Pages 
+* Dylan Kumar: 5.2 Budget, 5.3 Risks, 6.1 Assumptions and Dependencies, 3.1 External interfaces Total Count: 4 Pages
+* James Magallanes: 1.3 Product Overview, 3.6 Design constraints Total Page Count: 5 Pages
+* Kristen Tait: 5.1 Schedule, 3.7 Software system attributes Total Page Count: 5 Pages
+* Nicholas Snellgrove: 1.0-1.2 Introduction, Functions Total Pages: 4 Pages
+* Sean Stevenson: 3.2 Functions Total Pages: 4 Pages

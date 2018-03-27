@@ -34,8 +34,42 @@ Plug in webcam and software renders
 Select area for traffic lights
 Select area for bus detection
 
+Engineering Standard for Functions:
+* I/O relationships
+* Validity checks
+* Respose to abnormal input
+* Sequence of operations
+* Effect of parameters
 
-MVP: 
+Input:
+* Camera feed, video of scene
+* GUI for selecting lights
+* Training data (Images)
+
+Output: 
+* Training data weights
+* Alert (Box + red light)
+* Info of scene 
+    * Time/Date
+    * License plate
+    * Image/video of moment
+
+MVP
+* Run GUI, select lights
+* Selected area and scanned/processed
+* When movement detected/line passed alert
+* Static image of moment
+* Overlay interface with video
+
+
+
+
+
+
+
+
+
+## MVP: 
     * Video input from consumer webcam using angle from Podcast
     * User input for detecting intersection, define light with circle, define bus with a line that is crossed w/ User interface
     * Output static image of moment offending occurs
@@ -48,7 +82,7 @@ Priority list:
     * User defined code when event occurs
     * Works on Linux
     
-### EXTRAS
+## EXTRAS
     * License plate detection
     * Events of interest
         * Police intervention

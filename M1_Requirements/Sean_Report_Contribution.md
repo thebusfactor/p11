@@ -98,4 +98,66 @@ Priority list:
 
 ### 3.10 Supporting information
 
-see 9.5.19. 
+Define all inputs into and outputs from the software system. The description should complement the interface
+descriptions in 9.5.3.3.1 through 9.5.3.3.5, and should not repeat information there.
+Each interface defined should include the following content:
+a) Name of item;
+b) Description of purpose;
+c) Source of input or destination of output;
+d) Valid range, accuracy, and/or tolerance;
+e) Units of measure;
+f) Timing;
+g) Relationships to other inputs/outputs;
+h) Screen formats/organization;
+i) Window formats/organization;
+j) Data formats;
+k) Command formats;
+l) Endmessages. 
+
+9.5.3.1 System interfaces
+List each system interface and identify the functionality of the software to accomplish the system requirement
+and the interface description to match the system.
+
+9.5.3.2 User interfaces
+Specify the following:
+
+a) The logical characteristics of each interface between the software product and its users. This includes
+those configuration characteristics (e.g., required screen formats, page or window layouts, content of any
+reports or menus, or availability of programmable function keys) necessary to accomplish the software
+requirements.
+b) All the aspects of optimizing the interface with the person who uses, maintains, or provides other support
+to the system. This may simply comprise a list of do's and don'ts on how the system will appear to the
+user. One example may be a requirement for the option of long or short error messages. This may also
+be specified in the Software System Attributes under a section titled Ease of Use.
+NOTE A style guide for the user interface can provide consistent rules for organization, coding, and interaction of the
+user with the system.
+
+9.5.3.3 Hardware interfaces
+Specify the logical characteristics of each interface between the software product and the hardware elements
+of the system. This includes configuration characteristics (number of ports, instruction sets, etc.). It also covers
+such matters as what devices are to be supported, how they are to be supported, and protocols. For example,
+terminal support may specify full-screen support as opposed to line-by-line support.
+
+9.5.3.4 Software interfaces
+Specify the use of other required software products (e.g., a data management system, an operating system,
+or a mathematical package), and interfaces with other application systems (e.g., the linkage between an
+accounts receivable system and a general ledger system).
+For each required software product, specify:
+
+a) Name;
+b) Mnemonic;
+c) Specification number;
+d) Version number;
+e) Source.
+
+For each interface specify:
+a) Discussion of the purpose of the interfacing software as related to this software product.
+b) Definition of the interface in terms of message content and format. It is not necessary to detail any welldocumented
+interface, but a reference to the document defining the interface is required. 
+
+a) 
+
+
+
+
+

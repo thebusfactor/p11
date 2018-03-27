@@ -85,4 +85,6 @@ Words
 And
 
 7. **Privacy**  
-Things
+One of the core aspects of this project involves a continual camera feed overlooking a public space. While legally, there are no laws against filming or taking photos of people in a public space 
+(http://www.police.govt.nz/faq/what-are-the-rules-around-taking-photos-or-filming-in-a-public-place),
+there could be some moral issues among the team about filming people in a public space without their consent. 

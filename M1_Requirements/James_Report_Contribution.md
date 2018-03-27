@@ -19,12 +19,11 @@ In terms of our specific project - making for bus factor stream/podcast
 The basic functionality for this product, as described by our Minimum Viable Product (MVP), is as follows:
 
 1. The ability to detect the traffic light state and buses travelling through the video feed from a consumer webcam
-
-A consumer webcam is defined as a readily available camera that one may commonly find in-built in laptops or as an external USB camera.
-
 2. Functionality for a User Interface so that a user can define areas of interest. Specified areas of interest include:
     - The bounding box of the traffic light and individual bounding boxes of each traffic light colour
     - The stopping line at the intersection for the system to detect when the bus passes over it
 
 3. The ability to output a static image that has been created once the system detects a traffic violation by bus 
 4. That the system works on a Windows operating system. 
+
+A consumer webcam is defined as a readily available camera that one may commonly find in-built in laptops or as an external USB camera.

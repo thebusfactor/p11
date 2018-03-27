@@ -98,6 +98,9 @@ Priority list:
 
 ### 3.10 Supporting information
 
+
+Dylan's section 
+
 Define all inputs into and outputs from the software system. The description should complement the interface
 descriptions in 9.5.3.3.1 through 9.5.3.3.5, and should not repeat information there.
 Each interface defined should include the following content:
@@ -155,7 +158,60 @@ a) Discussion of the purpose of the interfacing software as related to this soft
 b) Definition of the interface in terms of message content and format. It is not necessary to detail any welldocumented
 interface, but a reference to the document defining the interface is required. 
 
-a) 
+9.5.3.5 Communications interfaces
+Specify the various interfaces to communications such as local network protocols. 
+
+Output: 
+* Training data weights
+* Alert (Box + red light)
+* Info of scene 
+    * Time/Date
+    * License plate
+    * Image/video of moment
+
+a) Training data weight output
+b) If machine learning is required we will be gathering output from the training in the form of weights and biases that will influence and classify future input.
+This will be used to set up the camera and it will autodetect the intersection layout from a variety of angles. If the weights and biases
+are fine tuned enough we should have a good system for detection. 
+c) Program will be the recipient of the output, as the output is fed back in for more training and testing.
+d) 90% tolerance for how accurately the output is used to detect whether the bus has passed a red light.
+<!--e) Units of measure;-->
+<!--f) Timing;-->
+<!--g) Relationships to other inputs/outputs;-->
+<!--h) Screen formats/organization;-->
+<!--i) Window formats/organization;-->
+<!--j) Data formats;-->
+<!--k) Command formats;-->
+<!--l) Endmessages.-->
+
+a) Alert from trigger
+b) An alert should be issued via email, push notification or through the software when a bus runs a red light. 
+c) User of system should recieve an alert when the issue occurs.
+d) Every instance of detection the alert should send.
+<!--e) Units of measure;-->
+<!--f) Timing;-->
+<!--g) Relationships to other inputs/outputs;-->
+<!--h) Screen formats/organization;-->
+<!--i) Window formats/organization;-->
+<!--j) Data formats;-->
+<!--k) Command formats;-->
+<!--l) Endmessages.-->
+
+a) Info of scene
+b) The moment of the red light breach there should be data taken of the time, data and a visual of the scene (image or video)
+c) Emailed or provided to the user via a server which would host the images.
+d) Every instance of detection the info should be captured.
+e) Visually inspecting the data vs real time and see if there are any discrepancies. 
+<!--f) Timing;-->
+<!--g) Relationships to other inputs/outputs;-->
+<!--h) Screen formats/organization;-->
+<!--i) Window formats/organization;-->
+<!--j) Data formats;-->
+<!--k) Command formats;-->
+<!--l) Endmessages.-->
+
+
+
 
 
 

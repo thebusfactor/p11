@@ -188,7 +188,7 @@ a) Alert from trigger
 b) An alert should be issued via email, push notification or through the software when a bus runs a red light. 
 c) User of system should recieve an alert when the issue occurs.
 d) Every instance of detection the alert should send.
-<!--e) Units of measure;-->
+e) If we provide it false positives and see if it detects a static image of the offense, and issues the email to the user.
 <!--f) Timing;-->
 <!--g) Relationships to other inputs/outputs;-->
 <!--h) Screen formats/organization;-->
@@ -201,8 +201,7 @@ a) Info of scene
 b) The moment of the red light breach there should be data taken of the time, data and a visual of the scene (image or video)
 c) Emailed or provided to the user via a server which would host the images.
 d) Every instance of detection the info should be captured.
-e) Visually inspecting the data vs real time and see if there are any discrepancies. 
-<!--f) Timing;-->
+e) Visually inspecting the data vs real time and see if there are any discrepancies of when it is and is not outputting the signal.
 <!--g) Relationships to other inputs/outputs;-->
 <!--h) Screen formats/organization;-->
 <!--i) Window formats/organization;-->

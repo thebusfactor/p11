@@ -46,10 +46,10 @@ Interoperability
 ###Product Requirements
 
 1. Usability Requirements
-   - Must be easy for the user to interact with the programme. 
-   - Done by opening a programme which is linked to a webcam. User must be able to easily select a features of an intersection 
+/   - Must be easy for the user to interact with the programme. 
+/   - Done by opening a programme which is linked to a webcam. User must be able to easily select a features of an intersection 
      including drawing a circle around the lights, drawing a line where the crossing is.   
-   - User must be notified of running red light. 
+/   - User must be notified of running red light. 
    - Must be used across Windows for MVP and Linux for end goal. 
 2. Efficiency Requirements
    1. Performance Requirements
@@ -97,6 +97,18 @@ The programme will also be responsible for providing a notification to the user 
 aspect the user must be able to easily access information about the events after they have been notified. In order to do this, we must implement an easily 
 accessible storage space for this information. 
 
+**Efficiency Requirements**
+
+In order for the Bus Factor programme to meet it's requirements it must  
+
+1. Performance Requirements
+      - Programme must be fast enough to detect a bus running a red light and notify the user within a matter of minutes. 
+      - Must read video inputs at a fast speed so the detection isn't delayed and inaccurate. 
+      - Must notify user quickly (good response time).
+      - Accuracy; Must detect the correct lights, must detect the correct colour, must accurately detect when the bus is crossing and not when 
+        it's finishing crossing as  the light turns red.
+    2. Space Requirements
+     - Programme can't use too must memory as there could be a lot of things stored??
 
  - Must be easy for the user to interact with the programme. 
    - Must be used across Windows for MVP and Linux for end goal. 

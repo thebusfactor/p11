@@ -99,7 +99,12 @@ accessible storage space for this information.
 
 **Efficiency Requirements**
 
-In order for the Bus Factor programme to meet it's requirements it must  
+*Performance Requirements*
+
+In order for the Bus Factor programme to meet it's requirements it must deliver high speed performance when completing its tasks. The main functionality of the programme is 
+to be able to detect when a bus runs a red light and to notify the user of this event. In order to maintain a high level of efficiency the programme must perform fast enough 
+to detect the event. This is important as the time at which the event occured must be accurate for the user. It is also important the the user is notified of the event quickly 
+in order for them to take further action as fast as possible. These actions may include emailing the bus company to alert them of the event. 
 
 1. Performance Requirements
       - Programme must be fast enough to detect a bus running a red light and notify the user within a matter of minutes. 

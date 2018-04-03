@@ -28,6 +28,15 @@ Work out the colours of the lights. Detect whether the vehicle is a bus and whet
 Present a budget for the project (table), and justify each budget item
 (one paragraph per item, one page overall).
 
+| Item        | Are           | Cost  |
+| ------------- | --------------| ------|
+| Camera/Webcam | in the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $100. | $100 |
+| Processing Power      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+
+
+
 Amazon AWS 
 
 

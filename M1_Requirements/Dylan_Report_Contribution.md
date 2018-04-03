@@ -30,23 +30,8 @@ Present a budget for the project (table), and justify each budget item
 
 | Item        | Are           | Cost  |
 | ------------- | --------------| ------|
-| Camera/Webcam | in the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $100. | $100 |
-| Processing Power      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-
-
-
-Amazon AWS 
-
-
-Best case table:
-
-1. Processing power (Graphics card)
-
-
-Worst case table:
-
+| Camera/Webcam | In the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $100. | $100 |
+| Processing Power      | For machine learning classification, sufficient processing power will be needed to test and train our algorithm. The cost of this may range from $0, if we are able to use the Universities Processing servers, or a few hundred dollars for AWS/Tensorflow servers. As our software may continue to be used with the Bus Factor Podcast live, it may be a better decision to invest in an expensive graphics card for a computer, ranging from $500 to $1000. |   $1000 |
 
 
 
@@ -54,7 +39,6 @@ Worst case table:
 6.1 Assumptions and dependencies
 
 one page on assumptions and dependencies (9.5.7)
-
 
 
 

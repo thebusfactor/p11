@@ -3,6 +3,8 @@
 # 5.1 Schedule
 
 Identify dates for key project deliverables: 
+-Client meetings (rouhgly once every 3 weeks)
+-Own pr
 1. architectural prototype
 1. minimum viable product
 1. further releases
@@ -25,6 +27,8 @@ requirements (approx. five pages).
    - Security of data. 
    - Protect peoples privacy; includes the bus drivers and the pedestrians on the bus or on the streets surrounding intersections.
    - Can't release data like license plates to the wrong people.
+   - Create product according to clients wants and needs.
+   - Product ethics: be aware of entities that are filmed. 
 2. Legislative Requirements???
 3. Regulatory Requirements
    - (Write everything that the client expects us to do??)
@@ -32,12 +36,7 @@ requirements (approx. five pages).
 
 ###Product Requirements
 
-3. Dependency Requirements
-     - Must be maintainable, code can be easily changed in future for other users as this is an open source project??
-     - Classes can't depend too much on each other so they can be easily separated and possibly independantly tested. 
-     - Programme and information regarding red light running must be readily available to users. 
-     - Must be reliable. This will give us accurate data about running red lights and make sure that the event isn't missed. 
-     - Must be easy to change video input, programmw can be used across multiple intersections. 
+ 
 4. Security Requirements
      - Data gathered from busses running red lights should only be released to the appropriate users. 
      - When sending out emails to bus company after running red light (which will be an extra feature), need to make sure that the correct 
@@ -58,45 +57,97 @@ requirements (approx. five pages).
 
 ##3.7 Software System Attributes
 
-###Product Requirements 
+##Product Requirements
+
+
+
+In order to meet the expectations of the ZX Security clients, the product created 
+throughout the Bus Factor project must meet a range of requirements. Such requirements
+include the the usability, efficiency, usability and security of the product. 
+By considering these factors when creating the product, we will be able to produce 
+a programme which completes the specified goals at a high quality standard.
 
 **Usability Requirements**
 
-As with any software tool it is important for the Bus Factor programme to implement a high level ease-of-use into the programme. The outputs of 
-the programme will depend on the traffic lights and intersections selected by the user. Therefore, to achieve a satisfactory ouput it is important 
-that the program can be easily followed and the UI easily manipulated by the user. This will require us to implement a small amount of controls into our user interface (UI) which 
-will be paired with sufficient instructions on how to use these controls.
-The programme will also be responsible for providing a notification to the user when the "red-light running" event occurs. To increase usability in this 
-aspect the user must be able to easily access information about the events after they have been notified. In order to do this, we must implement an easily 
-accessible storage space for this information. 
+As with any software tool it is important for the Bus Factor programme to implement
+a high level ease-of-use into the programme. The outputs of the programme will depend
+on the traffic lights and intersections selected by the user. Therefore, to achieve
+a satisfactory output it is important that the program can be easily followed and the
+UI easily manipulated by the user. This will require us to implement a small amount
+of controls into our user interface (UI) which will be paired with sufficient instructions
+on how to use these controls. The programme will also be responsible for providing a 
+notification to the user when the "red-light running" event occurs. To increase usability 
+in this aspect the user must be able to easily access information about the events 
+after they have been notified. In order to do this, we must implement an easily accessible
+storage space for this information. 
 
 **Efficiency Requirements**
 
 *Performance Requirements*
 
-In order for the Bus Factor programme to meet it's requirements it must completing its tasks at a high speed. The main functionality of the programme is 
-to be able to detect when a bus runs a red light and to notify the user of this event. In order to maintain a high level of efficiency the programme must detect and report
-on the event with a good response time. This is important as the time at which the event occured must be accurate for the user. It is also important the the user is notified 
-of the event quickly in order for them to take further action as fast as possible. These actions may include emailing the bus company to alert them of the event. 
-The Bus Factor project must also perform with a high level of accuracy. Therefore, it must accurately detect when an event occurs and identify the entity which performed it. 
-It must also accurately report back to user in order to give them the correct information about the event. If the program does not fulfill these requirements it has the potential
-to accuse the wrong entity of performing the event. This may had detrimentatal consequences when making this information known to the listeners of the podcast or bus company. 
+In order for the Bus Factor programme to meet its requirements it must completing 
+its tasks at a high speed. The main functionality of the programme is to be able 
+to detect when a bus runs a red light and to notify the user of this event. In 
+order to maintain a high level of efficiency the programme must detect and report
+on the event with a good response time. This is important as the time at which
+the event occured must be accurate for the user. It is also important the the user
+is notified of the event quickly in order for them to take further action as fast
+as possible. These actions may include emailing the bus company to alert them of 
+the event. The Bus Factor project must also perform with a high level of accuracy. 
+herefore, it must accurately detect when an event occurs and identify the entity 
+which performed it. It must also accurately report back to user in order to give 
+them the correct information about the event. If the program does not fulfill these
+requirements it has the potential to accuse the wrong entity of performing the event. 
+This may had detrimental consequences when making this information known to the 
+listeners of the podcast or bus company. 
 
 *Space Requirements*
 
-The Bus Factor programme is planned to intially be set up by the user then run in the background of the users device. As the amount of memory taken up by the programme will affect
-the speed at which a device is run, it is important for our programme to use as little memory as possible. In order to do so, we must consider the amount of memory the features of 
-our prgramme take up and how we can decrease this where possible. 
-Part of the features of our planned programme includes the ability to store static images and video clips of an event when it happens. Therefore, it is important for the programme
-to efficiently store these files in order to decrease the amount of memory used. 
+The Bus Factor programme is planned to initially be set up by the user then run
+in the background of the users device. As the amount of memory taken up by the 
+programme will affect the speed at which a device is run, it is important for our 
+programme to use as little memory as possible. In order to do so, we must consider
+the amount of memory the features of our programme take up and how we can decrease
+this where possible. Part of the features of our planned programme includes the 
+ability to store static images and video clips of an event when it happens. Therefore, 
+it is important for the programme to efficiently store these files in order to decrease
+the amount of memory used. 
 
 **Dependency Requirements**
 
-It is important for any software project to implement a high level of maintainabilty within it's code. This allows future reviewers or users of the code to easily change or extract 
-parts of it to use themselves. As this project contains open-source code it is likely that it's uses will extend from the context of the Bus Factor. Therefore, it is important that 
-this project has a high level of maintainability. This will also be beneficial to the team as we develop and improve on our code. After completing the minimal viable product, the team 
-plans to extend the programme to contain more features. Keeping a maintainable code will allow for us to do this easily. 
+It is important for any software project to implement a high level of maintainability 
+within its code. This allows future reviewers or users of the code to easily change 
+or extract parts of it to use themselves. As this project contains open-source code
+it is likely that it's uses will extend from the context of the Bus Factor. Therefore, 
+it is important that this project has a high level of maintainability. This will 
+also be beneficial to the team as we develop and improve on our code. After completing
+the minimal viable product, the team plans to extend the programme to contain more
+features. Keeping a maintainable code will allow for us to do this easily without 
+having to change the code which has already been written.
+To keep a maintainable code, the programme must display low coupling between it’s elements. 
+Thi means the team must create classes which include little to no dependencies on other classes.
+code must also be easily readable, therefore, using appropriate variable and method names and
+Javadocs where necessary. Methods must also contain a small amount of cod and only perform minimal
+functionalities. In addition to maintainable code, the programme itself must be able to function
+across a range of contexts. For example, the user must be able to use the programme with any video 
+input which provides an appropriate intersection. 
 
+**Security Requirements**
+
+*(Is this correct? Or no because the space is public anyway. ASK TEAM)*
+
+The security of information gathered from the programme is a functional requirement which the 
+team must hold in high regard. With our planned techniques on entity recognition, the programme
+will be able to recognise busses, their license plates and humans. It is important that the identity 
+of these items or beings are kept private and are only able to be accessed to the correct people. 
+As previously mentioned in section (Space Requirements), the programme will store video files and
+static images of the events that occur. These files should be protected so that they can only be accessed 
+by the correct people, as the information about the busses must be kept private. 
+
+###External Requirements
+
+
+**Ethical Requirements**
 
 1. Performance Requirements
       - Programme must be fast enough to detect a bus running a red light and notify the user within a matter of minutes. 

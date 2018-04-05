@@ -41,8 +41,8 @@ Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
 |---|---|
-| 1. User acquires camera | |
-| 2. User plugs in and angles camera at intersection | |
+| 1. User acquires camera |     |
+| 2. User plugs in and angles camera at intersection |      |
 
 ###### 2. Requires MVP Use Case 1, Selects and adds traffic light area of detection
 User should define the area of decetion for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
@@ -61,7 +61,7 @@ Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
 |---|---|
-| 1. User has software opened | |
+| 1. User has software opened |     |
 | 2. User selects and adds area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ###### 3. Requires MVP Use Case 1, Selects and deletes traffic light area of detection
@@ -71,11 +71,6 @@ Exact sequence: Interface shows video feed of area, user selects shape of detect
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
 
-Validity check:  
-Exact sequence: 
-Effect of Parameters: If the user doesn't not have a working mouse they cannot proceed past this point.
-Relationship of input and output: The detection areas dictate the output of the system.
-
 **Use Case Body**
 
 Summary: User running software and selects area.
@@ -86,20 +81,15 @@ Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
 |---|---|
-| 1. User has software opened | |
+| 1. User has software opened |     |
 | 2. User selects and deletes area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ###### 4. Requires MVP Use Case 1, Selects and updates traffic light area of detection
-User should define the area of decetion for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
+User should update the area of decetion for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
 Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
-Exact sequence: Interface shows video feed of area, user inserts shape of detection.
+Exact sequence: Interface shows video feed of area, user updates prior shape of detection.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
-
-Validity check:  
-Exact sequence: 
-Effect of Parameters: If the user doesn't not have a working mouse they cannot proceed past this point.
-Relationship of input and output: The detection areas dictate the output of the system. 
 
 **Use Case Body**
 
@@ -111,7 +101,7 @@ Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
 |---|---|
-| 1. User has software opened | |
+| 1. User has software opened |     |
 | 2. User selects and updates area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 End Goal(s) Use Cases

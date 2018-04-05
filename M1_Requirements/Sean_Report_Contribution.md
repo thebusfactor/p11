@@ -1,8 +1,3 @@
-for at least top ten focal use cases, write a short goal statement and
-use case body (up to seven pages).  Identify the use cases that
-comprise a minimum viable product.
-
-
 ### 3.2 Functions
  
 Basic functionality of our system comprises imited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
@@ -27,21 +22,94 @@ Output:
 MVP Use Case Diagram
 !url thing 
 
+https://puu.sh/zWJw6/e0c9eb77f4.png
+
 Minimum Viable Product Use Cases
 ###### 1. User sets up camera
-###### 2. Requires MVP Use Case 1, boots software, selects and adds traffic light area of detection
-###### 3. Requires MVP Use Case 1, boots software, selects and deletes traffic light area of detection
-###### 4. Requires MVP Use Case 1, boots software, selects and updates traffic light area of detection
-###### 5. Requires MVP Use Case 1, boots software, selects and adds bus line of detection
-###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
-###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
+Goal statement:
 
-
-
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
 *Actions of actors:* | *Actions of system:* 
 --- | ---
 *Still* | `renders` 
 1 | 2 
+
+###### 2. Requires MVP Use Case 1, boots software, selects and adds traffic light area of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 3. Requires MVP Use Case 1, boots software, selects and deletes traffic light area of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 4. Requires MVP Use Case 1, boots software, selects and updates traffic light area of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 5. Requires MVP Use Case 1, boots software, selects and adds bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+
 
 End Goal(s) Use Cases
 ###### 1. User sets up camera, boots software and user will automatically get alerted when a bus has ran a red light

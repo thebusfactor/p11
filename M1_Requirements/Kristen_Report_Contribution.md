@@ -23,30 +23,15 @@ requirements (approx. five pages).
 
 ###External Requirements
 
-1. Ethical Requirements 
-   - Security of data. 
-   - Protect peoples privacy; includes the bus drivers and the pedestrians on the bus or on the streets surrounding intersections.
-   - Can't release data like license plates to the wrong people.
-   - Create product according to clients wants and needs.
-   - Product ethics: be aware of entities that are filmed. 
-2. Legislative Requirements???
+
 3. Regulatory Requirements
    - (Write everything that the client expects us to do??)
 
 
-###Product Requirements
-
- 
-4. Security Requirements
-     - Data gathered from busses running red lights should only be released to the appropriate users. 
-     - When sending out emails to bus company after running red light (which will be an extra feature), need to make sure that the correct 
-       information is sent to the correct people. 
-     - Can't release data like license plates to the wrong people.
-
 ###Organizational Requirements
 
 1. Environmental Requirements
-   - (N/A)
+   - Camera has to be set up to look at an intersection
 2. Operational Requirements 
    - Must be able to run on Windows and Linux. (MVP Windows). 
    - Uses a commercial webcam as video input. 
@@ -138,44 +123,48 @@ team must hold in high regard. The code of the programme we are developing will 
 the team will not have to worry about who can access our code when it is complete. 
 As previously mentioned in section (Space Requirements), the programme will store video files and
 static images of the events that occur. These video files will be filmed on public property, therefore
-can legally be accesible by anyone (*add reference?*). However, as an additional feature the output files may 
-be password protected if the user wishes to do so. (*Check with group*).
+can legally be accesible by anyone (*add reference?*). However, the team intends to take an ethical approach 
+when dealing with such footage and information (*see Ethical Requirements Section*)
 Prior to completion the team must protect the privacy of the project information. This includes the information 
 about or gathered from clients, discussions amongst the group and any documents which are not included in the
 programmes source code. In order to protect this data, the team will only use protected discussion 
 platforms which are monitored by ECS department members. 
+
+**Availability**
+
+The Bus Factor project will produce a programme which uses video files or live camera inputs to monitor intersections. 
+Consequently, the programme should be available to users who can provide this requirement. 
+As part of the features of the minimum viable product for our project, the team aims to have the programme 
+run on a Windows system. As a feature of the final product, the programme will run on Linux based system as
+well. Therefore, the Bus Factor programme will be available to all users who are using these operating system. 
+
 
 ###External Requirements
 
 
 **Ethical Requirements**
 
-
-1. Releasing private vehicle's license plates. 
-2. Releasing bus license plates. 
-3. Releasing footage of people around the interface.  
-
-1. Performance Requirements
-      - Programme must be fast enough to detect a bus running a red light and notify the user within a matter of minutes. 
-      - Must read video inputs at a fast speed so the detection isn't delayed and inaccurate. 
-      - Must notify user quickly (good response time).
-      - Accuracy; Must detect the correct lights, must detect the correct colour, must accurately detect when the bus is crossing and not when 
-        it's finishing crossing as  the light turns red.
-    2. Space Requirements
-     - Programme can't use too must memory as there could be a lot of things stored??
-
- - Must be easy for the user to interact with the programme. 
-   - Must be used across Windows for MVP and Linux for end goal. 
-   - Understandable UI. 
-   - 
-3. Dependency Requirements
-     - Must be maintainable, code can be easily changed in future for other users as this is an open source project??
-     - Classes can't depend too much on each other so they can be easily separated and possibly independantly tested. 
-     - Programme and information regarding red light running must be readily available to users. 
-     - Must be reliable. This will give us accurate data about running red lights and make sure that the event isn't missed. 
-     - Must be easy to change video input, programmw can be used across multiple intersections. 
- 
+In order to meet the ethical requirements for software development, the team must act according to 
+the best interests of the clients, the public and the team members. [1] This will create a project which 
+complies with the clients needs and creates a team environment which will promote productivity and communication. 
+In order to meet the clients wishes the team will remain in constant communication with the client and 
+will not make any choices which will largely affect the final product without first consulting the clients. 
+The main method of communication between the team members and the clients will be through email. If further 
+discussion is needed we will meet up with the clients when we believe necessary. 
+As previously mentioned in section (*Space Requirements & Security Requirements*) our programme will 
+involve storing footage and images of people around the intersection. This cannot be avoided as the
+busses and intersections will be located in a highly public area. Although filming other individuals 
+in a public space is legal, the team will take precausions to avoid offending the public when 
+this footage is reviewed or used. In order to do this the programme will not display the individuals 
+in a mocking *review* or insulting way.  
+Throughout our group project the team aims to use strong teamwork skills in order to produce a high 
+quality product for our clients. To do this, the members will communicate their ideas to eachother 
+when making decisions and will be respectful towards eachothers opinions. The team will also delegate
+work fairly and produce their work in a timely manner, therefore, not having an effect on the overall 
+team's performance. 
    
+#Bibliography
 
+[1] https://www.computer.org/web/education/code-of-ethics
 
 

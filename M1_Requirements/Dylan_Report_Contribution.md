@@ -94,10 +94,23 @@ Having a tool whereby the user could indicate the line where vehicles cross the 
     * Image/video of moment
 
 #### Training data weight output
-If machine learning is required we will be gathering output from the training in the form of weights and biases that will influence and classify future input. This will be used to set up the camera and it will autodetect the intersection layout from a variety of angles. If the weights and biases are fine tuned enough we should have a good system for detection. The program will be the recipient of the output, as the output is fed back in for more training and testing. The output will need at least a 90% tolerance for how accurately the output is used to detect whether the bus has passed a red light.
+If machine learning is required we will be gathering output from the training in the form of weights and biases that will influence and classify future input. 
+This will be used to set up the camera and it will autodetect the intersection layout from a variety of angles.
+If the weights and biases are fine tuned enough we should have a good system for detection. 
+The program will be the recipient of the output, as the output is fed back in for more training and testing.
+The output will need at least a 90% tolerance for how accurately the output is used to detect whether the bus has passed a red light.
+To measure output, we can check against a test set and judge prediction percentage. 
+For our end goal and extension goal this output is related to both aspects as this governs how well a bus is detected and thus when an alert triggers. The format for this output should be whatever data type we use for our weights (float, double, int).
+
 
 #### Alert from trigger
-An alert should be issued via email, push notification or through the software when a bus runs a red light. The user/s of the system should recieve an alert when this issue occurs. For every valid instance of detection the alert should be sent. To measure this we would provide the system with false positives and see if it detects a static image of the offense, and ergo issues the email/alert to the user.
+An alert should be issued via email, push notification or through the software when a bus runs a red light.
+The user/s of the system should recieve an alert when this issue occurs. 
+For every valid instance of detection the alert should be sent. 
+To measure this we would provide the system with false positives and see if it detects a static image of the offense, and ergo issues the email/alert to the user.
+This alert should be sent out within one minute of the bus offense. 
+This is the key output from our system and relies on every other input functioning correctly.
+The output of the alert may be a simple ping on the computer that is running the software, to an email and digital log of the trigger.
 	
 #### Info of scene
 The moment of the red light breach there should be data taken of the time, data and a visual of the scene (image or video). This data would be outputted (Emailed or provided) to the user via a server which would host the images and metadata. With every instance of detection, this information should be captured. Testing measurements would involve visually inspecting the data and comparing to real time to see if there are any discrepancies of when it is and is not outputting the signal.

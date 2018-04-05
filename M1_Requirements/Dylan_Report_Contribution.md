@@ -105,6 +105,48 @@ The moment of the red light breach there should be data taken of the time, data 
 
 
 
+FUNCTIONS:
+
+
+###### 5. Requires MVP Use Case 1, boots software, selects and adds bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+1. User navigates to software and opens/starts it. | 2. System boots software.
+3. User navigates to line tool and clicks two times on the visual feed to place down points.  | 4. System updates screen to show line that is made from those two points. Line vector is internally added to system for later use with bus detection. 
+
+###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
 
 
 

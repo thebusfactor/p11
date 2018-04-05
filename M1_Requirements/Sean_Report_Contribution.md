@@ -36,7 +36,7 @@ Minimum Viable Product Use Cases
 ###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
 ###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
 
-| *Use Case Body*  Second Header ||
+| *Actions of actors:* |  *Actions of system:* |
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |

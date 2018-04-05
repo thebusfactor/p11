@@ -24,8 +24,11 @@ Minimum Use Case Diagram
 ![MVP Use Case Diagram](https://gitlab.ecs.vuw.ac.nz/ENGR301-302-2018/Project-11/Bus-Factor/blob/master/M1_Requirements/mvpDiagram.png?raw=true "MVP Use Case Diagram")
 
 Minimum Viable Product Use Cases
-###### 1. User sets up camera
-This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights. 
+###### 1. User sets up camera, user navigates to software and runs it
+This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
+Validity check: There is no input check that can be performed on this case due to the nature of it, as it requires the user to check the intersection is in view. 
+Effect of Parameters: No parameters seem evident that would effect the input.
+Relationship of input and output: This is the main source of input for the software and pertains to all output. 
 
 **Use Case Body**
 Summary: User acquiring camera, plugging it in and checking output
@@ -37,7 +40,42 @@ Main Success Scenario:
 1. User acquires camera | 
 2. User plugs in and angles camera at intersection | 
 
-###### 2. Requires MVP Use Case 1, boots software, selects and adds traffic light area of detection
+###### 2. Requires MVP Use Case 1, Selects and adds traffic light area of detection
+
+Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
+Exact sequence: Interface shows 
+Effect of Parameters: 
+Relationship of input and output: 
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 3. Requires MVP Use Case 1, Selects and deletes traffic light area of detection
+This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights. 
+
+Validity check:  
+Exact sequence: 
+Effect of Parameters: 
+Relationship of input and output: 
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 4. Requires MVP Use Case 1, Selects and updates traffic light area of detection
 Goal statement:
 
 Use Case Body
@@ -50,7 +88,7 @@ Main Success Scenario:
 *Still* | `renders` 
 1 | 2 
 
-###### 3. Requires MVP Use Case 1, boots software, selects and deletes traffic light area of detection
+###### 5. Requires MVP Use Case 1, Selects and adds bus line of detection
 Goal statement:
 
 Use Case Body
@@ -63,7 +101,7 @@ Main Success Scenario:
 *Still* | `renders` 
 1 | 2 
 
-###### 4. Requires MVP Use Case 1, boots software, selects and updates traffic light area of detection
+###### 6. Requires MVP Use Case 1, Selects and deletes bus line of detection
 Goal statement:
 
 Use Case Body
@@ -76,33 +114,7 @@ Main Success Scenario:
 *Still* | `renders` 
 1 | 2 
 
-###### 5. Requires MVP Use Case 1, boots software, selects and adds bus line of detection
-Goal statement:
-
-Use Case Body
-Summary:
-Actors:
-Main Success Scenario:
-
-*Actions of actors:* | *Actions of system:* 
---- | ---
-*Still* | `renders` 
-1 | 2 
-
-###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
-Goal statement:
-
-Use Case Body
-Summary:
-Actors:
-Main Success Scenario:
-
-*Actions of actors:* | *Actions of system:* 
---- | ---
-*Still* | `renders` 
-1 | 2 
-
-###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
+###### 7. Requires MVP Use Case 1, Selects and updates bus line of detection
 Goal statement:
 
 Use Case Body

@@ -113,9 +113,12 @@ This is the key output from our system and relies on every other input functioni
 The output of the alert may be a simple ping on the computer that is running the software, to an email and digital log of the trigger.
 	
 #### Info of scene
-The moment of the red light breach there should be data taken of the time, data and a visual of the scene (image or video). This data would be outputted (Emailed or provided) to the user via a server which would host the images and metadata. With every instance of detection, this information should be captured. Testing measurements would involve visually inspecting the data and comparing to real time to see if there are any discrepancies of when it is and is not outputting the signal.
-
-
+The moment of the red light breach there should be data taken of the time, data and a visual of the scene (image or video).
+This data would be outputted (Emailed or provided) to the user via a server which would host the images and metadata. 
+With every instance of detection, this information should be captured.
+Testing measurements would involve visually inspecting the data and comparing to real time to see if there are any discrepancies of when it is and is not outputting the signal.
+This output relies on the camera feed especially as it needs to accurately capture the scene upon the event triggering. 
+The data format for the image of the scene will most likely be a .png,
 
 
 FUNCTIONS:

@@ -52,12 +52,165 @@ subsections to focus on the most important parts of your product.
 See 9.5.10. for most systems this will be around one page.
 
 ### 3.2 Functions
+ 
+Basic functionality of our system comprises imited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
+for detecting the traffic light that controls said intersection and any busses that may travel through the light controlled lane, thus being able to see when one does not obey
+the road rules. From here we can extend the function and user interaction by offering auto-detection of the scene and the ability for the user to define what actions should take place upon the event.
 
-This is typically the longest subsection in the document - see 9.5.11.
-List up to fifty use cases (in order of priority for development), and
-for at least top ten focal use cases, write a short goal statement and
-use case body (up to seven pages).  Identify the use cases that
-comprise a minimum viable product.
+As part of our system we will have these inputs and outputs.
+Input:
+* Camera feed, video of scene (MVP)
+* GUI input for selecting lights (MVP)
+* User defined actions (END)
+* Training data; images (END)
+
+Output: 
+* Alert; Box + red light (MVP)
+* Training data weights (MVP)
+* Info of scene (END)
+    * Time/Date
+    * License plate
+    * Image/video of moment
+
+Minimum Use Case Diagram
+
+![MVP Use Case Diagram](https://gitlab.ecs.vuw.ac.nz/ENGR301-302-2018/Project-11/Bus-Factor/blob/master/M1_Requirements/mvpDiagram.png?raw=true "MVP Use Case Diagram")
+
+Minimum Viable Product Use Cases
+###### 1. User sets up camera, user navigates to software and runs it
+This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
+Validity check: There is no input check that can be performed on this case due to the nature of it, as it requires the user to check the intersection is in view. 
+Effect of Parameters: No parameters seem evident that would effect the input.
+Relationship of input and output: This is the main source of input for the software and pertains to all output. 
+
+**Use Case Body**
+Summary: User acquiring camera, plugging it in and checking output
+Actors: Client/General user
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+1. User acquires camera | 
+2. User plugs in and angles camera at intersection | 
+
+###### 2. Requires MVP Use Case 1, Selects and adds traffic light area of detection
+User should define the area of decetion for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
+Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
+Exact sequence: Interface shows video feed of area, user inserts shape of detection.
+Effect of Parameters: If the user doesn't not have a working mouse they cannot proceed past this point.
+Relationship of input and output: 
+
+**Use Case Body**
+Summary: User acquiring camera, plugging it in and checking output
+Actors: Client/General user
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+1. User acquires camera | 
+2. User plugs in and angles camera at intersection | 
+
+###### 3. Requires MVP Use Case 1, Selects and deletes traffic light area of detection
+This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights. 
+
+Validity check:  
+Exact sequence: 
+Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
+Relationship of input and output: 
+
+**Use Case Body**
+Summary: User acquiring camera, plugging it in and checking output
+Actors: Client/General user
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+1. User acquires camera | 
+2. User plugs in and angles camera at intersection | 
+
+###### 4. Requires MVP Use Case 1, Selects and updates traffic light area of detection
+This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights. 
+
+Validity check:  
+Exact sequence: 
+Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
+Relationship of input and output: 
+
+**Use Case Body**
+Summary: User acquiring camera, plugging it in and checking output
+Actors: Client/General user
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+1. User acquires camera | 
+2. User plugs in and angles camera at intersection | 
+
+###### 5. Requires MVP Use Case 1, Selects and adds bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 6. Requires MVP Use Case 1, Selects and deletes bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+###### 7. Requires MVP Use Case 1, Selects and updates bus line of detection
+Goal statement:
+
+Use Case Body
+Summary:
+Actors:
+Main Success Scenario:
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
+
+
+
+End Goal(s) Use Cases
+###### 1. User sets up camera, boots software and user will automatically get alerted when a bus has ran a red light
+Description: For our first end goal use case where the user should have no interaction or intervention with the system other than checking the video feed is suitable for detection.
+What this involves is the software to have used machine learning to be able to scan and detect a video feed for the location on the image of the bus and the lights. This
+extracts the user and allows the system to run external to any prior input required in the MVP.
+Validity check: Predominantly done through user checking video feed, in the case where it doesn't detect a light and/or bus upon start up, the user will be alerted that no point of interest was detected and realignment is required. 
+Exact sequence: Set up of camera -> Run software -> Software auto-detects the environmental interest points -> Runs and alerts user when event triggers
+Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest.
+Relationship of input and output: Video feed input is scanned for points of interest -> Alert is outputted when event triggered.
+ 
+###### 2. Requires End Goal Use Case 1, Upon booting of software user can define output upon event trigger
+Description: An extension of the first End Goal Use Case, upon detection of bus running red light the user can define what the output should be. This could be an email or computer alert event has been triggered.
+Exact sequence: Run software -> User defines what output should be -> Output is delivered when event triggers.
+Effect of Parameters: Depending on the level of sophistication of system, user may define output to only occur after X amount of buses have ran a red light or any other aspect they deem appropriate.
+Relationship of input and output: Video feed input is scanned for points of interest -> User defined alert is outputted when event triggered.
+
+Extension Goal(s) Use Cases
+###### 1. Requires End Goal Use Case 1, Upon booting of software user can define additional points of interest to keep track of
+Description: As part of the possible extension to this project, 
+Validity check: Since these events like License plate detection, police interfention, speed detection validity checks would need to occur to make sure the values and assumptions made are performing above an expected
+correctness threshold (Assuming a baseline of 90%).
+Exact sequence: Run software -> Software auto-detects the environmental interest points -> Runs and logs additional event, alerts user
+Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest. Instances of each event need to be recorded to perform statistical analysis.
+Relationship of input and output: Video feed input is scanned for points of interest -> Additional event is logged and user alerted.
 
 ### 3.3 Usability Requirements
 

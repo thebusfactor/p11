@@ -1,4 +1,3 @@
-
 for at least top ten focal use cases, write a short goal statement and
 use case body (up to seven pages).  Identify the use cases that
 comprise a minimum viable product.
@@ -37,7 +36,7 @@ Minimum Viable Product Use Cases
 ###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
 ###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
 
-| *Use Case Body*  Second Header |
+| *Use Case Body*  Second Header ||
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
@@ -54,7 +53,7 @@ Effect of Parameters: If an obstruction interferes with the camera the software 
 Relationship of input and output: Video feed input is scanned for points of interest -> Alert is outputted when event triggered.
  
 ###### 2. Requires End Goal Use Case 1, Upon booting of software user can define output upon event trigger
-An extension of the first End Goal Use Case, upon detection of bus running red light the user can define what the output should be. This could be an email or computer alert event has been triggered.
+Description: An extension of the first End Goal Use Case, upon detection of bus running red light the user can define what the output should be. This could be an email or computer alert event has been triggered.
 Exact sequence: Run software -> User defines what output should be -> Output is delivered when event triggers.
 Effect of Parameters: Depending on the level of sophistication of system, user may define output to only occur after X amount of buses have ran a red light or any other aspect they deem appropriate.
 Relationship of input and output: Video feed input is scanned for points of interest -> User defined alert is outputted when event triggered.

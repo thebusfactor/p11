@@ -1,30 +1,4 @@
-#Project Proposal
-
-# 3.7 Software system attributes
-
-Present the systemic (aka non-functional) requirements of the product
-(see ISO/IEC 25010).
-List up to twenty systemic requirements / attributes.
-Write a short natural language description of the top nonfunctional
-requirements (approx. five pages).
-
-
-###External Requirements
-
-
-3. Regulatory Requirements
-   - (Write everything that the client expects us to do??)
-
-
-###Organizational Requirements
-
-1. Operational Requirements 
-   - Must be able to run on Windows and Linux. (MVP Windows). 
-   - Uses a commercial webcam as video input. 
-3. Development Requirements.
-   
-
-#First Draft 
+# Project Proposal
 
 ##3.7 Software System Attributes
 
@@ -169,6 +143,14 @@ team's performance.
 **Regulatory Requirements**
 1. Accordance to privacy act (as previously mentioned)
 2. Open-source licensing
+3. ## 3.7 Software system attributes
+
+###Organizational Requirements
+
+1. Operational Requirements 
+   - Must be able to run on Windows and Linux. (MVP Windows). 
+   - Uses a commercial webcam as video input. 
+3. Development Requirements.
 
 
 #Bibliography for Section 3.7 (if needed)

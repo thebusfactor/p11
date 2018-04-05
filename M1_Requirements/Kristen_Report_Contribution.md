@@ -59,8 +59,6 @@ requirements (approx. five pages).
 
 ##Product Requirements
 
-
-
 In order to meet the expectations of the ZX Security clients, the product created 
 throughout the Bus Factor project must meet a range of requirements. Such requirements
 include the the usability, efficiency, usability and security of the product. 
@@ -134,20 +132,28 @@ input which provides an appropriate intersection.
 
 **Security Requirements**
 
-*(Is this correct? Or no because the space is public anyway. ASK TEAM)*
 
-The security of information gathered from the programme is a functional requirement which the 
-team must hold in high regard. With our planned techniques on entity recognition, the programme
-will be able to recognise busses, their license plates and humans. It is important that the identity 
-of these items or beings are kept private and are only able to be accessed to the correct people. 
+The security of the project and the information gathered from it is a functional requirement which the 
+team must hold in high regard. The code of the programme we are developing will be open-source, therefore, 
+the team will not have to worry about who can access our code when it is complete. 
 As previously mentioned in section (Space Requirements), the programme will store video files and
-static images of the events that occur. These files should be protected so that they can only be accessed 
-by the correct people, as the information about the busses must be kept private. 
+static images of the events that occur. These video files will be filmed on public property, therefore
+can legally be accesible by anyone (*add reference?*). However, as an additional feature the output files may 
+be password protected if the user wishes to do so. (*Check with group*).
+Prior to completion the team must protect the privacy of the project information. This includes the information 
+about or gathered from clients, discussions amongst the group and any documents which are not included in the
+programmes source code. In order to protect this data, the team will only use protected discussion 
+platforms which are monitored by ECS department members. 
 
 ###External Requirements
 
 
 **Ethical Requirements**
+
+
+1. Releasing private vehicle's license plates. 
+2. Releasing bus license plates. 
+3. Releasing footage of people around the interface.  
 
 1. Performance Requirements
       - Programme must be fast enough to detect a bus running a red light and notify the user within a matter of minutes. 

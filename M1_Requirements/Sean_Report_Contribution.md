@@ -19,25 +19,23 @@ Output:
     * License plate
     * Image/video of moment
 
-MVP Use Case Diagram
+Minimum Use Case Diagram
 
 ![MVP Use Case Diagram](https://gitlab.ecs.vuw.ac.nz/ENGR301-302-2018/Project-11/Bus-Factor/blob/master/M1_Requirements/mvpDiagram.png?raw=true "MVP Use Case Diagram")
 
-https://puu.sh/zWJw6/e0c9eb77f4.png
-
 Minimum Viable Product Use Cases
 ###### 1. User sets up camera
-Goal statement:
+This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights. 
 
-Use Case Body
-Summary:
-Actors:
+**Use Case Body**
+Summary: User acquiring camera, plugging it in and checking output
+Actors: Client/General user
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-*Still* | `renders` 
-1 | 2 
+1. User acquires camera | 
+2. User plugs in and angles camera at intersection | 
 
 ###### 2. Requires MVP Use Case 1, boots software, selects and adds traffic light area of detection
 Goal statement:

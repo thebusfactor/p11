@@ -138,11 +138,15 @@ one page on assumptions and dependencies (9.5.7)
 
 ### 6.2 Acronyms and abbreviations
 
-one page glossary as required 
+* Incident: Refers to a bus being observed running a red light, as captured by the software.
 
 ## 6. Contributions
 
-A one page statement of contributions that lists each member of the
-group and what they contributed to this document.
+* Brandon Scott-Hill: 3.3 Usability Requirements, 3.4 Performance Requirements, 3.5 Logical Database Requirements (Total Page Count: 4-5 Pages)
+* Dylan Kumar: 5.2 Budget, 3.2 Functions, 6.1 Assumptions and Dependencies, 3.1 External interfaces (Total Page Count: 5-6 Pages)
+* James Magallanes: 1.3 Product Overview, 3.6 Design constraints (Total Page Count: 5 Pages)
+* Kristen Tait: 5.1 Schedule, 3.7 Software system attributes (Total Page Count: 5 Pages)
+* Nicholas Snellgrove: 1.0-1.2 Introduction, 5.3 Risks (Total Page Count: 4 Pages)
+* Sean Stevenson: 3.2 Functions (Total Page Count: 4 Pages)
 
 ---

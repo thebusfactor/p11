@@ -79,12 +79,50 @@ and understood early, to avoid conflicts later. Also, any potentially useful lib
 project. 
 
 5. **Technical Ability**  
-Words
+Many of the potential solutions to the problems presented by this project require the use of technologies that may be beyond the technical ability of any of the team members. Initial research
+into the problems presented by this project suggest that advanced image processing and computer vision libraries may need to be implemented in order to determine when an incident occurs. If none
+of the team members were able to understand the required technology enough to implement it in the project, it could severely impact our ability to deliver on the client's requirements for the 
+project. The team would need to scale back the requirements of the project in order to have some sort of presentable product. 
+In order to handle this, the team should make sure to spend enough time carefully researching the technology required for the project to succeed, and should bring up any concerns/issues with the 
+rest of the team as early as possible. Also, the research and development using these technologies should be a collaborative effort, to aid the group understanding of the system.
+The team should also manage their expectations when selecting technology to use - use things they know they can handle, rather than deliberately going for the most complicated tech available.
 
 6. **Dynamics of Deployment**  
-And
+This project is being based around an existing idea - the client's podcast. The clients use only one Point of View, overlooking one intersection, from one specific angle. In order to test the system
+as it is being developed, the clients have offered to provide video files from this perspective. While this would allow for the team to develop and test the product according to the client's minimum
+specifications, this one angle of one intersection will not provide the team with enough training data. The full requirements of the project state that the system must be deployable at any intersection, 
+set up to work from any (feasible) video angle of the intersection. Without training video data of multiple angles of different intersections, it could be hard to develop the system to meet these robust
+requirements, and in the worst case scenario, the final product would only be deployable on a very particular intersection/angle combination. 
+This is a fairly likely risk to encounter, as neither the team nor the clients have immediate access to video footage of busses running different intersections. 
+This risk can be mitigated by the team, by ensuring that the need for varied training data is communicated to the clients early, and by procuring our own video footage online, if necessary.
 
 7. **Privacy**  
-One of the core aspects of this project involves a continual camera feed overlooking a public space. While legally, there are no laws against filming or taking photos of people in a public space 
-(http://www.police.govt.nz/faq/what-are-the-rules-around-taking-photos-or-filming-in-a-public-place),
-there could be some moral issues among the team about filming people in a public space without their consent. 
+One of the core aspects of this project involves a continual camera feed overlooking a public space. While legally, there are no laws against filming or taking photos of people in a public space -  
+(http://www.police.govt.nz/faq/what-are-the-rules-around-taking-photos-or-filming-in-a-public-place), 
+there could be some moral issues among the team about filming people in a public space without their consent. Such moral issues could have a negative effect on a team members contribution to the project,
+as they may not be as willing to work on some features of the product, or to implement features that go against their moral compass. This does not appear to be an issue in the early stages of the project,
+while the Minimum Viable Product is being developed. However, this could become a risk later on, as more features are introduced to the system. To counteract this, the team will ensure that before 
+features are included in the product, that all team members and the clients are happy with how the feature will be implemented in an efficient & morally responsible manner. The clients needs will take
+priority, however.
+
+8. **Team Absence or Disputes** 
+The team will without a doubt run into issues surrounding team member availability, be it due to injury, illness, bereavement, or other academic or personal commitments. The team has agreed on a collaborative
+approach when handling these issues. All team members have contributed to a team calendar, which shows when members are unavailable due to pre-existing commitments. Absent team members will review the notes from
+any missed meetings before returning to the project, and will make an effort to understand the progress which has happened during their absence. 
+When a team member is absent (for whatever reason) the rest of the team will contribute to split the missing team member's workload, so as to avoid any one member being overburdened.  
+Also, there is a risk of disputes arising between team members during the course of the project. If/when this occurs, the productivity of the team could be negatively impacted. Therefore, when a dispute arises, the 
+team members not involved in the dispute should do their best to diffuse the situation, and if necessary, involve a senior manager to resolve the conflict. 
+
+9. **Extended Team Absence (Drop out)**  
+Given that this project is over the course of a whole academic year, there is a chance that team members may (due to personal reasons or insufficient academic performance) resolve to leave university to pursue other goals - 
+and as a result leave the team without a member. While this risk seems highly unlikely, given the quality and convictions of the team members, th consequences of such an event would be very severe. The remaining team members
+would have greatly increased pressure placed upon them, and could be left in the dark about project information that the former team member held. This risk can be managed by the team members 'keeping an eye' on each other, 
+and ensuring that they each have enough support to make it through the year. Failing that, the departing team member should ensure that they communicate all important information that they hold on the workings of the project.
+
+10. **Time Management**  
+There is a risk that, over the course of the project, the time required to implement new features and aspects is underestimated. This could lead to the team being unable to meet required deadlines, either academic or for deliverables for
+the client. This is a likely risk, as the Engr301 course is (for most of the team members) the first proper introduction to project management, and therefore the team may be lacking in the time management skills required for a project
+of this scope. The consequences of missing these deadlines/deliverables are severe - missing course deadlines would lead to team members having poor academic results, which could also result in poor morale in the team.
+Missing deadlines for client deliverables makes the team and the university look bad, and creates more pressure to make up these missed deadlines. 
+This risk can be managed by using all the tools that are available to the best of the team's ability. Liberal issue tracking of deadlines (project related and otherwise) will allow the team members to manage their time effectively. Also, 
+consisten, honest communication with the clients will ensure that expectations are managed between both parties.

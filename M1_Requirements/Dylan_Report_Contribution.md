@@ -118,8 +118,7 @@ Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-1. User navigates to software and opens/starts it. | 2. System boots software.
-3. User navigates to line tool and clicks two times on the visual feed to place down points.  | 4. System updates screen to show line that is made from those two points. Line vector is internally added to system for later use with bus detection. 
+1. User navigates to line tool and clicks two times on the visual feed to place down points.  | 2. System updates screen to show line that is made from those two points. Line vector is internally added to system for later use with bus detection. 
 
 
 Alternative Scenarios:
@@ -128,9 +127,8 @@ A1: User clicks on wrong point/s
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-3. User navigates to line tool and clicks two times on the visual feed to place down points. | 4. System updates screen to show line that is made from those two points. Line vector is internally added to system for later use with bus detection. 
-5. User presses on refresh button, to remove any currently placed objects on screen.  | 6. System removes lines and any other placed objects.
-
+1. User navigates to line tool and clicks two times on the visual feed to place down points. | 2. System updates screen to show line that is made from those two points. Line vector is internally added to system for later use with bus detection. 
+3. User presses on refresh button, to remove any currently placed objects on screen.  | 4. System removes lines and any other placed objects.
 
 
 ###### 6. Requires MVP Use Case 1, selects and deletes bus line of detection

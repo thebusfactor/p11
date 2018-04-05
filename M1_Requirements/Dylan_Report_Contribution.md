@@ -108,7 +108,7 @@ The moment of the red light breach there should be data taken of the time, data 
 FUNCTIONS:
 
 
-###### 5. Requires MVP Use Case 1, boots software, selects and adds bus line of detection
+###### 5. Requires MVP Use Case 1, selects and adds bus line of detection
 Goal statement: For the user to be able to place down two points by clicking twice. The goal for this would be to provide the system with the two points for a line that can be shown both visually, and internally processed. 
 
 Use Case Body
@@ -133,7 +133,7 @@ A1: User clicks on wrong point/s
 
 
 
-###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
+###### 6. Requires MVP Use Case 1, selects and deletes bus line of detection
 Goal statement: To be able to individually select a bus detection line/object of choice and remove it.
 
 Use Case Body
@@ -143,21 +143,21 @@ Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-1. User clicks on line they wish to delete. | 2. System updates visual feed to highlight line and indicate it is selected.
+1. User clicks on line they wish to delete, to select it. | 2. System updates visual feed to highlight line and indicate it is selected.
 3. User pressed on delete button. | 4. System removes highlighted line, and updates the visual feed to show this. 
 
-###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
-Goal statement:
+###### 7. Requires MVP Use Case 1, selects and updates bus line of detection
+Goal statement: To be able to select a bus detection line/object of choice and move it. 
 
 Use Case Body
-Summary:
-Actors:
+Summary: This use case describes the interactions between the user and system when attempting to move a detection line. 
+Actors: User (primary), system (secondary)
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-*Still* | `renders` 
-1 | 2 
+1. User clicks on line they wish to update, to select it. | 2. System updates visual feed to highlight line and indicate it is selected.
+3. User drags line to where they want on the screen (or clicks on the edges to change length/angle of line). | 4. System updates as this is happening to indicate this change. 
 
 
 

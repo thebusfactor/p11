@@ -32,8 +32,11 @@ Effect of Parameters: No parameters seem evident that would effect the input.
 Relationship of input and output: This is the main source of input for the software and pertains to all output. 
 
 **Use Case Body**
+
 Summary: User acquiring camera, plugging it in and checking output
+
 Actors: Client/General user
+
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
@@ -49,8 +52,11 @@ Effect of Parameters: If the user does not have a working mouse they cannot proc
 Relationship of input and output: The detection areas dictate the output of the system.
 
 **Use Case Body**
+
 Summary: User running software and selects area.
+
 Actors: Client/General user
+
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
@@ -71,8 +77,11 @@ Effect of Parameters: If the user doesn't not have a working mouse they cannot p
 Relationship of input and output: The detection areas dictate the output of the system.
 
 **Use Case Body**
+
 Summary: User running software and selects area.
+
 Actors: Client/General user
+
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
@@ -93,8 +102,11 @@ Effect of Parameters: If the user doesn't not have a working mouse they cannot p
 Relationship of input and output: The detection areas dictate the output of the system. 
 
 **Use Case Body**
+
 Summary: User running software and selects area.
+
 Actors: Client/General user
+
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |

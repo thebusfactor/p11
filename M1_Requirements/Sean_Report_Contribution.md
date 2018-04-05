@@ -40,7 +40,7 @@ Actors: Client/General user
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
-| :--------------------|:--------------------|
+|---|---|
 | 1. User acquires camera | |
 | 2. User plugs in and angles camera at intersection | |
 
@@ -60,14 +60,14 @@ Actors: Client/General user
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
-| :--------------------|:--------------------|
+|---|---|
 | 1. User has software opened | |
 | 2. User selects and adds area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ###### 3. Requires MVP Use Case 1, Selects and deletes traffic light area of detection
 User should define and delete the area of decetion for the traffic lights. This is so the user can make the area of detection irrelevent.
 Validity check: Software should check the area has been succesfully been removed and detection no longer occurs.
-Exact sequence: Interface shows video feed of area, user selects shape of detection and deletes
+Exact sequence: Interface shows video feed of area, user selects shape of detection and deletes.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
 
@@ -85,7 +85,7 @@ Actors: Client/General user
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
-| :--------------------|:--------------------|
+|---|---|
 | 1. User has software opened | |
 | 2. User selects and deletes area of detection using mouse | 3. System accepts input and returns acceptance message |
 
@@ -110,7 +110,7 @@ Actors: Client/General user
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
-| :--------------------|:--------------------|
+|---|---|
 | 1. User has software opened | |
 | 2. User selects and updates area of detection using mouse | 3. System accepts input and returns acceptance message |
 

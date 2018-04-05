@@ -21,7 +21,7 @@ Output:
 
 MVP Use Case Diagram
 
-![alt text](https://gitlab.ecs.vuw.ac.nz/ENGR301-302-2018/Project-11/Bus-Factor/blob/master/M1_Requirements/mvpDiagram.png "MVP Use Case Diagram")
+![alt text](https://gitlab.ecs.vuw.ac.nz/ENGR301-302-2018/Project-11/Bus-Factor/blob/master/M1_Requirements/mvpDiagram.png?raw=true "MVP Use Case Diagram")
 
 https://puu.sh/zWJw6/e0c9eb77f4.png
 

@@ -20,21 +20,22 @@ Satisfaction of the user using the software product will be defined based on the
 *	The user-defined code system will be required to take no longer than ten mins to understand for the average programmer; ensuring that the user-defined code system will be usable to an average programmer. If the user-defined code system took too long to understand due to the complexity the experience for the programmer would be negatively affecting their satisfaction with the software product hence reducing the usability. 
 
 ## 3.4 Performance Requirements
-The performance of the final software product should meet the standards of stakeholders, so that experience of using the software product is a usable experience.  Performance requirements of a software project split into two different parts static numerical requirements & dynamic numerical requirements. 
+The performance of the final software product should meet the standards of stakeholders, so that the experience of using the software product is a usable experience.  Performance requirements of a software project split into two different parts static numerical requirements & dynamic numerical requirements. 
 
 ### Static Numerical Requirements
-Static performance requirements is a form of capacity of a defined number things that software system should be able to handle.
-*	Only one human user at a time using the software product as there is no form of networking as the system is a background automated process. 
-*	Required to handle 30 images a sec of video at least at 640 by 480 resolution. If the software product couldn’t handle 30 images a sec, it would lead to accuracy issues; With flagging buses passing red lights as the bus would drive away before the system has a chance to detect the bus. 
-*	Handle all form of user input in 0.1 seconds including background process required to respond to the user. The user input requirement of 0.1 seconds is to ensure the system feels responsive to the stakeholders.
-*	Event flagging for user-defined code is required to allow up to 10 other software systems running on the local machine. External code users of up ten requirement are to allow external code system to be useful but not affect the accuracy of the software product. 
+Static performance requirements is a form of capacity of defined number things that software system should be able to handle.
+
+*	Only one human user at a time using the software product as there is no form of networking as the system is a background process. 
+*	Required to handle 30 images a sec of video at least at 640 by 480 resolution. If the software product couldn’t handle 30 images a second, it would lead to accuracy issues; With flagging buses passing red lights as the bus would drive away before the system has a chance to detect the bus. 
+*	Handle all forms of user input in 0.1 seconds including background process required to respond to the user. The user input requirement of 0.1 seconds is to ensure the system feels responsive to the stakeholders.
+*	Event flagging for user-defined code is required to allow up to 10 other software systems running on the local machine. External code users of up to ten requirement are to allow external code system to be useful but not affect the accuracy of the software product. 
 
 ### Dynamic Numerical Requirements
 Dynamic performance requirement is a requirement based on how the software system should perform at both normal workload and peak workload such as increased users.
-*	Required to handle up detection on 1-16 buses at any point in time. The requirement of up 16 buses to ensure that software system can perform its core task at an intersection such as a 4-lane cross section.
-*	Maintain a 90% percent accuracy on buses pass reds light that the camera can see at a high level of traffic. High level of traffic would suggest the visible roads by the camera view filled by vehicles. Volume requirement on the amount of traffic is ensuring that software system is flexible with any intersection in the world no matter the traffic.
+
+*	Required to handle up to detection on 1-16 buses at any point in time. The requirement of up to 16 buses is to ensure that software system can perform its core task at an intersection such as a 4-lane cross section.
+*	Maintain a 90% accuracy on buses passing red lights when camera is dealing with a high level of traffic. A high level of traffic would suggest that visible roads by the camera view is filled by vehicles. The volume requirement on the amount of traffic is ensuring that software system is flexible with any intersection in the world no matter the traffic.
 *	Flagging of buses passing red lights are required to take no longer than 0.5 seconds when handling between 1 to 16 buses at an intersection.
 *	User configuration for more than one intersection should not affect the process time of the software product by more than 0.1 seconds. The complexity of the intersection should not a have a significant effect on the performance of the software product.
-
 
 ## 3.5 Logical Database Requirements

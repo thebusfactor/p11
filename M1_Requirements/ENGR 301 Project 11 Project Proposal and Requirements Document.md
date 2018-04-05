@@ -97,31 +97,30 @@ subsections to focus on the most important parts of your product.
 
 #### Video Input
 The purpose of the video input is to provide a feed of a street or intersection in order to visually see vehicles such as buses drive through the street/s and pass traffic lights.
-This input will be sourced from our clients at the Bus Factor. The video footage will be live from a mounted webcam/camera connected to computer.
+This input will be sourced from our clients at the Bus Factor. The video footage will be live from a mounted webcam/camera connected to a computer.
 The video feed has to be accurate enough for machine learning techniques to be able to detect red lights and distinguish between the vehicles.
-A typical webcam (720p) should be sufficient for this. The video input will be intially passed in as a common video format (e.g. MP4) for testing/training the algorithm from pre-recordered sources.
+A typical webcam (720p) should be sufficient for this. The video input will be initially passed in as a common video format (e.g. MP4) for testing/training the algorithm from pre-recorded sources.
 Later on, as we extend the video input to be live from the webcam, the input will depend on the particular webcam that the Bus Factor decides to use. Common webcam outputs (which will be our video input) include RGB, BGR, YUV, and many others.
 The final outcome will require the video footage to be live, and likely be around 24 frames per second for a standard webcam.
 It is likely that we will not need to analyze every frame of video, so may then only apply machine learning algorithm to specific frames from the video input.
-Hence having a lower FPS may also be sufficient, especially due to the slow movement of the vehicles through the intersection. Finally the footage will be fed into machine learning algorithm which will detect the colour of the lights, whether the vehicle bus or not, and other data. 
-
+Hence having a lower FPS may also be sufficient, especially due to the slow movement of the vehicles through the intersection. Finally the footage will be fed into machine learning algorithm which will detect the colour of the lights, whether the vehicle bus or not, and other data.
 
 #### Training data input
-The Purpose is to train the machine learning system to be able to distinguish between buses and other vehicles, as well as the colour of the red light, the stop/start light location, and location of bus in lane.
-Training data will simply be hours of video feed of the CBD, most likely in a common video format such as MP4 taken from the bus factor podcast or provided from our clients. Using bus factor videos as training data may help increase accuracy of classification for our expected input due to the input being at the same camera angle, time of day, and location as the desired use of the the software that we are building.
-However, also training our classifier on different camera feeds, angles and locations may provide a more well rounded algorithm and prevent overfitting.
+The Purpose is to train the machine learning system to be able to distinguish between buses and other vehicles, as well as the colour of the red light, the stop/start light location, and location of a bus in the lane.
+Training data will simply be hours of video feed of the CBD, most likely in a common video format such as MP4 taken from the bus factor podcast or provided from our clients. Using bus factor videos as training data may help increase the accuracy of classification for our expected input due to the input being at the same camera angle, time of day, and location as the desired use of the software that we are building.
+However, also training our classifier on different camera feeds, angles and locations may provide a more well-rounded algorithm and prevent overfitting.
 
 
 #### Input of traffic light location
 Having a tool whereby the user could indicate the location of the traffic lights through an interface would enable more accurate and faster to implement detection of the current colour of the traffic light.
 Locating the specific traffic light may also help combat the multi-lane problem of having multiple lights for multiple lanes resulting in confusion in classification.
 As the bus factor isn't at a multi-lane area this issue may not be of much concern, but may be useful for future use and if the bus factor decided to move their viewing location. 
-The source of the bounding box will be through a user interface that allows the user to drag or click to select over the desired area.
+The source of the bounding box will be through a user interface that allows the user to drag or click to select the desired area.
 
 #### Input for traffic line crossing line
 Having a tool whereby the user could indicate the line where vehicles cross the traffic light could make the basic image processing of whether the vehicle is running the red light or not far easier.
-This line would be made up from two points that the user would place down through the user interface. 
-This line would define the crossing point of the line.
+This line would be made up of two points that the user would place down through the user interface. 
+This line would define the crossing point where buses could pass to go past a traffic light.  
 
 ### Outputs: 
 

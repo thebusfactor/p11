@@ -36,11 +36,12 @@ Minimum Viable Product Use Cases
 ###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
 ###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
 
-| *Actions of actors:* |  *Actions of system:* |
-| --- | --- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
 
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+*Still* | `renders` 
+1 | 2 
 
 End Goal(s) Use Cases
 ###### 1. User sets up camera, boots software and user will automatically get alerted when a bus has ran a red light

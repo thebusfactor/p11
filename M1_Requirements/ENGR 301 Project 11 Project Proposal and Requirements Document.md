@@ -125,13 +125,6 @@ This line would define the crossing point of the line.
 
 ### Outputs: 
 
-* Training data weights
-* Alert (Box + red light)
-* Info of scene 
-    * Time/Date
-    * License plate
-    * Image/video of moment
-
 #### Training data weight output
 If machine learning is required we will be gathering output from the training in the form of weights and biases that will influence and classify future input. 
 This will be used to set up the camera and it will autodetect the intersection layout from a variety of angles.

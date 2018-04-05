@@ -37,7 +37,7 @@ Actors: Client/General user
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
-| :--------------------:|:----------------------------------------------------:|
+| :--------------------|:--------------------|
 | 1. User acquires camera | |
 | 2. User plugs in and angles camera at intersection | |
 
@@ -54,7 +54,7 @@ Actors: Client/General user
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
-| :--------------------:|:----------------------------------------------------:|
+| :--------------------|:--------------------|
 | 1. User has software opened | |
 | 2. User selects and adds area of detection using mouse | 3. System accepts input and returns acceptance message |
 
@@ -76,7 +76,7 @@ Actors: Client/General user
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
-| :--------------------:|:----------------------------------------------------:|
+| :--------------------|:--------------------|
 | 1. User has software opened | |
 | 2. User selects and deletes area of detection using mouse | 3. System accepts input and returns acceptance message |
 
@@ -98,7 +98,7 @@ Actors: Client/General user
 Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
-| :--------------------:|:----------------------------------------------------:|
+| :--------------------|:--------------------|
 | 1. User has software opened | |
 | 2. User selects and updates area of detection using mouse | 3. System accepts input and returns acceptance message |
 

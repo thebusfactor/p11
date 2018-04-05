@@ -256,45 +256,55 @@ Main Success Scenario:
 1. User acquires camera | 
 2. User plugs in and angles camera at intersection | 
 
-###### 5. Requires MVP Use Case 1, Selects and adds bus line of detection
-Goal statement:
+
+###### 5. Requires MVP Use Case 1, selects and adds bus line of detection
+Goal statement: For the user to be able to place down two points by clicking twice. The goal for this would be to provide the system with the two points for a line that can be shown both visually, and internally processed. 
 
 Use Case Body
-Summary:
-Actors:
+Summary: This use case describes the interactions between the user and the system when utilizing the line tool.
+Actors: User (primary), System (secondary)
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-*Still* | `renders` 
-1 | 2 
+1. User navigates to line tool and clicks two times on the visual feed to place down points.  | 2. System updates screen to show line that is made from those two points. Line vector is internally added to system for later use with bus detection. 
 
-###### 6. Requires MVP Use Case 1, Selects and deletes bus line of detection
-Goal statement:
+
+Alternative Scenarios:
+
+A1: User clicks on wrong point/s
+
+*Actions of actors:* | *Actions of system:* 
+--- | ---
+1. User navigates to line tool and clicks two times on the visual feed to place down points. | 2. System updates screen to show line that is made from those two points. Line vector is internally added to system for later use with bus detection. 
+3. User presses on refresh button, to remove any currently placed objects on screen.  | 4. System removes lines and any other placed objects.
+
+
+###### 6. Requires MVP Use Case 1, selects and deletes bus line of detection
+Goal statement: To be able to individually select a bus detection line/object of choice and remove it.
 
 Use Case Body
-Summary:
-Actors:
+Summary: This use case describes the interactions between the user and the system when attempting to delete a detection line. 
+Actors:  User (primary), system (secondary)
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-*Still* | `renders` 
-1 | 2 
+1. User clicks on line they wish to delete, to select it. | 2. System updates visual feed to highlight line and indicate it is selected.
+3. User pressed on delete button. | 4. System removes highlighted line, and updates the visual feed to show this. 
 
-###### 7. Requires MVP Use Case 1, Selects and updates bus line of detection
-Goal statement:
+###### 7. Requires MVP Use Case 1, selects and updates bus line of detection
+Goal statement: To be able to select a bus detection line/object of choice and move it. 
 
 Use Case Body
-Summary:
-Actors:
+Summary: This use case describes the interactions between the user and system when attempting to move a detection line. 
+Actors: User (primary), system (secondary)
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-*Still* | `renders` 
-1 | 2 
-
+1. User clicks on line they wish to update, to select it. | 2. System updates visual feed to highlight line and indicate it is selected.
+3. User drags line to where they want on the screen (or clicks on the edges to change length/angle of line). | 4. System updates as this is happening to indicate this change. 
 
 
 End Goal(s) Use Cases

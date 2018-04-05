@@ -1,173 +1,79 @@
-# Project Proposal and Requirements Document
 
-The aim of the project proposal and requirements document is to
-capture the requirements for the software your group is to build. It
-should communicate clearly to the supervisor, client and course
-coordinator exactly what the software you build is going to do, and
-what constraints it must meet while doing so.
-
-The document should also demonstrate your understanding of the main
-analysis principles and quality guidelines, using tools and associated
-notations as necessary to communicate the requirements precisely,
-unambiguously and clearly in a written technical document. Page specifications below are *limits not targets* and refer to the pages in the PDF generated from the markdown. Because the size of your document is necessarily limited, you should ensure
-that you focus your efforts on those requirements that are most
-important to completing a successful system: if sections are at their
-page limit, indicate how many would items be expected in a complete
-specification. 
-
-The ENGR 301 project proposal and requirements document should be based
-on the standard ISO/IEC/IEEE 29148:2011(E), primarily sections 8.4 and
-9.5, plus section 9.4 for projects involving hardware and ISO 25010
-SQuaRE for systemic requirements. The proposal and requirements
-document should contain the sections listed below, and conform to the
-formatting rules listed at the end of this brief. 
-
-### 3.2 Functions
-
-This is typically the longest subsection in the document - see 9.5.11.
-List up to fifty use cases (in order of priority for development), and
 for at least top ten focal use cases, write a short goal statement and
 use case body (up to seven pages).  Identify the use cases that
 comprise a minimum viable product.
 
-Plug in webcam and software renders
-Select area for traffic lights
-Select area for bus detection
 
-Engineering Standard for Functions:
-* I/O relationships
-* Validity checks
-* Respose to abnormal input
-* Sequence of operations
-* Effect of parameters
+### 3.2 Functions
+ 
+Basic functionality of our system comprises imited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
+for detecting the traffic light that controls said intersection and any busses that may travel through the light controlled lane, thus being able to see when one does not obey
+the road rules. From here we can extend the function and user interaction by offering auto-detection of the scene and the ability for the user to define what actions should take place upon the event.
 
+As part of our system we will have these inputs and outputs.
 Input:
-* Camera feed, video of scene
-* GUI for selecting lights
-* Training data (Images)
+* Camera feed, video of scene (MVP)
+* GUI input for selecting lights (MVP)
+* User defined actions (END)
+* Training data; images (END)
 
 Output: 
-* Training data weights
-* Alert (Box + red light)
-* Info of scene 
+* Alert; Box + red light (MVP)
+* Training data weights (MVP)
+* Info of scene (END)
     * Time/Date
     * License plate
     * Image/video of moment
 
-MVP
-* Run GUI, select lights
-* Selected area and scanned/processed
-* When movement detected/line passed alert
-* Static image of moment
-* Overlay interface with video
+MVP Use Case Diagram
+!url thing 
+
+Minimum Viable Product Use Cases
+###### 1. User sets up camera
+###### 2. Requires MVP Use Case 1, boots software, selects and adds traffic light area of detection
+###### 3. Requires MVP Use Case 1, boots software, selects and deletes traffic light area of detection
+###### 4. Requires MVP Use Case 1, boots software, selects and updates traffic light area of detection
+###### 5. Requires MVP Use Case 1, boots software, selects and adds bus line of detection
+###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
+###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
+
+| *Use Case Body*  Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
 
+End Goal(s) Use Cases
+###### 1. User sets up camera, boots software and user will automatically get alerted when a bus has ran a red light
+Description: For our first end goal use case where the user should have no interaction or intervention with the system other than checking the video feed is suitable for detection.
+What this involves is the software to have used machine learning to be able to scan and detect a video feed for the location on the image of the bus and the lights. This
+extracts the user and allows the system to run external to any prior input required in the MVP.
+Validity check: Predominantly done through user checking video feed, in the case where it doesn't detect a light and/or bus upon start up, the user will be alerted that no point of interest was detected and realignment is required. 
+Exact sequence: Set up of camera -> Run software -> Software auto-detects the environmental interest points -> Runs and alerts user when event triggers
+Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest.
+Relationship of input and output: Video feed input is scanned for points of interest -> Alert is outputted when event triggered.
+ 
+###### 2. Requires End Goal Use Case 1, Upon booting of software user can define output upon event trigger
+An extension of the first End Goal Use Case, upon detection of bus running red light the user can define what the output should be. This could be an email or computer alert event has been triggered.
+Exact sequence: Run software -> User defines what output should be -> Output is delivered when event triggers.
+Effect of Parameters: Depending on the level of sophistication of system, user may define output to only occur after X amount of buses have ran a red light or any other aspect they deem appropriate.
+Relationship of input and output: Video feed input is scanned for points of interest -> User defined alert is outputted when event triggered.
 
+Extension Goal(s) Use Cases (Should I flesh out?)
+###### 1. Requires End Goal Use Case 1, Upon booting of software user can define additional points of interest to keep track of
+Description: As part of the possible extension to this project, 
+Validity check: Since these events like License plate detection, police interfention, speed detection validity checks would need to occur to make sure the values and assumptions made are performing above an expected
+correctness threshold (Assuming a baseline of 90%).
+Exact sequence: Run software -> Software auto-detects the environmental interest points -> Runs and logs additional event, alerts user
+Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest. Instances of each event need to be recorded to perform statistical analysis.
+Relationship of input and output: Video feed input is scanned for points of interest -> Additional event is logged and user alerted.
 
-
-
-
-
-
-## MVP: 
-    * Video input from consumer webcam using angle from Podcast
-    * User input for detecting intersection, define light with circle, define bus with a line that is crossed w/ User interface
-    * Output static image of moment offending occurs
-    * Works on windows
-Priority list:
-## END GOAL
-    * Consumer webcam and hardware, any intersection, any angle
-    * Plug in webcam, run program and auto detects intersection elements
-    * Output video of moment offending occurs
-    * User defined code when event occurs
-    * Works on Linux
-    
-## EXTRAS
-    * License plate detection
-    * Events of interest
-        * Police intervention
-        * Bus collisions w/ Pedestrians
-        * Near Misses
-    * OBS Integration
-    * Prediction/statistics based on time, weather etc
-    * Detecting different kinds of busses, other vehicles
-        * Reporting statistics of event to parent company (Or Traffic authority)
-        * could use licence plate detection
-    * Speed Detection
+ 
 
 
 ### 3.10 Supporting information
 
-
 Dylan's section 
-
-Define all inputs into and outputs from the software system. The description should complement the interface
-descriptions in 9.5.3.3.1 through 9.5.3.3.5, and should not repeat information there.
-Each interface defined should include the following content:
-a) Name of item;
-b) Description of purpose;
-c) Source of input or destination of output;
-d) Valid range, accuracy, and/or tolerance;
-e) Units of measure;
-f) Timing;
-g) Relationships to other inputs/outputs;
-h) Screen formats/organization;
-i) Window formats/organization;
-j) Data formats;
-k) Command formats;
-l) Endmessages. 
-
-9.5.3.1 System interfaces
-List each system interface and identify the functionality of the software to accomplish the system requirement
-and the interface description to match the system.
-
-9.5.3.2 User interfaces
-Specify the following:
-
-a) The logical characteristics of each interface between the software product and its users. This includes
-those configuration characteristics (e.g., required screen formats, page or window layouts, content of any
-reports or menus, or availability of programmable function keys) necessary to accomplish the software
-requirements.
-b) All the aspects of optimizing the interface with the person who uses, maintains, or provides other support
-to the system. This may simply comprise a list of do's and don'ts on how the system will appear to the
-user. One example may be a requirement for the option of long or short error messages. This may also
-be specified in the Software System Attributes under a section titled Ease of Use.
-NOTE A style guide for the user interface can provide consistent rules for organization, coding, and interaction of the
-user with the system.
-
-9.5.3.3 Hardware interfaces
-Specify the logical characteristics of each interface between the software product and the hardware elements
-of the system. This includes configuration characteristics (number of ports, instruction sets, etc.). It also covers
-such matters as what devices are to be supported, how they are to be supported, and protocols. For example,
-terminal support may specify full-screen support as opposed to line-by-line support.
-
-9.5.3.4 Software interfaces
-Specify the use of other required software products (e.g., a data management system, an operating system,
-or a mathematical package), and interfaces with other application systems (e.g., the linkage between an
-accounts receivable system and a general ledger system).
-For each required software product, specify:
-
-a) Name;
-b) Mnemonic;
-c) Specification number;
-d) Version number;
-e) Source.
-
-For each interface specify:
-a) Discussion of the purpose of the interfacing software as related to this software product.
-b) Definition of the interface in terms of message content and format. It is not necessary to detail any welldocumented
-interface, but a reference to the document defining the interface is required. 
-
-9.5.3.5 Communications interfaces
-Specify the various interfaces to communications such as local network protocols. 
-
-Output: 
-* Training data weights
-* Alert (Box + red light)
-* Info of scene 
-    * Time/Date
-    * License plate
-    * Image/video of moment
 
 a) Training data weight output
 b) If machine learning is required we will be gathering output from the training in the form of weights and biases that will influence and classify future input.
@@ -175,39 +81,26 @@ This will be used to set up the camera and it will autodetect the intersection l
 are fine tuned enough we should have a good system for detection. 
 c) Program will be the recipient of the output, as the output is fed back in for more training and testing.
 d) 90% tolerance for how accurately the output is used to detect whether the bus has passed a red light.
-<!--e) Units of measure;-->
-<!--f) Timing;-->
-<!--g) Relationships to other inputs/outputs;-->
-<!--h) Screen formats/organization;-->
-<!--i) Window formats/organization;-->
-<!--j) Data formats;-->
-<!--k) Command formats;-->
-<!--l) Endmessages.-->
+e) Measure against a test set and judge prediction percentage.
+g) For our end goal and extension goal this output is related to both aspects as this governs how well a bus is detected and thus when an alert triggers.
+j) The format should be whatever data type we use for our weights (float, double, int).
 
 a) Alert from trigger
 b) An alert should be issued via email, push notification or through the software when a bus runs a red light. 
 c) User of system should recieve an alert when the issue occurs.
 d) Every instance of detection the alert should send.
 e) If we provide it false positives and see if it detects a static image of the offense, and issues the email to the user.
-<!--f) Timing;-->
-<!--g) Relationships to other inputs/outputs;-->
-<!--h) Screen formats/organization;-->
-<!--i) Window formats/organization;-->
-<!--j) Data formats;-->
-<!--k) Command formats;-->
-<!--l) Endmessages.-->
+f) ***what we deem***
+g) This is the key output from our system and relies on every other input functioning correctly.
+h) The output of the alert may be a simple ping on the computer that is running the software, to an email and digital log of the trigger.
 
 a) Info of scene
 b) The moment of the red light breach there should be data taken of the time, data and a visual of the scene (image or video)
 c) Emailed or provided to the user via a server which would host the images.
 d) Every instance of detection the info should be captured.
 e) Visually inspecting the data vs real time and see if there are any discrepancies of when it is and is not outputting the signal.
-<!--g) Relationships to other inputs/outputs;-->
-<!--h) Screen formats/organization;-->
-<!--i) Window formats/organization;-->
-<!--j) Data formats;-->
-<!--k) Command formats;-->
-<!--l) Endmessages.-->
+f) This output relies on the camera feed especially as it needs to accurately capture the scene upon the event triggering. 
+j) The data format for the image of the scene will most likely be a .png, 
 
 
 

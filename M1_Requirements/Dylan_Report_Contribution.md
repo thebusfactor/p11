@@ -109,11 +109,11 @@ FUNCTIONS:
 
 
 ###### 5. Requires MVP Use Case 1, boots software, selects and adds bus line of detection
-Goal statement:
+Goal statement: For the user to be able to place down two points by clicking twice. The goal for this would be to provide the system with the two points for a line that can be shown both visually, and internally processed. 
 
 Use Case Body
-Summary:
-Actors:
+Summary: This use case describes the interactions between the user and the system when utilizing the line tool.
+Actors: User (primary), System (secondary)
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 

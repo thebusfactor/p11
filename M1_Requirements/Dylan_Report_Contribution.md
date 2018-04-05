@@ -134,17 +134,17 @@ A1: User clicks on wrong point/s
 
 
 ###### 6. Requires MVP Use Case 1, boots software, selects and deletes bus line of detection
-Goal statement:
+Goal statement: To be able to individually select a bus detection line/object of choice and remove it.
 
 Use Case Body
-Summary:
-Actors:
+Summary: This use case describes the interactions between the user and the system when attempting to delete a detection line. 
+Actors:  User (primary), system (secondary)
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
 --- | ---
-*Still* | `renders` 
-1 | 2 
+1. User clicks on line they wish to delete. | 2. System updates visual feed to highlight line and indicate it is selected.
+3. User pressed on delete button. | 4. System removes highlighted line, and updates the visual feed to show this. 
 
 ###### 7. Requires MVP Use Case 1, boots software, selects and updates bus line of detection
 Goal statement:

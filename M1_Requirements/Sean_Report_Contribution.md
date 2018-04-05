@@ -32,6 +32,7 @@ Use Case Body
 Summary:
 Actors:
 Main Success Scenario:
+
 *Actions of actors:* | *Actions of system:* 
 --- | ---
 *Still* | `renders` 
@@ -44,6 +45,7 @@ Use Case Body
 Summary:
 Actors:
 Main Success Scenario:
+
 *Actions of actors:* | *Actions of system:* 
 --- | ---
 *Still* | `renders` 
@@ -56,6 +58,7 @@ Use Case Body
 Summary:
 Actors:
 Main Success Scenario:
+
 *Actions of actors:* | *Actions of system:* 
 --- | ---
 *Still* | `renders` 
@@ -68,6 +71,7 @@ Use Case Body
 Summary:
 Actors:
 Main Success Scenario:
+
 *Actions of actors:* | *Actions of system:* 
 --- | ---
 *Still* | `renders` 
@@ -80,6 +84,7 @@ Use Case Body
 Summary:
 Actors:
 Main Success Scenario:
+
 *Actions of actors:* | *Actions of system:* 
 --- | ---
 *Still* | `renders` 
@@ -92,6 +97,7 @@ Use Case Body
 Summary:
 Actors:
 Main Success Scenario:
+
 *Actions of actors:* | *Actions of system:* 
 --- | ---
 *Still* | `renders` 
@@ -104,6 +110,7 @@ Use Case Body
 Summary:
 Actors:
 Main Success Scenario:
+
 *Actions of actors:* | *Actions of system:* 
 --- | ---
 *Still* | `renders` 

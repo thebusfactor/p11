@@ -390,11 +390,38 @@ Dynamic performance requirement is a requirement based on how the software syste
 
 ### 3.5 Logical database requirements
 
-See 9.5.14. for most systems, a focus on d) and e) is appropriate,
-such as an object-oriented domain analysis. You should provide an
-overview domain model (e.g.  a UML class diagram of approximately ten
-classes) and write a brief description of the responsibilities of each
-class in the model (3 pages).
+* DebugView
+    * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever we need a raw look at what information the camera is detecting and/or using. 
+
+* ConfigView
+    * ConfigView is the GUI the user will see and interact with. This will be the most used View component of the system. It will be the component the user interacts with to identify the points of interest of the scene. It should be accessible through the Model and/or Controller due to the critical input it holds. 
+
+* ImageHandler
+    * Implements interface handler, that will take in a image to be processed. This will mainly be for testing purposes as the requirements of the project are for it to process a video feed. 
+
+* VideoHandler
+    * Implements interface handler, that will take in a video to be processed. This will be the main form of input we use whilst running our program.
+
+* KeyHandler
+    * Handles user mouse input to the GUI, adding/updating/deleting. 
+
+* MouseHandler
+    * Handles user key input to the GUI, selecting/adding/updating elements. 
+    
+* Alert
+    * Formats and controls the alert the user will recieve when the event triggers. The key output feature, it will have to work in unison with the model to correctly be called and displayed. 
+
+* Detection
+    * The key aspect of the model, the detection of the light and bus event. Will work with I/O classes for the content it will detect and what output it shall form based on the detection.
+
+* ProcessImage
+    * Will process the feed of images or videos.
+
+* MachineLearning
+    * General class that will control the learning of the system. As the team progresses this will be a goal to get the lights and bus auto-detected without user input.
+
+* Output
+    * General class that governs how and what we output. As the team progresses this will be a goal to output a video of the event or any additional information.
 
 ### 3.6 Design constraints
 

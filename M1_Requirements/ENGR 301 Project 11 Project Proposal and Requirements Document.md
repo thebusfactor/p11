@@ -432,7 +432,7 @@ see 9.5.15 and 9.5.16. for most systems, this will be around one page.
 ## 3.7.1 Product Requirements
 
 In order to meet the expectations of the ZX Security clients, the product created throughout the Bus Factor project must meet a range of requirements. Such requirements
-include the the usability, efficiency, usability and security of the product. By considering these factors when creating the product, we will be able to produce 
+include the the usability, efficiency, usability and security of the product. By considering these factors when creating the product, the team will be able to produce 
 a programme which completes the specified goals to a high quality standard.
 
 ### 3.7.1.1 Usability Requirements

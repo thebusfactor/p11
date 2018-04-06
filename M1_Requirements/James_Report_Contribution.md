@@ -1,4 +1,4 @@
-## Product Overview
+## 1.3 Product Overview
 ### 1.3.1 Product Perspective
 
 There have been multiple studies done on vehicles running red lights at intersections, with algorithms being created to detect whether a vehicle will run a red light, with accuracy over 90%. The Bus Factor project product can relate to systems currently in place in multiple countries – for example the United States of America and India – where there are cameras stationed to catch motorists running red lights. While the Bus Factor product is not going to be developed for commercial or government use, such as traffic enforcement, the project still holds similar requirements that it needs to detect the traffic light state and vehicles' positions in relation to the intersection/crossing.
@@ -10,7 +10,7 @@ This lacklustre setup poorly compares to the commercial/governmental uses in cou
 
 and the ability to predict dangerous events occurring seconds in advance. 
 
-In terms of our specific project - making for bus factor stream/podcast
+In terms of our specific project - making for bus factor podcast
 
 
 
@@ -27,3 +27,39 @@ The basic functionality for this product, as described by our Minimum Viable Pro
 4. That the system works on a Windows operating system. 
 
 A consumer webcam is defined as a readily available camera that one may commonly find in-built in laptops or as an external USB camera.
+Certain basic functionality for the MVP will be extended for the final product such as the ability to output a static image when a traffic violation is detected. For the final product this will be extended to output a short video file of the instance the violation occurred - ideally capturing the licence plate too).
+Another beneficial function to the system is for the user to input custom codes to specify certain events when they occur. At the beginning of the program the user should be able to modify said event codes to whatever is desired. This builds on top of the basic UI requirements to ensure the user gets as much information as desired. 
+Part of the system may have machine learning incorporated for added functionality such as statistics predicting the likelihood of certain events occurring based on time or weather. These events may include traffic violations or collisions.
+
+
+### 1.3.3 User Characteristics
+
+
+### 1.3.4 Limitations
+
+
+
+## 3.6 Design Constraints
+
+This project does not have many constraints that would hinder the development of the project. Some of the only constraints that the team might need to consider when designing the system would be the hardware (cameras) used, and the requirement to output instances of traffic violation to image and video files.
+The rest of the specifications for the project do not restrict the development and should not hinder any ability to fulfill the client's specifications. 
+
+Some minor constraints for the system that the team needs to take into account are the following:
+- The software runs on Windows operating systems (eventually the system should additionally be able to operate on Linux operating systems).
+- The current operation only considers one angle of the intersection, we would need to create our system for a general case so it can be used at any intersection, at any angle.
+- The basic version of the system allows the user to input certain key areas such as the traffic light and the stopping line at intersections. This project group would also need to ensure that the system can automatically detect these objects without the user having the specify their location on the video feed.
+
+Some of the extra functionality that the team has considered to be part of an end product may also need to be taken into consideration.
+Certain extra functions such as accurate licence plate detection, speed detection and identifying specific events of interest may become constraints that the team needs to take note of.
+These specific events of interests include scenarios of police intervention, vehicle collisions with pedestrians and vehicle near misses with other objects (mainly pedestrians and other vehicles).
+These events of interest could be quite difficult to integrate into an already existing version of the system and may result in a design constraint that the team would encounter. 
+
+
+
+
+
+
+
+
+
+

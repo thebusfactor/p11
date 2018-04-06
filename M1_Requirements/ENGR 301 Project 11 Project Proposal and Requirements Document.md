@@ -19,30 +19,29 @@ The system must take a video input from any standard webcam, and from this input
 ### 1.2 Scope
 
 The Bus Factor Project will produce a program which can be set up and run on any consumer-available computer, using a commercially available webcam.
-The program should be able to run on both Windows and Linux devices, and work when set up at any intersection, from any angle.  
+The program should be able to run on both Windows and Linux devices and work when set up at any intersection, from any angle.
 The program will take in a video input. It will then automatically detect the location & status of the red light
 in the video, and automatically detect when a bus runs the detected red light. To do this, the state of the light 
 must be automatically detected, and the boundary point for the intersection
 (I.e. the line not to be crossed by the bus) should be either manually inputted or automatically detected.
 When an offence is detected, the program should automatically trigger some sort of event to notify the user - 
-either a pre-programmed event or some other user defined code.
+either a pre-programmed event or some other user-defined code.
 Then, a short video clip of the offence should be saved, showing time before and after the offence. 
 Extra potential features could include Licence Plate Detection, OBS Integration, Speed Detection of offending vehicles, Reporting events to local Traffic Authorities, 
-or prediction/statistics based on factors such as time of offence, weather, or location.  
-The software will be used exclusively by the clients to enhance their podcast - "The Bus Factor", by removing the need for them to manually observe and update their livestream
+or prediction/statistics based on factors such as time of offence, weather, or location.
+The software will be used exclusively by the clients to enhance their podcast - "The Bus Factor", by removing the need for them to manually observe and update their live stream
 when an offence is detected.
-There are no commercial applications for this program. Also, the clients require that the program be developed and released under an OSI-approved license.
+There are no commercial applications for this program. Also, the clients require that the program is developed and released under an OSI-approved license.
 
 
 ### 1.3 Product overview 
 #### 1.3.1 Product perspective
 
-There have been multiple studies done on vehicles running red lights at intersections, with algorithms being created to detect whether a vehicle will run a red light, with accuracy over 90%. The Bus Factor project product can relate to systems currently in place in multiple countries – for example the United States of America and India – where there are cameras stationed to catch motorists running red lights. While the Bus Factor product is not going to be developed for commercial or government use, such as traffic enforcement, the project still holds similar requirements that it needs to detect the traffic light state and vehicles' positions in relation to the intersection/crossing.
+There have been multiple studies done on vehicles running red lights at intersections, with algorithms being created to detect whether a vehicle will run a red light, with accuracy over 90%. The Bus Factor project product can relate to systems currently in place in multiple countries – for example, the United States of America and India – where there are cameras stationed to catch motorists running red lights. While the Bus Factor product is not going to be developed for commercial or government use, such as traffic enforcement, the project still holds similar requirements that it needs to detect the traffic light state and vehicles' positions in relation to the intersection/crossing.
 
-The product is being produced for a podcast called The Bus Factor that incorporates a live stream video showing the intersection outside of the office building the hosts are situated. The angle that the camera is positioned at contrasts with the position the traffic cameras in countries around the world are – those of which the angle has been optimised for the detection and image capture of the vehicles travelling through the intersection. The way the camera used in the Bus Factor project is currently situated, the traffic light state is not easy to see – so the accuracy of the light and vehicle detection is unideal to be implemented on by image processing techniques. 
+The product is being produced for a podcast called The Bus Factor that incorporates a live stream video showing the intersection outside of the office building the hosts are situated. The angle that the camera is positioned at contrasts with the position the traffic cameras in countries around the world are – those of which the angle has been optimised for the detection and image capture of the vehicles traveling through the intersection. The way the camera used in the Bus Factor project is currently situated, the traffic light state is not easy to see – so the accuracy of the light and vehicle detection is unideal to be implemented on by image processing techniques. 
 
-This lacklustre setup poorly compares to the commercial/governmental uses in countries around the world 
-
+This lackluster setup poorly compares to the commercial/governmental uses in countries around the world 
 
 and the ability to predict dangerous events occurring seconds in advance. 
 
@@ -50,6 +49,7 @@ In terms of our specific project - making for bus factor stream/podcast
 
 One page defining the system's relationship to other related products
 (9.5.3. but not the subsections in the standard.)
+
 
 #### 1.3.2 Product functions
 

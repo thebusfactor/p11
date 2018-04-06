@@ -222,7 +222,7 @@ f) Data retention requirements
     * ConfigView is the GUI the user will see and interact with. This will be the most used View component of the system. It will be the component the user interacts with to identify the points of interest of the scene. It should be accessible through the Model and/or Controller due to the critical input it holds. 
 
 * ImageHandler
-    *
+    * Implements interface handler, that will take in an image to be processed. This will mainly be for testing purposes as the requirements of the project are for it to process a video feed.
 
 * VideoHandler
     *

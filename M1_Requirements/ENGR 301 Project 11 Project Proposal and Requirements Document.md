@@ -558,7 +558,7 @@ indicate testable acceptance criteria.
 
 ### 5.1 Schedule
 
-##Project Deadlines
+**Project Deadlines**
 
 The assigned project deadlines are as follows:
 
@@ -568,7 +568,7 @@ The assigned project deadlines are as follows:
 | Essay                 | Essay describing MVP and current project status.     |10/06/18  |
 | Minimum Viable Product| Presentation for the minimum product developed.      |15/06/18  |
 
-##Organised Timetable
+**Organised Timetable**
 
 In order to complete the Bus Factor project to a high standard, the team have 
 agreed to allocate at least 8 hours per week to work on it. This 8 hours does 

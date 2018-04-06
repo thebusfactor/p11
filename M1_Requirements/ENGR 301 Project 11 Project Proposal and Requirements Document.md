@@ -553,6 +553,8 @@ see 9.5.19.
 
 ## 4. Verification
 
+
+
 5 pages outlining how you will verify that the product meets the
 most important specific requirements. The format of this section
 should parallel section 3 of your document (see 9.5.18).

@@ -207,18 +207,6 @@ j) The data format for the image of the scene will most likely be a .png,
 
 
 3.5 Logical database requirements
-See 9.5.14 for most systems, a focus on d) and e) is appropriate, such as an object-orientated domain analysis. You should provide an overview domain model (e.g. a UML class diagram of approximately ten classes) and write a brief description of the responsibilities of each class in the model.
-
-3.5 Logical Database Requirements 
-Input: Video - read input stream, change codec?
-
-Output: Alert, Design pattern for output: events - police, -speed, -pedestrians
-
-Model: Anaylse video, compute event, compute VC, machine learning - trianing/testing
-
-View: GUI - debug/configuration
-
-Controller: Mouse/key interaction
 
 a) Types of information used by various functions
 b) Frequency of use
@@ -226,6 +214,51 @@ c) Accessing capabilites
 **d) Data entities and their relationships**
 **e) Integrity constraints**
 f) Data retention requirements
+
+* DebugView
+    * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever we need a raw look at what information the camera is detecting and/or using. 
+
+* ConfigView
+    * ConfigView is the GUI the user will see and interact with. This will be the most used View component of the system. It will be the component the user interacts with to identify the points of interest of the scene. It should be accessible through the Model and/or Controller due to the critical input it holds. 
+
+* ImageHandler
+    *
+
+* VideoHandler
+    *
+
+* KeyHandler
+    *
+
+* MouseHandler
+    * 
+    
+* Alert
+    * 
+
+* Detection
+    * 
+
+* ProcessImage
+    *
+
+* MachineLearning
+    *
+
+* Output
+    *
+
+
+
+a) Types of information used by various functions
+b) Frequency of use
+c) Accessing capabilites
+**d) Data entities and their relationships**
+**e) Integrity constraints**
+f) Data retention requirements
+
+
+
 
 
 

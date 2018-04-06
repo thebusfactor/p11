@@ -29,6 +29,8 @@ Part of the system may have machine learning incorporated for added functionalit
 
 
 ### 1.3.3 User Characteristics
+identify traffic light, stop lines - intersection
+setting up camera
 
 
 ### 1.3.4 Limitations

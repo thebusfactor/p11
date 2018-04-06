@@ -614,7 +614,7 @@ quite high. Not only would the grades of the team suffer, but the learning oppor
 skills or assessments could suffer as a result.  
 To mitigate this risk, communication will be established early with both the clients and the senior managers, to ensure that requirements sufficient to the scope of the
 project are achieved. The client will be asked for a more substantial set of requirements, and from those requirements the team can scale back to a manageable project, using
-the project management techniques of the course. Regular client meetings will be maintained to ensure that these requirements are accurate, and to discuss the progress on the project.
+the project management techniques of the course. Regular client meetings will be maintained to ensure that these requirements are accurate, and to discuss the progress of the project.
 
 2. **Scope**  
 The clients could go to the opposite extreme, providing far too many features that they want implemented and extended in the final product, rather than a core deliverable concept that

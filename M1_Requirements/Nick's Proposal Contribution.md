@@ -125,3 +125,17 @@ of this scope. The consequences of missing these deadlines/deliverables are seve
 Missing deadlines for client deliverables makes the team and the university look bad and creates more pressure to make up these missed deadlines. 
 This risk can be managed by using all the tools that are available to the best of the team's ability. Liberal issue tracking of deadlines (project related and otherwise) will allow the team members to manage their time effectively. Also, 
 consistent, honest communication with the clients will ensure that expectations are managed between both parties.
+
+
+### 3.8 Physical and Environmental Requirements 
+
+The client's requirements dicate that the software must work with any commercially available webcam, and on any commercially available machine. The webcam component of the software could be
+either built-in, or a separate peripheral, such as a USB connected webcam. To perform image recognition on the video footage, the webcam must be of a reasonable quality. Blurry or out-of-focus 
+footage would be much more difficult to intepret, both visually and via image recognition or computer vision techniques. 
+The camera (and by extension, the device running the software) must be positioned in such a way to have an unobstructed view of a given intersection, and in a secure place, so that the device cannot
+be disturbed by any outside interference, be it extreme weather, human interference, or otherwise.  
+Also, the camera must be set up in a position that allows it to capture all of the Points of Interest in an intersection. These Points of Interest are the Traffic Light being observed, the boundary of
+the intersection, and the mid-point of the intersection I.e. where the busses cross through when going through an intersection.
+
+
+

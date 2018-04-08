@@ -85,6 +85,10 @@ References to other documents or standards. Follow the IEEE Citation Reference s
 [3] https://opencv.org/license.html
 [4] https://www.mightyape.co.nz/computers/computer-accessories-webcams/webcams/all
 [5] https://aws.amazon.com/aml/pricing/
+[6] = https://obsproject.com/
+[7] = https://www.tomsguide.com/us/best-gaming-pc,review-2219.html
+[8] = https://www.lifewire.com/best-webcams-to-buy-4065141
+[9] = https://www.lifewire.com/top-linux-distributions-of-all-time-4084559
 
 
 ---
@@ -768,17 +772,13 @@ consistent, honest communication with the clients will ensure that expectations 
 ## 6. Appendices
 ### 6.1 Assumptions and dependencies 
 
-The team needs to produce a system that integrates with the system that the client is currently using. The system is required to send messages or alerts to the software that the Bus Factor clients use called to stream their podcast. This software is called Open Broadcast Software (OBS)[1]. 
+The team needs to produce a system that integrates with the system that the client is currently using. The system is required to send messages or alerts to the software that the Bus Factor clients use called to stream their podcast. This software is called Open Broadcast Software (OBS)[6]. 
 
-The system is also required to be able to operate on standard computers that run the Windows or Linux operating systems. The team is assuming that this Linux or Windows operating system is still supported. Therefore the team assumes that the software needs to be able to run on Windows 7 or later versions. Alternatively, the team is assuming that the distribution of the Linux OS that the software will run on should be one of the popular distributions such as Ubuntu, Linux Mint, Debian, or other highly functioning Linux Operating Systems. This operating system is assumed to be 64 bit, due to the RAM that the software may need to function optimally, and increased support 64 bit operating systems have.
+The system is also required to be able to operate on standard computers that run the Windows or Linux operating systems. The team is assuming that this Linux or Windows operating system is still supported. Therefore the team assumes that the software needs to be able to run on Windows 7 or later versions. Alternatively, the team is assuming that the distribution of the Linux OS that the software will run on should be one of the popular distributions[9] such as Ubuntu, Linux Mint, Debian, or other highly functioning Linux Operating Systems. This operating system is assumed to be 64 bit, due to the RAM that the software may need to function optimally, and increased support 64 bit operating systems have.
 
-The software the team produces is required to be able to run on a standard home computer. Based on common PC specifications in 2018[2], the team assumes this home computer to be multicore, have at least 8GB RAM, and at least 5GB free hard drive space of 5400 RPM+.
+The software the team produces is required to be able to run on a standard home computer. Based on common PC specifications in 2018[7], the team assumes this home computer to be multicore, have at least 8GB RAM, and at least 5GB free hard drive space of 5400 RPM+.
 
-As the team is creating software that performs image processing, we assume that the quality of webcam required for the live feed is that of a standard mounted webcam of at least 480p quality. 
-
-[1] = https://obsproject.com/
-[2] = https://www.tomsguide.com/us/best-gaming-pc,review-2219.html
-[3] = https://www.lifewire.com/best-webcams-to-buy-4065141
+As the team is creating software that performs image processing, we assume that the quality of webcam required for the live feed is that of a standard mounted webcam of at least 480p quality[8]. 
 
 ---
 

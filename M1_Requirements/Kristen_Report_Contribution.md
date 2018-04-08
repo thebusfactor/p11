@@ -143,6 +143,15 @@ the ZX security clients approximately once every 3 weeks. These discussions will
 be used to ensure that the product meets the clients requests and to ask additional 
 questions about the product. 
 
+# 4.0 Verification
+
+Functional Requirements 
+
+1. Programme recognises red light and intersection. This is just verified through looking at the output. 
+2. Programme must detect when bus runs red light. Tested by looking at the output. 
+3. Programme delivers output to users system. Use testing class to check correct output. 
+4. Programme creates video file/ image when incident occurs. Tested by looking at the output. 
+
 
 
 

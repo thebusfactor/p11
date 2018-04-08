@@ -18,20 +18,7 @@ The system must take video input from any standard webcam, and from this input -
 
 ### 1.2 - Scope
 
-The Bus Factor Project will produce a program which can be set up and run on any consumer-available computer, using a commercially available webcam.
-The program should be able to run on both Windows and Linux devices and work when set up at any intersection, from any angle.
-The program will take in a video input. It will then automatically detect the location & status of the red light
-in the video, and automatically detect when a bus runs the detected red light. To do this, the state of the light 
-must be automatically detected, and the boundary point for the intersection
-(I.e. the line not to be crossed by the bus) should be either manually inputted or automatically detected.
-When an offence is detected, the program should automatically trigger some sort of event to notify the user - 
-either a pre-programmed event or some other user-defined code.
-Then, a short video clip of the offence should be saved, showing time before and after the offence. 
-Extra potential features could include Licence Plate Detection, OBS Integration, Speed Detection of offending vehicles, Reporting events to local Traffic Authorities, 
-or prediction/statistics based on factors such as time of offence, weather, or location.
-The software will be used exclusively by the clients to enhance their podcast - "The Bus Factor", by removing the need for them to manually observe and update their live stream
-when an offence is detected.
-There are no commercial applications for this program. Also, the clients require that the program is developed and released under an OSI-approved license.
+The Bus Factor Project will produce a program which can be set up and run on any consumer-available computer, using a commercially available webcam. The program should be able to run on both Windows and Linux devices and work when set up at any intersection, from any angle. The program will take in a video input. It will then automatically detect the location & status of the red light in the video, and automatically detect when a bus runs the detected red light. Meaning, the state of the light must be automatically detected, and the boundary point for the intersection (I.e. the line not to be crossed by the bus) should be either manually inputted or automatically detected. When an offence is detected, the program should automatically trigger some sort of event to notify the user - either a pre-programmed event or some other user-defined code. Then, a short video clip of the offence should be saved, showing time before and after the offence. Extra potential features could include Licence Plate Detection, OBS Integration, Speed Detection of offending vehicles, Reporting events to local Traffic Authorities, or prediction/statistics based on factors such as time of the offence, weather, or location. The software will be used exclusively by the clients to enhance their podcast - "The Bus Factor," by removing the need for them to observe and update their live stream manually when a form of offence is detected. There are no commercial applications for this program. Also, the clients require that the program is developed and released under an OSI-approved license.
 
 
 ### 1.3 - Product overview 

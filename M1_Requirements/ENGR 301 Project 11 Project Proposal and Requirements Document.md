@@ -8,8 +8,8 @@ ENGR 301 Project *11* Project Proposal and Requirements Document
 The clients for this project are Hugh and Stephen from ZX Security.
 Contact Details:
 
-Stephen: stephen@zxsecurity.co.nz  
-Hugh: hugh@zxsecurity.co.nz  
+Stephen Shkardoon: stephen@zxsecurity.co.nz  
+Hugh Davenport: hugh@zxsecurity.co.nz  
 
 ### 1.1 Purpose
 

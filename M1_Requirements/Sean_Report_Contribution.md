@@ -1,6 +1,6 @@
 ### 3.2 Functions
  
-Basic functionality of our system comprises imited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
+Basic functionality of our system comprises limited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
 for detecting the traffic light that controls said intersection and any busses that may travel through the light controlled lane, thus being able to see when one does not obey
 the road rules. From here we can extend the function and user interaction by offering auto-detection of the scene and the ability for the user to define what actions should take place upon the event.
 
@@ -26,9 +26,9 @@ Minimum Use Case Diagram
 
 Minimum Viable Product Use Cases
 ###### 1. User sets up camera, user navigates to software and runs it
-This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
+This use case is the only non-functional case our system has, which involves no software but the user making sure the camera is set-up in a manner allows for an unimpeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
 Validity check: There is no input check that can be performed on this case due to the nature of it, as it requires the user to check the intersection is in view.
-Effect of Parameters: No parameters seem evident that would effect the input.
+Effect of Parameters: No parameters seem evident that would affect the input.
 Relationship of input and output: This is the main source of input for the software and pertains to all output. 
 
 **Use Case Body**
@@ -45,8 +45,8 @@ Main Success Scenario:
 | 2. User plugs in and angles camera at intersection |      |
 
 ###### 2. Requires MVP Use Case 1, Selects and adds traffic light area of detection
-User should define the area of decetion for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
-Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined. Software should check the area has been succesfully been defined and is useful. 
+User should define the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
+Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined. Software should check the area has been successfully defined and is useful. 
 Exact sequence: Interface shows video feed of area, user inserts shape of detection.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
@@ -65,8 +65,8 @@ Main Success Scenario:
 | 2. User selects and adds area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ###### 3. Requires MVP Use Case 1, Selects and deletes traffic light area of detection
-User should define and delete the area of decetion for the traffic lights. This is so the user can make the area of detection irrelevent.
-Validity check: Software should check the area has been succesfully been removed and detection no longer occurs.
+User should define and delete the area of detection for the traffic lights. This is so the user can make the area of detection irrelevant.
+Validity check: Software should check the area has been successfully removed and detection no longer occurs.
 Exact sequence: Interface shows video feed of area, user selects shape of detection and deletes.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
@@ -85,7 +85,7 @@ Main Success Scenario:
 | 2. User selects and deletes area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ###### 4. Requires MVP Use Case 1, Selects and updates traffic light area of detection
-User should update the area of decetion for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
+User should update the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
 Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
 Exact sequence: Interface shows video feed of area, user updates prior shape of detection.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
@@ -123,7 +123,7 @@ Relationship of input and output: Video feed input is scanned for points of inte
 Extension Goal(s) Use Cases
 ###### 1. Requires End Goal Use Case 1, Upon booting of software user can define additional points of interest to keep track of
 Description: As part of the possible extension to this project, 
-Validity check: Since these events like License plate detection, police interfention, speed detection validity checks would need to occur to make sure the values and assumptions made are performing above an expected
+Validity check: Since these events like License plate detection, police intervention, speed detection validity checks would need to occur to make sure the values and assumptions made are performing above an expected
 correctness threshold (Assuming a baseline of 90%).
 Exact sequence: Run software -> Software auto-detects the environmental interest points -> Runs and logs additional event, alerts user
 Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest. Instances of each event need to be recorded to perform statistical analysis.
@@ -190,7 +190,7 @@ j) The format should be whatever data type we use for our weights (float, double
 
 a) Alert from trigger
 b) An alert should be issued via email, push notification or through the software when a bus runs a red light. 
-c) User of system should recieve an alert when the issue occurs.
+c) User of system should receive an alert when the issue occurs.
 d) Every instance of detection the alert should send.
 e) If we provide it false positives and see if it detects a static image of the offense, and issues the email to the user.
 f) ***what we deem***
@@ -227,7 +227,7 @@ j) The data format for the image of the scene will most likely be a .png,
     * Handles user key input to the GUI, selecting/adding/updating elements. 
     
 * Alert
-    * Formats and controls the alert the user will recieve when the event triggers. The key output feature, it will have to work in unison with the model to correctly be called and displayed. 
+    * Formats and controls the alert the user will receive when the event triggers. The key output feature, it will have to work in unison with the model to correctly be called and displayed. 
 
 * Detection
     * The key aspect of the model, the detection of the light and bus event. Will work with I/O classes for the content it will detect and what output it shall form based on the detection.

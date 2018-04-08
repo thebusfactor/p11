@@ -151,6 +151,49 @@ Functional Requirements
 2. Programme must detect when bus runs red light. Tested by looking at the output. 
 3. Programme delivers output to users system. Use testing class to check correct output. 
 4. Programme creates video file/ image when incident occurs. Tested by looking at the output. 
+5. 
+
+Acceptance Tests
+
+In order to measure the correct functionality of the programme the team must use sufficient verification techinques through 
+the development process. Such techniques include using tests to verify that the programme performs the correct actions
+according to it's functions (as listed in section 1.3.2 Product Functions). As the Bus Factor programme relies on image
+processing a majority of our acceptance tests will be done using visual verification. Such tests are as follows:
+
+1. The ability to detect the traffic light state. 
+
+Visual verification will be used to test that the programme detects the correct state of the traffic light (red, amber, green). 
+
+2. User can define area of interest. 
+
+Visual verification will be used in order to ensure that the programme creates an accurate bounding box around the selected
+area. Such areas include the stopping line of the intersection and the traffic lights that the user is interested in. After 
+developing the MVP the team will test the automatic detection of the traffic lights. This will also be done using visual 
+verification. 
+
+3. The programme notifies the user of an incident. 
+
+Visual verification will be used in order to detect that the programme responds when and incident occurs. The programme will 
+also test that the user is given the correct output information when incident occurs. 
+
+4. The programme outputs a static image when incident occurs. 
+
+Visual verification will be used in order to test the correct output image and that the image has been output into the correct
+location. 
+
+5. The programme will send an automated message to specified address when incident occurs. 
+
+As one of the final features the programme will have the ability to send a message to a specified bus company informing them 
+of the incident and details of the incident. To test for this, the programme will verify that the correct message is sent and 
+to the correct address depending on the bus. 
+
+
+Detection of bus
+When the program alerts the user the event has triggered, visual verification by the user should occur to ascertain if the requirement has been met. This will require active monitoring of the system for when the bus appears and observing if the system detects it.
+detection of red light
+When the program alerts the user the event has triggered, visual verification by the user should occur to ascertain if the requirement has been met. This will require active monitoring of the system for the traffic light to observe if the system detects the colour as red.
+detection of bus passing line, and storing video files/image and timestamp metadata.
+When the program alerts the user the event has triggered, visual verification by the user should occur to ascertain if the requirement has been met. This will require active monitoring of the system for the bus to observe whether it detects the bus passing the indicated line; noting the time when this occurs, a video or photo capture at the moment, and any other meta-data.
 
 
 

@@ -110,13 +110,13 @@ This could limit the team's design process initially as the team may have the so
 
 [5] https://aws.amazon.com/aml/pricing/
 
-[6] = https://obsproject.com/
+[6] https://obsproject.com/
 
-[7] = https://www.tomsguide.com/us/best-gaming-pc,review-2219.html
+[7] https://www.tomsguide.com/us/best-gaming-pc,review-2219.html
 
-[8] = https://www.lifewire.com/best-webcams-to-buy-4065141
+[8] https://www.lifewire.com/best-webcams-to-buy-4065141
 
-[9] = https://www.lifewire.com/top-linux-distributions-of-all-time-4084559
+[9] https://www.lifewire.com/top-linux-distributions-of-all-time-4084559
 
 
 ---

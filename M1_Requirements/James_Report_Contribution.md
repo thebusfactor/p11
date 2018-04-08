@@ -31,41 +31,39 @@ Part of the system may have machine learning incorporated for added functionalit
 ### 1.3.3 User Characteristics
 
 The users that would operate this program would be the clients on the podcast. This would be Stephen Shkardoon and Hugh Davenport from ZX Security. 
-These two are very experienced with operating the cameras that accompany the current setup, and would be capable of operating the final product 
-(i.e. inputting areas of interest to define the intersection, setting equipment up and packing down, etc).
+These two are very experienced with operating the cameras that accompany the current setup, and would be capable of operating the final product (i.e. inputting areas of interest to define the intersection, setting equipment up and packing down, etc).
 The users would also need to understand the codes that are communicated by the system when certain events occur. 
-The client's level of education and their experience operating the podcast is enough to operate the system as the product
+The client's level of education and their experience operating the podcast is enough to operate the system as the product will be able to be operated without issue, and with a clear explanation of the system upon delivery.
 
-If the team was to extend this project to be open-source and available for anyone to implement, the program would need to be able to automatically
-detect the intersection boundaries, the traffic lights (and their states) and the objects that appear. This would enable users with less qualifications than the clients' to 
-be able to use the software without issues as the software would do most of the work. 
+As the project is open-source and, therefore, available for anyone to implement, the program would need to be able to automatically detect the intersection boundaries, the traffic lights (and their states) and the objects that appear. 
+This would enable users with less qualifications than the clients' to be able to use the software without issues as the software would do most of the work.  
+
+In an ideal situation, the hardware used is high quality and positioned in ideal locations. A high-definition camera would be optimal in order to have the clarity of the objects. This would optimise the AI's automatic object detection, along with the increase the quality of the system's use; the podcast hosted by the client. 
+A well-positioned camera would be able to clearly see the indiviual colour of each traffic light, the stop lines and the vehicles travelling through the intersection.
+This assists in the detection of objects of interest (traffic lights and vehicles), and fulfills the requirement to be able to accurately detect said objects as briefly mentioned in Limitations *(1.3.4)*.
 
 ### 1.3.4 Limitations
 
 Initially the team would get the product working to the current setup the client has for their podcast. 
 This setup has a small amount of limitations the team needs to consider to fulfill the project scope.
 
-1. The current setup used (camera angle, camera quality)
+**- The current setup used (camera angle, camera quality)**
 
 The current setup for the client's podcast has a low quality camera and is positioned facing the intersection. 
 The off-angle positioning of the camera is unideal for the detection of objects and the visibility of the traffic lights (and their states).
 Additionally, only one of the intersection's stop lines are visible, the licence plates of the vehicles are illegible and the video quality is sub-optimal. 
 
-2. The data required for accurate object detection through machine learning 
+**- The data required for accurate object detection through machine learning**
 
 This requires the object detection software the team will utilise to be very accurate to correctly capture the desired vehicles.
-The team will be using the OpenCV library for the object detection, that of which the accuracy of the object detection is very high 
-(assuming the correct data has been used for the AI training). 
+The team will be using the OpenCV library for the object detection, that of which the accuracy of the object detection is very high (assuming the correct data has been used for the AI training). 
 For the software to work in any generic case the team would need to collect a large set of data, of varying angles and clarity, to train the AI for an accurate result.
-
-
-While the team would 
-and intersection layout (the visibility of the traffic light states and the stop lines).
 
 While the team is creating this project for the client's podcast, for this project to work in a general case, the team would
 ideally use a high quality camera for the video feed. There would need to be extra limitations for a more open-source use, such as that the software would need to operate the same for all levels of camera quality and camera angle.
 This could limit the team's design process initially as the team may have the software working for the podcast setup but not for any other case. 
 
+As mentioned in the User Characteristics *(1.3.3)* section, the system is required to be able to detect objects with an accuracy of 90% or above. This is so the team can guarantee the system is accurate and the automation within the program is reliable.
 ## 3.6 Design Constraints
 
 This project does not have many constraints that would hinder the development of the project. Some of the only constraints that the team might need to consider when designing the system would be the hardware (cameras) used, and the requirement to output instances of traffic violation to image and video files.

@@ -1,4 +1,4 @@
-# ENGR 301 Project *11* Project Proposal and Requirements Document
+# ENGR 301 Project *11* Proposal and Requirements Document
 #### Brandon Scott-Hill, Dylan Kumar, James Magallanes, Kristen Tait, Nicholas Snellgrove, Sean Stevenson
 
 ## 1. Introduction
@@ -103,9 +103,6 @@ As mentioned in the User Characteristics *(1.3.3)* section, the system is requir
 ---
 
 ## 2. References
-
-References to other documents or standards. Follow the IEEE Citation Reference scheme, available from the [IEEE website](https://www.ieee.org/documents/ieeecitationref.pdf) (PDF; 451 KB).
-(1 page, longer if required)
 
 *References for section 3.7*
 

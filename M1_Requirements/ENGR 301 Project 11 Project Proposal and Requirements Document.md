@@ -196,11 +196,11 @@ The data format for the image of the scene will most likely be a .png.
 
 ### 3.2 Functions
  
-Basic functionality of our system comprises limited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
+The basic functionality of our system comprises limited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
 for detecting the traffic light that controls said intersection and any busses that may travel through the light controlled lane, thus being able to see when one does not obey
 the road rules. From here the team can extend the function and user interaction by offering auto-detection of the scene and the ability for the user to define what actions should take place upon the event.
 
-As part of our system we will have these inputs and outputs.
+As part of our system, we will have these inputs and outputs.
 
 Input:
 * Camera feed, video of scene (MVP)

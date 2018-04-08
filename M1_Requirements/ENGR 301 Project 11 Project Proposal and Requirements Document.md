@@ -83,6 +83,9 @@ References to other documents or standards. Follow the IEEE Citation Reference s
 [1] https://www.computer.org/web/education/code-of-ethics
 [2] https://www.privacy.org.nz/the-privacy-act-and-codes/privacy-act-and-codes-introduction/
 [3] https://opencv.org/license.html
+[4] https://www.mightyape.co.nz/computers/computer-accessories-webcams/webcams/all
+[5] https://aws.amazon.com/aml/pricing/
+
 
 ---
 
@@ -634,8 +637,8 @@ questions about the product.
 
 | Item        | Are           | Cost  |
 | ------------- | --------------| ------|
-| Camera/Webcam | In the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $100. | $100 |
-| Processing Power      | For machine learning classification, sufficient processing power will be needed to test and train our algorithm. The cost of this may range from $0, if we are able to use the Universities Processing servers, or a few hundred dollars for AWS/Tensorflow servers. As our software may continue to be used with the Bus Factor Podcast live, it may be a better decision to invest in an expensive graphics card for a computer, ranging from $500 to $1000. |   $1000 |
+| Camera/Webcam | In the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $150. [4] | $50 |
+| Processing Power      | For machine learning classification, sufficient processing power will be needed to test and train our algorithm. The cost of this may range from $0, if the team is able to use the Universities Processing servers, or an estimated hundred dollars for AWS/Tensorflow servers [5]. |   $150 |
 
 ---
 

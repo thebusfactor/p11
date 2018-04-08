@@ -197,12 +197,14 @@ the road rules. From here the team can extend the function and user interaction 
 As part of our system, we will have these inputs and outputs.
 
 Input:
+
 * Camera feed, video of scene (MVP)
 * GUI input for selecting lights (MVP)
 * User defined actions (END)
 * Training data; images (END)
 
 Output: 
+
 * Alert; Box + red light (MVP)
 * Training data weights (MVP)
 * Info of scene (END)

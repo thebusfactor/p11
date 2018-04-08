@@ -151,7 +151,7 @@ Hence having a lower FPS may also be sufficient, especially due to the slow move
 
 #### Training data input
 The Purpose is to train the machine learning system to be able to distinguish between buses and other vehicles, as well as the colour of the red light, the stop/start light location, and location of a bus in the lane.
-Training data will simply be hours of video feed of the CBD, most likely in a common video format such as MP4 taken from the bus factor podcast or provided from our clients. Using bus factor videos as training data may help increase the accuracy of classification for our expected input due to the input being at the same camera angle, time of day, and location as the desired use of the software that we are building.
+Training data will simply be hours of video feed of the CBD, most likely in a common video format such as MP4 taken from the bus factor podcast or provided from our clients. Using bus factor videos as training data may help increase the accuracy of classification for our expected input due to the input being at the same camera angle, time of day, and location as the desired use of the software that the team will build.
 However, also training our classifier on different camera feeds, angles and locations may provide a more well-rounded algorithm and prevent overfitting.
 
 
@@ -446,7 +446,7 @@ Below is the UML class diagram for the structure of our system. Listed after are
 ![Class diagram](classDiagram.png)
 
 * DebugView
-    * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever we need a raw look at what information the camera is detecting and/or using. 
+    * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever the team needs a raw look at what information the camera is detecting and/or using. 
 
 * ConfigView
     * ConfigView is the GUI the user will see and interact with. This will be the most used View component of the system. It will be the component the user interacts with to identify the points of interest of the scene. It should be accessible through the Model and/or Controller due to the critical input it holds. 
@@ -476,7 +476,7 @@ Below is the UML class diagram for the structure of our system. Listed after are
     * General class that will control the learning of the system. As the team progresses this will be a goal to get the lights and bus auto-detected without user input.
 
 * Output
-    * General class that governs how and what we output. As the team progresses this will be a goal to output a video of the event or any additional information.
+    * General class that governs how and what the system outputs. As the team progresses this will be a goal to output a video of the event or any additional information.
 
 ### 3.6 Design constraints
 
@@ -555,7 +555,7 @@ inputs. The final product must also have the flexibilty to use live input files 
 
 ### 3.7.1.5 Security 
 
-The security of the project and the information gathered from it is a functional requirement which the team must hold in high regard. The code of the programme we are developing 
+The security of the project and the information gathered from it is a functional requirement which the team must hold in high regard. The code of the programme the team will develop 
 will be open-source, therefore, the team will not have to worry about who can access our code when it is complete. As previously mentioned in section 3.7.1.2.2, the programme will 
 store video files and static images of the events that occur. These video files will be filmed on public property, therefore, can legally be accesible by anyone who is not using such images for commercial use [2]. 
 However, the team intends to take an ethical approach when dealing with such footage and information, see section 3.7.2.1. 
@@ -579,7 +579,7 @@ must be considered may include ethical practices behind the project and the rule
 In order to meet the ethical requirements for software development, the team must act according to the best interests of the clients, the public and the team members [1]. This will create a project which 
 complies with the clients needs and creates a team environment which will promote productivity and communication. In order to meet the clients wishes the team will remain in constant communication with the client and 
 will not make any choices which will largely affect the final product without first consulting the clients. The main method of communication between the team members and the clients will be through email. If further 
-discussion is needed we will meet up with the clients when we believe necessary.
+discussion is needed the team will meet up with the clients when we believe necessary.
 
 As previously mentioned in section (*Space Requirements & Security Requirements*) our programme will involve storing footage and images of people around the intersection. This cannot be avoided as the
 busses and intersections will be located in a highly public area. According to the NZ Privacy Act the collection and use of images of individuals in a public space is considered legal, as long as such images

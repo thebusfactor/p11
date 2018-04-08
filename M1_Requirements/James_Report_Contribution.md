@@ -35,12 +35,13 @@ setting up camera
 
 ### 1.3.4 Limitations
 Initially the team would get the product working to the current setup the client has for their podcast. This setup has many limitations for the team to consider to fulfill the Minimum Viable Product (MVP).
-The current setup for the client's podcast has a low quality camera setup to point out of their office window towards an intersection. The off-angle positioning of their office is unideal for the detection of objects.
+The current setup for the client's podcast has a low quality camera setup to point out of their office window towards an intersection. The off-angle positioning of their office is unideal for the detection of objects and the visibility of the traffic lights (and their states).
 Only one of the intersection's stop lines are visible, the licence plates are illegible and the video quality is sub-optimal. This requires the object detection software the team will utilise to be very accurate to correctly capture the desired vehicles.
 
 The team will be using the OpenCV library for the object detection, that of which the accuracy of the object detection is very high (assuming the correct data has been used for the AI training). 
+For the software to work in any generic case the team would need to collect a large set of data, of varying angles and clarity, to train the AI.
 While the team would ideally use a high quality camera for the video feed the software should work for all levels of camera quality, camera angle and intersection layout (the visibility of the traffic light states and the stop lines).
-In order for the software to meet these requirements to operate in all generic scenarios, the team would need to 
+In order for the software to meet these requirements to operate in all scenarios, the team would need to design the program to work for any generic case. This could limit the team's design process initially as the team may have the software working for the podcast setup but not for any other case. 
 
 ## 3.6 Design Constraints
 

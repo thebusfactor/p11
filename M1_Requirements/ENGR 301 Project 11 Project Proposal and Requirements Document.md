@@ -72,6 +72,8 @@ characteristics (9.5.5)
 
 One page on the limitations on the product (9.5.6)
 
+---
+
 ## 2. References
 
 References to other documents or standards. Follow the IEEE Citation Reference scheme, available from the [IEEE website](https://www.ieee.org/documents/ieeecitationref.pdf) (PDF; 451 KB).
@@ -81,6 +83,8 @@ References to other documents or standards. Follow the IEEE Citation Reference s
 [1] https://www.computer.org/web/education/code-of-ethics
 [2] https://www.privacy.org.nz/the-privacy-act-and-codes/privacy-act-and-codes-introduction/
 [3] https://opencv.org/license.html
+
+---
 
 ## 3. Specific requirements  
 
@@ -144,12 +148,13 @@ This data would be outputted (Emailed or provided) to the user via a server whic
 With every instance of detection, this information should be captured.
 Testing measurements would involve visually inspecting the data and comparing to real time to see if there are any discrepancies between when it is and is not outputting the signal.
 This output relies on the camera feed especially as it needs to accurately capture the scene upon the event triggering. 
-The data format for the image of the scene will most likely be a .png,
+The data format for the image of the scene will most likely be a .png.
 
+---
 
 ### 3.2 Functions
  
-Basic functionality of our system comprises imited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
+Basic functionality of our system comprises limited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
 for detecting the traffic light that controls said intersection and any busses that may travel through the light controlled lane, thus being able to see when one does not obey
 the road rules. From here we can extend the function and user interaction by offering auto-detection of the scene and the ability for the user to define what actions should take place upon the event.
 
@@ -175,9 +180,9 @@ Minimum Use Case Diagram
 
 Minimum Viable Product Use Cases
 ###### 1. User sets up camera, user navigates to software and runs it
-This use case is the only non-functional case our system has, which involes no software but the user making sure the camera is set-up in a manner allows for an unempeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
+This use case is the only non-functional case our system has, which involves no software but the user making sure the camera is set-up in a manner allows for an unimpeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
 Validity check: There is no input check that can be performed on this case due to the nature of it, as it requires the user to check the intersection is in view.
-Effect of Parameters: No parameters seem evident that would effect the input.
+Effect of Parameters: No parameters seem evident that would affect the input.
 Relationship of input and output: This is the main source of input for the software and pertains to all output. 
 
 **Use Case Body**
@@ -194,8 +199,8 @@ Main Success Scenario:
 | 2. User plugs in and angles camera at intersection |      |
 
 ###### 2. Requires MVP Use Case 1, Selects and adds traffic light area of detection
-User should define the area of decetion for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
-Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined. Software should check the area has been succesfully been defined and is useful. 
+User should define the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
+Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined. Software should check the area has been successfully defined and is useful. 
 Exact sequence: Interface shows video feed of area, user inserts shape of detection.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
@@ -211,12 +216,11 @@ Main Success Scenario:
 | *Actions of actors:* | *Actions of system:* |
 |---|---|
 | 1. User has software opened |     |
-| 2. User selects area to be added | 3. System updates GUI in response to input, highlighting area |
-| 4. User presses button to add | 5. System accepts input, adds elements and returns acceptance message |
+| 2. User selects and adds area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ###### 3. Requires MVP Use Case 1, Selects and deletes traffic light area of detection
-User should define and delete the area of decetion for the traffic lights. This is so the user can make the area of detection irrelevent.
-Validity check: Software should check the area has been succesfully been removed and detection no longer occurs.
+User should define and delete the area of detection for the traffic lights. This is so the user can make the area of detection irrelevant.
+Validity check: Software should check the area has been successfully removed and detection no longer occurs.
 Exact sequence: Interface shows video feed of area, user selects shape of detection and deletes.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
@@ -232,11 +236,10 @@ Main Success Scenario:
 | *Actions of actors:* | *Actions of system:* |
 |---|---|
 | 1. User has software opened |     |
-| 2. User selects area to be deleted | 3. System updates GUI in response to input, highlighting area |
-| 4. User presses button to update | 5. System accepts input, removes elements and returns acceptance message |
+| 2. User selects and deletes area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ###### 4. Requires MVP Use Case 1, Selects and updates traffic light area of detection
-User should update the area of decetion for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
+User should update the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
 Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
 Exact sequence: Interface shows video feed of area, user updates prior shape of detection.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
@@ -252,11 +255,8 @@ Main Success Scenario:
 
 | *Actions of actors:* | *Actions of system:* |
 |---|---|
-| 1. User has software opened. |     |
-| 2. User selects area to be updated. | 3. System updates GUI in response to input, highlighting area |
-| 4. User presses button to update | 5. System accepts input, updates elements and returns acceptance message |
-
-
+| 1. User has software opened |     |
+| 2. User selects and updates area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ###### 5. Requires MVP Use Case 1, selects and adds bus line of detection
 Goal statement: For the user to be able to place down two points by clicking twice. The goal for this would be to provide the system with the two points for a line that can be shown both visually, and internally processed. 
@@ -342,11 +342,13 @@ Relationship of input and output: Video feed input is scanned for points of inte
 Extension Goal(s) Use Cases
 ###### 1. Requires End Goal Use Case 1, Upon booting of software user can define additional points of interest to keep track of
 Description: As part of the possible extension to this project, 
-Validity check: Since these events like License plate detection, police interfention, speed detection validity checks would need to occur to make sure the values and assumptions made are performing above an expected
+Validity check: Since these events like License plate detection, police intervention, speed detection validity checks would need to occur to make sure the values and assumptions made are performing above an expected
 correctness threshold (Assuming a baseline of 90%).
 Exact sequence: Run software -> Software auto-detects the environmental interest points -> Runs and logs additional event, alerts user
 Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest. Instances of each event need to be recorded to perform statistical analysis.
 Relationship of input and output: Video feed input is scanned for points of interest -> Additional event is logged and user alerted.
+
+---
 
 ## 3.3 Usability Requirements
 The usability of the final product should meet both the requirements & objectives expected of the client including the usability needs of stakeholders. These usability requirements & objectives split up into three different criteria measurable effectiveness, efficiency and satisfaction criteria based in the context of use of bus factor software program.
@@ -369,6 +371,8 @@ Satisfaction of the user using the software product will be defined based on the
 *	Required that any form of necessary input with the software product while running is self-intuitive. Input also includes configuration input such defining areas of where the traffics lights will be. If the input system is found unintuitive by stakeholders, the satisfaction of stakeholders will be affected reducing the usability of the software product.
 *	The user-defined code system will be required to take no longer than ten mins to understand for the average programmer; ensuring that the user-defined code system will be usable to an average programmer. If the user-defined code system took too long to understand due to the complexity the experience for the programmer would be negatively affecting their satisfaction with the software product hence reducing the usability. 
 
+---
+
 ## 3.4 Performance Requirements
 The performance of the final software product should meet the standards of stakeholders, so that the experience of using the software product is a usable experience.  Performance requirements of a software project split into two different parts static numerical requirements & dynamic numerical requirements. 
 
@@ -388,7 +392,7 @@ Dynamic performance requirement is a requirement based on how the software syste
 *	Flagging of buses passing red lights are required to take no longer than 0.5 seconds when handling between 1 to 16 buses at an intersection.
 *	User configuration for more than one intersection should not affect the process time of the software product by more than 0.1 seconds. The complexity of the intersection should not a have a significant effect on the performance of the software product.
 
-### 3.5 Logical database requirements
+3.5 Logical database requirements
 
 * DebugView
     * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever we need a raw look at what information the camera is detecting and/or using. 
@@ -409,7 +413,7 @@ Dynamic performance requirement is a requirement based on how the software syste
     * Handles user key input to the GUI, selecting/adding/updating elements. 
     
 * Alert
-    * Formats and controls the alert the user will recieve when the event triggers. The key output feature, it will have to work in unison with the model to correctly be called and displayed. 
+    * Formats and controls the alert the user will receive when the event triggers. The key output feature, it will have to work in unison with the model to correctly be called and displayed. 
 
 * Detection
     * The key aspect of the model, the detection of the light and bus event. Will work with I/O classes for the content it will detect and what output it shall form based on the detection.
@@ -422,6 +426,8 @@ Dynamic performance requirement is a requirement based on how the software syste
 
 * Output
     * General class that governs how and what we output. As the team progresses this will be a goal to output a video of the event or any additional information.
+
+---
 
 ### 3.6 Design constraints
 
@@ -437,6 +443,8 @@ Some of the extra functionality that the team has considered to be part of an en
 Certain extra functions such as accurate licence plate detection, speed detection and identifying specific events of interest may become constraints that the team needs to take note of.
 These specific events of interests include scenarios of police intervention, vehicle collisions with pedestrians and vehicle near misses with other objects (mainly pedestrians and other vehicles).
 These events of interest could be quite difficult to integrate into an already existing version of the system and may result in a design constraint that the team would encounter. 
+
+---
 
 ### 3.7 Software system attributes
 
@@ -544,6 +552,8 @@ our clients do not intend to use such files commercially, the users will not nee
 Part of our project will involve integrating open CV and other external libraries into our code. Therefore, our program must comply with the licenses supplied by 
 these libraries. Such licenses include the Open CV license agreement [3].
 
+---
+
 ### 3.8 Physical and Environmental Requirements 
 
 The client's requirements dicate that the software must work with any commercially available webcam, and on any commercially available machine. The webcam component of the software could be
@@ -554,9 +564,13 @@ be disturbed by any outside interference, be it extreme weather, human interfere
 Also, the camera must be set up in a position that allows it to capture all of the Points of Interest in an intersection. These Points of Interest are the Traffic Light being observed, the boundary of
 the intersection, and the mid-point of the intersection I.e. where the busses cross through when going through an intersection.
 
+---
+
 ### 3.10 Supporting information
 
 see 9.5.19. 
+
+---
 
 ## 4. Verification
 
@@ -576,6 +590,8 @@ most important specific requirements. The format of this section
 should parallel section 3 of your document (see 9.5.18).
 Wherever possible (especially systemic requirements) you should
 indicate testable acceptance criteria.
+
+---
 
 ## 5. Development schedule.
 
@@ -612,15 +628,16 @@ the ZX security clients approximately once every 3 weeks. These discussions will
 be used to ensure that the product meets the clients requests and to ask additional 
 questions about the product. 
 
+---
 
- ### 5.2 Budget:
+### 5.2 Budget:
 
 | Item        | Are           | Cost  |
 | ------------- | --------------| ------|
 | Camera/Webcam | In the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $100. | $100 |
 | Processing Power      | For machine learning classification, sufficient processing power will be needed to test and train our algorithm. The cost of this may range from $0, if we are able to use the Universities Processing servers, or a few hundred dollars for AWS/Tensorflow servers. As our software may continue to be used with the Bus Factor Podcast live, it may be a better decision to invest in an expensive graphics card for a computer, ranging from $500 to $1000. |   $1000 |
 
-
+---
 
 ### 5.3 Risks 
 
@@ -716,7 +733,7 @@ Missing deadlines for client deliverables makes the team and the university look
 This risk can be managed by using all the tools that are available to the best of the team's ability. Liberal issue tracking of deadlines (project related and otherwise) will allow the team members to manage their time effectively. Also, 
 consistent, honest communication with the clients will ensure that expectations are managed between both parties.
 
-
+---
 
 ## 6. Appendices
 ### 6.1 Assumptions and dependencies 
@@ -733,11 +750,14 @@ As the team is creating software that performs image processing, we assume that 
 [2] = https://www.tomsguide.com/us/best-gaming-pc,review-2219.html
 [3] = https://www.lifewire.com/best-webcams-to-buy-4065141
 
+---
 
 ### 6.2 Acronyms and abbreviations
 
 * Incident: Refers to a bus being observed running a red light, as captured by the software.
 * Consumer webcam: Defined as a readily available camera such as an external USB camera or even those found in-built into laptops.
+
+---
 
 ## 6. Contributions
 
@@ -746,6 +766,6 @@ As the team is creating software that performs image processing, we assume that 
 * James Magallanes: 1.3 Product Overview, 3.6 Design constraints (Total Page Count: 5 Pages)
 * Kristen Tait: 5.1 Schedule, 3.7 Software system attributes (Total Page Count: 5 Pages)
 * Nicholas Snellgrove: 1.0-1.2 Introduction, 5.3 Risks (Total Page Count: 4 Pages)
-* Sean Stevenson: 3.2 Functions (Total Page Count: 4 Pages)
+* Sean Stevenson: 3.2 Functions, 3.5 Logical Database Requirements, 3.1 External interfaces (Total Page Count: 4 Pages)
 
 ---

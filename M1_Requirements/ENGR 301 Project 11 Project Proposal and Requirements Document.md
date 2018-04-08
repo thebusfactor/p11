@@ -80,14 +80,23 @@ References to other documents or standards. Follow the IEEE Citation Reference s
 (1 page, longer if required)
 
 *References for section 3.7*
+
 [1] https://www.computer.org/web/education/code-of-ethics
+
 [2] https://www.privacy.org.nz/the-privacy-act-and-codes/privacy-act-and-codes-introduction/
+
 [3] https://opencv.org/license.html
+
 [4] https://www.mightyape.co.nz/computers/computer-accessories-webcams/webcams/all
+
 [5] https://aws.amazon.com/aml/pricing/
+
 [6] = https://obsproject.com/
+
 [7] = https://www.tomsguide.com/us/best-gaming-pc,review-2219.html
+
 [8] = https://www.lifewire.com/best-webcams-to-buy-4065141
+
 [9] = https://www.lifewire.com/top-linux-distributions-of-all-time-4084559
 
 

@@ -63,8 +63,7 @@ While the team would
 and intersection layout (the visibility of the traffic light states and the stop lines).
 
 While the team is creating this project for the client's podcast, for this project to work in a general case, the team would
-ideally use a high quality camera for the video feed. There would need to be extra limitations for a more open-source use, such as that the software would need to 
-operate the same for all levels of camera quality and camera angle.
+ideally use a high quality camera for the video feed. There would need to be extra limitations for a more open-source use, such as that the software would need to operate the same for all levels of camera quality and camera angle.
 This could limit the team's design process initially as the team may have the software working for the podcast setup but not for any other case. 
 
 ## 3.6 Design Constraints

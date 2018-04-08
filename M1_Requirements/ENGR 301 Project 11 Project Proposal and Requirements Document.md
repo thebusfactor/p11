@@ -612,37 +612,37 @@ the intersection, and the mid-point of the intersection, I.e., where the busses 
 
 **Acceptance Tests**
 
-In order to measure the correct functionality of the programme the team must use sufficient verification techinques through 
+To measure the correct functionality of the programme, the team must use sufficient verification techniques through 
 the development process. Such techniques include using tests to verify that the programme performs the correct actions
-according to it's functions (as listed in section 1.3.2 Product Functions). As the Bus Factor programme relies on image
+according to its functions (as listed in section 1.3.2 Product Functions). As the Bus Factor programme relies on image
 processing a majority of our acceptance tests will be done using visual verification. Such tests are as follows:
 
 1. The ability to detect the traffic light state. 
 
 Visual verification will be used to test that the programme detects the correct state of the traffic light (red, amber, green). 
 
-2. User can define area of interest. 
+2. The user can define the area of interest. 
 
-Visual verification will be used in order to ensure that the programme creates an accurate bounding box around the selected
+Visual verification will be used to ensure that the programme creates an accurate bounding box around the selected
 area. Such areas include the stopping line of the intersection and the traffic lights that the user is interested in. After 
-developing the MVP the team will test the automatic detection of the traffic lights. This will also be done using visual 
+developing the MVP, the team will test the automatic detection of the traffic lights. This will also be done using visual 
 verification. 
 
 3. The programme notifies the user of an incident. 
 
-Visual verification will be used in order to detect that the programme responds when and incident occurs. The programme will 
-also test that the user is given the correct output information when incident occurs. 
+Visual verification will be used to detect that the programme responds when an incident occurs. The programme will 
+also test that the user is given the correct output information when an incident occurs. 
 
-4. The programme outputs a static image when incident occurs. 
+4. The programme outputs a static image when an incident occurs. 
 
-Visual verification will be used in order to test the correct output image and that the image has been output into the correct
+Visual verification will be used to test the correct output image and that the image has been output to the correct
 location. 
 
-5. The programme will send an automated message to specified address when incident occurs. 
+5. The programme will send an automated message to a specified address when an incident occurs. 
 
-As one of the final features the programme will have the ability to send a message to a specified bus company informing them 
+As one of the final features, the programme will have the ability to send a message to a specified bus company informing them 
 of the incident and details of the incident. To test for this, the programme will verify that the correct message is sent and 
-to the correct address depending on the bus. 
+to the correct address depending on the bus.
 
 ---
 

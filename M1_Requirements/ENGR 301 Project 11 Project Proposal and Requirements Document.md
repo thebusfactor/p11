@@ -662,13 +662,13 @@ The assigned project deadlines are as follows:
 
 **Organised Timetable**
 
-In order to complete the Bus Factor project to a high standard, the team have 
+To complete the Bus Factor project to a high standard, the team has
 agreed to allocate at least 8 hours per week to work on it. This 8 hours does 
 not include personal time which the team members may use to further work on 
 the project to meet deadlines. 
 
-The team will meet twice at week for two 4-hour long labs. These labs will be
-used for group discussions and to work on project assignments. 
+The team will meet twice a week for two 4-hour long labs. These labs will be
+used for group discussions and to work on project assignments.
 
 | Lab 1    | Lab 2 |
 |----------|-------|
@@ -676,18 +676,17 @@ used for group discussions and to work on project assignments.
 |9:00-     |9:00-  |
 |13:00     |13:00  |
 
-In order to meet product requirements the group will meet or be in contact with
-the ZX security clients approximately once every 3 weeks. These discussions will 
-be used to ensure that the product meets the clients requests and to ask additional 
-questions about the product. 
+To meet product requirements, the group will meet or be in contact with
+the ZX security clients approximately once every three weeks. These discussions will 
+be used to ensure that the product meets the client's requests and to ask additional 
+questions about the product.
 
 ### 5.2 Budget:
 
 | Item        | Are           | Cost  |
 | ------------- | --------------| ------|
 | Camera/Webcam | In the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $150. [4] | $50 |
-| Processing Power      | For machine learning classification, sufficient processing power will be needed to test and train our algorithm. The cost of this may range from $0, if the team is able to use the Universities Processing servers, or an estimated hundred dollars for AWS/Tensorflow servers [5]. |   $150 |
-
+| Processing Power      | For machine learning classification, sufficient processing power will be needed to test and train our algorithm. The cost of this may range from $0, if the team can use the Universities Processing servers, or an estimated hundred dollars for AWS/Tensorflow servers [5]. |   $150 |
 ### 5.3 Risks 
 
 This section will identify the ten most important project risks: their type, likelihood,

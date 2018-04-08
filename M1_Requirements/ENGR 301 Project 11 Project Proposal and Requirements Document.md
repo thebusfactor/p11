@@ -98,9 +98,6 @@ This could limit the team's design process initially as the team may have the so
 
 ## 2. References
 
-References to other documents or standards. Follow the IEEE Citation Reference scheme, available from the [IEEE website](https://www.ieee.org/documents/ieeecitationref.pdf) (PDF; 451 KB).
-(1 page, longer if required)
-
 *References for section 3.7*
 
 [1] https://www.computer.org/web/education/code-of-ethics
@@ -430,7 +427,7 @@ Dynamic performance requirement is a requirement based on how the software syste
 *	Flagging of buses passing red lights are required to take no longer than 0.5 seconds when handling between 1 to 16 buses at an intersection.
 *	User configuration for more than one intersection should not affect the process time of the software product by more than 0.1 seconds. The complexity of the intersection should not a have a significant effect on the performance of the software product.
 
-3.5 Logical database requirements
+## 3.5 Logical database requirements
 
 * DebugView
     * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever we need a raw look at what information the camera is detecting and/or using. 
@@ -484,9 +481,9 @@ These events of interest could be quite difficult to integrate into an already e
 
 ---
 
-### 3.7 Software system attributes
+## 3.7 Software system attributes
 
-## 3.7.1 Product Requirements
+### 3.7.1 Product Requirements
 
 In order to meet the expectations of the ZX Security clients, the product created throughout the Bus Factor project must meet a range of requirements. Such requirements
 include the the usability, efficiency, usability and security of the product. By considering these factors when creating the product, the team will be able to produce 
@@ -592,7 +589,7 @@ these libraries. Such licenses include the Open CV license agreement [3].
 
 ---
 
-### 3.8 Physical and Environmental Requirements 
+## 3.8 Physical and Environmental Requirements 
 
 The client's requirements dicate that the software must work with any commercially available webcam, and on any commercially available machine. The webcam component of the software could be
 either built-in, or a separate peripheral, such as a USB connected webcam. To perform image recognition on the video footage, the webcam must be of a reasonable quality. Blurry or out-of-focus 
@@ -601,12 +598,6 @@ The camera (and by extension, the device running the software) must be positione
 be disturbed by any outside interference, be it extreme weather, human interference, or otherwise.  
 Also, the camera must be set up in a position that allows it to capture all of the Points of Interest in an intersection. These Points of Interest are the Traffic Light being observed, the boundary of
 the intersection, and the mid-point of the intersection I.e. where the busses cross through when going through an intersection.
-
----
-
-### 3.10 Supporting information
-
-see 9.5.19. 
 
 ---
 

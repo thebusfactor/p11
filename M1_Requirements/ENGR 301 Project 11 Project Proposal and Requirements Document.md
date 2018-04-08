@@ -687,6 +687,7 @@ questions about the product.
 | ------------- | --------------| ------|
 | Camera/Webcam | In the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $150. [4] | $50 |
 | Processing Power      | For machine learning classification, sufficient processing power will be needed to test and train our algorithm. The cost of this may range from $0, if the team can use the Universities Processing servers, or an estimated hundred dollars for AWS/Tensorflow servers [5]. |   $150 |
+
 ### 5.3 Risks 
 
 This section will identify the ten most important project risks: their type, likelihood,
@@ -702,7 +703,7 @@ This risk is unlikely, due to the extensive support network offered by the unive
 skills or assessments could suffer as a result.  
 To mitigate this risk, communication will be established early with both the clients and the senior managers, to ensure that requirements sufficient to the scope of the
 project are achieved. The client will be asked for a more substantial set of requirements, and from those requirements the team can scale back to a manageable project, using
-the project management techniques of the course. Regular client meetings will be maintained to ensure that these requirements are accurate, and to discuss the progress on the project.
+the project management techniques of the course. Regular client meetings will be maintained to ensure that these requirements are accurate, and to discuss the progress of the project.
 
 2. **Scope - Low Risk, Medium Impact**  
 The clients could provide too many features that they want implemented and extended in the final product, rather than a core deliverable concept that
@@ -726,34 +727,33 @@ consulted for suggestions during this process, also. Robust testing can be used 
 
 4. **Licencing - Low Risk, Medium Impact**  
 The requirements of this project given to us by the clients may require the use of technologies that are out of the grasp of the team members, such as machine learning, neural networks
-or advanced Image Processing/Computer Vision techniques. However, the clients have required that the project be developed
+or advanced Image Processing/Computer Vision techniques. However, the clients have required that the project is developed
 and released under an OSI-approved licence. If the libraries used do not follow these criteria, the project would not be meeting the requirements of the client.  
-This can be mitigated by ensuring that all team members understand fully what is required and expected when developing/releasing under an OSI approved licence. This should be researched 
+This can be mitigated by ensuring that all team members understand what is required and expected when developing/releasing under an OSI approved licence. This should be researched 
 and understood early, to avoid conflicts later. Also, any potentially useful library should be checked out to ensure that it meets these standards before it is approved for use in the 
 project. 
 
 5. **Technical Ability - High Risk, Medium Impact**  
 Many of the potential solutions to the problems presented by this project require the use of technologies that may be beyond the technical ability of any of the team members. Initial research
-into the problems presented by this project suggest that advanced image processing and computer vision libraries may need to be implemented to determine when an incident occurs. If none
+into the problems presented by this project suggests that advanced image processing and computer vision libraries may need to be implemented to determine when an incident occurs. If none
 of the team members were able to understand the required technology enough to implement it in the project, it would severely impact our ability to deliver on the client's requirements for the 
-project. The team would need to scale back the requirements of the project to have some sort of presentable product. 
-To handle this, the team should make sure to spend enough time carefully researching the technology required for the project to succeed, and should bring up any concerns/issues with the 
+project. The team would need to scale back the requirements of the project to have some presentable product. 
+To handle this, the team should make sure to spend enough time carefully researching the technology required for the project to succeed and should bring up any concerns/issues with the 
 rest of the team as early as possible. Also, the research and development using these technologies should be a collaborative effort, to aid the group understanding of the system.
 The team should also manage their expectations when selecting technology to use - use things they know they can handle, rather than deliberately going for the most complicated tech available.
 
 6. **Dynamics of Deployment - Medium Risk, Medium Impact**  
-This project is being based around an existing idea - the client's podcast. The clients use only one Point of View, overlooking one intersection, from one specific angle. To test the system
+This project is being based on an existing idea - the client's podcast. The clients use only one Point of View, overlooking one intersection, from one specific angle. To test the system
 as it is being developed, the clients have offered to provide video files from this perspective. While this would allow for the team to develop and test the product according to the client's minimum
-specifications, this one angle of one intersection will not provide the team with enough training data. The full requirements of the project state that the system must be deployable at any intersection, 
-set up to work from any (feasible) video angle of the intersection. Without training video data of multiple angles of different intersections, it could be hard to develop the system to meet these robust
+specifications, this one angle of one intersection will not provide the team with enough training data. The full requirements of the project state that the system must be deployable at any intersection set up to work from any (feasible) video angle of the intersection. Without training video data of multiple angles of different intersections, it could be hard to develop the system to meet these robust
 requirements, and in the worst-case scenario, the final product would only be deployable on a very particular intersection/angle combination. 
-This is a likely risk to encounter, as neither the team nor the clients have immediate access to video footage of busses running different intersections. 
-This risk can be mitigated by the team, by ensuring that the need for varied training data is communicated to the clients early, and by procuring our own video footage online, if necessary.
+This is a likely risk to encounter, as neither the team nor the clients have immediate access to video footage of buses running different intersections. 
+This risk can be mitigated by the team, by ensuring that the need for varied training data is communicated to the clients early, and by procuring our video footage online, if necessary.
 
 7. **Privacy - Low Risk, Low Impact**  
 One of the core aspects of this project involves a continual camera feed overlooking a public space. While legally, there are no laws against filming or taking photos of people in a public space -  
 (http://www.police.govt.nz/faq/what-are-the-rules-around-taking-photos-or-filming-in-a-public-place), 
-there could be some moral issues among the team about filming people in a public space without their consent. Such moral issues could have a negative effect on a team members contribution to the project,
+there could be some moral issues among the team about filming people in a public space without their consent. Such moral issues could have a negative effect on team members contribute to the project,
 as they may not be as willing to work on some features of the product, or to implement features that go against their moral compass. This does not appear to be an issue in the early stages of the project,
 while the Minimum Viable Product is being developed. However, this could become a risk later, as more features are introduced to the system. To counteract this, the team will ensure that before 
 features are included in the product, that all team members and the clients are happy with how the feature will be implemented in an efficient & morally responsible manner. The client’s needs will take
@@ -763,7 +763,7 @@ priority, however.
 The team will without a doubt run into issues surrounding team member availability, be it due to injury, illness, bereavement, or other academic or personal commitments. The team has agreed on a collaborative
 approach when handling these issues. All team members have contributed to a team calendar, which shows when members are unavailable due to pre-existing commitments. Absent team members will review the notes from
 any missed meetings before returning to the project and will try to understand the progress which has happened during their absence. 
-When a team member is absent (for whatever reason) the rest of the team will contribute to split the missing team member's workload, to avoid any one member being overburdened.  
+When a team member is absent (for whatever reason) the rest of the team will contribute to split the missing team member's workload, to avoid anyone member being overburdened.  
 Also, there is a risk of disputes arising between team members during the project. If/when this occurs, the productivity of the team could be negatively impacted. Therefore, when a dispute arises, the 
 team members not involved in the dispute should do their best to diffuse the situation, and if necessary, involve a senior manager to resolve the conflict. 
 
@@ -779,7 +779,7 @@ the client. This is a likely risk, as the Engr301 course is (for most of the tea
 of this scope. The consequences of missing these deadlines/deliverables are severe - missing course deadlines would lead to team members having poor academic results, which could also result in poor morale in the team.
 Missing deadlines for client deliverables makes the team and the university look bad and creates more pressure to make up these missed deadlines. 
 This risk can be managed by using all the tools that are available to the best of the team's ability. Liberal issue tracking of deadlines (project related and otherwise) will allow the team members to manage their time effectively. Also, 
-consistent, honest communication with the clients will ensure that expectations are managed between both parties.
+consistent, honest communication with the clients will ensure that expectations are managed by both parties.
 
 ---
 

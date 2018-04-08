@@ -139,12 +139,12 @@ References to other documents or standards. Follow the IEEE Citation Reference s
 
 
 #### Video Input
-The purpose of the video input is to provide a feed of a street or intersection in order to visually see vehicles such as buses drive through the street/s and pass traffic lights.
+The purpose of the video input is to provide a feed of a street or intersection to visually see vehicles such as buses drive through the street/s and pass traffic lights.
 This input will be sourced from our clients at the Bus Factor. The video footage will be live from a mounted webcam/camera connected to a computer.
 The video feed has to be accurate enough for machine learning techniques to be able to detect red lights and distinguish between the vehicles.
-A typical webcam (480p) should be sufficient for this. The video input will be initially passed in as a common video format (e.g. MP4) for testing/training the algorithm from pre-recorded sources.
-Later on, the system is extended use live video input from the webcam, the input will depend on the particular webcam that the Bus Factor decides to use. Common webcam outputs (which will be our video input) include RGB, BGR, YUV, and many others.
-The final outcome will require the video footage to be live, and likely be around 24 frames per second for a standard webcam.
+A typical webcam (480p) should be sufficient for this. The video input will be initially passed in as a common video format (e.g., MP4) for testing/training the algorithm from pre-recorded sources.
+Later on, the system is extended use live video input from the webcam; the input will depend on the particular webcam that the Bus Factor decides to use. Common webcam outputs (which will be our video input) include RGB, BGR, YUV, and many others.
+The outcome will require the video footage to be live, and likely be around 24 frames per second for a standard webcam.
 It is likely that the system will not need to analyze every frame of video, so may then only apply machine learning algorithm to specific frames from the video input.
 Hence having a lower FPS may also be sufficient, especially due to the slow movement of the vehicles through the intersection. Finally, the footage will be fed into machine learning algorithm which will detect the colour of the lights, whether the vehicle bus or not, and other data.
 
@@ -163,14 +163,14 @@ The source of the bounding box will be through a user interface that allows the 
 #### Input for traffic line crossing line
 Having a tool whereby the user could indicate the line where vehicles cross the traffic light could make the basic image processing of whether the vehicle is running the red light or not far easier.
 This line would be made up of two points that the user would place down through the user interface. 
-This line would define the crossing point where buses could pass to go past a traffic light.  
+This line would define the crossing point where buses could pass to go past traffic lights.  
 
 ### Outputs: 
 
 #### Training data weight output
-If machine learning is required, output will be gathered from the training in the form of weights and biases that will influence and classify future input. 
-This will be used to set up the camera and it will autodetect the intersection layout from a variety of angles.
-If the weights and biases are fine-tuned enough the system should be successful in detection. 
+If machine learning is required, the output will be gathered from the training in the form of weights and biases that will influence and classify future input. 
+This will be used to set up the camera, and it will autodetect the intersection layout from a variety of angles.
+If the weights and biases are fine-tuned, enough the system should be successful in detection. 
 The program will be the recipient of the output, as the output is fed back in for more training and testing.
 The output will need at least a 90% tolerance for how accurately the output is used to detect whether the bus has passed a red light.
 To measure output, the team can check the system against a test set and judge prediction percentage. 
@@ -181,7 +181,7 @@ For the end goal and extension goal this output is related to both aspects as th
 An alert should be issued via email, push notification or through the software when a bus runs a red light.
 The user/s of the system should receive an alert when this issue occurs. 
 For every valid instance of detection, the alert should be sent. 
-To measure this the system would be provided with with false positives and checked to see whether it detects a static image of the offense, and ergo issues the email/alert to the user.
+To measure this, the system would be provided with false positives and checked to see whether it detects a static image of the offense, and ergo issues the email/alert to the user.
 This alert should be sent out within one minute of the bus offense. 
 This is the key output from our system and relies on every other input functioning correctly.
 The output of the alert may be a simple ping on the computer that is running the software, to an email and digital log of the trigger.
@@ -191,7 +191,7 @@ The moment of the red light breach there should be data taken of the time, data 
 This data would be outputted (Emailed or provided) to the user via a server which would host the images and metadata. 
 With every instance of detection, this information should be captured.
 Testing measurements would involve visually inspecting the data and comparing to real time to see if there are any discrepancies between when it is and is not outputting the signal.
-This output relies on the camera feed especially as it needs to accurately capture the scene upon the event triggering. 
+This output relies on the camera feed especially as it needs to capture the scene upon the event triggering accurately. 
 The data format for the image of the scene will most likely be a .png.
 
 ### 3.2 Functions

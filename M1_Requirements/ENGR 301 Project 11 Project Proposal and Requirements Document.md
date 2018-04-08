@@ -216,13 +216,13 @@ Output:
     * License plate
     * Image/video of moment
 
-Minimum Use Case Diagram
+#### Minimum Use Case Diagram
 
 ![MVP Use Case Diagram](mvpDiagram.png)
 
-Minimum Viable Product Use Cases
+#### Minimum Viable Product Use Cases
 
-###### 1. User sets up camera, user navigates to software and runs it
+##### 1. User sets up camera, user navigates to software and runs it
 This use case is the only non-functional case our system has, which involves no software but the user making sure the camera is set-up in a manner allows for an unimpeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
 Validity check: There is no input check that can be performed on this case due to the nature of it, as it requires the user to check the intersection is in view.
 Effect of Parameters: No parameters seem evident that would affect the input.
@@ -241,7 +241,7 @@ Main Success Scenario:
 | 1. User acquires camera |     |
 | 2. User plugs in and angles camera at intersection |      |
 
-###### 2. Requires MVP Use Case 1, Selects and adds traffic light area of detection
+##### 2. Requires MVP Use Case 1, Selects and adds traffic light area of detection
 User should define the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
 Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined. Software should check the area has been successfully defined and is useful. 
 Exact sequence: Interface shows video feed of area, user inserts shape of detection.
@@ -261,7 +261,7 @@ Main Success Scenario:
 | 1. User has software opened |     |
 | 2. User selects and adds area of detection using mouse | 3. System accepts input and returns acceptance message |
 
-###### 3. Requires MVP Use Case 1, Selects and deletes traffic light area of detection
+##### 3. Requires MVP Use Case 1, Selects and deletes traffic light area of detection
 User should define and delete the area of detection for the traffic lights. This is so the user can make the area of detection irrelevant.
 Validity check: Software should check the area has been successfully removed and detection no longer occurs.
 Exact sequence: Interface shows video feed of area, user selects shape of detection and deletes.
@@ -281,7 +281,7 @@ Main Success Scenario:
 | 1. User has software opened |     |
 | 2. User selects and deletes area of detection using mouse | 3. System accepts input and returns acceptance message |
 
-###### 4. Requires MVP Use Case 1, Selects and updates traffic light area of detection
+##### 4. Requires MVP Use Case 1, Selects and updates traffic light area of detection
 User should update the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
 Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
 Exact sequence: Interface shows video feed of area, user updates prior shape of detection.
@@ -301,7 +301,7 @@ Main Success Scenario:
 | 1. User has software opened |     |
 | 2. User selects and updates area of detection using mouse | 3. System accepts input and returns acceptance message |
 
-###### 5. Requires MVP Use Case 1, selects and adds bus line of detection
+##### 5. Requires MVP Use Case 1, selects and adds bus line of detection
 Goal statement: For the user to be able to place down two points by clicking twice. The goal for this would be to provide the system with the two points for a line that can be shown both visually, and internally processed. 
 
 Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
@@ -329,7 +329,7 @@ A1: User clicks on wrong point/s
 3. User presses on refresh button, to remove any currently placed objects on screen.  | 4. System removes lines and any other placed objects.
 
 
-###### 6. Requires MVP Use Case 1, selects and deletes bus line of detection
+##### 6. Requires MVP Use Case 1, selects and deletes bus line of detection
 Goal statement: To be able to individually select a bus detection line/object of choice and remove it.
 
 Validity check: Software should check the area has been succesfully been removed and detection no longer occurs.
@@ -347,7 +347,7 @@ Main Success Scenario:
 1. User clicks on line they wish to delete, to select it. | 2. System updates visual feed to highlight line and indicate it is selected.
 3. User pressed on delete button. | 4. System removes highlighted line, and updates the visual feed to show this. 
 
-###### 7. Requires MVP Use Case 1, selects and updates bus line of detection
+##### 7. Requires MVP Use Case 1, selects and updates bus line of detection
 Goal statement: To be able to select a bus detection line/object of choice and move it. 
 
 Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
@@ -366,9 +366,9 @@ Main Success Scenario:
 3. User drags line to where they want on the screen (or clicks on the edges to change length/angle of line). | 4. System updates as this is happening to indicate this change. 
 
 
-End Goal(s) Use Cases
+#### End Goal(s) Use Cases
 
-###### 1. User sets up camera, boots software and user will automatically get alerted when a bus has ran a red light
+##### 1. User sets up camera, boots software and user will automatically get alerted when a bus has ran a red light
 Description: For our first end goal use case where the user should have no interaction or intervention with the system other than checking the video feed is suitable for detection.
 What this involves is the software to have used machine learning to be able to scan and detect a video feed for the location on the image of the bus and the lights. This
 extracts the user and allows the system to run external to any prior input required in the MVP.
@@ -377,24 +377,22 @@ Exact sequence: Set up of camera -> Run software -> Software auto-detects the en
 Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest.
 Relationship of input and output: Video feed input is scanned for points of interest -> Alert is outputted when event triggered.
  
-###### 2. Requires End Goal Use Case 1, Upon booting of software user can define output upon event trigger
+##### 2. Requires End Goal Use Case 1, Upon booting of software user can define output upon event trigger
 
 Description: An extension of the first End Goal Use Case, upon detection of bus running red light the user can define what the output should be. This could be an email or computer alert event has been triggered.
 Exact sequence: Run software -> User defines what output should be -> Output is delivered when event triggers.
 Effect of Parameters: Depending on the level of sophistication of system, user may define output to only occur after X amount of buses have ran a red light or any other aspect they deem appropriate.
 Relationship of input and output: Video feed input is scanned for points of interest -> User defined alert is outputted when event triggered.
 
-Extension Goal(s) Use Cases
+#### Extension Goal(s) Use Cases
 
-###### 1. Requires End Goal Use Case 1, Upon booting of software user can define additional points of interest to keep track of
+##### 1. Requires End Goal Use Case 1, Upon booting of software user can define additional points of interest to keep track of
 Description: As part of the possible extension to this project, 
 Validity check: Since these events like License plate detection, police intervention, speed detection validity checks would need to occur to make sure the values and assumptions made are performing above an expected
 correctness threshold (Assuming a baseline of 90%).
 Exact sequence: Run software -> Software auto-detects the environmental interest points -> Runs and logs additional event, alerts user
 Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest. Instances of each event need to be recorded to perform statistical analysis.
 Relationship of input and output: Video feed input is scanned for points of interest -> Additional event is logged and user alerted.
-
----
 
 ## 3.3 Usability Requirements
 The usability of the final product should meet both the requirements & objectives expected of the client including the usability needs of stakeholders. These usability requirements & objectives split up into three different criteria measurable effectiveness, efficiency and satisfaction criteria based in the context of use of bus factor software program.
@@ -442,8 +440,6 @@ Dynamic performance requirement is a requirement based on how the software syste
 
 Below is the UML class diagram for the structure of our system. Listed after are the descriptions of each class.
 
-![Class diagram](classDiagram.png)
-
 * DebugView
     * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever the team needs a raw look at what information the camera is detecting and/or using. 
 
@@ -476,6 +472,8 @@ Below is the UML class diagram for the structure of our system. Listed after are
 
 * Output
     * General class that governs how and what the system outputs. As the team progresses this will be a goal to output a video of the event or any additional information.
+
+![Class diagram](classDiagram.png)
 
 ### 3.6 Design constraints
 

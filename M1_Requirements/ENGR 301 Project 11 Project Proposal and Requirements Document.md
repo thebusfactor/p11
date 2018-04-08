@@ -78,28 +78,21 @@ This would enable users with less qualifications than the clients' to be able to
 Initially the team would get the product working to the current setup the client has for their podcast. 
 This setup has a small amount of limitations the team needs to consider to fulfill the project scope.
 
-1. The current setup used (camera angle, camera quality)
+**- The current setup used (camera angle, camera quality)**
 
 The current setup for the client's podcast has a low quality camera and is positioned facing the intersection. 
 The off-angle positioning of the camera is unideal for the detection of objects and the visibility of the traffic lights (and their states).
 Additionally, only one of the intersection's stop lines are visible, the licence plates of the vehicles are illegible and the video quality is sub-optimal. 
 
-2. The data required for accurate object detection through machine learning 
+**- The data required for accurate object detection through machine learning**
 
 This requires the object detection software the team will utilise to be very accurate to correctly capture the desired vehicles.
-The team will be using the OpenCV library for the object detection, that of which the accuracy of the object detection is very high 
-(assuming the correct data has been used for the AI training). 
+The team will be using the OpenCV library for the object detection, that of which the accuracy of the object detection is very high (assuming the correct data has been used for the AI training). 
 For the software to work in any generic case the team would need to collect a large set of data, of varying angles and clarity, to train the AI for an accurate result.
 
-
-While the team would 
-and intersection layout (the visibility of the traffic light states and the stop lines).
-
 While the team is creating this project for the client's podcast, for this project to work in a general case, the team would
-ideally use a high quality camera for the video feed. There would need to be extra limitations for a more open-source use, such as that the software would need to 
-operate the same for all levels of camera quality and camera angle.
+ideally use a high quality camera for the video feed. There would need to be extra limitations for a more open-source use, such as that the software would need to operate the same for all levels of camera quality and camera angle.
 This could limit the team's design process initially as the team may have the software working for the podcast setup but not for any other case. 
-
 
 ---
 

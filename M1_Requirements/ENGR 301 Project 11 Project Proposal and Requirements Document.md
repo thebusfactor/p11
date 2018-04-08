@@ -7,7 +7,6 @@ ENGR 301 Project *11* Project Proposal and Requirements Document
 
 The clients for this project are Hugh and Stephen from ZX Security.
 Contact Details:
-Hugh: hugh@zxsecurity.co.nz
 
 Stephen: stephen@zxsecurity.co.nz  
 Hugh: hugh@zxsecurity.co.nz  
@@ -78,11 +77,12 @@ One page on the limitations on the product (9.5.6)
 References to other documents or standards. Follow the IEEE Citation Reference scheme, available from the [IEEE website](https://www.ieee.org/documents/ieeecitationref.pdf) (PDF; 451 KB).
 (1 page, longer if required)
 
-## 3. Specific requirements  
+*References for section 3.7*
+[1] https://www.computer.org/web/education/code-of-ethics
+[2] https://www.privacy.org.nz/the-privacy-act-and-codes/privacy-act-and-codes-introduction/
+[3] https://opencv.org/license.html
 
-20 pages outlining the requirements of the system.
-You should apportion these these pages across the following 
-subsections to focus on the most important parts of your product.
+## 3. Specific requirements  
 
 ### 3.1 External interfaces
 
@@ -449,8 +449,8 @@ a programme which completes the specified goals to a high quality standard.
 ### 3.7.1.1 Usability Requirements
 
 As with any software tool it is important for the Bus Factor programme to implement a high level ease-of-use into the programme. The outputs of the programme will depend
-on the traffic lights and intersections selected by the user. Therefore, to achieve a satisfactory output it is important that the program can be easily manipulated by the
-user. This means that a user should be able to easily select an intersection or light using their mouse and the programme will only select the wanted area. 
+on the traffic lights detected by the programme and intersections selected by the user. Therefore, to achieve a satisfactory output it is important that the program can be easily manipulated by the
+user. This means that a user should be able to easily select an intersection using their mouse and the programme will only select the wanted area. 
 
 In order to increase ease of use, the team will implement a small amount of controls into our user interface (UI) which will be paired with sufficient instructions
 on how to use these controls. The programme will also be responsible for providing a notification to the user when the "red-light running" incident occurs. To increase usability 
@@ -467,7 +467,7 @@ on the incident with a fast response time. This is important as the time at whic
 is notified of the event quickly in order for them to take further action as fastas possible. These actions may include emailing the bus company to alert them of 
 the event. 
 
-The Bus Factor project must also perform with a high level of accuracy. Therefore, it must accurately detect when an incident occurs and identify the entity 
+The Bus Factor project must also perform with a high level of accuracy. Therefore, it must accurately detect the location and status of the traffic lights, when an incident occurs and identify the entity 
 which has caused it. It must also accurately report back to the user in order to give them the correct information about the incident. If the program does not fulfill these
 requirements it has the potential to accuse the wrong entity of causing the incident. This may have detrimental consequences when making this information known to the 
 listeners of the podcast or bus company. 
@@ -544,14 +544,6 @@ our clients do not intend to use such files commercially, the users will not nee
 Part of our project will involve integrating open CV and other external libraries into our code. Therefore, our program must comply with the licenses supplied by 
 these libraries. Such licenses include the Open CV license agreement [3].
 
-#Bibliography for Section 3.7 (if needed)
-
-[1] https://www.computer.org/web/education/code-of-ethics
-[2] https://www.privacy.org.nz/the-privacy-act-and-codes/privacy-act-and-codes-introduction/
-[3] https://opencv.org/license.html
-
-
-
 ### 3.8 Physical and Environmental Requirements 
 
 The client's requirements dicate that the software must work with any commercially available webcam, and on any commercially available machine. The webcam component of the software could be
@@ -621,7 +613,7 @@ be used to ensure that the product meets the clients requests and to ask additio
 questions about the product. 
 
 
- 5.2 Budget:
+ ### 5.2 Budget:
 
 | Item        | Are           | Cost  |
 | ------------- | --------------| ------|

@@ -1,8 +1,7 @@
-# ENGR 301 Project *11* Project Proposal and Requirements Document
-
+ENGR 301 Project *11* Project Proposal and Requirements Document
 #### Brandon Scott-Hill, Dylan Kumar, James Magallanes, Kristen Tait, Nicholas Snellgrove, Sean Stevenson
 
-## 1 - Introduction
+## 1. Introduction
 
 ### Client
 
@@ -12,17 +11,30 @@ Contact Details:
 Stephen Shkardoon: stephen@zxsecurity.co.nz  
 Hugh Davenport: hugh@zxsecurity.co.nz  
 
-### 1.1 - Purpose
+### 1.1 Purpose
 
-The system must take video input from any standard webcam, and from this input - detect when a bus is seen running a red light & report to the user in real-time.
+The system must take a video input from any standard webcam, and from this input - detect when a bus is seen running a red light & report to the user in real-time.
 
-### 1.2 - Scope
+### 1.2 Scope
 
-The Bus Factor Project will produce a program which can be set up and run on any consumer-available computer, using a commercially available webcam. The program should be able to run on both Windows and Linux devices and work when set up at any intersection, from any angle. The program will take in a video input. It will then automatically detect the location & status of the red light in the video, and automatically detect when a bus runs the detected red light. Meaning, the state of the light must be automatically detected, and the boundary point for the intersection (I.e. the line not to be crossed by the bus) should be either manually inputted or automatically detected. When an offence is detected, the program should automatically trigger some sort of event to notify the user - either a pre-programmed event or some other user-defined code. Then, a short video clip of the offence should be saved, showing time before and after the offence. Extra potential features could include Licence Plate Detection, OBS Integration, Speed Detection of offending vehicles, Reporting events to local Traffic Authorities, or prediction/statistics based on factors such as time of the offence, weather, or location. The software will be used exclusively by the clients to enhance their podcast - "The Bus Factor," by removing the need for them to observe and update their live stream manually when a form of offence is detected. There are no commercial applications for this program. Also, the clients require that the program is developed and released under an OSI-approved license.
+The Bus Factor Project will produce a program which can be set up and run on any consumer-available computer, using a commercially available webcam.
+The program should be able to run on both Windows and Linux devices and work when set up at any intersection, from any angle.
+The program will take in a video input. It will then automatically detect the location & status of the red light
+in the video, and automatically detect when a bus runs the detected red light. To do this, the state of the light 
+must be automatically detected, and the boundary point for the intersection
+(I.e. the line not to be crossed by the bus) should be either manually inputted or automatically detected.
+When an offence is detected, the program should automatically trigger some sort of event to notify the user - 
+either a pre-programmed event or some other user-defined code.
+Then, a short video clip of the offence should be saved, showing time before and after the offence. 
+Extra potential features could include Licence Plate Detection, OBS Integration, Speed Detection of offending vehicles, Reporting events to local Traffic Authorities, 
+or prediction/statistics based on factors such as time of offence, weather, or location.
+The software will be used exclusively by the clients to enhance their podcast - "The Bus Factor", by removing the need for them to manually observe and update their live stream
+when an offence is detected.
+There are no commercial applications for this program. Also, the clients require that the program is developed and released under an OSI-approved license.
 
 
-### 1.3 - Product overview 
-#### 1.3.1 - Product perspective
+### 1.3 Product overview 
+#### 1.3.1 Product perspective
 
 There have been multiple studies done on vehicles running red lights at intersections, with algorithms being created to detect whether a vehicle will run a red light, with accuracy over 90%. The Bus Factor project product can relate to systems currently in place in multiple countries – for example, the United States of America and India – where there are cameras stationed to catch motorists running red lights. While the Bus Factor product is not going to be developed for commercial or government use, such as traffic enforcement, the project still holds similar requirements that it needs to detect the traffic light state and vehicles' positions in relation to the intersection/crossing.
 
@@ -34,7 +46,7 @@ The user interface (UI) for The Bus Factor project would be uniquely designed fo
 This could result in some similarities to other products' designs without intention. 
 
 
-#### 1.3.2 - Product functions
+#### 1.3.2 Product functions
 
 The basic functionality for this product, as described by our Minimum Viable Product (MVP), is as follows:
 
@@ -51,17 +63,21 @@ Another beneficial function to the system is for the user to input custom codes 
 Part of the system may have machine learning incorporated for added functionality such as statistics predicting the likelihood of certain events occurring based on time or weather. These events may include traffic violations or collisions.
 
 
-#### 1.3.3 - User characteristics   
+#### 1.3.3 User characteristics   
 
 The users that would operate this program would be the clients on the podcast. This would be Stephen Shkardoon and Hugh Davenport from ZX Security. 
 These two are very experienced with operating the cameras that accompany the current setup, and would be capable of operating the final product (i.e. inputting areas of interest to define the intersection, setting equipment up and packing down, etc).
 The users would also need to understand the codes that are communicated by the system when certain events occur. 
 The client's level of education and their experience operating the podcast is enough to operate the system as the product will be able to be operated without issue, and with a clear explanation of the system upon delivery.
 
-If the team was to extend this project to be open-source and available for anyone to implement, the program would need to be able to automatically detect the intersection boundaries, the traffic lights (and their states) and the objects that appear. 
+As the project is open-source and, therefore, available for anyone to implement, the program would need to be able to automatically detect the intersection boundaries, the traffic lights (and their states) and the objects that appear. 
 This would enable users with less qualifications than the clients' to be able to use the software without issues as the software would do most of the work.  
 
-#### 1.3.4 - Limitations
+In an ideal situation, the hardware used is high quality and positioned in ideal locations. A high-definition camera would be optimal in order to have the clarity of the objects. This would optimise the AI's automatic object detection, along with the increase the quality of the system's use; the podcast hosted by the client. 
+A well-positioned camera would be able to clearly see the indiviual colour of each traffic light, the stop lines and the vehicles travelling through the intersection.
+This assists in the detection of objects of interest (traffic lights and vehicles), and fulfills the requirement to be able to accurately detect said objects as briefly mentioned in Limitations *(1.3.4)*.
+
+#### 1.3.4 Limitations
 
 Initially the team would get the product working to the current setup the client has for their podcast. 
 This setup has a small amount of limitations the team needs to consider to fulfill the project scope.
@@ -82,9 +98,14 @@ While the team is creating this project for the client's podcast, for this proje
 ideally use a high quality camera for the video feed. There would need to be extra limitations for a more open-source use, such as that the software would need to operate the same for all levels of camera quality and camera angle.
 This could limit the team's design process initially as the team may have the software working for the podcast setup but not for any other case. 
 
+As mentioned in the User Characteristics *(1.3.3)* section, the system is required to be able to detect objects with an accuracy of 90% or above. This is so the team can guarantee the system is accurate and the automation within the program is reliable.
+
 ---
 
-## 2 - References
+## 2. References
+
+References to other documents or standards. Follow the IEEE Citation Reference scheme, available from the [IEEE website](https://www.ieee.org/documents/ieeecitationref.pdf) (PDF; 451 KB).
+(1 page, longer if required)
 
 *References for section 3.7*
 
@@ -98,20 +119,20 @@ This could limit the team's design process initially as the team may have the so
 
 [5] https://aws.amazon.com/aml/pricing/
 
-[6] https://obsproject.com/
+[6] = https://obsproject.com/
 
-[7] https://www.tomsguide.com/us/best-gaming-pc,review-2219.html
+[7] = https://www.tomsguide.com/us/best-gaming-pc,review-2219.html
 
-[8] https://www.lifewire.com/best-webcams-to-buy-4065141
+[8] = https://www.lifewire.com/best-webcams-to-buy-4065141
 
-[9] https://www.lifewire.com/top-linux-distributions-of-all-time-4084559
+[9] = https://www.lifewire.com/top-linux-distributions-of-all-time-4084559
 
 
 ---
 
-## 3 - Specific requirements  
+## 3. Specific requirements  
 
-### 3.1 - External interfaces
+### 3.1 External interfaces
 
 
 ### Inputs:
@@ -175,7 +196,7 @@ The data format for the image of the scene will most likely be a .png.
 
 ---
 
-### 3.2 - Functions
+### 3.2 Functions
  
 Basic functionality of our system comprises limited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
 for detecting the traffic light that controls said intersection and any busses that may travel through the light controlled lane, thus being able to see when one does not obey
@@ -373,22 +394,22 @@ Relationship of input and output: Video feed input is scanned for points of inte
 
 ---
 
-### 3.3 - Usability Requirements
+## 3.3 Usability Requirements
 The usability of the final product should meet both the requirements & objectives expected of the client including the usability needs of stakeholders. These usability requirements & objectives split up into three different criteria measurable effectiveness, efficiency and satisfaction criteria based in the context of use of bus factor software program.
 
-#### Measurable Effectiveness
+### Measurable Effectiveness
 The quality of the software program while being used from the stakeholder perspective defined as how effective the software program is at performing it’s intended task.  Hence for the bus factor project to meet usability requirements & objectives the product will need to perform it’s intended task effectively. 
 *	Required at least a 90% accuracy detection rate on buses passing red lights. If the product didn’t have a good level of accuracy, the product would appear broken or unusable from a stakeholder perspective. Accuracy requirements will also apply to the end goal of detection of buses occurring with undefined hardware, intersections, and angles. 
 *	Number plate letter digitalization will be required to have a 95% confidence that digitalization is correct else the software program should refuse to produce a letter sequence of the plate. The confidence requirement stops false reports of number plates that didn’t skip red lights. If false reports of number plates would to frequently occur, stakeholder’s confidence in the accuracy of the software would reduce significantly.
 *	Video moments generation of when buses are crossing red lights are required to have 90% accuracy when generating video clips of the bus that crossed the red light. If the video clips didn’t include the correct bus, the software product would appear buggy to stakeholders. 
 
-#### Efficiency
+### Efficiency
 How efficient the software program is at performing the task of detecting buses running red lights will affect the stakeholder’s opinion on the usability of the software product. The efficiency of the software program defined on how well the software uses its hardware resources and how quickly software calculations take.
 *	All user input is required to have a response time 0.1 seconds ensuring the software program appears to be reacting instantaneously; this includes all background calculations necessary to generate some form of response. If the response takes longer than 0.1 seconds with user input, the software program will feel clunky to stakeholders.
 *	The bus factor software program objectively should not be using more than 20 percent CPU and will be required to feel more of a passive user of the CPU and not the main user. If the software program felt like the main user of the CPU, it would make the software product feel badly designed and not fit for use.
 *	Flagging of buses passing red lights are required to take no longer than 0.5 seconds. If the flagging process takes too long the software product will feel inaccurate and performing its task ineffectively to stakeholders. 
 
-#### Satisfaction
+### Satisfaction
 Satisfaction of the user using the software product will be defined based on their experience with the software product which directly affects the usability of the software product to the stakeholder. For the user to be satisfied with the product, it must perform detection of buses running red lights as expected by the user and be pleased with the experience of getting the product doing the detection task. 
 *	Required at most five mouse button presses for installing the software product. While most users will have some technical background, the experience of using the product should be easy. If the process of installation was too long, it could result in stakeholders not bothering to use the software product at all. 
 *	Required that any form of necessary input with the software product while running is self-intuitive. Input also includes configuration input such defining areas of where the traffics lights will be. If the input system is found unintuitive by stakeholders, the satisfaction of stakeholders will be affected reducing the usability of the software product.
@@ -396,10 +417,10 @@ Satisfaction of the user using the software product will be defined based on the
 
 ---
 
-### 3.4 - Performance Requirements
+## 3.4 Performance Requirements
 The performance of the final software product should meet the standards of stakeholders, so that the experience of using the software product is a usable experience.  Performance requirements of a software project split into two different parts static numerical requirements & dynamic numerical requirements. 
 
-#### Static Numerical Requirements
+### Static Numerical Requirements
 Static performance requirements is a form of capacity of defined number things that software system should be able to handle.
 
 *	Only one human user at a time using the software product as there is no form of networking as the system is a background process. 
@@ -407,7 +428,7 @@ Static performance requirements is a form of capacity of defined number things t
 *	Handle all forms of user input in 0.1 seconds including background process required to respond to the user. The user input requirement of 0.1 seconds is to ensure the system feels responsive to the stakeholders.
 *	Event flagging for user-defined code is required to allow up to 10 other software systems running on the local machine. External code users of up to ten requirement are to allow external code system to be useful but not affect the accuracy of the software product. 
 
-#### Dynamic Numerical Requirements
+### Dynamic Numerical Requirements
 Dynamic performance requirement is a requirement based on how the software system should perform at both normal workload and peak workload such as increased users.
 
 *	Required to handle up to detection on 1-16 buses at any point in time. The requirement of up to 16 buses is to ensure that software system can perform its core task at an intersection such as a 4-lane cross section.
@@ -415,7 +436,7 @@ Dynamic performance requirement is a requirement based on how the software syste
 *	Flagging of buses passing red lights are required to take no longer than 0.5 seconds when handling between 1 to 16 buses at an intersection.
 *	User configuration for more than one intersection should not affect the process time of the software product by more than 0.1 seconds. The complexity of the intersection should not a have a significant effect on the performance of the software product.
 
-### 3.5 - Logical database requirements
+3.5 Logical database requirements
 
 * DebugView
     * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever we need a raw look at what information the camera is detecting and/or using. 
@@ -452,7 +473,7 @@ Dynamic performance requirement is a requirement based on how the software syste
 
 ---
 
-### 3.6 - Design constraints
+### 3.6 Design constraints
 
 This project does not have many constraints that would hinder the development of the project. Some of the only constraints that the team might need to consider when designing the system would be the hardware (cameras) used, and the requirement to output instances of traffic violation to image and video files.
 The rest of the specifications for the project do not restrict the development and should not hinder any ability to fulfill the client's specifications. 
@@ -469,15 +490,15 @@ These events of interest could be quite difficult to integrate into an already e
 
 ---
 
-### 3.7 - Software system attributes
+### 3.7 Software system attributes
 
-### 3.7.1 - Product Requirements
+## 3.7.1 Product Requirements
 
 In order to meet the expectations of the ZX Security clients, the product created throughout the Bus Factor project must meet a range of requirements. Such requirements
 include the the usability, efficiency, usability and security of the product. By considering these factors when creating the product, the team will be able to produce 
 a programme which completes the specified goals to a high quality standard.
 
-### 3.7.1.1 - Usability Requirements
+### 3.7.1.1 Usability Requirements
 
 As with any software tool it is important for the Bus Factor programme to implement a high level ease-of-use into the programme. The outputs of the programme will depend
 on the traffic lights detected by the programme and intersections selected by the user. Therefore, to achieve a satisfactory output it is important that the program can be easily manipulated by the
@@ -488,9 +509,9 @@ on how to use these controls. The programme will also be responsible for providi
 in this aspect the user must be able to easily access information about the incidents after they have been notified. In order to do this, the team must implement an easily accessible
 storage space for this information or send such information to a space specified by the user. 
 
-### 3.7.1.2 - Efficiency Requirements
+### 3.7.1.2 Efficiency Requirements
 
-#### 3.7.1.2.1 - Performance 
+#### 3.7.1.2.1 Performance 
 
 In order for the Bus Factor programme to meet its requirements it must complete its tasks at a high speed. The main functionality of the programme is to be able 
 to detect when a bus runs a red light and to notify the user of this event. In order to maintain a high level of efficiency the programme must detect and report
@@ -503,14 +524,14 @@ which has caused it. It must also accurately report back to the user in order to
 requirements it has the potential to accuse the wrong entity of causing the incident. This may have detrimental consequences when making this information known to the 
 listeners of the podcast or bus company. 
 
-#### 3.7.1.2.2 - Space Requirements
+#### 3.7.1.2.2 Space Requirements
 
 The Bus Factor programme is planned to initially be set up by the user then run in the background of their device. As the amount of memory taken up by the programme will affect the speed
 at which a device is run, it is important for the programme to use as little memory as possible. In order to do so, the team must consider the amount of memory the features of the programme 
 take up and how this can be decreased where possible. Part of the features of the planned programme includes the ability to store static images and video clips of an incident when it happens. 
 Therefore, it is important for the programme to efficiently store these files in order to decrease the amount of memory used. 
 
-### 3.7.1.3 - Maintainabilty
+### 3.7.1.3 Maintainabilty
 
 It is important for any software project to implement a high level of maintainability within its code. This allows future reviewers or users of the code to easily change, add 
 or extract parts of it to use themselves. As this project contains open-source code it is likely that it's uses will extend from the context of the Bus Factor. Therefore, 
@@ -523,13 +544,13 @@ other classes. The code must also be easily readable, therefore, using appropria
 amount of code and only perform minimal functionalities. The maintainabilty of the programme will also promote reusabilty. If the client wishes to use parts of the programme 
 in future projects the future programmer should have the abilty to easily extract parts of the code due to low coupling between its elements.
 
-### 3.7.1.4 - Flexibility
+### 3.7.1.4 Flexibility
 
 As part of the product, the programme itself must be able to function across a range of contexts. The final Bus Factor programme must have the ability to monitor different 
 intersections, whilst only selecting one set of lights and stop line at a time. Therefore, the programme must have the flexibilty to take a range of different 
 inputs. The final product must also have the flexibilty to use live input files from a webcam as well as a video file. 
 
-### 3.7.1.5 - Security 
+### 3.7.1.5 Security 
 
 The security of the project and the information gathered from it is a functional requirement which the team must hold in high regard. The code of the programme we are developing 
 will be open-source, therefore, the team will not have to worry about who can access our code when it is complete. As previously mentioned in section 3.7.1.2.2, the programme will 
@@ -539,18 +560,18 @@ However, the team intends to take an ethical approach when dealing with such foo
 Prior to completion the team must protect the privacy of the project information. This includes the information about or gathered from clients, discussions amongst team members
 and any documents which are not included in the programmes source code. In order to protect this data, the team will only use protected discussion platforms which are monitored by ECS department members. 
 
-### 3.7.1.6 - Availability 
+### 3.7.1.6 Availability 
 
 The Bus Factor project will produce a programme which uses video files or live camera inputs to monitor intersections. Consequently, the programme should be available to users who can provide this requirement. 
 As part of the features of the minimum viable product for our project, the team aims to have the programme run on a Windows system. As a feature of the final product, the programme will run on Linux based system as
 well. Therefore, the Bus Factor programme will be available to all users who are using these operating system. 
 
-### 3.7.2 - External Requirements
+## 3.7.2 External Requirements
 
 In conjunction with the product requirements, it is important that the team considers external requirements relating to the project. Such requirements which 
 must be considered may include ethical practices behind the project and the rules and regulations which must be considered thorughout development. 
 
-### 3.7.2.1 - Ethical Requirements
+### 3.7.2.1 Ethical Requirements
 
 In order to meet the ethical requirements for software development, the team must act according to the best interests of the clients, the public and the team members [1]. This will create a project which 
 complies with the clients needs and creates a team environment which will promote productivity and communication. In order to meet the clients wishes the team will remain in constant communication with the client and 
@@ -566,7 +587,7 @@ Throughout our group project the team aims to use strong teamwork skills in orde
 when making decisions and will be respectful towards eachothers opinions. The team will also delegate work fairly and produce their work in a timely manner, therefore, not having an effect on the overall 
 team's performance. 
 
-### 3.7.2.2 - Regulatory Requirements
+### 3.7.2.2 Regulatory Requirements
 
 Similarly with any software related product, the Bus Factor project must comply with a range of regulations and standards set by the clients, the team and other 
 external rules. As previously stated in section (*Ethical Requirements*), the project will require us to consider the New Zealand Privacy Act [2] when using footage or images collected. As 
@@ -577,9 +598,9 @@ these libraries. Such licenses include the Open CV license agreement [3].
 
 ---
 
-### 3.8 - Physical and Environmental Requirements 
+### 3.8 Physical and Environmental Requirements 
 
-The client's requirements dictate that the software must work with any commercially available webcam, and on any commercially available machine. The webcam component of the software could be
+The client's requirements dicate that the software must work with any commercially available webcam, and on any commercially available machine. The webcam component of the software could be
 either built-in, or a separate peripheral, such as a USB connected webcam. To perform image recognition on the video footage, the webcam must be of a reasonable quality. Blurry or out-of-focus 
 footage would be much more difficult to intepret, both visually and via image recognition or computer vision techniques. 
 The camera (and by extension, the device running the software) must be positioned in such a way to have an unobstructed view of a given intersection, and in a secure place, so that the device cannot
@@ -589,7 +610,13 @@ the intersection, and the mid-point of the intersection I.e. where the busses cr
 
 ---
 
-## 4 - Verification
+### 3.10 Supporting information
+
+see 9.5.19. 
+
+---
+
+## 4. Verification
 
 **Acceptance Tests**
 
@@ -627,9 +654,9 @@ to the correct address depending on the bus.
 
 ---
 
-## 5 - Development schedule.
+## 5. Development schedule.
 
-### 5.1 - Schedule
+### 5.1 Schedule
 
 **Project Deadlines**
 
@@ -664,7 +691,7 @@ questions about the product.
 
 ---
 
-### 5.2 - Budget:
+### 5.2 Budget:
 
 | Item        | Are           | Cost  |
 | ------------- | --------------| ------|
@@ -673,7 +700,7 @@ questions about the product.
 
 ---
 
-### 5.3 - Risks 
+### 5.3 Risks 
 
 This section will identify the ten most important project risks: their type, likelihood,
 impact, and mitigation strategies. These risks are not given in any particular order.
@@ -769,8 +796,8 @@ consistent, honest communication with the clients will ensure that expectations 
 
 ---
 
-## 6 - Appendices
-### 6.1 - Assumptions and dependencies 
+## 6. Appendices
+### 6.1 Assumptions and dependencies 
 
 The team needs to produce a system that integrates with the system that the client is currently using. The system is required to send messages or alerts to the software that the Bus Factor clients use called to stream their podcast. This software is called Open Broadcast Software (OBS)[6]. 
 
@@ -784,14 +811,14 @@ The software the team produces requires use of mouse to interact with user inter
 
 ---
 
-### 6.2 - Acronyms and abbreviations
+### 6.2 Acronyms and abbreviations
 
 * Incident: Refers to a bus being observed running a red light, as captured by the software.
 * Consumer webcam: Defined as a readily available camera such as an external USB camera or even those found in-built into laptops.
 
 ---
 
-## 6 - Contributions
+## 6. Contributions
 
 * Brandon Scott-Hill: 3.3 - Usability Requirements, 3.4 - Performance Requirements, 3.5 - Logical Database Requirements
 * Dylan Kumar: 5.2 - Budget, 3.2 - Functions, 6.1 - Assumptions and Dependencies, 3.1 - External interfaces

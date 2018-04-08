@@ -34,8 +34,13 @@ setting up camera
 
 
 ### 1.3.4 Limitations
+Initially the team would get the product working to the current setup the client has for their podcast. This setup has many limitations for the team to consider to fulfill the Minimum Viable Product (MVP).
+The current setup for the client's podcast has a low quality camera setup to point out of their office window towards an intersection. The off-angle positioning of their office is unideal for the detection of objects.
+Only one of the intersection's stop lines are visible, the licence plates are illegible and the video quality is sub-optimal. This requires the object detection software the team will utilise to be very accurate to correctly capture the desired vehicles.
 
-
+The team will be using the OpenCV library for the object detection, that of which the accuracy of the object detection is very high (assuming the correct data has been used for the AI training). 
+While the team would ideally use a high quality camera for the video feed the software should work for all levels of camera quality, camera angle and intersection layout (the visibility of the traffic light states and the stop lines).
+In order for the software to meet these requirements to operate in all generic scenarios, the team would need to 
 
 ## 3.6 Design Constraints
 

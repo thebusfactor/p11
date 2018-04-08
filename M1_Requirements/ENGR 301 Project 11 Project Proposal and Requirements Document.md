@@ -1,5 +1,4 @@
-ENGR 301 Project *11* Project Proposal and Requirements Document
-
+# ENGR 301 Project *11* Project Proposal and Requirements Document
 #### Brandon Scott-Hill, Dylan Kumar, James Magallanes, Kristen Tait, Nicholas Snellgrove, Sean Stevenson
 
 ## 1. Introduction
@@ -219,7 +218,7 @@ Output:
 
 Minimum Use Case Diagram
 
-![MVP Use Case Diagram](https://gitlab.ecs.vuw.ac.nz/ENGR301-302-2018/Project-11/Bus-Factor/blob/master/M1_Requirements/mvpDiagram.png?raw=true "MVP Use Case Diagram")
+![MVP Use Case Diagram](mvpDiagram.png)
 
 Minimum Viable Product Use Cases
 

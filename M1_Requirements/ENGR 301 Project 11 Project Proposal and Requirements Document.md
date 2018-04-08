@@ -782,6 +782,8 @@ The software the team produces is required to be able to run on a standard home 
 
 As the team is creating software that performs image processing, we assume that the quality of webcam required for the live feed is that of a standard mounted webcam of at least 480p quality[8]. 
 
+The software the team produces requires use of mouse to interact with user interface and select parts of the screen or to run.
+
 ---
 
 ### 6.2 Acronyms and abbreviations

@@ -223,10 +223,10 @@ Output:
 #### Minimum Viable Product Use Cases
 
 ##### 1. User sets up camera, user navigates to software and runs it
-This use case is the only non-functional case our system has, which involves no software but the user making sure the camera is set-up in a manner allows for an unimpeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
-Validity check: There is no input check that can be performed on this case due to the nature of it, as it requires the user to check the intersection is in view.
+This use case is the only non-functional case our system has, which involves no software but the user making sure the camera is set-up in a manner allows for an unimpeded view of the intersection. The goal for this would be for successful detection of the bus and lights.
+Validity check: No input check can be performed in this case due to the nature of it, as it requires the user to check the intersection is in view.
 Effect of Parameters: No parameters seem evident that would affect the input.
-Relationship of input and output: This is the main source of input for the software and pertains to all output. 
+Relationship of input and output: This is the main source of input for the software and pertains to all output.
 
 **Use Case Body**
 
@@ -242,9 +242,9 @@ Main Success Scenario:
 | 2. User plugs in and angles camera at intersection |      |
 
 ##### 2. Requires MVP Use Case 1, Selects and adds traffic light area of detection
-User should define the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
-Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined. Software should check the area has been successfully defined and is useful. 
-Exact sequence: Interface shows video feed of area, user inserts shape of detection.
+The user should define the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase the accuracy of the detection. 
+Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case, it may be good to have a validity check for when there is no action detected, but that is yet to be determined. Software should check the area has been successfully defined and is useful. 
+Exact sequence: Interface shows a video feed of an area, the user inserts shape of detection.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
 
@@ -282,9 +282,9 @@ Main Success Scenario:
 | 2. User selects and deletes area of detection using mouse | 3. System accepts input and returns acceptance message |
 
 ##### 4. Requires MVP Use Case 1, Selects and updates traffic light area of detection
-User should update the area of detection for the traffic lights. This is for the software to search purely in this area, to cut down on processing time and increase accuracy of the detection. 
-Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
-Exact sequence: Interface shows video feed of area, user updates prior shape of detection.
+The user should define and delete the area of detection for the traffic lights. This is so the user can make the area of detection irrelevant.
+Validity check: Software should check the area has been successfully removed, and detection no longer occurs.
+Exact sequence: Interface shows a video feed of an area, the user selects the shape of detection and deletes.
 Effect of Parameters: If the user does not have a working mouse they cannot proceed past this point.
 Relationship of input and output: The detection areas dictate the output of the system.
 
@@ -304,14 +304,14 @@ Main Success Scenario:
 ##### 5. Requires MVP Use Case 1, selects and adds bus line of detection
 Goal statement: For the user to be able to place down two points by clicking twice. The goal for this would be to provide the system with the two points for a line that can be shown both visually, and internally processed. 
 
-Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
-Exact sequence: Interface shows video feed of area, user updates prior shape of detection.
+Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case, it may be good to have a validity check for when there is no action detected, but that is yet to be determined.  
+Exact sequence: Interface shows a video feed of area, user updates the prior shape of detection.
 Relationship of input and output: The detection areas dictate the output of the system.
 
 Use Case Body
 Summary: This use case describes the interactions between the user and the system when utilizing the line tool.
 Actors: Client/General user
-Effect of Parameters: If the user doesn't not have a working mouse they cannot proceed past this point.
+Effect of Parameters: If the user doesn't have a working mouse they cannot proceed past this point.
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
@@ -332,14 +332,14 @@ A1: User clicks on wrong point/s
 ##### 6. Requires MVP Use Case 1, selects and deletes bus line of detection
 Goal statement: To be able to individually select a bus detection line/object of choice and remove it.
 
-Validity check: Software should check the area has been succesfully been removed and detection no longer occurs.
-Exact sequence: Interface shows video feed of area, user selects shape of detection and deletes.
+Validity check: Software should check the area has successfully been removed, and detection no longer occurs.
+Exact sequence: Interface shows a video feed of area, the user selects the shape of detection and deletes.
 Relationship of input and output: The detection areas dictate the output of the system.
 
 Use Case Body
 Summary: This use case describes the interactions between the user and the system when attempting to delete a detection line. 
 Actors:  Client/General user
-Effect of Parameters: If the user doesn't not have a working mouse they cannot proceed past this point.
+Effect of Parameters: If the user doesn't have a working mouse they cannot proceed past this point.
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
@@ -350,14 +350,14 @@ Main Success Scenario:
 ##### 7. Requires MVP Use Case 1, selects and updates bus line of detection
 Goal statement: To be able to select a bus detection line/object of choice and move it. 
 
-Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case it may be good to have a validity check for when there is no action detected but that is yet to be determined.  
-Exact sequence: Interface shows video feed of area, user updates prior shape of detection..
+Validity check: Due to the nature of traffic and lights, you may get an intersection that never sees any action, or the event doesn't trigger at all. In this case, it may be good to have a validity check for when there is no action detected, but that is yet to be determined.  
+Exact sequence: Interface shows a video feed of area, user updates the prior shape of detection.
 Relationship of input and output: The detection areas dictate the output of the system.
 
 Use Case Body
 Summary: This use case describes the interactions between the user and system when attempting to move a detection line. 
 Actors: Client/General user
-Effect of Parameters: If the user doesn't not have a working mouse they cannot proceed past this point.
+Effect of Parameters: If the user doesn't have a working mouse they cannot proceed past this point.
 Main Success Scenario:
 
 *Actions of actors:* | *Actions of system:* 
@@ -372,16 +372,16 @@ Main Success Scenario:
 Description: For our first end goal use case where the user should have no interaction or intervention with the system other than checking the video feed is suitable for detection.
 What this involves is the software to have used machine learning to be able to scan and detect a video feed for the location on the image of the bus and the lights. This
 extracts the user and allows the system to run external to any prior input required in the MVP.
-Validity check: Predominantly done through user checking video feed, in the case where it doesn't detect a light and/or bus upon start up, the user will be alerted that no point of interest was detected and realignment is required. 
-Exact sequence: Set up of camera -> Run software -> Software auto-detects the environmental interest points -> Runs and alerts user when event triggers
+Validity check: Predominantly done through user checking video feed, in the case where it doesn't detect lights and bus upon startup, the user will be alerted that no point of interest was detected and realignment is required. 
+Exact sequence: Set up of the camera -> Run software -> Software auto-detects the environmental interest points -> Runs and alerts the user when event triggers
 Effect of Parameters: If an obstruction interferes with the camera the software should alert it has lost the points of interest.
 Relationship of input and output: Video feed input is scanned for points of interest -> Alert is outputted when event triggered.
  
 ##### 2. Requires End Goal Use Case 1, Upon booting of software user can define output upon event trigger
 
-Description: An extension of the first End Goal Use Case, upon detection of bus running red light the user can define what the output should be. This could be an email or computer alert event has been triggered.
-Exact sequence: Run software -> User defines what output should be -> Output is delivered when event triggers.
-Effect of Parameters: Depending on the level of sophistication of system, user may define output to only occur after X amount of buses have ran a red light or any other aspect they deem appropriate.
+Description: An extension of the first End Goal Use Case, upon detection of a bus running a red light the user can define what the output should be. This could be an email or computer alert event has been triggered.
+Exact sequence: Run software -> User defines what output should be -> Output is delivered when an event triggers.
+Effect of Parameters: Depending on the level of sophistication of the system, the user may define output to only occur after X amount of buses have run a red light or any other aspect they deem appropriate.
 Relationship of input and output: Video feed input is scanned for points of interest -> User defined alert is outputted when event triggered.
 
 #### Extension Goal(s) Use Cases

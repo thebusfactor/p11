@@ -1,4 +1,5 @@
 ENGR 301 Project *11* Project Proposal and Requirements Document
+
 #### Brandon Scott-Hill, Dylan Kumar, James Magallanes, Kristen Tait, Nicholas Snellgrove, Sean Stevenson
 
 ## 1. Introduction
@@ -194,8 +195,6 @@ Testing measurements would involve visually inspecting the data and comparing to
 This output relies on the camera feed especially as it needs to accurately capture the scene upon the event triggering. 
 The data format for the image of the scene will most likely be a .png.
 
----
-
 ### 3.2 Functions
  
 Basic functionality of our system comprises limited user interaction. It involves a camera being set-up at a suitable intersection that provides sufficient view
@@ -223,6 +222,7 @@ Minimum Use Case Diagram
 ![MVP Use Case Diagram](https://gitlab.ecs.vuw.ac.nz/ENGR301-302-2018/Project-11/Bus-Factor/blob/master/M1_Requirements/mvpDiagram.png?raw=true "MVP Use Case Diagram")
 
 Minimum Viable Product Use Cases
+
 ###### 1. User sets up camera, user navigates to software and runs it
 This use case is the only non-functional case our system has, which involves no software but the user making sure the camera is set-up in a manner allows for an unimpeded view of the intersection. The goal for this would be for a successful detection of the bus and lights.
 Validity check: There is no input check that can be performed on this case due to the nature of it, as it requires the user to check the intersection is in view.
@@ -368,6 +368,7 @@ Main Success Scenario:
 
 
 End Goal(s) Use Cases
+
 ###### 1. User sets up camera, boots software and user will automatically get alerted when a bus has ran a red light
 Description: For our first end goal use case where the user should have no interaction or intervention with the system other than checking the video feed is suitable for detection.
 What this involves is the software to have used machine learning to be able to scan and detect a video feed for the location on the image of the bus and the lights. This
@@ -378,12 +379,14 @@ Effect of Parameters: If an obstruction interferes with the camera the software 
 Relationship of input and output: Video feed input is scanned for points of interest -> Alert is outputted when event triggered.
  
 ###### 2. Requires End Goal Use Case 1, Upon booting of software user can define output upon event trigger
+
 Description: An extension of the first End Goal Use Case, upon detection of bus running red light the user can define what the output should be. This could be an email or computer alert event has been triggered.
 Exact sequence: Run software -> User defines what output should be -> Output is delivered when event triggers.
 Effect of Parameters: Depending on the level of sophistication of system, user may define output to only occur after X amount of buses have ran a red light or any other aspect they deem appropriate.
 Relationship of input and output: Video feed input is scanned for points of interest -> User defined alert is outputted when event triggered.
 
 Extension Goal(s) Use Cases
+
 ###### 1. Requires End Goal Use Case 1, Upon booting of software user can define additional points of interest to keep track of
 Description: As part of the possible extension to this project, 
 Validity check: Since these events like License plate detection, police intervention, speed detection validity checks would need to occur to make sure the values and assumptions made are performing above an expected
@@ -436,7 +439,11 @@ Dynamic performance requirement is a requirement based on how the software syste
 *	Flagging of buses passing red lights are required to take no longer than 0.5 seconds when handling between 1 to 16 buses at an intersection.
 *	User configuration for more than one intersection should not affect the process time of the software product by more than 0.1 seconds. The complexity of the intersection should not a have a significant effect on the performance of the software product.
 
-3.5 Logical database requirements
+## 3.5 Logical database requirements
+
+Below is the UML class diagram for the structure of our system. Listed after are the descriptions of each class.
+
+![Class diagram](classDiagram.png)
 
 * DebugView
     * This class controls the view of the system when testing. The type of information will be any sort of relevant debug material required. It shall be used whenever we need a raw look at what information the camera is detecting and/or using. 
@@ -471,8 +478,6 @@ Dynamic performance requirement is a requirement based on how the software syste
 * Output
     * General class that governs how and what we output. As the team progresses this will be a goal to output a video of the event or any additional information.
 
----
-
 ### 3.6 Design constraints
 
 This project does not have many constraints that would hinder the development of the project. Some of the only constraints that the team might need to consider when designing the system would be the hardware (cameras) used, and the requirement to output instances of traffic violation to image and video files.
@@ -487,8 +492,6 @@ Some of the extra functionality that the team has considered to be part of an en
 Certain extra functions such as accurate licence plate detection, speed detection and identifying specific events of interest may become constraints that the team needs to take note of.
 These specific events of interests include scenarios of police intervention, vehicle collisions with pedestrians and vehicle near misses with other objects (mainly pedestrians and other vehicles).
 These events of interest could be quite difficult to integrate into an already existing version of the system and may result in a design constraint that the team would encounter. 
-
----
 
 ### 3.7 Software system attributes
 
@@ -596,8 +599,6 @@ our clients do not intend to use such files commercially, the users will not nee
 Part of our project will involve integrating open CV and other external libraries into our code. Therefore, our program must comply with the licenses supplied by 
 these libraries. Such licenses include the Open CV license agreement [3].
 
----
-
 ### 3.8 Physical and Environmental Requirements 
 
 The client's requirements dicate that the software must work with any commercially available webcam, and on any commercially available machine. The webcam component of the software could be
@@ -607,8 +608,6 @@ The camera (and by extension, the device running the software) must be positione
 be disturbed by any outside interference, be it extreme weather, human interference, or otherwise.  
 Also, the camera must be set up in a position that allows it to capture all of the Points of Interest in an intersection. These Points of Interest are the Traffic Light being observed, the boundary of
 the intersection, and the mid-point of the intersection I.e. where the busses cross through when going through an intersection.
-
----
 
 ### 3.10 Supporting information
 
@@ -689,16 +688,12 @@ the ZX security clients approximately once every 3 weeks. These discussions will
 be used to ensure that the product meets the clients requests and to ask additional 
 questions about the product. 
 
----
-
 ### 5.2 Budget:
 
 | Item        | Are           | Cost  |
 | ------------- | --------------| ------|
 | Camera/Webcam | In the situation where the bus factor webcam is not sufficiently high quality for accurate machine learning or image processing detection and classification. A new webcam will have to be purchased, whereby cost unlikely to exceed $150. [4] | $50 |
 | Processing Power      | For machine learning classification, sufficient processing power will be needed to test and train our algorithm. The cost of this may range from $0, if the team is able to use the Universities Processing servers, or an estimated hundred dollars for AWS/Tensorflow servers [5]. |   $150 |
-
----
 
 ### 5.3 Risks 
 
@@ -797,6 +792,7 @@ consistent, honest communication with the clients will ensure that expectations 
 ---
 
 ## 6. Appendices
+
 ### 6.1 Assumptions and dependencies 
 
 The team needs to produce a system that integrates with the system that the client is currently using. The system is required to send messages or alerts to the software that the Bus Factor clients use called to stream their podcast. This software is called Open Broadcast Software (OBS)[6]. 
@@ -809,16 +805,12 @@ As the team is creating software that performs image processing, we assume that 
 
 The software the team produces requires use of mouse to interact with user interface and select parts of the screen or to run.
 
----
-
 ### 6.2 Acronyms and abbreviations
 
 * Incident: Refers to a bus being observed running a red light, as captured by the software.
 * Consumer webcam: Defined as a readily available camera such as an external USB camera or even those found in-built into laptops.
 
----
-
-## 6. Contributions
+## 7. Contributions
 
 * Brandon Scott-Hill: 3.3 - Usability Requirements, 3.4 - Performance Requirements, 3.5 - Logical Database Requirements
 * Dylan Kumar: 5.2 - Budget, 3.2 - Functions, 6.1 - Assumptions and Dependencies, 3.1 - External interfaces
@@ -827,4 +819,3 @@ The software the team produces requires use of mouse to interact with user inter
 * Nicholas Snellgrove: 1.0-1.2 - Introduction, 5.3 - Risks, 3.8 - Physical and Environmental Requirements 
 * Sean Stevenson: 3.2 - Functions, 3.5 - Logical Database Requirements, 3.1 - External interfaces
 
----

@@ -13,7 +13,7 @@ Hugh Davenport: hugh@zxsecurity.co.nz
 
 ### 1.1 Purpose
 
-The system must take a video input from any standard webcam, and from this input - detect when a bus is seen running a red light & report to the user in real-time.
+The system must take video input from any standard webcam, and from this input - detect when a bus is seen running a red light & report to the user in real-time.
 
 ### 1.2 Scope
 

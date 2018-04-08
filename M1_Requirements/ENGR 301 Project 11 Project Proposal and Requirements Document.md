@@ -581,14 +581,16 @@ see 9.5.19.
 
 ## 4. Verification
 
-specific requirements
 1. Detection of bus
+
 When the program alerts the user the event has triggered, visual verification by the user should occur to ascertain if the requirement has been met. This will require active monitoring of the system for when the bus appears and observing if the system detects it.
 
 2. detection of red light
+
 When the program alerts the user the event has triggered, visual verification by the user should occur to ascertain if the requirement has been met. This will require active monitoring of the system for the traffic light to observe if the system detects the colour as red.
 
-3. detection of bus passing line, and storing video files/image and timestamp metadata.
+3. detection of bus passing line, and storing video files/image and timestamp metadata
+
 When the program alerts the user the event has triggered, visual verification by the user should occur to ascertain if the requirement has been met. This will require active monitoring of the system for the bus to observe whether it detects the bus passing the indicated line; noting the time when this occurs, a video or photo capture at the moment, and any other meta-data.
 
 **Acceptance Tests**

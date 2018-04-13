@@ -2,35 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2a155ed-c2f5-4885-86e8-bf59187ad4f9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Bus-Factor.iml" afterPath="$PROJECT_DIR$/.idea/Bus-Factor.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/.gitkeep" afterPath="$PROJECT_DIR$/doc/M1_Requirements/.gitkeep" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/Brandon_Report_Contribution.md" afterPath="$PROJECT_DIR$/doc/M1_Requirements/Brandon_Report_Contribution.md" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/Dylan_Report_Contribution.md" afterPath="$PROJECT_DIR$/doc/M1_Requirements/Dylan_Report_Contribution.md" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/ENGR 301 Project 11 Project Proposal and Requirements Document.md" afterPath="$PROJECT_DIR$/doc/M1_Requirements/ENGR 301 Project 11 Project Proposal and Requirements Document.md" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/James_Report_Contribution.md" afterPath="$PROJECT_DIR$/doc/M1_Requirements/James_Report_Contribution.md" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/Kristen_Report_Contribution.md" afterPath="$PROJECT_DIR$/doc/M1_Requirements/Kristen_Report_Contribution.md" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/Nick's Proposal Contribution.md" afterPath="$PROJECT_DIR$/doc/M1_Requirements/Nick's Proposal Contribution.md" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/Report_allocation.md" afterPath="$PROJECT_DIR$/doc/M1_Requirements/Report_allocation.md" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/Sean_Report_Contribution.md" afterPath="$PROJECT_DIR$/doc/M1_Requirements/Sean_Report_Contribution.md" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/classDiagram.png" afterPath="$PROJECT_DIR$/doc/M1_Requirements/classDiagram.png" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/mvpDiagram.png" afterPath="$PROJECT_DIR$/doc/M1_Requirements/mvpDiagram.png" />
-      <change beforePath="$PROJECT_DIR$/M1_Requirements/report.pdf" afterPath="$PROJECT_DIR$/doc/M1_Requirements/report.pdf" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/.gitkeep" afterPath="$PROJECT_DIR$/doc/Project_Documents/.gitkeep" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/1st lab discussion points.txt" afterPath="$PROJECT_DIR$/doc/Project_Documents/1st lab discussion points.txt" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/Basic_Architecture.md" afterPath="$PROJECT_DIR$/doc/Project_Documents/Basic_Architecture.md" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/ECS_Project_Information Form.docx" afterPath="$PROJECT_DIR$/doc/Project_Documents/ECS_Project_Information Form.docx" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/ECS_Project_Information Form.pdf" afterPath="$PROJECT_DIR$/doc/Project_Documents/ECS_Project_Information Form.pdf" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/Important_Dates.md" afterPath="$PROJECT_DIR$/doc/Project_Documents/Important_Dates.md" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/Plan Thing.jpg" afterPath="$PROJECT_DIR$/doc/Project_Documents/Plan Thing.jpg" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/Project 11 Important Dates.docx" afterPath="$PROJECT_DIR$/doc/Project_Documents/Project 11 Important Dates.docx" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/Risk Register - project 11.docx" afterPath="$PROJECT_DIR$/doc/Project_Documents/Risk Register - project 11.docx" />
-      <change beforePath="$PROJECT_DIR$/Project_Documents/UI.jpg" afterPath="$PROJECT_DIR$/doc/Project_Documents/UI.jpg" />
-      <change beforePath="$PROJECT_DIR$/camera/__init__.py" afterPath="$PROJECT_DIR$/src/camera/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/model/__init__.py" afterPath="$PROJECT_DIR$/src/model/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/ui/__init__.py" afterPath="$PROJECT_DIR$/src/ui/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/ui/controller/__init__.py" afterPath="$PROJECT_DIR$/src/ui/controller/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/ui/view/__init__.py" afterPath="$PROJECT_DIR$/src/ui/view/__init__.py" />
+      <change afterPath="$PROJECT_DIR$/src/model/config.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Bus-Factor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Bus-Factor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,8 +16,30 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Bus_Factor$config.coverage" NAME="config Coverage Results" MODIFIED="1523578363030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="11" selection-start-column="11" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.cfg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/config.cfg">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -51,6 +50,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/model/__init__.py" />
+        <option value="$PROJECT_DIR$/src/model/config.cfg" />
+        <option value="$PROJECT_DIR$/src/model/config.py" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -58,7 +71,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="22" />
     <option name="width" value="1400" />
@@ -68,17 +84,7 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -90,16 +96,44 @@
               <item name="Bus-Factor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Bus-Factor" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Bus-Factor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bus-Factor" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bus-Factor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bus-Factor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bus-Factor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bus-Factor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="camera" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bus-Factor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bus-Factor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bus-Factor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bus-Factor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -121,8 +155,31 @@
       </list>
     </option>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
+  <component name="RunManager">
+    <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Bus-Factor" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/model" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/model/config.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.config" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -138,28 +195,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="260" y="22" width="1400" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32946146" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18020834" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,16 +227,34 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/__init__.py">
+    <entry file="file://$PROJECT_DIR$/src/ui/view/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-2736">
+          <caret line="24" column="4" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/camera/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/config.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
         </state>
       </provider>
     </entry>

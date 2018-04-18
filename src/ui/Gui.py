@@ -6,6 +6,7 @@ from kivy.uix.textinput import TextInput
 
 import kivy
 
+
 class Gui(App):
 
     def callback(instance):
@@ -13,8 +14,7 @@ class Gui(App):
 
     def build(self):
         button1 = Button(text='Intersection Line')
-        #button1.bind(on_press=callback())
-
+        # button1.bind(on_press=callback())
 
 
 Gui().run()

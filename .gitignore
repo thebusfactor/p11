@@ -188,12 +188,12 @@ celerybeat-schedule.*
 
 # Environments
 .env
-.venv
 env/
-venv/
 ENV/
 env.bak/
 venv.bak/
+venv/
+Pipfile.lock
 
 # Spyder project settings
 .spyderproject

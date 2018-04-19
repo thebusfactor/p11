@@ -5,6 +5,7 @@ import numpy
 from Image import Image
 
 
+
 def output_video():
     cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)

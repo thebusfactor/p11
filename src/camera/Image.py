@@ -10,7 +10,7 @@ class Image:
         # self.frame = frame
 
     @staticmethod
-    def detect_green_and_mask_image(    frame):
+    def detect_green_and_mask_image(frame):
         # frame = cv2.imread(output)
         # cv2.imwrite(output, frame)
         # greyscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)

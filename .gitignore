@@ -53,7 +53,8 @@ Temporary Items
 .idea/dictionaries
 .idea/**/misc.xml
 *.iml
-
+Pipfiles
+Pipfile.lock
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/

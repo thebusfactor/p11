@@ -1,9 +1,8 @@
 import math
 import cv2
 import time
-import numpy
 from Image import Image
-
+import pickle
 
 
 def output_video():
@@ -16,9 +15,9 @@ def output_video():
     fourcc = cv2.VideoWriter_fourcc(*'MJPG')  # MJPG
     out = cv2.VideoWriter('output.avi', fourcc, 20.0, (width, height))
 
-    while (cap.isOpened()):
+    while cap.isOpened():
         ret, frame = cap.read()
-        if ret == True:
+        if ret:
             frame = cv2.flip(frame, 1)
 
             # write the flipped frame
@@ -34,58 +33,51 @@ def output_video():
     cv2.destroyAllWindows()
 
 
-def output_image_from_video():
-    # fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-    # videoFile = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 480))
-    #yeet = cv2.IMREAD_ANYCOLOR(videoFile)
-
-
+def output_snapshot_every_second():
     cap = cv2.VideoCapture("output.avi")
-    frameRate = cap.get(5)  # frame rate
-    x = 1
-    while (cap.isOpened()):
-        frameId = cap.read  # current frame number
+    frame_rate = cap.get(5)
 
-        # grey = cv2.cvtColor(frameId, cv2.COLOR_BGR2GRAY)
-        ret, frame = cap.read
-        if (not ret):
+    x = 0
+    while cap.isOpened():
+        frame_number = cap.get(1)
+        ret, frame = cap.read()
+        if not ret:
             break
-        if (frameId % math.floor(frameRate) == 0):
-            filename = './test_images/image' + str(int(x)) + ".jpg"
-            x += 1
-            cv2.imwrite(filename, frame)
-        time.sleep(1)
+        print("frameId: {}  | frameRate = {}.".format(frame_number, frame_rate))
+        if frame_number % math.floor(frame_rate) == 0:
+            #cv2.imwrite("./images/image%d.jpg" %(x/frame_rate), frame)
+            output_image_object("./images/object%d.im" %(x/frame_rate), frame)
+
+        x += 1
+        print("X = {}".format(x))
+
     cap.release()
     print ("Done!")
 
+def output_image_object(filename, obj):
+    with open(filename, 'wb') as output:
+        pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL)
 
-def output_single_image():
-    vidcap = cv2.VideoCapture(1) #change to "filename.mp4/avi"
-    # success, image = vidcap.read()
-    count = 0
 
-    while count < 5:
+def output_specific_number_of_images(no_of_images):
+    vidcap = cv2.VideoCapture(0) #change to "filename.mp4/avi" for output stills from video
+
+    for i in range(no_of_images):
+
         success, image = vidcap.read()
-        # print("Read a new frame: " + str(success) + "\n")
-        # if count%10 == 0:
-        #     cv2.imwrite('frame%d.jpg'%count, image)
-        #     print("success\n")
-
-        cv2.imwrite('frame%d.jpg' % count, image)
         if success:
-            print("VID CAP IS OPENED\n")
+            time.sleep(2)
+            print("VIDEO CAPTURE IS OPENED")
+            cv2.imwrite('frame%d.jpg' % i, image)
 
-        success, image = vidcap.read()
-        print('Read a new frame: '+ str(success))
-        count += 1
-        time.sleep(1)
+        print('Read a new frame: '+ str(success) + "\n")
 
     vidcap.release()
     cv2.destroyAllWindows()
 
 
 def output_test():
-    vidcap = cv2.VideoCapture(1)
+    vidcap = cv2.VideoCapture(0)
     count = 0
     succ = True
     while succ:
@@ -100,10 +92,4 @@ def output_test():
         count += 1
         time.sleep(1)
 
-
-
-
-# output_video()
-# output_image_from_video()
-# output_single_image()
-output_test()
+output_snapshot_every_second()

@@ -6,6 +6,7 @@ import numpy
 class Image:
     def __init__(self):
         self
+
         # self.output = output
         # self.frame = frame
 

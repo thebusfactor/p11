@@ -46,7 +46,8 @@ def output_snapshot_every_second():
         print("frameId: {}  | frameRate = {}.".format(frame_number, frame_rate))
         if frame_number % math.floor(frame_rate) == 0:
             #cv2.imwrite("./images/image%d.jpg" %(x/frame_rate), frame)
-            output_image_object("./images/object%d.im" %(x/frame_rate), frame)
+            image_object = Image()
+            output_image_object("./images/object%d.im" %(x/frame_rate), image_object)
 
         x += 1
         print("X = {}".format(x))
@@ -56,7 +57,7 @@ def output_snapshot_every_second():
 
 def output_image_object(filename, obj):
     with open(filename, 'wb') as output:
-        pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL)
+        pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL) #highest_protocol = -1
 
 
 def output_specific_number_of_images(no_of_images):

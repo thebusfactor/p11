@@ -4,8 +4,8 @@ import numpy
 
 
 class Image:
-    def __init__(self):
-        self
+    def __init__(self, text):
+        self.text = text
 
         # self.output = output
         # self.frame = frame

@@ -34,7 +34,7 @@ def output_video():
 
 
 def output_snapshot_every_second():
-    cap = cv2.VideoCapture("output.avi")
+    cap = cv2.VideoCapture(1) #output.avi
     frame_rate = cap.get(5)
 
     x = 0
@@ -45,9 +45,9 @@ def output_snapshot_every_second():
             break
         print("frameId: {}  | frameRate = {}.".format(frame_number, frame_rate))
         if frame_number % math.floor(frame_rate) == 0:
-            #cv2.imwrite("./images/image%d.jpg" %(x/frame_rate), frame)
-            image_object = Image()
-            output_image_object("./images/object%d.im" %(x/frame_rate), image_object)
+            cv2.imwrite("./images/image%d.jpg" %(x/frame_rate), frame)
+            # image_object = Image()
+            # output_image_object("./images/object%d.im" %(x/frame_rate), image_object)
 
         x += 1
         print("X = {}".format(x))
@@ -59,23 +59,32 @@ def output_image_object(filename, obj):
     with open(filename, 'wb') as output:
         pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL) #highest_protocol = -1
 
-
 def output_specific_number_of_images(no_of_images):
-    vidcap = cv2.VideoCapture(0) #change to "filename.mp4/avi" for output stills from video
+    vidcap = cv2.VideoCapture(1) #change to "filename.mp4/avi" for output stills from video
 
     for i in range(no_of_images):
 
         success, image = vidcap.read()
         if success:
-            time.sleep(2)
             print("VIDEO CAPTURE IS OPENED")
-            cv2.imwrite('frame%d.jpg' % i, image)
+            time.sleep(2)
+            grayscale_image = Image.convert_image_to_grayscale(image)
+            edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
+            yellow_mask = Image.detect_green_and_mask_image(image)
+
+            cv2.imshow("edge mask", edge_mask_image)
+            cv2.imshow("yellow mask", yellow_mask)
+            cv2.imshow("raw image", image)
+            cv2.imshow("grayscale mask", grayscale_image)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+            # cv2.imwrite('frame%d.jpg' %i, edge_detection_image)
+            # cv2.imwrite('frame_gray_%d.jpg' % i, grayscale_image)
 
         print('Read a new frame: '+ str(success) + "\n")
 
     vidcap.release()
-    cv2.destroyAllWindows()
-
+    # cv2.destroyAllWindows()
 
 def output_test():
     vidcap = cv2.VideoCapture(0)
@@ -93,4 +102,7 @@ def output_test():
         count += 1
         time.sleep(1)
 
-output_snapshot_every_second()
+
+
+
+output_specific_number_of_images(1)

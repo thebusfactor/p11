@@ -1,8 +1,9 @@
 import math
 import cv2
 import time
-from Image import Image
 import pickle
+
+from model.image import Image
 
 
 def output_video():

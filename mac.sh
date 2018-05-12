@@ -1,5 +1,5 @@
-pip install pipenv
-pipenv install opencv-python
+pip install virtualenv
+virtualenv venv
+source venv/Scripts/activate
 brew install pkg-config sdl2 sdl2_image sdl2_ttf sdl2_mixer gstreamer
-pipenv install Cython
-pipenv install https://github.com/kivy/kivy/archive/master.zip
+pip install -r requirements-mac.txt

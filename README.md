@@ -7,6 +7,7 @@
 * Dylan Kumar 
 * Nicholas Snellgrove 
 * Brandon Scott-Hill
+
 ---
 
 ## Getting Started

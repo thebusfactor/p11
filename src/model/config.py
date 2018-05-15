@@ -1,25 +1,21 @@
-fileName = "config.cfg"
+import configparser as cp
 
-def buildConfig():
-    configFile = open(fileName, "w")
-    configFile.write()
-
-def readConfig():
-    configFile = open(fileName, "r")
-    out = configFile.readline()
-    if out.startswith("##"):
-        print("its a header")
-    while out != "":
-        print(out)
-        out = configFile.readline()
-        if out.startswith("##"):
-            print("its a header")
+config = cp.ConfigParser()
+PATH = "config.ini"
 
 
+def set_box():
+    config.add_section("Box")
+    config.set("Box", "x1", "15")
+    write()
+
+def get_box():
+    pass
 
 
+def write():
+    with open(PATH, 'w+') as configfile:
+        config.write(configfile)
 
-def updateConfig(fieldToUpdate, value):
-    readConfig()
 
-readConfig()
+set_box()

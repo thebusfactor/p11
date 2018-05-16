@@ -35,7 +35,7 @@ def output_video():
 
 
 def output_snapshot_every_second():
-    cap = cv2.VideoCapture(1) #output.avi
+    cap = cv2.VideoCapture(0) #output.avi
     frame_rate = cap.get(5)
 
     x = 0
@@ -60,27 +60,83 @@ def output_image_object(filename, obj):
     with open(filename, 'wb') as output:
         pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL) #highest_protocol = -1
 
-def output_specific_number_of_images(no_of_images):
-    vidcap = cv2.VideoCapture(1) #change to "filename.mp4/avi" for output stills from video
+def output_specific_number_of_images(no_of_images, camerain):
+    vidcap = cv2.VideoCapture(camerain) #change to "filename.mp4/avi" for output stills from video
 
     for i in range(no_of_images):
 
-        success, image = vidcap.read()
+        success, damn = vidcap.read()
         if success:
+            cv2.namedWindow("gang", cv2.WINDOW_NORMAL)
+            cv2.resizeWindow("gang", 600, 600)
+            #(x, y, w, h) = cv2.selectROI("gang", damn)
+            #pass in coords
+            image = damn[y:y + h, x:x + w]  # both opencv and numpy are "row-major", so y goes first
             print("VIDEO CAPTURE IS OPENED")
             time.sleep(2)
             grayscale_image = Image.convert_image_to_grayscale(image)
             edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
             yellow_mask = Image.detect_green_and_mask_image(image)
 
+            # cv2.namedWindow("edge mask", cv2.WINDOW_NORMAL)
+            # cv2.namedWindow("raw image", cv2.WINDOW_NORMAL)
+            #
+            # cv2.resizeWindow("edge mask", 200, 200)
+            # cv2.resizeWindow("raw image", 200, 200)
+
             cv2.imshow("edge mask", edge_mask_image)
             cv2.imshow("yellow mask", yellow_mask)
-            cv2.imshow("raw image", image)
+            cv2.imshow("image", image)
             cv2.imshow("grayscale mask", grayscale_image)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
             # cv2.imwrite('frame%d.jpg' %i, edge_detection_image)
             # cv2.imwrite('frame_gray_%d.jpg' % i, grayscale_image)
+
+            #First use cv2.boundingRect to get the bounding rectangle
+            #for a set of points (i.e.contours):
+
+            #x, y, width, height = cv2.boundingRect(contours[i])
+
+            #You can then use NumPy indexing to get your ROI from the image:
+
+            #roi = img[y:y + height, x:x + width]
+
+            #And save the ROI to a  new file:
+
+            #cv2.imwrite("roi.png", roi)
+
+            # Read image
+            #im = cv2.imread("image.jpg")
+
+            # Select ROI
+            #r = cv2.selectROI(im)
+
+            # Crop image
+            #imCrop = im[int(r[1]):int(r[1] + r[3]), int(r[0]):int(r[0] + r[2])]
+
+            # Display cropped image
+            #cv2.imshow("Image", imCrop)
+            #cv2.waitKey(0)
+
+            # import cv2
+            #
+            # if __name__ == '__main__':
+            #
+            # # Read image
+            # img = cv2.imread("starwars.jpg")
+            #
+            # # Select ROI
+            # r = cv2.selectROI("Image", img, False, False)
+            #
+            # # Crop image
+            # imCrop = img[int(r[1]):int(r[1] + r[3]), int(r[0]):int(r[0] + r[2])]
+            #
+            # # Display cropped image
+            # cv2.imshow("Image", imCrop)
+            # cv2.waitKey(0)
+
+
 
         print('Read a new frame: '+ str(success) + "\n")
 
@@ -106,4 +162,4 @@ def output_test():
 
 
 
-output_specific_number_of_images(1)
+#output_specific_number_of_images(1)

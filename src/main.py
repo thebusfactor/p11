@@ -1,10 +1,12 @@
 import sys
 
-from ui.sample import Gui
+from controller.output import *
+#from ui.sample import Gui
 
 
 def main(argv):
-    Gui()
+    output_specific_number_of_images(1, 0)
+    #output_video()
     pass
 
 

@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/macos,linux,python,windows,pycharm
+# Created by https://www.gitignore.io/api/linux,macos,python,windows,pycharm
 
 ### Linux ###
 *~
@@ -188,12 +188,12 @@ celerybeat-schedule.*
 
 # Environments
 .env
+.venv
 env/
+venv/
 ENV/
 env.bak/
 venv.bak/
-venv/
-Pipfile.lock
 
 # Spyder project settings
 .spyderproject
@@ -230,4 +230,4 @@ $RECYCLE.BIN/
 *.lnk
 
 
-# End of https://www.gitignore.io/api/macos,linux,python,windows,pycharm
+# End of https://www.gitignore.io/api/linux,macos,python,windows,pycharm

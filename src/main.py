@@ -1,10 +1,10 @@
 import sys
 
-from ui.sample import Gui
+from ui.view import gui
 
 
 def main(argv):
-    Gui()
+    gui()
     pass
 
 

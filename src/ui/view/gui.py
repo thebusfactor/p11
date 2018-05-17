@@ -1,23 +1,10 @@
-'''
-Camera Example
-==============
-
-This example demonstrates a simple use of the camera. It shows a window with
-a buttoned labelled 'play' to turn the camera on and off. Note that
-not finding a camera, perhaps because gstreamer is not installed, will
-throw an exception during the kv language processing.
-
-'''
-
-# Uncomment these lines to see all the messages
-# from kivy.logger import Logger
-# import logging
-# Logger.setLevel(logging.TRACE)
-
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
+from kivy.config import Config
+#Config.set('kivy', 'window_icon', 'icon.ico')
 import time
 
 # rows=1, row_force_default = True, row_default_height = 20, cols = 4, size_hint = (1000,1
@@ -25,8 +12,15 @@ import time
 Builder.load_string('''
 <CameraView>:
     orientation: 'vertical'
+       
+    Camera:
+        id: camera
+        resolution: (1920,1080)
+        play: True 
+        pos: 0,0
+        
     GridLayout:
-        rows: 1
+        rows: 2
         row_force_default: True
         row_default_height: 20
         cols: 4
@@ -39,13 +33,10 @@ Builder.load_string('''
             text: 'Set Line'
         Button:
             text: 'Capture'
-    Camera:
-        id: camera
-        resolution: (1920,1080)
-        play: True''')
+''')
 
 
-class CameraView(BoxLayout):
+class CameraView(FloatLayout):
     def capture(self):
         '''
         Function to capture the images and give them the names
@@ -58,10 +49,8 @@ class CameraView(BoxLayout):
 
 
 class GUI(App):
-
-    def build(self):
-        return CameraView()
-
+        def build(self):
+            return CameraView()
 
 Window.fullscreen = False
 GUI().run()

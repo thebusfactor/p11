@@ -4,7 +4,6 @@ from kivy.graphics import *
 
 
 class DrawInput(Widget):
-
     x1 = -1
     y1 = -1
     x2 = -1
@@ -12,8 +11,11 @@ class DrawInput(Widget):
     placed = False
     line = False
 
+    rect = InstructionGroup()
+
     def on_touch_down(self, touch):
         print(touch)
+        Rectangle(pos=(100,100), size=(200,200))
         with self.canvas:
 
             # Add a red color
@@ -37,10 +39,28 @@ class DrawInput(Widget):
                     touch.ud["line"] = Line(points=[self.x1, self.y1, self.x2, self.y2], width=2)
                 else:
                     # Add a rectangle
-                    Rectangle(pos=(self.x1, self.y1), size=(abs((abs(self.x1) - abs(self.x2))), abs((abs(self.y1) - abs(self.y2)))))
+                    width = abs(self.x2 - self.x1)
+                    height = abs(self.y2 - self.y1)
+                    #Rectangle(pos=(self.x1 - x_diff, self.y1 - y_diff), size=(x_diff, y_diff))
 
 
+                    r = None
 
+                    if ((self.y1 - self.y2) < 0 and (self.x1 - self.x2) < 0):
+                        r = Rectangle(pos=(self.x1, self.y1), size=(width, height))
+                        self.rect.add(r)
+                    elif ((self.x1 - self.x2) < 0 ):
+                        r = Rectangle(pos=(self.x1, self.y2), size=(width, height))
+                        self.rect.add(r)
+                    elif ((self.y1 - self.y2) < 0 ):
+                        r = Rectangle(pos=(self.x2, self.y1), size=(width, height))
+                        self.rect.add(r)
+                    elif ((self.x1-self.x2) > 0):
+                        r = Rectangle(pos=(self.x2, self.y2), size=(width, height))
+                        self.rect.add(r)
+
+                    #if(r != None):
+                    self.rect.remove(r)
 
 
     def on_motion(self, etype, motionevent):

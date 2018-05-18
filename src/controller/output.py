@@ -108,7 +108,7 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
                 x, y, w, h = cv2.boundingRect(conts[i])
                 cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
-            cv2.imshow("image", image)
+            #cv2.imshow("image", image)
             #cv2.imshow("grayscale mask", grayscale_image)
             #cv2.imshow("edge mask", edge_mask_image)
             # cv2.imshow("mask", mask)
@@ -116,7 +116,10 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
 
             #cv2.imshow("maskclose", maskclose)
             #cv2.imshow("maskopen", mask_open)
-            #cv2.imshow("mask", mask)
+            cv2.imshow("mask", mask)
+            z = cv2.countNonZero(mask)
+            print(z)
+
 
             cv2.waitKey(10)
             #cv2.destroyAllWindows()

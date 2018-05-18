@@ -5,7 +5,7 @@ from controller.output import *
 
 
 def main(argv):
-    output_specific_number_of_images(1, 1, 200, 200, 400, 400)
+    output_specific_number_of_images(1, 0, 200, 200, 400, 400)
     #output_video()
     pass
 

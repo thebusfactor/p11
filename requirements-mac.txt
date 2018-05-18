@@ -1,0 +1,4 @@
+opencv-python
+numpy
+Cython
+https://github.com/kivy/kivy/archive/master.zip

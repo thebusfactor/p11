@@ -14,8 +14,15 @@ class Image:
 
     @staticmethod
     def convert_image_to_edge_mask(frame):
-        edge_image = cv2.Canny(frame, 80, 150)
-        return edge_image
+        v = numpy.median(frame)
+        sigma = 0.33
+        # TODO research function
+        blurred = cv2.GaussianBlur(frame, (3, 3), 0)
+
+        lower = int(max(0, (1.0 - sigma) * v))
+        upper = int(min(255, (1.0 + sigma) * v))
+        edged = cv2.Canny(blurred, lower, upper)
+        return edged
 
     '''
     Converts image to HSV mask, and returns the masked image as a binary black and
@@ -23,8 +30,8 @@ class Image:
     '''
     @staticmethod
     def detect_green_and_mask_image(frame):
-        lower_bound = numpy.array([33,80,40])
-        upper_bound = numpy.array([102,255,255])
+        lower_bound = numpy.array([33, 80, 40])
+        upper_bound = numpy.array([102, 255, 255])
         imgHSV = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(imgHSV, lower_bound, upper_bound)
         return mask
@@ -35,14 +42,33 @@ class Image:
     '''
     @staticmethod
     def detect_yellow_and_mask_image(frame):
-        lower_bound = numpy.array([18,120,200])
-        upper_bound = numpy.array([28,255,255])
         imgHSV = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        # 24    113   152
+        lower_bound = numpy.array([0, 100, 140])
+        upper_bound = numpy.array([40, 255, 255])
+
+        # lower_bound = numpy.array([180, 280, 0])
+        # upper_bound = numpy.array([255, 255, 100])
+
         mask = cv2.inRange(imgHSV, lower_bound, upper_bound)
-        # cv2.imshow("mask", mask)
-        # cv2.imshow("cam", frame)
-        # cv2.waitKey(0)
-        return mask
+
+        res = cv2.bitwise_and(frame, frame, mask=mask)
+
+        kernel_open = numpy.ones((5, 5))
+        kernel_close = numpy.ones((20, 20))
+
+        mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
+        maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
+
+        maskfinal = maskclose
+        conts,h = cv2.findContours(maskfinal.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        cv2.drawContours(img, conts, -1, (255, 0, 0), 3)
+
+        for i in range(len(conts)):
+            x, y, w, h = cv2.boundingRect(conts[i])
+            cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
+
+        return maskClose, mask
 
     '''
     Converts image to HSV mask, and returns the masked image as a binary black and

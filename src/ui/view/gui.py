@@ -1,13 +1,18 @@
+import sys
+import threading
+
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
-from kivy.core.window import Window
-from kivy.config import Config
-#Config.set('kivy', 'window_icon', 'icon.ico')
-import time
 
-# rows=1, row_force_default = True, row_default_height = 20, cols = 4, size_hint = (1000,1
+from kivy.config import Config
+
+from model.image import Image
+
+Config.set('kivy', 'window_icon', '/img/icon.ico')
+
+from kivy.core.window import Window
+
 
 Builder.load_string('''
 <CameraView>:
@@ -16,7 +21,7 @@ Builder.load_string('''
     Camera:
         id: camera
         resolution: (1920,1080)
-        play: True 
+        play: False 
         pos: 0,0
         
     GridLayout:
@@ -37,20 +42,20 @@ Builder.load_string('''
 
 
 class CameraView(FloatLayout):
-    def capture(self):
-        '''
-        Function to capture the images and give them the names
-        according to their captured time and date.
-        '''
-        camera = self.ids['camera']
-        timestr = time.strftime("%Y%m%d_%H%M%S")
-        camera.export_to_png("IMG_{}.png".format(timestr))
-        print("Captured")
+
+    def build_config(self):
+        pass
+    def line_select(self):
+        pass
+    def light_select(self):
+        pass
+    def open_config(self):
+        pass
+
+
 
 
 class GUI(App):
-        def build(self):
-            return CameraView()
 
-Window.fullscreen = False
-GUI().run()
+    def build(self):
+        return CameraView()

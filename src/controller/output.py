@@ -35,7 +35,7 @@ def output_video():
 
 
 def output_snapshot_every_second():
-    cap = cv2.VideoCapture(1) #output.avi
+    cap = cv2.VideoCapture(0) #output.avi
     frame_rate = cap.get(5)
 
     x = 0
@@ -61,7 +61,7 @@ def output_image_object(filename, obj):
         pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL) #highest_protocol = -1
 
 def output_specific_number_of_images(no_of_images):
-    vidcap = cv2.VideoCapture(1) #change to "filename.mp4/avi" for output stills from video
+    vidcap = cv2.VideoCapture(0) #change to "filename.mp4/avi" for output stills from video
 
     for i in range(no_of_images):
 

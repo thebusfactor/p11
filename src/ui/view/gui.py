@@ -63,5 +63,3 @@ class GUI(App):
         return CameraView()
 
 
-Window.fullscreen = False
-GUI().run()

@@ -1,19 +1,21 @@
-from pystray import MenuItem as Item, Menu
-import pystray
+from pystray import Icon, Menu, MenuItem
 from PIL import Image
 
+from typing import Iterable
 
-def display():
-    image = Image.open("bus.jpg")
-    menu: Menu = (Item('name', action),
-                  Item('name', action))
-    icon = pystray.Icon("name", image, "title", menu)
-    icon.run(setup)
+from ui.view import gui
 
 
-def setup(icon):
-    icon.visible = True
+def make_menu() -> Iterable[MenuItem]:
+    yield MenuItem("left", lambda: print("left"), default=True, visible=False)
+    yield MenuItem("click", lambda: start_ui())
+    yield MenuItem("exit", lambda icon: icon.stop())
 
 
-def action():
-    print("hi")
+def start() -> None:
+    icon = Icon("test", Image.open("bus.jpg"), menu=Menu(make_menu))
+    icon.run()
+
+
+def start_ui():
+    gui.GUI()

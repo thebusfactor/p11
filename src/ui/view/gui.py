@@ -1,32 +1,31 @@
-'''
-Camera Example
-==============
-
-This example demonstrates a simple use of the camera. It shows a window with
-a buttoned labelled 'play' to turn the camera on and off. Note that
-not finding a camera, perhaps because gstreamer is not installed, will
-throw an exception during the kv language processing.
-
-'''
-
-# Uncomment these lines to see all the messages
-# from kivy.logger import Logger
-# import logging
-# Logger.setLevel(logging.TRACE)
+import sys
+import threading
 
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.boxlayout import BoxLayout
-from kivy.core.window import Window
-import time
+from kivy.uix.floatlayout import FloatLayout
 
-# rows=1, row_force_default = True, row_default_height = 20, cols = 4, size_hint = (1000,1
+from kivy.config import Config
+
+from model.image import Image
+
+Config.set('kivy', 'window_icon', '/img/icon.ico')
+
+from kivy.core.window import Window
+
 
 Builder.load_string('''
 <CameraView>:
     orientation: 'vertical'
+       
+    Camera:
+        id: camera
+        resolution: (1920,1080)
+        play: False 
+        pos: 0,0
+        
     GridLayout:
-        rows: 1
+        rows: 2
         row_force_default: True
         row_default_height: 20
         cols: 4
@@ -39,27 +38,22 @@ Builder.load_string('''
             text: 'Set Line'
         Button:
             text: 'Capture'
-    Camera:
-        id: camera
-        resolution: (1920,1080)
-        play: True''')
+''')
 
 
-class CameraView(BoxLayout):
-    def capture(self):
-        '''
-        Function to capture the images and give them the names
-        according to their captured time and date.
-        '''
-        camera = self.ids['camera']
-        timestr = time.strftime("%Y%m%d_%H%M%S")
-        camera.export_to_png("IMG_{}.png".format(timestr))
-        print("Captured")
+class CameraView(FloatLayout):
+
+    def build_config(self):
+        pass
+    def line_select(self):
+        pass
+    def light_select(self):
+        pass
+    def open_config(self):
+        pass
 
 
 class GUI(App):
 
     def build(self):
         return CameraView()
-
-

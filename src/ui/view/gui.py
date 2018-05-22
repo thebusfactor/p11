@@ -57,8 +57,6 @@ class CameraView(FloatLayout):
         CamApp.screengrab(CamApp,cam, numImage=2)
 
 
-
-
 class GUI(App):
 
     def build(self):

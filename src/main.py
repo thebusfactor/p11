@@ -1,11 +1,11 @@
 import sys
 
+from ui.view import tray
 from ui.view.gui import GUI
 
 
 def main(argv):
-    GUI().run()
-    sys.exit(1)
+    tray.start()
     pass
 
 

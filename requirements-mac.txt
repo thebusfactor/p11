@@ -1,4 +1,5 @@
 opencv-python
 numpy
 Cython
+pystray
 https://github.com/kivy/kivy/archive/master.zip

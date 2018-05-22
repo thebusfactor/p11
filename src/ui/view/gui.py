@@ -8,6 +8,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.config import Config
 
 from model.image import Image
+from ui.view import myApp
+from ui.view.myApp import CamApp
 
 Config.set('kivy', 'window_icon', '/img/icon.ico')
 
@@ -16,12 +18,13 @@ from kivy.core.window import Window
 
 Builder.load_string('''
 <CameraView>:
+    id : mainwidget
     orientation: 'vertical'
        
     Camera:
         id: camera
         resolution: (1920,1080)
-        play: False 
+        play: True 
         pos: 0,0
         
     GridLayout:
@@ -38,19 +41,20 @@ Builder.load_string('''
             text: 'Set Line'
         Button:
             text: 'Capture'
+            on_press: mainwidget.capture(camera)
 ''')
 
 
 class CameraView(FloatLayout):
 
-    def build_config(self):
-        pass
     def line_select(self):
         pass
     def light_select(self):
         pass
     def open_config(self):
         pass
+    def capture(self, cam):
+        CamApp.screengrab(CamApp,cam, numImage=2)
 
 
 
@@ -58,4 +62,5 @@ class CameraView(FloatLayout):
 class GUI(App):
 
     def build(self):
+        Window.fullscreen = False
         return CameraView()

@@ -1,6 +1,4 @@
-import _thread
 import sys
-from concurrent.futures import thread
 
 from ui.view.gui import GUI
 

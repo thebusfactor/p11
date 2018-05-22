@@ -10,10 +10,10 @@ import time
 class CamApp(App):
 
     # Function to take a screenshot
-    def screengrab(self, cam):
+    def screengrab(self, cam, numImage):
         #cam.play = False
         #outname = self.fileprefix+'_%(counter)04d.png'
-        for i in range(5):
+        for i in range(numImage):
             outname = "image{}.png".format(i)
             Window.screenshot(name=outname)
             cam.play = True

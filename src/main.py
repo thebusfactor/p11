@@ -1,11 +1,13 @@
 import sys
-
+import time
 from ui.view import tray
 from ui.view.gui import GUI
 
 
 def main(argv):
-    tray.start()
+    ##time.sleep(2)
+    ##tray.start()
+    GUI().run()
     pass
 
 

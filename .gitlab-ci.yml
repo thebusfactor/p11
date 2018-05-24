@@ -1,4 +1,4 @@
 test:
   script:
     - pip install -r requirements-windows.txt
-    main.py
+    - src/main.py

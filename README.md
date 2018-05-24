@@ -18,3 +18,8 @@ run install os shell script
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Contributing
+
+all contributions should follow the pep 8 style guide
+https://www.python.org/dev/peps/pep-0008/

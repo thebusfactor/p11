@@ -1,2 +1,3 @@
-before_script:
+test:
+  script:
     - pip install -r requirements-windows.txt

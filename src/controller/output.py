@@ -63,13 +63,13 @@ def output_image_object(filename, obj):
         pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL) #highest_protocol = -1
 
 def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
-    vidcap = cv2.VideoCapture(camerain) #change to "filename.mp4/avi" for output stills from video
+    #vidcap = cv2.VideoCapture(camerain) #change to "filename.mp4/avi" for output stills from video
 
     #for i in range(no_of_images):
-    while True:
+    #while True:
 
-        success, image = vidcap.read()
-        #crop = cv2.imread("/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/bus2.png", flags=cv2.IMREAD_COLOR)
+        #success, image = vidcap.read()
+        image = cv2.imread("/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/bus5.png", flags=cv2.IMREAD_COLOR)
         kernel_open = numpy.ones((5, 5))
         kernel_close = numpy.ones((20, 20))
 
@@ -89,39 +89,32 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
             #edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
             #res, yellow_mask = Image.detect_yellow_and_mask_image(image)
 
-            image = cv2.resize(image, (1280, 720))
+            #image = cv2.resize(image, (1280, 720))
             imgHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
             mask = cv2.inRange(imgHSV, lower_bound, upper_bound)
 
-            res = cv2.bitwise_and(image, image, mask=mask)
+            #res = cv2.bitwise_and(image, image, mask=mask)
 
 
 
             mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
             maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
 
-            maskfinal = maskclose
-            _, conts, _= cv2.findContours(maskfinal.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-            cv2.drawContours(image, conts, -1, (255, 0, 0), 3)
 
-            for i in range(len(conts)):
-                x, y, w, h = cv2.boundingRect(conts[i])
-                cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
-
-            #cv2.imshow("image", image)
-            #cv2.imshow("grayscale mask", grayscale_image)
-            #cv2.imshow("edge mask", edge_mask_image)
-            # cv2.imshow("mask", mask)
+            # cv2.imshow("grayscale mask", grayscale_image)
+            # cv2.imshow("edge mask", edge_mask_image)
+            #cv2.imshow("mask", mask)
             # cv2.imshow("yellow mask", yellow_mask)
-
             #cv2.imshow("maskclose", maskclose)
             #cv2.imshow("maskopen", mask_open)
+
+
             cv2.imshow("mask", mask)
-            z = cv2.countNonZero(mask)
+            z = cv2.countNonZero(maskclose)
             print(z)
 
 
-            cv2.waitKey(10)
+            cv2.waitKey(0)
             #cv2.destroyAllWindows()
             # cv2.imwrite('frame%d.jpg' %i, edge_detection_image)
             # cv2.imwrite('frame_gray_%d.jpg' % i, grayscale_image)
@@ -130,8 +123,8 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
 
         #print('Read a new frame: '+ str(success) + "\n")
 
-    vidcap.release()
-    cv2.destroyAllWindows()
+    #vidcap.release()
+    #cv2.destroyAllWindows()
 
 def output_test():
     vidcap = cv2.VideoCapture(0)
@@ -149,7 +142,32 @@ def output_test():
         count += 1
         time.sleep(1)
 
+def establishBaseline(no_of_images, colours):
+    for i in range(no_of_images):
+        for j in range(colours):
+            image = cv2.imread('/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/emptyInt/emptyInt%d.png' % i,
+                               flags=cv2.IMREAD_COLOR)
+            # get bounds of colour values
+
+            ## get key which is colour name, and value which is tuple of numpy arrays
+
+            lb = dict[z]
+            ub = dict[z]
+            mask = apply_masks(image, numpy.array([0, 100, 140]), numpy.array([40, 255, 255]))
+            z = cv2.countNonZero(mask)
 
 
 
-#output_specific_number_of_images(1)
+def apply_masks(image, l_bound, u_bound):
+    kernel_open = numpy.ones((5, 5))
+    kernel_close = numpy.ones((20, 20))
+
+    lower_bound = l_bound
+    upper_bound = u_bound
+    imgHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(imgHSV, lower_bound, upper_bound)
+    mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
+    maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
+    return maskclose
+
+output_specific_number_of_images(1)

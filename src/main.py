@@ -1,6 +1,4 @@
 import sys
-import time
-from ui.view import tray
 from ui.view.gui import GUI
 
 

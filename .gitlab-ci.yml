@@ -1,3 +1,7 @@
 test:
   script:
-    - pip install -r requirements-windows.txt
+     - sh python -m pip install virtualenv
+     - sh python -m virtualenv venv
+     - sh source venv/Scripts/activate
+     - sh pip install -r requirements-windows.txt
+     - sh python src/test.py

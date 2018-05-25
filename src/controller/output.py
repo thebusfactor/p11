@@ -80,7 +80,7 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
             #cv2.namedWindow("test", cv2.WINDOW_NORMAL)
             #cv2.resizeWindow("test", 1920, 1080)
             #cv2.imshow("test", crop)
-            # (x, y, w, h) = cv2.selectROI("gang", damn)
+            # (x, y, w, h) = cv2.selectROI("testROI", damn)
             # pass in coords
             #image = crop[y:y + h, x:x + w]  # both opencv and numpy are "row-major", so y goes first
             #print("VIDEO CAPTURE IS OPENED")
@@ -100,6 +100,13 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
             mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
             maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
 
+            maskfinal = maskclose
+            _, conts, _ = cv2.findContours(maskfinal.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+            cv2.drawContours(image, conts, -1, (255, 0, 0), 3)
+
+            for i in range(len(conts)):
+                x, y, w, h = cv2.boundingRect(conts[i])
+                cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
             # cv2.imshow("grayscale mask", grayscale_image)
             # cv2.imshow("edge mask", edge_mask_image)
@@ -150,6 +157,7 @@ def establishBaseline(no_of_images, colours):
             # get bounds of colour values
 
             ## get key which is colour name, and value which is tuple of numpy arrays
+
 
             lb = dict[z]
             ub = dict[z]

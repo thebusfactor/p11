@@ -40,6 +40,7 @@ def reset_config():
     """
         resets the config file
     """
+    print("reseting config")
     config.set(VALID, "value", "False")
     _set(LIGHT_BOX, DoublePoint((None, None),(None, None)))
     _set(INTERSECTION_LINE, DoublePoint((None, None),(None, None)))

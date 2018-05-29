@@ -22,17 +22,31 @@ Builder.load_string('''
 
 class CameraView(FloatLayout):
 
-    def line_select(self):
-        pass
-    def light_select(self):
-        pass
-    def open_config(self):
-        pass
+    """
+        CameraView displays and controls the camera output screen on the user interface.
+        Contains controls to use buttons and select line/light bounding boxes on screen.
+
+    """
+
     def capture(self):
+        """
+            Method to capture the image currently displayed in the camera input pane.
+        :return:
+        """
+
         camera = self.ids['camera']
         self.screengrab(camera, numImage=1)
 
+    ##TODO: this method doesn't currently work.
     def screengrab(self, cam, numImage):
+        """
+            Method to capture a number of images from the camera imput and store these images
+            in a specified file.
+        :param cam:
+        :param numImage:
+        :return:
+        """
+
         # cam.play = False
         # outname = self.fileprefix+'_%(counter)04d.png'
         for i in range(numImage):
@@ -48,30 +62,31 @@ class CameraView(FloatLayout):
     line = False
     rectangle = False
 
-    '''
-    Resets all 4 coordinates
-    '''
-
     def reset_coordinates(self):
+        '''
+            Resets all 4 coordinates
+        '''
+
         self.x1 = -1
         self.y1 = -1
         self.x2 = -1
         self.y2 = -1
 
-    '''
-    Sets draw tool to line and resets all coordinates
-    '''
-
     def set_line(self):
+        '''
+            Sets draw tool to line and resets all coordinates
+        '''
+
         self.line = True
         self.rectangle = False
         self.reset_coordinates()
 
-    '''
-    Sets draw tool to rectangle and resets all coordinates
-    '''
 
     def set_rectangle(self):
+        '''
+            Sets draw tool to rectangle and resets all coordinates
+        '''
+
         self.rectangle = True
         self.line = False
         self.reset_coordinates()
@@ -81,6 +96,12 @@ class CameraView(FloatLayout):
         self.rectangle = False
 
     def on_touch_down(self, touch):
+        """
+            When the user selects a point on the screen this method detects the selection points
+            and draws the appropriate object depending on the button selected.
+        :param touch:
+        :return:
+        """
 
         print("1:")
         print(self.canvas.children)
@@ -100,18 +121,18 @@ class CameraView(FloatLayout):
 
                 if (self.line):
                     self.draw_line(touch)
-
-                if(self.rectangle):
+                elif(self.rectangle):
                     # Add a rectangle
                     self.draw_rectangle()
 
+                #reset the tool so the user can only draw one object at a time.
                 self.reset_tool()
 
-    '''
-    Draws line based on current coordinates
-    '''
-
     def draw_line(self, touch):
+        '''
+            Draws line based on current coordinates
+        '''
+
         Color(1., 0, 0)
         touch.ud["line"] = Line(points=[self.x1, self.y1, self.x2, self.y2], width=2)
         lineCoords = [(self.x1, self.y1), (self.x2, self.y2)]
@@ -146,11 +167,10 @@ class CameraView(FloatLayout):
         touch.ud["line"] = Line(points=[x3, y3, x4, y4], width=2)
         config.set_line(DoublePoint((x3,y3),(x4,y4)))
 
-    '''
-    Draws rectangle based on current coordinates
-    '''
-
     def draw_rectangle(self):
+        '''
+            Draws rectangle based on current coordinates
+        '''
 
         width = abs(self.x2 - self.x1)
         height = abs(self.y2 - self.y1)
@@ -169,27 +189,27 @@ class CameraView(FloatLayout):
             self.pos=(self.x2, self.y2)
 
         Rectangle(pos = self.pos, size = (width,height))
-
         config.set_box(DoublePoint((pos[0],pos[1]),(pos[0]+width,pos[1]+height)))
 
-    '''
-    Returns the 4 placed line coordinates, and the other two 4 coordinates of the second line
-    '''
-
     def get_line_coordinates(self):
+        '''
+            Returns the 4 placed line coordinates, and the other two 4 coordinates of the second line
+        '''
+
         if (self.line):
             return self.x1, self.y1, self.x2, self.y2
 
-    '''
-    Deletes specified object (line or 
-    '''
-
     def delete_object(self):
+        '''
+            Deletes specified object (line or
+        '''
+
         # TODO later
-        return None
+        print("Trying to delete")
+        config.reset_config()
 
     def on_motion(self, etype, motionevent):
-        # will receive all motion events.
+        #TODO: will receive all motion events.
         pass
 
     def on_touch_move(self, touch):

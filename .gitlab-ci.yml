@@ -4,7 +4,8 @@ stages:
   
 install:
     stage: install
-    script: pip install -r requirements.txt
+    script:
+      - check/install.sh
     tags:
     - shell
     

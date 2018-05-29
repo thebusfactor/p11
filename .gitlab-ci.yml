@@ -1,7 +1,14 @@
+stages:
+  - install
+  - test
+  
+install:
+    stage: install
+    script: pip install -r requirements.txr
+    tags:
+    - shell
+    
 test:
+  stage: test
   script:
-     - sh python -m pip install virtualenv
-     - sh python -m virtualenv venv
-     - sh source venv/Scripts/activate
-     - sh pip install -r requirements-windows.txt
-     - sh python src/test.py
+    - check/runUnitTests.sh

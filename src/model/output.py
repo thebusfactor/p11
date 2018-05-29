@@ -7,6 +7,14 @@ import numpy
 
 from model.image import Image
 
+colours = {'Yellow': (numpy.array([0, 100, 140]), numpy.array([40, 255, 255])), # done
+           'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])), # done
+           'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])), # done
+           'White': (numpy.array([200, 200, 200]), numpy.array([255, 255, 255])), # done
+           'Blue': (numpy.array([0, 100, 140]), numpy.array([40, 255, 255])), # doing
+           'Gray': (numpy.array([0, 100, 140]), numpy.array([40, 255, 255])), # doing
+           'Pink' : (numpy.array([150, 50, 140]), numpy.array([255, 160, 230]))} # done
+
 
 def output_video():
     cap = cv2.VideoCapture(0)
@@ -58,9 +66,11 @@ def output_snapshot_every_second():
     cap.release()
     print ("Done!")
 
+
 def output_image_object(filename, obj):
     with open(filename, 'wb') as output:
         pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL) #highest_protocol = -1
+
 
 def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
     #vidcap = cv2.VideoCapture(camerain) #change to "filename.mp4/avi" for output stills from video
@@ -69,7 +79,8 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
     #while True:
 
         #success, image = vidcap.read()
-        image = cv2.imread("/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/bus5.png", flags=cv2.IMREAD_COLOR)
+        file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
+        image = cv2.imread(file_path+'/bus/bus5.png', flags=cv2.IMREAD_COLOR)
         kernel_open = numpy.ones((5, 5))
         kernel_close = numpy.ones((20, 20))
 
@@ -133,6 +144,7 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
     #vidcap.release()
     #cv2.destroyAllWindows()
 
+
 def output_test():
     vidcap = cv2.VideoCapture(0)
     count = 0
@@ -149,24 +161,48 @@ def output_test():
         count += 1
         time.sleep(1)
 
-def establishBaseline(no_of_images, colours):
+
+def check_image():
+    #run tests on image and return if true
+    #TODO
+    #establish baselines, sort out generic colour masks
+    #make sure there is 90% detection between bus and none bus
+
+    #Once detected make sure doesn't detect again
+
+    #Edge detection?
+    averages = establish_baseline(32)
+    avg = [0] * length
+    for i in range(len(averages)):
+        avg[i] = averages[i]/32
+        print(avg[i])
+
+
+def establish_baseline(no_of_images):
+    length = len(colours)
+    avg = [0] * length
     for i in range(no_of_images):
-        for j in range(colours):
-            image = cv2.imread('/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/emptyInt/emptyInt%d.png' % i,
+        j = 0
+        for key in colours:
+            image = cv2.imread('Bus-Factor/resources/emptyInt/emptyInt%d.png' % i,
                                flags=cv2.IMREAD_COLOR)
-            # get bounds of colour values
-
-            ## get key which is colour name, and value which is tuple of numpy arrays
-
-
-            lb = dict[z]
-            ub = dict[z]
-            mask = apply_masks(image, numpy.array([0, 100, 140]), numpy.array([40, 255, 255]))
+            ## get name
+            x=200, y=200, w=400, h=400
+            image = image[y:y + h, x:x + w]
+            cv2.imshow("image", image)
+            cv2.waitKey(0)
+            l_b = colours[key][0]
+            u_b = colours[key][1]
+            mask = apply_masks(image, l_b, u_b)
             z = cv2.countNonZero(mask)
-
+            avg[j] = avg[j] + z
+            j += 1
+    return avg
 
 
 def apply_masks(image, l_bound, u_bound):
+    #need to test whether you need smooth or not
+
     kernel_open = numpy.ones((5, 5))
     kernel_close = numpy.ones((20, 20))
 
@@ -178,4 +214,4 @@ def apply_masks(image, l_bound, u_bound):
     maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
     return maskclose
 
-output_specific_number_of_images(1)
+#output_specific_number_of_images(1)

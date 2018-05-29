@@ -1,6 +1,6 @@
 import sys
 
-from controller.output import *
+from model.output import *
 #from ui.sample import Gui
 
 

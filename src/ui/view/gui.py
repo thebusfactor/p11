@@ -24,7 +24,7 @@ Builder.load_string('''
         size_hint: (1,1)
         Button:
             text: 'Clear'
-            one_press: cameraView.delete_object()
+            on_press: cameraView.delete_object()
         Button:
             text: 'Set Lights'
             on_press: cameraView.set_rectangle()

@@ -22,6 +22,10 @@ Builder.load_string('''
 
 class CameraView(FloatLayout):
 
+    intersection_line_a = None
+    intersection_line_b = None
+    intersection_light = None
+
     """
         CameraView displays and controls the camera output screen on the user interface.
         Contains controls to use buttons and select line/light bounding boxes on screen.
@@ -80,6 +84,16 @@ class CameraView(FloatLayout):
         self.x2 = -1
         self.y2 = -1
 
+    def clear_line(self):
+        for child in self.canvas.children[::-1]:
+            if isinstance(child, kivy.graphics.vertex_instructions.Line):
+                self.canvas.remove(child)
+
+    def clear_lightbox(self):
+        for child in self.canvas.children[::-1]:
+            if isinstance(child, kivy.graphics.vertex_instructions.Rectangle):
+                self.canvas.remove(child)
+
     def set_line(self):
         '''
             Sets draw tool to line and resets all coordinates
@@ -87,6 +101,7 @@ class CameraView(FloatLayout):
 
         self.line = True
         self.rectangle = False
+        self.clear_line()
         self.reset_coordinates()
 
 
@@ -97,6 +112,7 @@ class CameraView(FloatLayout):
 
         self.rectangle = True
         self.line = False
+        self.clear_lightbox()
         self.reset_coordinates()
 
 
@@ -145,13 +161,13 @@ class CameraView(FloatLayout):
         '''
             Draws line based on current coordinates
         '''
-        Color(1., 0, 0)
-        touch.ud["line"] = Line(points=[self.x1, self.y1, self.x2, self.y2], width=2)
+        self.set_color((1., 0, 0))
+        Line(points=[self.x1, self.y1, self.x2, self.y2], width=2)
         self.set_color((1, 0, 0))
         lineCoords = [(self.x1, self.y1), (self.x2, self.y2)]
 
         gradient = (self.y2 - self.y1) / (self.x2 - self.x1)
-        constant = self.y1 / (gradient * self.x1)
+        constant = self.y1 / ((gradient if gradient != 0 else 1) * self.x1)
 
         downBy = 400
 
@@ -166,7 +182,7 @@ class CameraView(FloatLayout):
         print("x2={}, y2={}".format(self.x2, self.y2))
 
         self.set_color((0, 1, 0))
-        # touch.ud["line"] = Line(points=[self.x1, y3, self.x2, y4], width=4)
+        ##Line(points=[self.x1, y3, self.x2, y4], width=4)
 
         # ensure that shape is still within screen bounds
         if (y3 < 0):
@@ -177,7 +193,7 @@ class CameraView(FloatLayout):
             x3 = 0
         if (x4 < 0):
             x4 = 0
-        ##touch.ud["line"] = Line(points=[x3, y3, x4, y4], width=2)
+        Line(points=[x3, y3, x4, y4], width=2)
         config.set_line(DoublePoint((x3,y3),(x4,y4)))
 
     def draw_rectangle(self):
@@ -201,7 +217,7 @@ class CameraView(FloatLayout):
         elif ((self.x1 - self.x2) > 0):
             self.pos=(self.x2, self.y2)
 
-        Rectangle(pos = self.pos, size = (width,height))
+        self.intersection_light = Rectangle(pos = self.pos, size = (width,height))
         config.set_box(DoublePoint((pos[0],pos[1]),(pos[0]+width,pos[1]+height)))
 
     def get_line_coordinates(self):
@@ -217,13 +233,11 @@ class CameraView(FloatLayout):
             Deletes specified object (line or
         '''
 
-        # TODO later
         print("Trying to delete")
         config.reset_config()
+        self.clear_line()
+        self.clear_lightbox()
 
-    def on_motion(self, etype, motionevent):
-        #TODO: will receive all motion events.
-        pass
 
     def on_touch_move(self, touch):
         print("HERE")

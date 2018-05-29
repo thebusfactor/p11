@@ -3,9 +3,8 @@ from ui.view.gui import GUI
 
 
 def main(argv):
-    ##time.sleep(2)
-    ##tray.start()
     GUI().run()
+    GUI().stop()
     pass
 
 

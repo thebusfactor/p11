@@ -1,7 +1,6 @@
 from kivy.app import App
 from kivy.lang import Builder
 
-
 from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
@@ -25,6 +24,7 @@ Builder.load_string('''
         size_hint: (1,1)
         Button:
             text: 'Clear'
+            one_press: cameraView.delete_object()
         Button:
             text: 'Set Lights'
             on_press: cameraView.set_rectangle()

@@ -8,17 +8,7 @@ from kivy.graphics import *
 from model import config
 from util.double_point import DoublePoint
 
-Builder.load_string('''
-<CameraView>:
-    id : mainwidget
-    orientation: 'vertical'
-
-    Camera:
-        id: camera
-        resolution: (1920,1080)
-        play: True 
-        pos: 0,0
-''')
+Builder.load_file('ui/view/cameraview.kv')
 
 class CameraView(FloatLayout):
 
@@ -51,18 +41,14 @@ class CameraView(FloatLayout):
         :return:
         """
 
-        # cam.play = False
-        # outname = self.fileprefix+'_%(counter)04d.png'
         for i in range(numImage):
             outname = "image{}.png".format(i)
             Window.screenshot(name=outname)
             cam.play = True
 
-
     #################################################
     ##Intersection & Light Selection Methods Follow##
     #################################################
-
 
     TRANSPARENCY = 0.2
 
@@ -132,10 +118,6 @@ class CameraView(FloatLayout):
         :return:
         """
 
-        print("1:")
-        print(self.canvas.children)
-        print(touch)
-
         with self.canvas:
 
             if (self.x1 != -1 and self.y1 != -1 and self.x2 != -1 and self.y2 != -1):
@@ -154,13 +136,13 @@ class CameraView(FloatLayout):
                     # Add a rectangle
                     self.draw_rectangle()
 
-                #reset the tool so the user can only draw one object at a time.
                 self.reset_tool()
 
     def draw_line(self, touch):
         '''
             Draws line based on current coordinates
         '''
+
         self.set_color((1., 0, 0))
         Line(points=[self.x1, self.y1, self.x2, self.y2], width=2)
         self.set_color((1, 0, 0))
@@ -176,13 +158,8 @@ class CameraView(FloatLayout):
 
         y4 = self.y2 - downBy
         x4 = self.x2 - (self.x2 - self.x1)
-        # (y4 - constant)/gradient
-
-        print("x1={}, y1={}".format(self.x1, self.y1))
-        print("x2={}, y2={}".format(self.x2, self.y2))
 
         self.set_color((0, 1, 0))
-        ##Line(points=[self.x1, y3, self.x2, y4], width=4)
 
         # ensure that shape is still within screen bounds
         if (y3 < 0):
@@ -230,17 +207,16 @@ class CameraView(FloatLayout):
 
     def delete_object(self):
         '''
-            Deletes specified object (line or
+            Deletes objects drawn on the camera pane.
         '''
 
-        print("Trying to delete")
         config.reset_config()
         self.clear_line()
         self.clear_lightbox()
 
 
     def on_touch_move(self, touch):
-        print("HERE")
+        pass
 
     def on_touch_up(self, touch):
-        print("RELEASED!", touch)
+        pass

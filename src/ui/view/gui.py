@@ -8,33 +8,7 @@ from kivy.uix.widget import Widget
 from src.model import config
 from ui.view.cameraview import CameraView
 
-Builder.load_string('''
-<MainView>:
-    id : mainwidget
-    orientation: 'vertical'
-
-    CameraView:
-        id: cameraView
-
-    GridLayout:
-        rows: 2
-        row_force_default: True
-        row_default_height: 20
-        cols: 4
-        size_hint: (1,1)
-        Button:
-            text: 'Clear'
-            on_press: cameraView.delete_object()
-        Button:
-            text: 'Set Lights'
-            on_press: cameraView.set_rectangle()
-        Button:
-            text: 'Set Line'
-            on_press: cameraView.set_line()
-        Button:
-            text: 'Capture'
-            on_press: cameraView.capture()
-''')
+Builder.load_file('ui/view/gui.kv')
 
 
 class MainView(FloatLayout):
@@ -45,6 +19,4 @@ class GUI(App):
 
     def build(self):
         Window.fullscreen = False
-        ##config setup here
-        config.reset_config()
         return MainView()

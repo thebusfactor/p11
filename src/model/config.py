@@ -5,70 +5,110 @@ from util.double_point import DoublePoint
 config = cp.ConfigParser()
 
 PATH = "config.ini"
-BOX = "box"
-LINE = "line"
+VALID = "validConfig"
+LIGHT_BOX = "box"
+INTERSECTION_LINE = "line"
+INTERSECTION_LINE_PARALLEL = "line parallel"
 
 X1 = "x1"
 X2 = "x2"
 Y1 = "y1"
 Y2 = "y2"
 
-config.add_section(BOX)
-config.add_section(LINE)
+config.add_section(VALID)
+config.add_section(LIGHT_BOX)
+config.add_section(INTERSECTION_LINE)
+config.add_section(INTERSECTION_LINE_PARALLEL)
 
 
-def set_box(box: DoublePoint):
+def check_valid():
+    """
+        checks if the config is valid
+
+        Returns
+        -------
+        valid: Boolean
+            if the config file is valid or not
+    """
+    is_valid = ("True" if ((config.get(LIGHT_BOX) is not None) and (
+                config.get(INTERSECTION_LINE) is not None)) else "False")
+    config.set(VALID, "value", is_valid)
+    return is_valid
+
+
+def reset_config():
+    """
+        resets the config file
+    """
+    config.set(VALID, "value", "False")
+    _set(LIGHT_BOX, DoublePoint((None, None),(None, None)))
+    _set(INTERSECTION_LINE, DoublePoint((None, None),(None, None)))
+    _write()
+
+
+def get_valid():
+    """
+        gets the valid value from the config file
+
+        Returns
+        -------
+        valid: Boolean
+            represents if the config is valid or not
+    """
+    return config.getboolean(VALID)
+
+
+def set_box(light_box: DoublePoint):
     """
         writes a double point as a box in config file
         if config files doesn't exist, the config file is created
 
         Parameters
         ----------
-        box : DoublePoint
+        light_box : DoublePoint
             the points that make up the box
     """
-    _set(BOX, box)
+    _set(LIGHT_BOX, light_box)
     _write()
 
 
 def get_box():
     """
-        gets the box values from the config file
+        gets the light box values from the config file
 
         Returns
         -------
-        DoublePoint
-            two sets of tuples in DoublePoint Object representing the two point to make a box
+        light_box: DoublePoint
+            two sets of tuples in DoublePoint object representing the two points the light box
+    """
+    return _get(LIGHT_BOX)
+
+
+def get_line():
+    """
+        gets the intersection line values from the config file
+
+        Returns
+        -------
+        intersection_line: DoublePoint
+            two sets of tuples in DoublePoint object representing the two points of the intersection line
 
     """
-    return _get(BOX)
+    return _get(INTERSECTION_LINE)
 
 
-def set_line(line: DoublePoint):
+def set_line(intersection_line: DoublePoint):
     """
         writes a double point as a line in config file
         if config files doesn't exist, the config file is created
 
         Parameters
         ----------
-        line : DoublePoint
-            the points that make up the line
+        intersection_line : DoublePoint
+            the points that make up the intersection line
     """
-    _set(LINE, line)
+    _set(INTERSECTION_LINE, intersection_line)
     _write()
-
-
-def get_line():
-    """
-        gets the line values from the config file
-
-        Returns
-        -------
-        DoublePoint
-            two sets of tuples in DoublePoint Object representing the two point to make a line
-
-    """
-    return _get(LINE)
 
 
 def _get(name: str):
@@ -80,7 +120,6 @@ def _get(name: str):
 
 def _set(name: str, double_point: DoublePoint):
     config.set(name, X1, str(double_point.point1[0]))
-
     config.set(name, X2, str(double_point.point1[1]))
     config.set(name, Y1, str(double_point.point2[0]))
     config.set(name, Y2, str(double_point.point2[1]))

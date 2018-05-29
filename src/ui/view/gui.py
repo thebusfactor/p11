@@ -1,30 +1,21 @@
-import sys
-import threading
-
 from kivy.app import App
-from kivy.core.image import Image
 from kivy.lang import Builder
-from kivy.uix.floatlayout import FloatLayout
-
-from kivy.config import Config
-#Config.set('kivy', 'window_icon', 'img/icon.ico')
-
-from ui.view.myApp import CamApp
 
 
 from kivy.core.window import Window
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.widget import Widget
 
+from model import config
+from ui.view.cameraview import CameraView
 
 Builder.load_string('''
-<CameraView>:
+<MainView>:
     id : mainwidget
     orientation: 'vertical'
 
-    Camera:
-        id: camera
-        resolution: (1920,1080)
-        play: True 
-        pos: 0,0
+    CameraView:
+        id: cameraView
 
     GridLayout:
         rows: 2
@@ -36,23 +27,18 @@ Builder.load_string('''
             text: 'Clear'
         Button:
             text: 'Set Lights'
+            on_press: cameraView.set_rectangle()
         Button:
             text: 'Set Line'
+            on_press: cameraView.set_line()
         Button:
             text: 'Capture'
-            on_press: mainwidget.capture(camera)
+            on_press: cameraView.capture()
 ''')
 
-class CameraView(FloatLayout):
 
-    def line_select(self):
-        pass
-    def light_select(self):
-        pass
-    def open_config(self):
-        pass
-    def capture(self, cam):
-        CamApp.screengrab(CamApp,cam, numImage=2)
+class MainView(FloatLayout):
+    pass
 
 
 class GUI(App):
@@ -60,4 +46,5 @@ class GUI(App):
     def build(self):
         Window.fullscreen = False
         ##config setup here
-        return CameraView()
+        config.reset_config()
+        return MainView()

@@ -1,5 +1,4 @@
 import sys
-import time
 from ui.view.gui import GUI
 
 

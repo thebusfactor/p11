@@ -5,7 +5,7 @@ from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
 
-from model import config
+from src.model import config
 from ui.view.cameraview import CameraView
 
 Builder.load_string('''

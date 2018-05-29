@@ -3,7 +3,7 @@ import cv2
 import time
 import pickle
 
-from model.image import Image
+from src.model.image import Image
 
 
 def output_video():

@@ -1,6 +1,6 @@
 import configparser as cp
 
-from util.double_point import DoublePoint
+from src.util.double_point import DoublePoint
 
 config = cp.ConfigParser()
 
@@ -30,8 +30,8 @@ def check_valid():
         valid: Boolean
             if the config file is valid or not
     """
-    is_valid = ("True" if ((config.get(LIGHT_BOX) is not None) and (
-                config.get(INTERSECTION_LINE) is not None)) else "False")
+    is_valid = ("True" if ((get_box() is not None) and (
+                get_line() is not None)) else "False")
     config.set(VALID, "value", is_valid)
     return is_valid
 
@@ -113,16 +113,15 @@ def set_line(intersection_line: DoublePoint):
 
 
 def _get(name: str):
-    double_point: DoublePoint
-    double_point.point1 = (float(config.get(name, X1)), float(config.get(name, Y1)))
-    double_point.point2 = (float(config.get(name, X2)), float(config.get(name, Y2)))
-    return double_point
+    point1 = (float(config.get(name, X1)), float(config.get(name, Y1)))
+    point2 = (float(config.get(name, X2)), float(config.get(name, Y2)))
+    return DoublePoint(point1, point2)
 
 
 def _set(name: str, double_point: DoublePoint):
     config.set(name, X1, str(double_point.point1[0]))
-    config.set(name, X2, str(double_point.point1[1]))
-    config.set(name, Y1, str(double_point.point2[0]))
+    config.set(name, Y1, str(double_point.point1[1]))
+    config.set(name, X2, str(double_point.point2[0]))
     config.set(name, Y2, str(double_point.point2[1]))
     return double_point
 

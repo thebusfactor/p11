@@ -16,11 +16,11 @@ class Image:
     def convert_image_to_edge_mask(frame):
         v = numpy.median(frame)
         sigma = 0.33
-        # TODO research function
-        blurred = cv2.GaussianBlur(frame, (3, 3), 0)
-
-        lower = int(max(0, (1.0 - sigma) * v))
-        upper = int(min(255, (1.0 + sigma) * v))
+        # # TODO research function
+        # blurred = cv2.GaussianBlur(frame, (3, 3), 0)
+        #
+        # lower = int(max(0, (1.0 - sigma) * v))
+        # upper = int(min(255, (1.0 + sigma) * v))
         edged = cv2.Canny(blurred, lower, upper)
         return edged
 

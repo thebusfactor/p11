@@ -2,18 +2,15 @@ import math
 import cv2
 import time
 import pickle
-
 import numpy
-
 from model.image import Image
 
-colours = {'Yellow': (numpy.array([0, 100, 140]), numpy.array([40, 255, 255])), # done
-           'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])), # done
-           'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])), # done
-           'White': (numpy.array([200, 200, 200]), numpy.array([255, 255, 255])), # done
-           'Blue': (numpy.array([0, 100, 140]), numpy.array([40, 255, 255])), # doing
-           'Gray': (numpy.array([0, 100, 140]), numpy.array([40, 255, 255])), # doing
-           'Pink' : (numpy.array([150, 50, 140]), numpy.array([255, 160, 230]))} # done
+colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
+           'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
+           'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
+           'White': (numpy.array([0, 0, 70]), numpy.array([20, 10, 255])),
+           'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
+           'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
 
 
 def output_video():
@@ -171,26 +168,31 @@ def check_image():
     #Once detected make sure doesn't detect again
 
     #Edge detection?
-    averages = establish_baseline(32)
-    avg = [0] * length
+    averages = establish_baseline(31)
+    avg = [0] * 6
     for i in range(len(averages)):
-        avg[i] = averages[i]/32
+        avg[i] = averages[i]/33
         print(avg[i])
 
 
 def establish_baseline(no_of_images):
     length = len(colours)
     avg = [0] * length
+    file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
     for i in range(no_of_images):
         j = 0
+
+        image = cv2.imread(file_path + '/emptyInt/emptyInt%d.png' % i,
+                          flags=cv2.IMREAD_COLOR)
+        print(file_path + '/emptyInt/emptyInt%d.png' % i)
+        x = 200
+        y = 200
+        w = 400
+        h = 400
+        #image = crop[y:y + h, x:x + w]
+        cv2.imshow("image", image)
+        cv2.waitKey(0)
         for key in colours:
-            image = cv2.imread('Bus-Factor/resources/emptyInt/emptyInt%d.png' % i,
-                               flags=cv2.IMREAD_COLOR)
-            ## get name
-            x=200, y=200, w=400, h=400
-            image = image[y:y + h, x:x + w]
-            cv2.imshow("image", image)
-            cv2.waitKey(0)
             l_b = colours[key][0]
             u_b = colours[key][1]
             mask = apply_masks(image, l_b, u_b)
@@ -200,18 +202,54 @@ def establish_baseline(no_of_images):
     return avg
 
 
+def get_average_colour(path, colour):
+    file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
+    image = cv2.imread(file_path+path,flags=cv2.IMREAD_COLOR)
+    ## get name
+    #image = crop[y:y + h, x:x + w]
+    cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+    cv2.resizeWindow("test", 800, 640)
+    cv2.imshow("test", image)
+    cv2.waitKey(0)
+    l_b = colours[colour][0]
+    u_b = colours[colour][1]
+    print(l_b)
+    print(u_b)
+    mask = apply_masks(image, l_b, u_b)
+    cv2.imshow("test", mask)
+    cv2.waitKey(0)
+    z = cv2.countNonZero(mask)
+    print(z)
+    return z;
+
+
 def apply_masks(image, l_bound, u_bound):
     #need to test whether you need smooth or not
-
     kernel_open = numpy.ones((5, 5))
     kernel_close = numpy.ones((20, 20))
 
     lower_bound = l_bound
     upper_bound = u_bound
-    imgHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    mask = cv2.inRange(imgHSV, lower_bound, upper_bound)
+    img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(img_hsv, lower_bound, upper_bound)
     mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
-    maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
-    return maskclose
+    mask_close = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
+    #return mask
+    #return mask_close
+    return img_hsv
 
-#output_specific_number_of_images(1)
+
+
+#check_image()
+#'/bus/Pink/bus23Pink.png', 'Pink'
+#'/bus/Yellow/bus2.png', 'Yellow'
+#'/bus/White/bus32.png', 'White'
+#'/emptyInt/emptyInt4.png', 'Yellow'
+get_average_colour('/bus/White/bus32.png', 'White')
+
+# 3401.6666666666665
+# 1139.2727272727273
+# 1619.6363636363637
+# 0.0
+# 5663.272727272727
+# 27.90909090909091

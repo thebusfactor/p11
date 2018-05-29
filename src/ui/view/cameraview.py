@@ -40,6 +40,14 @@ class CameraView(FloatLayout):
             Window.screenshot(name=outname)
             cam.play = True
 
+
+    #################################################
+    ##Intersection & Light Selection Methods Follow##
+    #################################################
+
+
+    TRANSPARENCY = 0.2
+
     x1 = -1
     y1 = -1
     x2 = -1
@@ -75,6 +83,11 @@ class CameraView(FloatLayout):
         self.rectangle = True
         self.line = False
         self.reset_coordinates()
+
+
+    '''Set the Color to be used when drawing to the canvas, using the transparency constant'''
+    def set_color(self, rgb: tuple):
+        Color(rgb[0], rgb[1], rgb[2], self.TRANSPARENCY)
 
     def reset_tool(self):
         self.line = False
@@ -112,8 +125,8 @@ class CameraView(FloatLayout):
     '''
 
     def draw_line(self, touch):
-        Color(1., 0, 0)
-        touch.ud["line"] = Line(points=[self.x1, self.y1, self.x2, self.y2], width=2)
+        self.set_color((1, 0, 0))
+        ##touch.ud["line"] = Line(points=[self.x1, self.y1, self.x2, self.y2], width=2)
         lineCoords = [(self.x1, self.y1), (self.x2, self.y2)]
 
         gradient = (self.y2 - self.y1) / (self.x2 - self.x1)
@@ -131,7 +144,7 @@ class CameraView(FloatLayout):
         print("x1={}, y1={}".format(self.x1, self.y1))
         print("x2={}, y2={}".format(self.x2, self.y2))
 
-        Color(0, 1, 0)
+        self.set_color((0, 1, 0))
         # touch.ud["line"] = Line(points=[self.x1, y3, self.x2, y4], width=4)
 
         # ensure that shape is still within screen bounds
@@ -143,7 +156,7 @@ class CameraView(FloatLayout):
             x3 = 0
         if (x4 < 0):
             x4 = 0
-        touch.ud["line"] = Line(points=[x3, y3, x4, y4], width=2)
+        ##touch.ud["line"] = Line(points=[x3, y3, x4, y4], width=2)
         config.set_line(DoublePoint((x3,y3),(x4,y4)))
 
     '''
@@ -155,7 +168,7 @@ class CameraView(FloatLayout):
         width = abs(self.x2 - self.x1)
         height = abs(self.y2 - self.y1)
 
-        Color(1., 0, 0)
+        self.set_color((1., 0, 0))
 
         pos = (0,0)
 

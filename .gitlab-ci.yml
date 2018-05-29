@@ -4,7 +4,7 @@ stages:
   
 install:
     stage: install
-    script: pip install -r requirements.txr
+    script: pip install -r requirements.txt
     tags:
     - shell
     

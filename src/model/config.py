@@ -73,17 +73,17 @@ def get_line():
 
 def _get(name: str):
     double_point: DoublePoint
-    double_point.point1 = (config.get(name, X1), config.get(name, Y1))
-    double_point.point2 = (config.get(name, X2), config.get(name, Y2))
+    double_point.point1 = (float(config.get(name, X1)), float(config.get(name, Y1)))
+    double_point.point2 = (float(config.get(name, X2)), float(config.get(name, Y2)))
     return double_point
 
 
 def _set(name: str, double_point: DoublePoint):
-    config.set
-    config.set(name, X1, double_point.point1[0])
-    config.set(name, X2, double_point.point1[1])
-    config.set(name, Y1, double_point.point2[0])
-    config.set(name, Y2, double_point.point2[1])
+    config.set(name, X1, str(double_point.point1[0]))
+
+    config.set(name, X2, str(double_point.point1[1]))
+    config.set(name, Y1, str(double_point.point2[0]))
+    config.set(name, Y2, str(double_point.point2[1]))
     return double_point
 
 

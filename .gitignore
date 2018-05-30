@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/macos,linux,python,windows,pycharm
+# Created by https://www.gitignore.io/api/linux,macos,python,windows,pycharm
 
 ### Linux ###
 *~
@@ -51,8 +51,6 @@ Temporary Items
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
-.idea
-.idea/workspace.xml
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
@@ -232,4 +230,4 @@ $RECYCLE.BIN/
 *.lnk
 
 
-# End of https://www.gitignore.io/api/macos,linux,python,windows,pycharm
+# End of https://www.gitignore.io/api/linux,macos,python,windows,pycharm

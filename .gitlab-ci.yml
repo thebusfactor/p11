@@ -6,6 +6,6 @@ stages:
 test:
   stage: test
   script:
-    - check/runUnitTests.sh
+    - python -m unittest discover src/test/
   tags:
     - docker

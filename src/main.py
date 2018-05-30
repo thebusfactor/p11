@@ -1,12 +1,13 @@
 import sys
-
-from ui.sample import Gui
+from ui.view.gui import GUI
 
 
 def main(argv):
-    Gui()
+    GUI().run()
+    GUI().stop()
     pass
 
 
 if __name__ == "__main__":
     main(sys.argv)
+

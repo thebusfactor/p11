@@ -4,7 +4,4 @@ stages:
 test:
   stage: test
   script:
-    - pip install opencv-python
     - check/runUnitTests.sh
-   tags:
-    - shell

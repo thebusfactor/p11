@@ -1,15 +1,10 @@
 stages:
-  - install
   - test
-  
-install:
-    stage: install
-    script:
-      - pip install opencv-python
-    tags:
-    - shell
     
 test:
   stage: test
   script:
+    - pip install opencv-python
     - check/runUnitTests.sh
+   tags:
+    - shell

@@ -5,7 +5,6 @@ from PIL import Image
 from typing import Iterable
 
 
-
 def make_menu() -> Iterable[MenuItem]:
     from ui.view.gui import GUI
     yield MenuItem("Open GUI", lambda: GUI().run(), default=True, visible=True)

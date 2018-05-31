@@ -5,13 +5,13 @@ import pickle
 import numpy
 from model.image import Image
 
-colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
-           'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
-           'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
-           'White': (numpy.array([0, 0, 70]), numpy.array([20, 10, 255])),
-           'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
-           'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
-
+colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255]))}
+#,
+# 'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
+#            'Green': (numpy.array([36, 0, 0]), numpy.array([70, 255, 255])),
+#            'White': (numpy.array([0, 0, 70]), numpy.array([20, 10, 255])),
+#            'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
+#            'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))
 
 def output_video():
     cap = cv2.VideoCapture(0)
@@ -77,7 +77,7 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
 
         #success, image = vidcap.read()
         file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
-        image = cv2.imread(file_path+'/bus/bus5.png', flags=cv2.IMREAD_COLOR)
+        image = cv2.imread(file_path+'/bus/bus3.png', flags=cv2.IMREAD_COLOR)
         kernel_open = numpy.ones((5, 5))
         kernel_close = numpy.ones((20, 20))
 
@@ -93,8 +93,8 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
             #image = crop[y:y + h, x:x + w]  # both opencv and numpy are "row-major", so y goes first
             #print("VIDEO CAPTURE IS OPENED")
             #time.sleep(2)
-            #grayscale_image = Image.convert_image_to_grayscale(image)
-            #edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
+            grayscale_image = Image.convert_image_to_grayscale(image)
+            edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
             #res, yellow_mask = Image.detect_yellow_and_mask_image(image)
 
             #image = cv2.resize(image, (1280, 720))
@@ -109,24 +109,24 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
             maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
 
             maskfinal = maskclose
-            _, conts, _ = cv2.findContours(maskfinal.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-            cv2.drawContours(image, conts, -1, (255, 0, 0), 3)
+            # _, conts, _ = cv2.findContours(maskfinal.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+            # cv2.drawContours(image, conts, -1, (255, 0, 0), 3)
+            #
+            # for i in range(len(conts)):
+            #     x, y, w, h = cv2.boundingRect(conts[i])
+            #     cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
-            for i in range(len(conts)):
-                x, y, w, h = cv2.boundingRect(conts[i])
-                cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
-
-            # cv2.imshow("grayscale mask", grayscale_image)
-            # cv2.imshow("edge mask", edge_mask_image)
+            #cv2.imshow("grayscale mask", grayscale_image)
+            cv2.imshow("edge mask", edge_mask_image)
             #cv2.imshow("mask", mask)
             # cv2.imshow("yellow mask", yellow_mask)
             #cv2.imshow("maskclose", maskclose)
             #cv2.imshow("maskopen", mask_open)
 
 
-            cv2.imshow("mask", mask)
-            z = cv2.countNonZero(maskclose)
-            print(z)
+            #cv2.imshow("mask", mask)
+            #z = cv2.countNonZero(maskclose)
+            #print(z)
 
 
             cv2.waitKey(0)
@@ -168,11 +168,14 @@ def check_image():
     #Once detected make sure doesn't detect again
 
     #Edge detection?
-    averages = establish_baseline(31)
-    avg = [0] * 6
-    for i in range(len(averages)):
-        avg[i] = averages[i]/33
-        print(avg[i])
+    images = 31
+    averages = establish_baseline(33)
+    # avg = [0] * 6
+    #
+    # for i in range(len(averages)):
+    #     avg[i] = averages[i]/33
+    #     print(avg[i])
+    print(averages[0]/33)
 
 
 def establish_baseline(no_of_images):
@@ -182,16 +185,21 @@ def establish_baseline(no_of_images):
     for i in range(no_of_images):
         j = 0
 
-        image = cv2.imread(file_path + '/emptyInt/emptyInt%d.png' % i,
-                          flags=cv2.IMREAD_COLOR)
-        print(file_path + '/emptyInt/emptyInt%d.png' % i)
+        if(no_of_images == 31):
+            image = cv2.imread(file_path + '/emptyInt/emptyInt%d.png' % i,
+                               flags=cv2.IMREAD_COLOR)
+        else:
+            image = cv2.imread(file_path + '/bus/bus%d.png' % i,
+                               flags=cv2.IMREAD_COLOR)
+
+        #print(file_path + '/emptyInt/emptyInt%d.png' % i)
         x = 200
         y = 200
         w = 400
         h = 400
         #image = crop[y:y + h, x:x + w]
-        cv2.imshow("image", image)
-        cv2.waitKey(0)
+        # cv2.imshow("image", image)
+        # cv2.waitKey(0)
         for key in colours:
             l_b = colours[key][0]
             u_b = colours[key][1]
@@ -209,13 +217,14 @@ def get_average_colour(path, colour):
     #image = crop[y:y + h, x:x + w]
     cv2.namedWindow("test", cv2.WINDOW_NORMAL)
     cv2.resizeWindow("test", 800, 640)
-    cv2.imshow("test", image)
-    cv2.waitKey(0)
+    cv2.namedWindow("test1", cv2.WINDOW_NORMAL)
+    cv2.resizeWindow("test1", 800, 640)
     l_b = colours[colour][0]
     u_b = colours[colour][1]
     print(l_b)
     print(u_b)
     mask = apply_masks(image, l_b, u_b)
+    cv2.imshow("test1", image)
     cv2.imshow("test", mask)
     cv2.waitKey(0)
     z = cv2.countNonZero(mask)
@@ -224,28 +233,27 @@ def get_average_colour(path, colour):
 
 
 def apply_masks(image, l_bound, u_bound):
-    #need to test whether you need smooth or not
     kernel_open = numpy.ones((5, 5))
     kernel_close = numpy.ones((20, 20))
-
     lower_bound = l_bound
     upper_bound = u_bound
     img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     mask = cv2.inRange(img_hsv, lower_bound, upper_bound)
     mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
     mask_close = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
-    #return mask
-    #return mask_close
-    return img_hsv
+    return mask_close
 
 
+output_specific_number_of_images(1, 0, 200, 200, 400, 400)
 
 #check_image()
 #'/bus/Pink/bus23Pink.png', 'Pink'
 #'/bus/Yellow/bus2.png', 'Yellow'
 #'/bus/White/bus32.png', 'White'
 #'/emptyInt/emptyInt4.png', 'Yellow'
-get_average_colour('/bus/White/bus32.png', 'White')
+#'/bus/Green/bus26G.png', 'Green'
+#'/bus/Green/bus29.png', 'Green'
+#get_average_colour('/bus/Green/bus29.png', 'Green')
 
 # 3401.6666666666665
 # 1139.2727272727273

@@ -230,20 +230,6 @@ def get_average_colour(path, colour):
     return z
 
 
-def apply_masks(image, l_bound, u_bound):
-    #need to test whether you need smooth or not
-    kernel_open = numpy.ones((5, 5))
-    kernel_close = numpy.ones((20, 20))
-
-    lower_bound = l_bound
-    upper_bound = u_bound
-    img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    mask = cv2.inRange(img_hsv, lower_bound, upper_bound)
-    mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
-    mask_close = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
-    return mask
-    #return mask_close
-    #return img_hsv
 
 
 

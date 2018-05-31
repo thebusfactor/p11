@@ -3,7 +3,7 @@ import cv2
 import time
 import pickle
 import numpy
-from model.image import Image
+from src.model.image import Image
 
 colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
            'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
@@ -75,71 +75,71 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
     #for i in range(no_of_images):
     #while True:
 
-        #success, image = vidcap.read()
-        file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
-        image = cv2.imread(file_path+'/bus/bus5.png', flags=cv2.IMREAD_COLOR)
-        kernel_open = numpy.ones((5, 5))
-        kernel_close = numpy.ones((20, 20))
+    #success, image = vidcap.read()
+    file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
+    image = cv2.imread(file_path+'/bus/bus5.png', flags=cv2.IMREAD_COLOR)
+    kernel_open = numpy.ones((5, 5))
+    kernel_close = numpy.ones((20, 20))
 
-        lower_bound = numpy.array([0, 100, 140])
-        upper_bound = numpy.array([40, 255, 255])
+    lower_bound = numpy.array([0, 100, 140])
+    upper_bound = numpy.array([40, 255, 255])
 
-        if True:
-            #cv2.namedWindow("test", cv2.WINDOW_NORMAL)
-            #cv2.resizeWindow("test", 1920, 1080)
-            #cv2.imshow("test", crop)
-            # (x, y, w, h) = cv2.selectROI("testROI", damn)
-            # pass in coords
-            #image = crop[y:y + h, x:x + w]  # both opencv and numpy are "row-major", so y goes first
-            #print("VIDEO CAPTURE IS OPENED")
-            #time.sleep(2)
-            #grayscale_image = Image.convert_image_to_grayscale(image)
-            #edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
-            #res, yellow_mask = Image.detect_yellow_and_mask_image(image)
+    if True:
+        #cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+        #cv2.resizeWindow("test", 1920, 1080)
+        #cv2.imshow("test", crop)
+        # (x, y, w, h) = cv2.selectROI("testROI", damn)
+        # pass in coords
+        #image = crop[y:y + h, x:x + w]  # both opencv and numpy are "row-major", so y goes first
+        #print("VIDEO CAPTURE IS OPENED")
+        #time.sleep(2)
+        #grayscale_image = Image.convert_image_to_grayscale(image)
+        #edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
+        #res, yellow_mask = Image.detect_yellow_and_mask_image(image)
 
-            #image = cv2.resize(image, (1280, 720))
-            imgHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-            mask = cv2.inRange(imgHSV, lower_bound, upper_bound)
+        #image = cv2.resize(image, (1280, 720))
+        imgHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(imgHSV, lower_bound, upper_bound)
 
-            #res = cv2.bitwise_and(image, image, mask=mask)
-
-
-
-            mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
-            maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
-
-            maskfinal = maskclose
-            _, conts, _ = cv2.findContours(maskfinal.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-            cv2.drawContours(image, conts, -1, (255, 0, 0), 3)
-
-            for i in range(len(conts)):
-                x, y, w, h = cv2.boundingRect(conts[i])
-                cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
-
-            # cv2.imshow("grayscale mask", grayscale_image)
-            # cv2.imshow("edge mask", edge_mask_image)
-            #cv2.imshow("mask", mask)
-            # cv2.imshow("yellow mask", yellow_mask)
-            #cv2.imshow("maskclose", maskclose)
-            #cv2.imshow("maskopen", mask_open)
-
-
-            cv2.imshow("mask", mask)
-            z = cv2.countNonZero(maskclose)
-            print(z)
-
-
-            cv2.waitKey(0)
-            #cv2.destroyAllWindows()
-            # cv2.imwrite('frame%d.jpg' %i, edge_detection_image)
-            # cv2.imwrite('frame_gray_%d.jpg' % i, grayscale_image)
+        #res = cv2.bitwise_and(image, image, mask=mask)
 
 
 
-        #print('Read a new frame: '+ str(success) + "\n")
+        mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
+        maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
 
-    #vidcap.release()
-    #cv2.destroyAllWindows()
+        maskfinal = maskclose
+        _, conts, _ = cv2.findContours(maskfinal.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        cv2.drawContours(image, conts, -1, (255, 0, 0), 3)
+
+        for i in range(len(conts)):
+            x, y, w, h = cv2.boundingRect(conts[i])
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
+
+        # cv2.imshow("grayscale mask", grayscale_image)
+        # cv2.imshow("edge mask", edge_mask_image)
+        #cv2.imshow("mask", mask)
+        # cv2.imshow("yellow mask", yellow_mask)
+        #cv2.imshow("maskclose", maskclose)
+        #cv2.imshow("maskopen", mask_open)
+
+
+        cv2.imshow("mask", mask)
+        z = cv2.countNonZero(maskclose)
+        print(z)
+
+
+        cv2.waitKey(0)
+        #cv2.destroyAllWindows()
+        # cv2.imwrite('frame%d.jpg' %i, edge_detection_image)
+        # cv2.imwrite('frame_gray_%d.jpg' % i, grayscale_image)
+
+
+
+    #print('Read a new frame: '+ str(success) + "\n")
+
+#vidcap.release()
+#cv2.destroyAllWindows()
 
 
 def output_test():
@@ -178,12 +178,12 @@ def check_image():
 def establish_baseline(no_of_images):
     length = len(colours)
     avg = [0] * length
-    file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
+    file_path = '/Users/james/OneDrive/Documents/GitHub/Bus-Factor/resources'
     for i in range(no_of_images):
         j = 0
 
         image = cv2.imread(file_path + '/emptyInt/emptyInt%d.png' % i,
-                          flags=cv2.IMREAD_COLOR)
+                           flags=cv2.IMREAD_COLOR)
         print(file_path + '/emptyInt/emptyInt%d.png' % i)
         x = 200
         y = 200
@@ -192,18 +192,21 @@ def establish_baseline(no_of_images):
         #image = crop[y:y + h, x:x + w]
         cv2.imshow("image", image)
         cv2.waitKey(0)
-        for key in colours:
-            l_b = colours[key][0]
-            u_b = colours[key][1]
-            mask = apply_masks(image, l_b, u_b)
-            z = cv2.countNonZero(mask)
-            avg[j] = avg[j] + z
-            j += 1
+        # for key in colours:
+        #     l_b = colours[key][0]
+        #     u_b = colours[key][1]
+        #     mask = apply_masks(image, l_b, u_b)
+        #     z = cv2.countNonZero(mask)
+        #     avg[j] = avg[j] + z
+        #     j += 1
+        mask = apply_masks(image, colours["Yellow"][0], colours["Yellow"][1])
+        cv2.imshow("mask", mask)
+        cv2.waitKey(0)
     return avg
 
 
 def get_average_colour(path, colour):
-    file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
+    file_path = 'C:/Users/james/OneDrive/Documents/GitHub/Bus-Factor/resources'
     image = cv2.imread(file_path+path,flags=cv2.IMREAD_COLOR)
     ## get name
     #image = crop[y:y + h, x:x + w]
@@ -218,9 +221,13 @@ def get_average_colour(path, colour):
     mask = apply_masks(image, l_b, u_b)
     cv2.imshow("test", mask)
     cv2.waitKey(0)
+    cv2.imshow("test", image)
+    cv2.waitKey(0)
+    cv2.imshow("test", mask)
+    cv2.waitKey(0)
     z = cv2.countNonZero(mask)
     print(z)
-    return z;
+    return z
 
 
 def apply_masks(image, l_bound, u_bound):
@@ -234,9 +241,9 @@ def apply_masks(image, l_bound, u_bound):
     mask = cv2.inRange(img_hsv, lower_bound, upper_bound)
     mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
     mask_close = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
-    #return mask
+    return mask
     #return mask_close
-    return img_hsv
+    #return img_hsv
 
 
 
@@ -245,7 +252,8 @@ def apply_masks(image, l_bound, u_bound):
 #'/bus/Yellow/bus2.png', 'Yellow'
 #'/bus/White/bus32.png', 'White'
 #'/emptyInt/emptyInt4.png', 'Yellow'
-get_average_colour('/bus/White/bus32.png', 'White')
+establish_baseline(32)
+# get_average_colour('/bus/White/bus32.png', 'Yellow')
 
 # 3401.6666666666665
 # 1139.2727272727273

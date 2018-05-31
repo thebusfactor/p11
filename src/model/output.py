@@ -10,6 +10,7 @@ colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
            'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
            'White': (numpy.array([0, 0, 70]), numpy.array([20, 10, 255])),
            'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
+           'Black': (numpy.array([0, 0, 0]), numpy.array([70, 70, 70])),
            'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
 
 
@@ -206,10 +207,8 @@ def establish_baseline(no_of_images):
 
 
 def get_average_colour(path, colour):
-    file_path = 'C:/Users/james/OneDrive/Documents/GitHub/Bus-Factor/resources'
+    file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
     image = cv2.imread(file_path+path,flags=cv2.IMREAD_COLOR)
-    ## get name
-    #image = crop[y:y + h, x:x + w]
     cv2.namedWindow("test", cv2.WINDOW_NORMAL)
     cv2.resizeWindow("test", 800, 640)
     cv2.imshow("test", image)
@@ -218,11 +217,11 @@ def get_average_colour(path, colour):
     u_b = colours[colour][1]
     print(l_b)
     print(u_b)
-    mask = apply_masks(image, l_b, u_b)
-    cv2.imshow("test", mask)
-    cv2.waitKey(0)
-    cv2.imshow("test", image)
-    cv2.waitKey(0)
+
+    mask = Image.apply_masks(image, l_b, u_b)
+
+    mask2 = Image.apply_masks(image, colours[colour][0], colours[colour][1])
+
     cv2.imshow("test", mask)
     cv2.waitKey(0)
     z = cv2.countNonZero(mask)
@@ -238,8 +237,8 @@ def get_average_colour(path, colour):
 #'/bus/Yellow/bus2.png', 'Yellow'
 #'/bus/White/bus32.png', 'White'
 #'/emptyInt/emptyInt4.png', 'Yellow'
-establish_baseline(32)
-# get_average_colour('/bus/White/bus32.png', 'Yellow')
+#establish_baseline(32)
+get_average_colour('/bus//bus2.png', 'Black')
 
 # 3401.6666666666665
 # 1139.2727272727273

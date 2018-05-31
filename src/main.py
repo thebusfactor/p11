@@ -7,8 +7,10 @@ from model.output import *
 def main(argv):
     output_specific_number_of_images(1, 0, 200, 200, 400, 400)
     #output_video()
-    pass
+    #GUI().run()
+    #GUI().stop()
 
 
 if __name__ == "__main__":
     main(sys.argv)
+

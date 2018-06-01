@@ -9,7 +9,6 @@ class Video:
 
     def get_frame(self):
         ret, frame = self.video.read()
-        print(ret)
         return frame
 
 

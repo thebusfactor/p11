@@ -165,7 +165,7 @@ def check_image():
     averages, count, correct = establish_baseline()
     print(count)
     print(correct)
-    print("* Correct% -", correct/count)
+    print("* Correct% -", correct/(count*2))
     # for i in range(len(averages)):
     #     avg[i] = averages[i]/33
     #     print(avg[i])
@@ -175,11 +175,12 @@ def establish_baseline():
     avg = 0
     count = 0
     correct = 0
-    value = 20000
+    colour_value = 20000
+    white_value = 40000
     empty_int = 'emptyInt/'
     bus = 'bus/Yellow/'
     dir = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/'
-    ei_bus = bus
+    ei_bus = empty_int
     path = dir
 
     for filename in os.listdir(path+ei_bus):
@@ -191,28 +192,37 @@ def establish_baseline():
             z = cv2.countNonZero(mask)
             avg += z
             count += 1
-            # cv2.namedWindow("test", cv2.WINDOW_NORMAL)
-            # cv2.resizeWindow("test", 900, 720)
-            # cv2.imshow("test", image)
-            # cv2.waitKey(0)
-            # cv2.imshow("test", mask)
-            # cv2.waitKey(0)
-            # cv2.imshow("test", image)
-            # cv2.waitKey(0)
-            if z > value:
+            if z > white_value:
                 print("* pass -", z)
                 correct += 1
             else:
                 print("* fail -", z)
 
+            cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+            cv2.resizeWindow("test", 900, 720)
+            cv2.imshow("test", image)
+            cv2.waitKey(0)
+            cv2.imshow("test", mask)
+            cv2.waitKey(0)
+            cv2.imshow("test", image)
+            cv2.waitKey(0)
+
             mask = Image.apply_masks_colours(image, colours['Yellow'][0], colours['Yellow'][1])
             z = cv2.countNonZero(mask)
-            avg += z
-            if z > value:
-                print("* pass -", z)
-                correct += 1
-            else:
-                print("* fail -", z)
+            # avg += z
+            # if z > colour_value:
+            #     print("* pass -", z)
+            #     correct += 1
+            # else:
+            #     print("* fail -", z)
+            #     cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+            #     cv2.resizeWindow("test", 900, 720)
+            #     cv2.imshow("test", image)
+            #     cv2.waitKey(0)
+            #     cv2.imshow("test", mask)
+            #     cv2.waitKey(0)
+            #     cv2.imshow("test", image)
+            #     cv2.waitKey(0)
 
     # for i in range(no_of_images):
     #     image = cv2.imread(file_path + bus % i,

@@ -16,7 +16,6 @@ class Image:
         img_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         return img_gray
 
-
     @staticmethod
     def convert_image_to_edge_mask(frame):
         """
@@ -32,9 +31,8 @@ class Image:
         edged = cv2.Canny(blurred, lower, upper)
         return edged
 
-
     @staticmethod
-    def apply_masks(image, l_bound, u_bound):
+    def apply_masks_colours(image, l_bound, u_bound):
         """
         Converts image to HSV mask, and returns the masked image as a binary black and white file - white where green
         is present and detected
@@ -45,8 +43,20 @@ class Image:
         kernel_close = numpy.ones((20, 20))
         lower_bound = l_bound
         upper_bound = u_bound
+        # maybe get two masks working
+        # run white, then run yellow
         img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(img_hsv, lower_bound, upper_bound)
         mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
         mask_close = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
         return mask_close
+
+    @staticmethod
+    def apply_masks_white(image):
+        """
+        Converts image to white only mask
+        :param image:
+        :return: the masked image
+        """
+        mask = cv2.inRange(image, (180, 180, 180), (255, 255, 255))
+        return mask

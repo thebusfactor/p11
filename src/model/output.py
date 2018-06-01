@@ -3,12 +3,13 @@ import cv2
 import time
 import pickle
 import numpy
+import os
 from src.model.image import Image
 
 colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
            'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
            'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
-           'White': (numpy.array([0, 0, 70]), numpy.array([20, 10, 255])),
+           'White': (numpy.array([220, 220, 220]), numpy.array([255, 255, 255])),
            'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
            'Black': (numpy.array([0, 0, 0]), numpy.array([70, 70, 70])),
            'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
@@ -73,10 +74,10 @@ def output_image_object(filename, obj):
 def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
     #vidcap = cv2.VideoCapture(camerain) #change to "filename.mp4/avi" for output stills from video
 
-    #for i in range(no_of_images):
-    #while True:
-
     #success, image = vidcap.read()
+
+
+
     file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
     image = cv2.imread(file_path+'/bus/bus5.png', flags=cv2.IMREAD_COLOR)
     kernel_open = numpy.ones((5, 5))
@@ -161,70 +162,89 @@ def output_test():
 
 
 def check_image():
-    #run tests on image and return if true
-    #TODO
-    #establish baselines, sort out generic colour masks
-    #make sure there is 90% detection between bus and none bus
-
-    #Once detected make sure doesn't detect again
-
-    #Edge detection?
-    averages = establish_baseline(31)
-    avg = [0] * 6
-    for i in range(len(averages)):
-        avg[i] = averages[i]/33
-        print(avg[i])
+    averages, count, correct = establish_baseline()
+    print(count)
+    print(correct)
+    print("* Correct% -", correct/count)
+    # for i in range(len(averages)):
+    #     avg[i] = averages[i]/33
+    #     print(avg[i])
 
 
-def establish_baseline(no_of_images):
-    length = len(colours)
-    avg = [0] * length
-    file_path = '/Users/james/OneDrive/Documents/GitHub/Bus-Factor/resources'
-    for i in range(no_of_images):
-        j = 0
+def establish_baseline():
+    avg = 0
+    count = 0
+    correct = 0
+    value = 20000
+    empty_int = 'emptyInt/'
+    bus = 'bus/Yellow/'
+    dir = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/'
+    ei_bus = bus
+    path = dir
 
-        image = cv2.imread(file_path + '/emptyInt/emptyInt%d.png' % i,
-                           flags=cv2.IMREAD_COLOR)
-        print(file_path + '/emptyInt/emptyInt%d.png' % i)
-        x = 200
-        y = 200
-        w = 400
-        h = 400
-        #image = crop[y:y + h, x:x + w]
-        cv2.imshow("image", image)
-        cv2.waitKey(0)
-        # for key in colours:
-        #     l_b = colours[key][0]
-        #     u_b = colours[key][1]
-        #     mask = apply_masks(image, l_b, u_b)
-        #     z = cv2.countNonZero(mask)
-        #     avg[j] = avg[j] + z
-        #     j += 1
-        mask = apply_masks(image, colours["Yellow"][0], colours["Yellow"][1])
-        cv2.imshow("mask", mask)
-        cv2.waitKey(0)
-    return avg
+    for filename in os.listdir(path+ei_bus):
+        if filename.endswith('.png'):
+            file = path+ei_bus+filename
+            #print(file)
+            image = cv2.imread(file, flags=cv2.IMREAD_COLOR)
+            mask = Image.apply_masks_white(image)
+            z = cv2.countNonZero(mask)
+            avg += z
+            count += 1
+            # cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+            # cv2.resizeWindow("test", 900, 720)
+            # cv2.imshow("test", image)
+            # cv2.waitKey(0)
+            # cv2.imshow("test", mask)
+            # cv2.waitKey(0)
+            # cv2.imshow("test", image)
+            # cv2.waitKey(0)
+            if z > value:
+                print("* pass -", z)
+                correct += 1
+            else:
+                print("* fail -", z)
+
+            mask = Image.apply_masks_colours(image, colours['Yellow'][0], colours['Yellow'][1])
+            z = cv2.countNonZero(mask)
+            avg += z
+            if z > value:
+                print("* pass -", z)
+                correct += 1
+            else:
+                print("* fail -", z)
+
+    # for i in range(no_of_images):
+    #     image = cv2.imread(file_path + bus % i,
+    #                        flags=cv2.IMREAD_COLOR)
+    #     #print(file_path + '/emptyInt/emptyInt%d.png' % i)
+    #     # for key in colours:
+    #     #     l_b = colours[key][0]
+    #     #     u_b = colours[key][1]
+    #     #     mask = apply_masks(image, l_b, u_b)
+    #     #     z = cv2.countNonZero(mask)
+    #     #     avg[j] = avg[j] + z
+    #     #     j += 1
+    #     mask = Image.apply_masks(image, colours['Yellow'][0], colours['Yellow'][1])
+    #     # cv2.imshow("mask", mask)
+    #     # cv2.waitKey(0)
+    #     z = cv2.countNonZero(mask)
+    #     avg += z
+    return avg, count, correct
 
 
 def get_average_colour(path, colour):
     file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
     image = cv2.imread(file_path+path,flags=cv2.IMREAD_COLOR)
-    cv2.namedWindow("test", cv2.WINDOW_NORMAL)
-    cv2.resizeWindow("test", 800, 640)
-    cv2.imshow("test", image)
-    cv2.waitKey(0)
+    # cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+    # cv2.resizeWindow("test", 800, 640)
+    # cv2.imshow("test", image)
+    # cv2.waitKey(0)
     l_b = colours[colour][0]
     u_b = colours[colour][1]
-    print(l_b)
-    print(u_b)
 
-    mask = Image.apply_masks(image, l_b, u_b)
-
-    mask2 = Image.apply_masks(image, colours[colour][0], colours[colour][1])
-
-    cv2.imshow("test", mask)
-    cv2.waitKey(0)
-    z = cv2.countNonZero(mask)
+    mask1 = Image.apply_masks_colours(image, l_b, u_b)
+    z = cv2.countNonZero(mask1)
     print(z)
     return z
 
@@ -232,13 +252,13 @@ def get_average_colour(path, colour):
 
 
 
-#check_image()
+check_image()
 #'/bus/Pink/bus23Pink.png', 'Pink'
 #'/bus/Yellow/bus2.png', 'Yellow'
 #'/bus/White/bus32.png', 'White'
 #'/emptyInt/emptyInt4.png', 'Yellow'
 #establish_baseline(32)
-get_average_colour('/bus//bus2.png', 'Black')
+#get_average_colour('/bus//bus2.png', 'Yellow')
 
 # 3401.6666666666665
 # 1139.2727272727273

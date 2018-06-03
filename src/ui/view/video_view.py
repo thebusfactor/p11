@@ -1,20 +1,17 @@
 from kivy.app import App
 from kivy.uix.button import Button
-from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
 import cv2
 from kivy.uix.widget import Widget
-import kivy
 from kivy.core.window import Window
 from kivy.lang import Builder
-from kivy.graphics import *
-from model import config
 from ui.view.cameraview import Draw
-from util.double_point import DoublePoint
 
+
+# Credit: https://gist.github.com/ExpandOcean/de261e66949009f44ad2 for texture method
 
 class KivyCam(Image):
     def __init__(self, capture, fps, **kwargs):
@@ -25,13 +22,10 @@ class KivyCam(Image):
     def update(self, dt):
         ret, frame = self.capture.read()
         if ret:
-            # convert it to texture
-            buf1 = cv2.flip(frame, 0)
-            buf = buf1.tostring()
-            image_texture = Texture.create(
-                size=(frame.shape[1], frame.shape[0]), colorfmt='bgr')
-            image_texture.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
-            # display image from the texture
+            flipped_frame = cv2.flip(frame, 0)
+            frame_bytes = flipped_frame.tostring()
+            image_texture = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt='bgr')
+            image_texture.blit_buffer(frame_bytes, colorfmt='bgr', bufferfmt='ubyte')
             self.texture = image_texture
 
 
@@ -44,30 +38,21 @@ class CameraView(App):
         self.kivy_cam = KivyCam(capture=self.capture, fps=fps)
         self.button = Button(text='Hello world', font_size=14)
 
-    def test(self):
-        print("hi")
-
     def build(self):
         Window.size = (750, 450)
         parent = Widget()
         parent.size = (750, 50)
-
-        self.kivy_cam.pos = (0,-40)
-        self.kivy_cam.size = (parent.size[0],500)
-
+        self.kivy_cam.pos = (0, -40)
+        self.kivy_cam.size = (parent.size[0], 500)
         draw = Draw()
-
         parent.add_widget(self.kivy_cam)
         parent.add_widget(setup_button(parent, draw))
         parent.add_widget(draw)
-
         return parent
 
     def on_stop(self):
         self.capture.release()
 
-
-kivy_camera = None
 
 def setup_button(parent: Widget, draw: Draw):
     button_layout = GridLayout(pos=(0, 395))
@@ -83,11 +68,8 @@ def setup_button(parent: Widget, draw: Draw):
     set_line_button = Button(text='Set Line', on_press=draw.set_line)
     capture_button = Button(text='Capture', on_press=draw.capture)
 
-
     button_layout.add_widget(clear_button)
     button_layout.add_widget(set_lights_button)
     button_layout.add_widget(set_line_button)
     button_layout.add_widget(capture_button)
     return button_layout
-
-

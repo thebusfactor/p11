@@ -8,9 +8,10 @@ from kivy.graphics import *
 from model import config
 from util.double_point import DoublePoint
 
-Builder.load_file('ui/view/cameraview.kv')
+#Builder.load_file('ui/view/cameraview.kv')
 
-class CameraView(FloatLayout):
+
+class Draw(FloatLayout):
 
     intersection_line_a = None
     intersection_line_b = None
@@ -22,14 +23,14 @@ class CameraView(FloatLayout):
 
     """
 
-    def capture(self):
+    def capture(self, button):
         """
             Method to capture the image currently displayed in the camera input pane.
         :return:
         """
 
-        camera = self.ids['camera']
-        self.screengrab(camera, numImage=1)
+        #camera = self.ids['camera']
+        #self.screengrab(camera, numImage=1)
 
     ##TODO: this method doesn't currently work.
     def screengrab(self, cam, numImage):
@@ -80,7 +81,7 @@ class CameraView(FloatLayout):
             if isinstance(child, kivy.graphics.vertex_instructions.Rectangle):
                 self.canvas.remove(child)
 
-    def set_line(self):
+    def set_line(self, button):
         '''
             Sets draw tool to line and resets all coordinates
         '''
@@ -91,7 +92,7 @@ class CameraView(FloatLayout):
         self.reset_coordinates()
 
 
-    def set_rectangle(self):
+    def set_rectangle(self, button):
         '''
             Sets draw tool to rectangle and resets all coordinates
         '''
@@ -138,7 +139,7 @@ class CameraView(FloatLayout):
 
                 self.reset_tool()
 
-    def draw_line(self, touch):
+    def draw_line(self, button):
         '''
             Draws line based on current coordinates
         '''
@@ -205,7 +206,7 @@ class CameraView(FloatLayout):
         if (self.line):
             return self.x1, self.y1, self.x2, self.y2
 
-    def delete_object(self):
+    def delete_object(self, button):
         '''
             Deletes objects drawn on the camera pane.
         '''

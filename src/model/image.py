@@ -43,15 +43,11 @@ class Image:
         """
         kernel_open = numpy.ones((5, 5))
         kernel_close = numpy.ones((20, 20))
-        lower_bound = l_bound
-        upper_bound = u_bound
-        # maybe get two masks working
-        # run white, then run yellow
         img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-        mask = cv2.inRange(img_hsv, lower_bound, upper_bound)
+        mask = cv2.inRange(img_hsv, l_bound, u_bound)
         mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
         mask_close = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
-        return mask_close
+        return mask_close, img_hsv
 
     @staticmethod
     def apply_masks_non_hsv(image, l_bound, u_bound):
@@ -61,7 +57,11 @@ class Image:
         :return: the masked image
         """
         mask = cv2.inRange(image, l_bound, u_bound)
-        return mask
+        kernel_open = numpy.ones((5, 5))
+        kernel_close = numpy.ones((20, 20))
+        mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
+        mask_close = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
+        return mask_close
 
     @staticmethod
     def add_two_images(image_one, image_two):
@@ -71,5 +71,5 @@ class Image:
         :param image_two: second image to be combined
         :return: comb_img: combined image
         """
-        mask = cv2.inRange(image, l_bound, u_bound)
-        return mask
+        comb = image_one + image_two
+        return comb

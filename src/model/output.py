@@ -6,7 +6,7 @@ import numpy
 import os
 from src.model.image import Image
 
-hsv_colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
+hsv_colours = {'Yellow': (numpy.array([15, 100, 145]), numpy.array([160, 255, 255])),
                'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
                'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
                'White': (numpy.array([220, 220, 220]), numpy.array([255, 255, 255])),
@@ -22,7 +22,8 @@ bgr_colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255
                'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
                'Black': (numpy.array([50, 60, 80]), numpy.array([100, 110, 125])),
                'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
-
+# TODO need to have number system of image output
+img_count = 0
 
 def output_video():
     cap = cv2.VideoCapture(0)
@@ -169,52 +170,51 @@ def establish_baseline():
     correct = 0
     colour_value = 20000
     white_value = 40000
-    empty_int = 'emptyInt/'
-    bus = 'bus/Yellow/'
-    dir = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/'
-    ei_bus = empty_int
+    dir = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/Yellow/'
     path = dir
 
-    for filename in os.listdir(path + ei_bus):
+    for filename in os.listdir(path):
         if filename.endswith('.png'):
-            file = path + ei_bus + filename
-            # print(file)
+            file = path + filename
             image = cv2.imread(file, flags=cv2.IMREAD_COLOR)
-            mask = Image.apply_masks_white(image)
-            z = cv2.countNonZero(mask)
-            avg += z
-            count += 1
-            if z > white_value:
-                print("* pass -", z)
-                correct += 1
-            else:
-                print("* fail -", z)
-
-            cv2.namedWindow("test", cv2.WINDOW_NORMAL)
-            cv2.resizeWindow("test", 900, 720)
-            cv2.imshow("test", image)
-            cv2.waitKey(0)
-            cv2.imshow("test", mask)
-            cv2.waitKey(0)
-            cv2.imshow("test", image)
-            cv2.waitKey(0)
-
-            mask = Image.apply_masks_colours(image, colours['Yellow'][0], colours['Yellow'][1])
-            z = cv2.countNonZero(mask)
+            # mask = Image.apply_masks_white(image)
+            # z = cv2.countNonZero(mask)
             # avg += z
-            # if z > colour_value:
+            count += 1
+            # if z > white_value:
             #     print("* pass -", z)
             #     correct += 1
             # else:
             #     print("* fail -", z)
-            #     cv2.namedWindow("test", cv2.WINDOW_NORMAL)
-            #     cv2.resizeWindow("test", 900, 720)
-            #     cv2.imshow("test", image)
-            #     cv2.waitKey(0)
-            #     cv2.imshow("test", mask)
-            #     cv2.waitKey(0)
-            #     cv2.imshow("test", image)
-            #     cv2.waitKey(0)
+
+
+            # cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+            # cv2.resizeWindow("test", 900, 720)
+            # cv2.imshow("test", image)
+            # cv2.waitKey(0)
+            # cv2.imshow("test", mask)
+            # cv2.waitKey(0)
+            # cv2.imshow("test", image)
+            # cv2.waitKey(0)
+
+            mask, hsv = Image.apply_masks_colours(image, hsv_colours['Yellow'][0], hsv_colours['Yellow'][1])
+            z = cv2.countNonZero(mask)
+            if z > colour_value:
+                print("* pass -", z)
+                correct += 1
+            else:
+                print("* fail -", z)
+                cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+                cv2.resizeWindow("test", 900, 720)
+                cv2.imshow("test", image)
+                cv2.waitKey(0)
+                cv2.imshow("test", mask)
+                cv2.waitKey(0)
+                cv2.imshow("test", hsv)
+                cv2.waitKey(0)
+                cv2.imshow("test", image)
+                cv2.waitKey(0)
+
 
     # for i in range(no_of_images):
     #     image = cv2.imread(file_path + bus % i,
@@ -284,36 +284,36 @@ def check_masks():
     # path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/Pink/buspink1.png'
     # path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/YellowWhite/busYW2.png'
     # path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/White/busPW1.png
+    path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/Yellow/bus2.png'
     path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/YellowWhite/busYW4.png'
     image = cv2.imread(path, flags=cv2.IMREAD_COLOR)
-    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     colour = 'White'
     lb = bgr_colours[colour][0]
     ub = bgr_colours[colour][1]
-    mask_norm = cv2.inRange(image, lb, ub)
-
-    print(calc_z_value(mask_norm))
+    mask_norm = Image.apply_masks_non_hsv(image, lb, ub)
 
     colour = 'Yellow'
     lb = bgr_colours[colour][0]
     ub = bgr_colours[colour][1]
+    mask = Image.apply_masks_colours(image, lb, ub)
 
-    mask = cv2.inRange(hsv_image, lb, ub)
-    print(calc_z_value(mask))
-    comb = mask_norm + mask
+    comb = Image.add_two_images(mask_norm, mask)
 
     cv2.imshow("yellow", mask)
     cv2.imshow("white", mask_norm)
     cv2.imshow("combined", comb)
-    print(calc_z_value(comb))
+    print("norm ", calc_z_value(mask_norm))
+    print("hsv ", calc_z_value(mask))
+    print("comb ", calc_z_value(comb))
     cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 def check_images():
     averages, count, correct = establish_baseline()
     print(count)
     print(correct)
-    # print("* Correct% -", correct / (count * 2))
+    print("* Correct% -", correct / count)
     # for i in range(len(averages)):
     #     avg[i] = averages[i]/33
     #     print(avg[i])
@@ -325,8 +325,8 @@ def check_images():
 # Theory is -> Light is scanned every second, when red trigger
 # Frames to be taken every X times a second, running this and the NN model on it
 
-check_masks()
-
+#check_masks()
+check_images()
 # check_traffic_light()
 # '/bus/Pink/buspink1.png', 'Pink'
 # '/bus/Yellow/bus2.png', 'Yellow'

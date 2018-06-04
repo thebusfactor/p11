@@ -6,13 +6,22 @@ import numpy
 import os
 from src.model.image import Image
 
-colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
-           'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
-           'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
-           'White': (numpy.array([220, 220, 220]), numpy.array([255, 255, 255])),
-           'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
-           'Black': (numpy.array([0, 0, 0]), numpy.array([70, 70, 70])),
-           'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
+hsv_colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
+               'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
+               'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
+               'White': (numpy.array([220, 220, 220]), numpy.array([255, 255, 255])),
+               'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
+               'Black': (numpy.array([0, 0, 0]), numpy.array([70, 70, 70])),
+               'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
+
+# make masks for colours that don't show up well in HSV
+bgr_colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
+               'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
+               'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
+               'White': (numpy.array([180, 180, 180]), numpy.array([255, 255, 255])),
+               'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
+               'Black': (numpy.array([0, 0, 0]), numpy.array([70, 70, 70])),
+               'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
 
 
 def output_video():
@@ -44,7 +53,7 @@ def output_video():
 
 
 def output_snapshot_every_second():
-    cap = cv2.VideoCapture(0) #output.avi
+    cap = cv2.VideoCapture(0)  # output.avi
     frame_rate = cap.get(5)
 
     x = 0
@@ -55,7 +64,7 @@ def output_snapshot_every_second():
             break
         print("frameId: {}  | frameRate = {}.".format(frame_number, frame_rate))
         if frame_number % math.floor(frame_rate) == 0:
-            cv2.imwrite("./images/image%d.jpg" %(x/frame_rate), frame)
+            cv2.imwrite("./images/image%d.jpg" % (x / frame_rate), frame)
             # image_object = Image()
             # output_image_object("./images/object%d.im" %(x/frame_rate), image_object)
 
@@ -63,23 +72,21 @@ def output_snapshot_every_second():
         print("X = {}".format(x))
 
     cap.release()
-    print ("Done!")
+    print("Done!")
 
 
 def output_image_object(filename, obj):
     with open(filename, 'wb') as output:
-        pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL) #highest_protocol = -1
+        pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL)  # highest_protocol = -1
 
 
 def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
-    #vidcap = cv2.VideoCapture(camerain) #change to "filename.mp4/avi" for output stills from video
+    # vidcap = cv2.VideoCapture(camerain) #change to "filename.mp4/avi" for output stills from video
 
-    #success, image = vidcap.read()
-
-
+    # success, image = vidcap.read()
 
     file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
-    image = cv2.imread(file_path+'/bus/bus5.png', flags=cv2.IMREAD_COLOR)
+    image = cv2.imread(file_path + '/bus/bus5.png', flags=cv2.IMREAD_COLOR)
     kernel_open = numpy.ones((5, 5))
     kernel_close = numpy.ones((20, 20))
 
@@ -87,25 +94,23 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
     upper_bound = numpy.array([40, 255, 255])
 
     if True:
-        #cv2.namedWindow("test", cv2.WINDOW_NORMAL)
-        #cv2.resizeWindow("test", 1920, 1080)
-        #cv2.imshow("test", crop)
+        # cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+        # cv2.resizeWindow("test", 1920, 1080)
+        # cv2.imshow("test", crop)
         # (x, y, w, h) = cv2.selectROI("testROI", damn)
         # pass in coords
-        #image = crop[y:y + h, x:x + w]  # both opencv and numpy are "row-major", so y goes first
-        #print("VIDEO CAPTURE IS OPENED")
-        #time.sleep(2)
-        #grayscale_image = Image.convert_image_to_grayscale(image)
-        #edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
-        #res, yellow_mask = Image.detect_yellow_and_mask_image(image)
+        # image = crop[y:y + h, x:x + w]  # both opencv and numpy are "row-major", so y goes first
+        # print("VIDEO CAPTURE IS OPENED")
+        # time.sleep(2)
+        # grayscale_image = Image.convert_image_to_grayscale(image)
+        # edge_mask_image = Image.convert_image_to_edge_mask(grayscale_image)
+        # res, yellow_mask = Image.detect_yellow_and_mask_image(image)
 
-        #image = cv2.resize(image, (1280, 720))
+        # image = cv2.resize(image, (1280, 720))
         imgHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(imgHSV, lower_bound, upper_bound)
 
-        #res = cv2.bitwise_and(image, image, mask=mask)
-
-
+        # res = cv2.bitwise_and(image, image, mask=mask)
 
         mask_open = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_open)
         maskclose = cv2.morphologyEx(mask_open, cv2.MORPH_CLOSE, kernel_close)
@@ -120,28 +125,25 @@ def output_specific_number_of_images(no_of_images, camerain, x, y, w, h):
 
         # cv2.imshow("grayscale mask", grayscale_image)
         # cv2.imshow("edge mask", edge_mask_image)
-        #cv2.imshow("mask", mask)
+        # cv2.imshow("mask", mask)
         # cv2.imshow("yellow mask", yellow_mask)
-        #cv2.imshow("maskclose", maskclose)
-        #cv2.imshow("maskopen", mask_open)
-
+        # cv2.imshow("maskclose", maskclose)
+        # cv2.imshow("maskopen", mask_open)
 
         cv2.imshow("mask", mask)
         z = cv2.countNonZero(maskclose)
         print(z)
 
-
         cv2.waitKey(0)
-        #cv2.destroyAllWindows()
+        # cv2.destroyAllWindows()
         # cv2.imwrite('frame%d.jpg' %i, edge_detection_image)
         # cv2.imwrite('frame_gray_%d.jpg' % i, grayscale_image)
 
+    # print('Read a new frame: '+ str(success) + "\n")
 
 
-    #print('Read a new frame: '+ str(success) + "\n")
-
-#vidcap.release()
-#cv2.destroyAllWindows()
+# vidcap.release()
+# cv2.destroyAllWindows()
 
 
 def output_test():
@@ -165,7 +167,7 @@ def check_image():
     averages, count, correct = establish_baseline()
     print(count)
     print(correct)
-    print("* Correct% -", correct/(count*2))
+    print("* Correct% -", correct / (count * 2))
     # for i in range(len(averages)):
     #     avg[i] = averages[i]/33
     #     print(avg[i])
@@ -183,10 +185,10 @@ def establish_baseline():
     ei_bus = empty_int
     path = dir
 
-    for filename in os.listdir(path+ei_bus):
+    for filename in os.listdir(path + ei_bus):
         if filename.endswith('.png'):
-            file = path+ei_bus+filename
-            #print(file)
+            file = path + ei_bus + filename
+            # print(file)
             image = cv2.imread(file, flags=cv2.IMREAD_COLOR)
             mask = Image.apply_masks_white(image)
             z = cv2.countNonZero(mask)
@@ -245,7 +247,7 @@ def establish_baseline():
 
 def get_average_colour(path, colour):
     file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
-    image = cv2.imread(file_path+path,flags=cv2.IMREAD_COLOR)
+    image = cv2.imread(file_path + path, flags=cv2.IMREAD_COLOR)
     # cv2.namedWindow("test", cv2.WINDOW_NORMAL)
     # cv2.resizeWindow("test", 800, 640)
     # cv2.imshow("test", image)
@@ -259,16 +261,13 @@ def get_average_colour(path, colour):
     return z
 
 
-
-
-
-check_image()
-#'/bus/Pink/bus23Pink.png', 'Pink'
-#'/bus/Yellow/bus2.png', 'Yellow'
-#'/bus/White/bus32.png', 'White'
-#'/emptyInt/emptyInt4.png', 'Yellow'
-#establish_baseline(32)
-#get_average_colour('/bus//bus2.png', 'Yellow')
+#check_image()
+# '/bus/Pink/buspink1.png', 'Pink'
+# '/bus/Yellow/bus2.png', 'Yellow'
+# '/bus/White/bus32.png', 'White'
+# '/emptyInt/emptyInt4.png', 'Yellow'
+# establish_baseline(32)
+get_average_colour('/bus/bus2.png', 'Yellow')
 
 # 3401.6666666666665
 # 1139.2727272727273

@@ -52,11 +52,12 @@ class Image:
         return mask_close
 
     @staticmethod
-    def apply_masks_white(image):
+    def apply_masks_non_hsv(image, l_bound, u_bound):
         """
         Converts image to white only mask
         :param image:
         :return: the masked image
         """
-        mask = cv2.inRange(image, (180, 180, 180), (255, 255, 255))
+        mask = cv2.inRange(image, l_bound, u_bound)
         return mask
+

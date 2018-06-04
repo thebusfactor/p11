@@ -163,16 +163,6 @@ def output_test():
         time.sleep(1)
 
 
-def check_image():
-    averages, count, correct = establish_baseline()
-    print(count)
-    print(correct)
-    print("* Correct% -", correct / (count * 2))
-    # for i in range(len(averages)):
-    #     avg[i] = averages[i]/33
-    #     print(avg[i])
-
-
 def establish_baseline():
     avg = 0
     count = 0
@@ -245,6 +235,14 @@ def establish_baseline():
     return avg, count, correct
 
 
+def calc_z_value(mask):
+    return cv2.countNonZero(mask)
+
+
+def mask_addition(mask_one, mask_two):
+    return Image.add_two_images(mask_one, mask_two)
+
+
 def get_average_colour(path, colour):
     file_path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources'
     image = cv2.imread(file_path + path, flags=cv2.IMREAD_COLOR)
@@ -261,13 +259,41 @@ def get_average_colour(path, colour):
     return z
 
 
-#check_image()
+def determine_bus(image):
+    return 1
+
+
+def check_traffic_light():
+    image = cv2.imread('/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/lights/tlightR.jpg')
+    # blur_image = cv2.medianBlur(image, 3)
+    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    cv2.imshow("test", hsv_image)
+    cv2.waitKey(0)
+
+
+def check_images():
+    averages, count, correct = establish_baseline()
+    print(count)
+    print(correct)
+    print("* Correct% -", correct / (count * 2))
+    # for i in range(len(averages)):
+    #     avg[i] = averages[i]/33
+    #     print(avg[i])
+
+
+# TODO Get two masks working
+# TODO then check z value of each one to see if combined
+# TODO Finish masks
+# Thoery is -> Light is scanned every second, when red trigger
+# Frames to be taken every X times a second, running this and the NN model on it
+
+check_traffic_light()
 # '/bus/Pink/buspink1.png', 'Pink'
 # '/bus/Yellow/bus2.png', 'Yellow'
 # '/bus/White/bus32.png', 'White'
 # '/emptyInt/emptyInt4.png', 'Yellow'
 # establish_baseline(32)
-get_average_colour('/bus/bus2.png', 'Yellow')
+# get_average_colour('/bus/bus2.png', 'Yellow')
 
 # 3401.6666666666665
 # 1139.2727272727273

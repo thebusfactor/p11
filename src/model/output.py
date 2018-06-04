@@ -264,11 +264,19 @@ def determine_bus(image):
 
 
 def check_traffic_light():
-    image = cv2.imread('/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/lights/tlightR.jpg')
-    # blur_image = cv2.medianBlur(image, 3)
-    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    cv2.imshow("test", hsv_image)
-    cv2.waitKey(0)
+    path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/tlRed/'
+    for filename in os.listdir(path):
+        # blur_image = cv2.medianBlur(image, 3)
+        print(path + "\n")
+        print(filename + "\n")
+        image = cv2.imread(path+filename, flags=cv2.IMREAD_COLOR)
+        hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        cv2.imshow("test", image)
+        cv2.waitKey(0)
+        cv2.imshow("test", hsv_image)
+        cv2.waitKey(0)
+        cv2.imshow("test", image)
+        cv2.waitKey(0)
 
 
 def check_images():

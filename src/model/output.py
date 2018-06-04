@@ -12,7 +12,7 @@ hsv_colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255
                'White': (numpy.array([220, 220, 220]), numpy.array([255, 255, 255])),
                'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
                'Black': (numpy.array([0, 0, 0]), numpy.array([70, 70, 70])),
-               'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
+               'Pink': (numpy.array([150, 100, 110]), numpy.array([220, 180, 200]))}
 
 # make masks for colours that don't show up well in HSV
 bgr_colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255])),
@@ -20,7 +20,7 @@ bgr_colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255
                'Green': (numpy.array([0, 100, 0]), numpy.array([30, 255, 150])),
                'White': (numpy.array([180, 180, 180]), numpy.array([255, 255, 255])),
                'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
-               'Black': (numpy.array([0, 0, 0]), numpy.array([70, 70, 70])),
+               'Black': (numpy.array([50, 60, 80]), numpy.array([100, 110, 125])),
                'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
 
 
@@ -264,26 +264,56 @@ def determine_bus(image):
 
 
 def check_traffic_light():
-    path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/tlRed/'
+    path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/tlBlack/'
     for filename in os.listdir(path):
-        # blur_image = cv2.medianBlur(image, 3)
-        print(path + "\n")
-        print(filename + "\n")
-        image = cv2.imread(path+filename, flags=cv2.IMREAD_COLOR)
+        image = cv2.imread(path + filename, flags=cv2.IMREAD_COLOR)
         hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-        cv2.imshow("test", image)
-        cv2.waitKey(0)
-        cv2.imshow("test", hsv_image)
-        cv2.waitKey(0)
-        cv2.imshow("test", image)
-        cv2.waitKey(0)
+        lower_bound = numpy.array([0, 10, 170])
+        upper_bound = numpy.array([20, 160, 255])
+        mask = cv2.inRange(hsv_image, lower_bound, upper_bound)
+        print(calc_z_value(mask))
+        # cv2.imshow("hsv", hsv_image)
+        # cv2.imshow("mask_hsv", mask)
+        # cv2.imshow("orig", image)
+        # cv2.waitKey(0)
+        # if z > 20 return True avg = 133~
+        # Black returns 0 almost always, so anything really.
+
+
+def check_masks():
+    # path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/Pink/buspink1.png'
+    # path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/YellowWhite/busYW2.png'
+    # path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/White/busPW1.png
+    path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/YellowWhite/busYW4.png'
+    image = cv2.imread(path, flags=cv2.IMREAD_COLOR)
+    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    colour = 'White'
+    lb = bgr_colours[colour][0]
+    ub = bgr_colours[colour][1]
+    mask_norm = cv2.inRange(image, lb, ub)
+
+    print(calc_z_value(mask_norm))
+
+    colour = 'Yellow'
+    lb = bgr_colours[colour][0]
+    ub = bgr_colours[colour][1]
+
+    mask = cv2.inRange(hsv_image, lb, ub)
+    print(calc_z_value(mask))
+    comb = mask_norm + mask
+
+    cv2.imshow("yellow", mask)
+    cv2.imshow("white", mask_norm)
+    cv2.imshow("combined", comb)
+    print(calc_z_value(comb))
+    cv2.waitKey(0)
 
 
 def check_images():
     averages, count, correct = establish_baseline()
     print(count)
     print(correct)
-    print("* Correct% -", correct / (count * 2))
+    # print("* Correct% -", correct / (count * 2))
     # for i in range(len(averages)):
     #     avg[i] = averages[i]/33
     #     print(avg[i])
@@ -292,10 +322,12 @@ def check_images():
 # TODO Get two masks working
 # TODO then check z value of each one to see if combined
 # TODO Finish masks
-# Thoery is -> Light is scanned every second, when red trigger
+# Theory is -> Light is scanned every second, when red trigger
 # Frames to be taken every X times a second, running this and the NN model on it
 
-check_traffic_light()
+check_masks()
+
+# check_traffic_light()
 # '/bus/Pink/buspink1.png', 'Pink'
 # '/bus/Yellow/bus2.png', 'Yellow'
 # '/bus/White/bus32.png', 'White'

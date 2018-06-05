@@ -53,7 +53,9 @@ class Image:
     def apply_masks_non_hsv(image, l_bound, u_bound):
         """
         Converts image to white only mask
-        :param image:
+        :param u_bound: upper limit of colour to detect
+        :param l_bound: lower limit of colour to detect
+        :param image: image to be masked
         :return: the masked image
         """
         mask = cv2.inRange(image, l_bound, u_bound)

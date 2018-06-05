@@ -73,3 +73,11 @@ class Image:
         """
         comb = image_one + image_two
         return comb
+
+    @staticmethod
+    def light_check(image):
+        hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        lower_bound = numpy.array([0, 10, 170])
+        upper_bound = numpy.array([20, 160, 255])
+        mask = cv2.inRange(hsv_image, lower_bound, upper_bound)
+        return mask

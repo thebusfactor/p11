@@ -25,6 +25,7 @@ bgr_colours = {'Yellow': (numpy.array([10, 100, 150]), numpy.array([50, 255, 255
 # TODO need to have number system of image output
 img_count = 0
 
+
 def output_video():
     cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -187,7 +188,6 @@ def establish_baseline():
             # else:
             #     print("* fail -", z)
 
-
             # cv2.namedWindow("test", cv2.WINDOW_NORMAL)
             # cv2.resizeWindow("test", 900, 720)
             # cv2.imshow("test", image)
@@ -214,7 +214,6 @@ def establish_baseline():
                 cv2.waitKey(0)
                 cv2.imshow("test", image)
                 cv2.waitKey(0)
-
 
     # for i in range(no_of_images):
     #     image = cv2.imread(file_path + bus % i,
@@ -267,11 +266,8 @@ def check_traffic_light():
     path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/tlBlack/'
     for filename in os.listdir(path):
         image = cv2.imread(path + filename, flags=cv2.IMREAD_COLOR)
-        hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-        lower_bound = numpy.array([0, 10, 170])
-        upper_bound = numpy.array([20, 160, 255])
-        mask = cv2.inRange(hsv_image, lower_bound, upper_bound)
-        print(calc_z_value(mask))
+        light = Image.light_check(image)
+        print(calc_z_value(light))
         # cv2.imshow("hsv", hsv_image)
         # cv2.imshow("mask_hsv", mask)
         # cv2.imshow("orig", image)
@@ -325,7 +321,7 @@ def check_images():
 # Theory is -> Light is scanned every second, when red trigger
 # Frames to be taken every X times a second, running this and the NN model on it
 
-#check_masks()
+# check_masks()
 check_images()
 # check_traffic_light()
 # '/bus/Pink/buspink1.png', 'Pink'

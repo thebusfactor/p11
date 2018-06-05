@@ -6,18 +6,13 @@ import numpy
 import os
 from src.model.image import Image
 
-hsv_colours = {'Yellow': (numpy.array([15, 100, 145]), numpy.array([160, 255, 255])),
-               'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
-               'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
-               'Black': (numpy.array([0, 0, 0]), numpy.array([70, 70, 70])),
-               'Pink': (numpy.array([150, 100, 110]), numpy.array([220, 180, 200]))}
+hsv_colours = {'Yellow': (numpy.array([15, 100, 145]), numpy.array([160, 255, 255]))}
 
 # make masks for colours that don't show up well in HSV
 bgr_colours = {'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255])),
                'Green': (numpy.array([100, 130, 100]), numpy.array([160, 255, 135])),
                'White': (numpy.array([180, 180, 180]), numpy.array([255, 255, 255])),
-               'Blue': (numpy.array([50, 20, 0]), numpy.array([150, 100, 50])),
-               'Black': (numpy.array([50, 60, 80]), numpy.array([100, 110, 125])),
+               'Blue': (numpy.array([110, 60, 35]), numpy.array([190, 180, 110])),
                'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
 
 
@@ -120,7 +115,7 @@ def establish_baseline():
     count = 0
     correct = 0
     colour_value = 20000
-    dir = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/emptyInt/'
+    dir = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/YellowWhite/'
     path = dir
 
     for filename in os.listdir(path):
@@ -128,24 +123,26 @@ def establish_baseline():
             file = path + filename
             image = cv2.imread(file, flags=cv2.IMREAD_COLOR)
             mask, hsv = Image.apply_masks_colours(image, hsv_colours['Yellow'][0], hsv_colours['Yellow'][1])
+            white = white_mask(image)
             z = cv2.countNonZero(mask)
+            count += 1
             print(count)
             if z > colour_value:
                 print("* pass -", z)
                 correct += 1
             else:
                 print("* fail -", z)
-
             cv2.namedWindow("test", cv2.WINDOW_NORMAL)
             cv2.resizeWindow("test", 900, 720)
             cv2.imshow("test", image)
             cv2.waitKey(0)
             cv2.imshow("test", mask)
             cv2.waitKey(0)
-            cv2.imshow("test", hsv)
+            cv2.imshow("test", white)
             cv2.waitKey(0)
             cv2.imshow("test", image)
             cv2.waitKey(0)
+
     return avg, count, correct
 
 
@@ -162,15 +159,15 @@ def determine_bus(image):
 
 
 def check_traffic_light():
-    path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/tlBlack/'
+    path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/tlRed/'
     for filename in os.listdir(path):
         image = cv2.imread(path + filename, flags=cv2.IMREAD_COLOR)
-        light = Image.light_check(image)
+        light, hsv = Image.apply_light_mask(image)
         print(calc_z_value(light))
-        # cv2.imshow("hsv", hsv_image)
-        # cv2.imshow("mask_hsv", mask)
-        # cv2.imshow("orig", image)
-        # cv2.waitKey(0)
+        cv2.imshow("hsv", hsv)
+        cv2.imshow("mask_hsv", light)
+        cv2.imshow("orig", image)
+        cv2.waitKey(0)
         # if z > 20 return True avg = 133~
         # Black returns 0 almost always, so anything really.
 
@@ -227,5 +224,4 @@ def check_images():
 # TODO Finish masks
 # Theory is -> Light is scanned every second, when red trigger
 # Frames to be taken every X times a second, running this and the NN model on it
-
-check_images()
+check_traffic_light()

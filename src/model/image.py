@@ -41,7 +41,7 @@ class Image:
         :param image: the image to be masked
         :return: the masked image
         """
-        kernel_open = numpy.ones((5, 5))
+        kernel_open = numpy.ones((7, 7))
         kernel_close = numpy.ones((20, 20))
         img_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(img_hsv, l_bound, u_bound)
@@ -68,7 +68,7 @@ class Image:
     @staticmethod
     def add_two_images(image_one, image_two):
         """
-        Takes
+        Takes two images and adds pixel's together
         :param image_one: first image to be combined
         :param image_two: second image to be combined
         :return: comb_img: combined image
@@ -77,9 +77,14 @@ class Image:
         return comb
 
     @staticmethod
-    def light_check(image):
+    def apply_light_mask(image):
+        """
+        Converts traffic light to mask
+        :param image: image of traffic light to be masked
+        :return: the masked image
+        """
         hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         lower_bound = numpy.array([0, 10, 170])
         upper_bound = numpy.array([20, 160, 255])
         mask = cv2.inRange(hsv_image, lower_bound, upper_bound)
-        return mask
+        return mask, hsv_image

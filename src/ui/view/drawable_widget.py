@@ -1,6 +1,10 @@
 import kivy
+from kivy.clock import Clock
 
 from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
+
 from controller.observer import Observer
 from kivy.graphics import *
 
@@ -88,3 +92,10 @@ class DrawableWidget(FloatLayout):
 
         self.canvas.add(Rectangle(pos=pos, size=(width, height)))
         config.set_box(DoublePoint((pos[0], pos[1]), (pos[0] + width, pos[1] + height)))
+
+    #TODO: currently called when set rectangle button is pressed, this should be changed to be called when incident occurs. 
+    def draw_alert(self):
+
+        popup = Popup(title = 'Warning !', content=Label(text='Incident Occured!'), size=(70,10), size_hint=(0.5, 0.5))
+        popup.open()
+        Clock.schedule_once(lambda dt: popup.dismiss(), 5)

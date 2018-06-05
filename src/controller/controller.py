@@ -5,8 +5,6 @@ from ui.view.config_view import setup_button
 
 class Controller:
 
-
-
     x1 = -1
     y1 = -1
     x2 = -1
@@ -49,6 +47,7 @@ class Controller:
         self.line = False
         self.drawable_widget.clear_rectangle()
         self.reset_coordinates()
+        self.drawable_widget.draw_alert()
 
     def delete_object(self, button):
         """

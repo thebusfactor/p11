@@ -1,0 +1,12 @@
+image: python
+
+stages:
+  - test
+  
+test:
+  stage: test
+  script:
+    - pip install --user -r requirements.txt
+    - python -m unittest discover src/test/
+  tags:
+    - docker

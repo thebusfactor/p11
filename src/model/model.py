@@ -9,16 +9,21 @@ from util.double_point import DoublePoint
 
 class Model:
 
-    def __init__(self, video: Video, fps: int):
+    frame_count: int = 0
+
+    def __init__(self, video: Video, fps: int, res):
         self.video = video
         self.fps = fps
+        self.res = res
         self.frame = self.video.get_frame()
         self.traffic_light = TrafficLight()
-        self.traffic_light.box = DoublePoint((200, 200), (800, 800))
+        self.traffic_light.box = DoublePoint((0, 0), (res[0], res[1]))
 
     def start(self):
         while True:
             self.frame = self.video.get_frame()
-            if self.traffic_light.check_traffic_light(self.frame):
-                print("Light is red")
+            if self.frame_count % 30 == 0:
+                if self.traffic_light.check_traffic_light(self.frame, self.res):
+                    print("Light is red")
             time.sleep(1/self.fps)
+            self.frame_count += 1

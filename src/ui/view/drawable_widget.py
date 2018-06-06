@@ -32,6 +32,9 @@ class DrawableWidget(FloatLayout):
     def on_touch_down(self, touch):
         self.observer.update(touch)
 
+    def on_touch_move(self, touch):
+        print(touch)
+
     def set_color(self, rgb: tuple):
         self.canvas.add(Color(rgb[0], rgb[1], rgb[2], self.TRANSPARENCY))
 

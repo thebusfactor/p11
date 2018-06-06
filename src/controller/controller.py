@@ -13,13 +13,13 @@ class Controller:
     line = False
     rectangle = False
 
-    def __init__(self, model, config_view):
+    def __init__(self, model, config_view, res):
         self.model = model
         self.config_view = config_view
         self.drawable_widget = config_view.drawable_widget
         self.click_observer = ClickObserver(self)
         self.drawable_widget.add_observer(self.click_observer)
-        config_view.button_layout = setup_button(self)
+        config_view.button_layout = setup_button(self, res)
 
     def reset_coordinates(self):
         """
@@ -47,7 +47,7 @@ class Controller:
         self.line = False
         self.drawable_widget.clear_rectangle()
         self.reset_coordinates()
-        self.drawable_widget.draw_alert()
+        #self.drawable_widget.draw_alert()
 
     def delete_object(self, button):
         """

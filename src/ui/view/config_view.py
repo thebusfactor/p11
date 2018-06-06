@@ -13,36 +13,34 @@ class ConfigView(App):
 
     button_layout = None
 
-    def __init__(self, video, fps: int, **kwargs):
+    def __init__(self, video, fps: int, res, **kwargs):
         super().__init__(**kwargs)
         self.capture = video.video
         self.kivy_frame = Cv2FrameTexture(capture=self.capture, fps=fps)
         self.button = Button(text='Hello world', font_size=14)
         self.drawable_widget = DrawableWidget()
+        self.res = res
 
     def build(self):
-        Window.size = (750, 450)
-        parent = Widget()
-        parent.size = (750, 50)
-        self.kivy_frame.pos = (0, -40)
-        self.kivy_frame.size = (parent.size[0], 500)
-        parent.add_widget(self.kivy_frame)
+        Window.size = (self.res[0], self.res[1])
 
-        parent.add_widget(self.button_layout)
-        parent.add_widget(self.drawable_widget)
-        return parent
+        self.kivy_frame.size = (self.res[0], self.res[1])
+
+        self.kivy_frame.add_widget(self.button_layout)
+        self.kivy_frame.add_widget(self.drawable_widget)
+        return self.kivy_frame
 
     def on_stop(self):
         self.capture.release()
 
 
-def setup_button(controller):
-    button_layout = GridLayout(pos=(0, 395))
+def setup_button(controller, res):
+    button_layout = GridLayout(pos=(0, -25))
     button_layout.rows = 2
     button_layout.row_force_default = True
     button_layout.row_default_height = 20
     button_layout.cols = 4
-    button_layout.size = (750, 50)
+    button_layout.size = (res[0], 50)
 
     clear_button = Button(text='Clear', on_press=controller.delete_object)
 

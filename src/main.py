@@ -13,6 +13,7 @@ def main(argv):
 
     video_model = Video('C:/Users/Brandon/Documents/Git Projects/Bus-Factor/resources/vid.avi')
     video_view = Video('C:/Users/Brandon/Documents/Git Projects/Bus-Factor/resources/vid.avi')
+
     model = Model(video=video_model, fps=fps)
 
 

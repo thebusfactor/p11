@@ -47,6 +47,7 @@ class Controller:
         self.line = False
         self.drawable_widget.clear_rectangle()
         self.reset_coordinates()
+        self.drawable_widget.draw_alert()
 
     def delete_object(self, button):
         """

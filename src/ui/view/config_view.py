@@ -5,7 +5,6 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
 
-
 from ui.view.drawable_widget import DrawableWidget
 from ui.view.frame_texture import Cv2FrameTexture
 

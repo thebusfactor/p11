@@ -1,11 +1,9 @@
 from controller.observer import Observer
-from model import config
+from model import config, traffic_light
 from ui.view.config_view import setup_button
 
 
 class Controller:
-
-
 
     x1 = -1
     y1 = -1
@@ -97,5 +95,6 @@ class ClickObserver(Observer):
                 self.drawable_widget.draw_line(x1=self.controller.x1, y1=self.controller.y1, touch=touch)
             elif self.controller.rectangle:
                 self.drawable_widget.draw_rectangle(x1=self.controller.x1, y1=self.controller.y1, touch=touch)
+                self.controller.model.traffic_light.box = config.get_box()
 
             self.controller.reset_tool()

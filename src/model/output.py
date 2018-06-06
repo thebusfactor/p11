@@ -160,16 +160,16 @@ def determine_bus(image):
 
 def check_traffic_light():
     path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/tlRed/'
-    for filename in os.listdir(path):
-        image = cv2.imread(path + filename, flags=cv2.IMREAD_COLOR)
-        light, hsv = Image.apply_light_mask(image)
-        print(calc_z_value(light))
-        cv2.imshow("hsv", hsv)
-        cv2.imshow("mask_hsv", light)
-        cv2.imshow("orig", image)
-        cv2.waitKey(0)
-        # if z > 20 return True avg = 133~
-        # Black returns 0 almost always, so anything really.
+    # for filename in os.listdir(path):
+    #     image = cv2.imread(path + filename, flags=cv2.IMREAD_COLOR)
+    #     light, hsv = Image.apply_light_mask(image)
+    #     print(calc_z_value(light))
+    #     cv2.imshow("hsv", hsv)
+    #     cv2.imshow("mask_hsv", light)
+    #     cv2.imshow("orig", image)
+    #     cv2.waitKey(0)
+    #     # if z > 20 return True avg = 133~
+    #     # Black returns 0 almost always, so anything really.
 
 
 def green_mask(image):

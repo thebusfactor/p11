@@ -16,19 +16,18 @@ class ConfigView(App):
     def __init__(self, video, fps: int, res, **kwargs):
         super().__init__(**kwargs)
         self.capture = video.video
-        self.kivy_frame = Cv2FrameTexture(capture=self.capture, fps=fps)
-        self.button = Button(text='Hello world', font_size=14)
+        self.frame_texture = Cv2FrameTexture(fps=fps)
         self.drawable_widget = DrawableWidget()
         self.res = res
 
     def build(self):
         Window.size = (self.res[0], self.res[1])
 
-        self.kivy_frame.size = (self.res[0], self.res[1])
+        self.frame_texture.size = (self.res[0], self.res[1])
 
-        self.kivy_frame.add_widget(self.button_layout)
-        self.kivy_frame.add_widget(self.drawable_widget)
-        return self.kivy_frame
+        self.frame_texture.add_widget(self.button_layout)
+        self.frame_texture.add_widget(self.drawable_widget)
+        return self.frame_texture
 
     def on_stop(self):
         self.capture.release()

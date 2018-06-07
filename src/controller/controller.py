@@ -1,3 +1,5 @@
+import cv2
+
 from controller.observer import Observer
 from model import config, traffic_light
 from ui.view.config_view import setup_button
@@ -17,8 +19,14 @@ class Controller:
         self.model = model
         self.config_view = config_view
         self.drawable_widget = config_view.drawable_widget
+        self.frame_texture = config_view.frame_texture
+
         self.click_observer = ClickObserver(self)
         self.drawable_widget.add_observer(self.click_observer)
+        self.frame_observer = FrameObserver(self)
+
+        self.model.add_observer(self.frame_observer)
+
         config_view.button_layout = setup_button(self, res)
 
     def reset_coordinates(self):
@@ -66,6 +74,20 @@ class Controller:
     def reset_tool(self):
         self.line = False
         self.rectangle = False
+
+
+class FrameObserver(Observer):
+
+    def __init__(self, controller: Controller):
+        self.controller = controller
+        self.frame_texture = self.controller.frame_texture
+
+    def update(self, frame):
+        self.frame_texture.update_frame(frame)
+        if self.controller.model.red:
+            self.controller.drawable_widget.draw_red()
+        else:
+            self.controller.drawable_widget.draw_not_red()
 
 
 class ClickObserver(Observer):

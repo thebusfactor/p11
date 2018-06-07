@@ -4,7 +4,7 @@ from src.util.double_point import DoublePoint
 
 config = cp.ConfigParser()
 
-PATH = "config.ini"
+PATH = "./config.ini"
 VALID = "validConfig"
 LIGHT_BOX = "box"
 INTERSECTION_LINE = "line"

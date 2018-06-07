@@ -1,11 +1,11 @@
+import cv2
+
 from controller.observer import Observer
-from model import config
+from model import config, traffic_light
 from ui.view.config_view import setup_button
 
 
 class Controller:
-
-
 
     x1 = -1
     y1 = -1
@@ -15,13 +15,19 @@ class Controller:
     line = False
     rectangle = False
 
-    def __init__(self, model, config_view):
+    def __init__(self, model, config_view, res):
         self.model = model
         self.config_view = config_view
         self.drawable_widget = config_view.drawable_widget
+        self.frame_texture = config_view.frame_texture
+
         self.click_observer = ClickObserver(self)
         self.drawable_widget.add_observer(self.click_observer)
-        config_view.button_layout = setup_button(self)
+        self.frame_observer = FrameObserver(self)
+
+        self.model.add_observer(self.frame_observer)
+
+        config_view.button_layout = setup_button(self, res)
 
     def reset_coordinates(self):
         """
@@ -49,6 +55,7 @@ class Controller:
         self.line = False
         self.drawable_widget.clear_rectangle()
         self.reset_coordinates()
+        #self.drawable_widget.draw_alert()
 
     def delete_object(self, button):
         """
@@ -67,6 +74,20 @@ class Controller:
     def reset_tool(self):
         self.line = False
         self.rectangle = False
+
+
+class FrameObserver(Observer):
+
+    def __init__(self, controller: Controller):
+        self.controller = controller
+        self.frame_texture = self.controller.frame_texture
+
+    def update(self, frame):
+        self.frame_texture.update_frame(frame)
+        if self.controller.model.red:
+            self.controller.drawable_widget.draw_red()
+        else:
+            self.controller.drawable_widget.draw_not_red()
 
 
 class ClickObserver(Observer):
@@ -97,5 +118,6 @@ class ClickObserver(Observer):
                 self.drawable_widget.draw_line(x1=self.controller.x1, y1=self.controller.y1, touch=touch)
             elif self.controller.rectangle:
                 self.drawable_widget.draw_rectangle(x1=self.controller.x1, y1=self.controller.y1, touch=touch)
+                self.controller.model.traffic_light.box = config.get_box()
 
             self.controller.reset_tool()

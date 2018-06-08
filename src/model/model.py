@@ -27,11 +27,13 @@ class Model:
         while True:
             self.frame = self.video.get_frame()
             self.observer.update(self.frame)
+            if self.frame is None:
+                self.video.reset_video()
+                self.frame = self.video.get_frame()
             if self.frame_count % 30 == 0:
                 self.red = False
                 if self.traffic_light.check_traffic_light(self.frame, self.res):
                     self.red = True
-
                     self.bus_detection.crop(self.frame)
             time.sleep(1/self.fps)
             self.frame_count += 1

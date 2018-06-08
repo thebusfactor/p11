@@ -49,10 +49,6 @@ class Controller:
         self.y1 = -1
         self.x2 = -1
         self.y2 = -1
-        # self.x3 = -1
-        # self.y3 = -1
-        # self.x4 = -1
-        # self.y4 = -1
 
     def set_line(self, button):
         """
@@ -102,13 +98,23 @@ class FrameObserver(Observer):
     def __init__(self, controller: Controller):
         self.controller = controller
         self.frame_texture = self.controller.frame_texture
+        self.old_red = None
+        self.old_bus = None
 
     def update(self, frame):
         self.frame_texture.update_frame(frame)
-        if self.controller.model.red:
-            self.controller.drawable_widget.draw_red()
-        else:
-            self.controller.drawable_widget.draw_not_red()
+        red = self.controller.model.red
+        bus = self.controller.model.bus
+        if self.old_red != red:
+            if red:
+                self.controller.drawable_widget.draw_red()
+            else:
+                self.controller.drawable_widget.draw_not_red()
+        if self.old_bus != bus:
+            if bus:
+                self.controller.drawable_widget.draw_alert()
+        self.old_red = red
+        self.old_bus = bus
 
 
 class ClickObserver(Observer):

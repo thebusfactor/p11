@@ -3,11 +3,9 @@ import numpy
 
 
 class Image:
-    def __init__(self):
-        self
 
     @staticmethod
-    def convert_image_to_grayscale(image):
+    def convert_image_to_grayscale(frame):
         """
         Converts image to Grayscale mask, and returns the masked image as a binary black and white file
         :param image: the image to be converted
@@ -17,7 +15,7 @@ class Image:
         return img_gray
 
     @staticmethod
-    def convert_image_to_edge_mask(image):
+    def convert_image_to_edge_mask(frame):
         """
         Converts image to Edge mask, and returns the masked image as a Canny converted image
         :param image: the image to be masked

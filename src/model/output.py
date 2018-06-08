@@ -13,7 +13,7 @@ bgr_colours = {'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255]
                'Pink': (numpy.array([150, 90, 110]), numpy.array([225, 190, 200]))}
 
 
-def determine_bus():
+def determine_bus(frame):
     """
     Main algorithm to detect bus, needs clipped part of frame
     Ordered in priority of colour bus is potentially
@@ -27,8 +27,6 @@ def determine_bus():
     :return: Whether a bus has been detected
     """
 
-    path = '/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/yeet/yeet.png'
-    image = cv2.imread(path, flags=cv2.IMREAD_COLOR)
 
     y_value = 19800
     yw_value = 19800
@@ -36,15 +34,15 @@ def determine_bus():
     bw_value = 15000
     p_value = 10000
 
-    z = calc_z_value(yellow_mask(image))
+    z = calc_z_value(yellow_mask(frame))
     if z > y_value:
         return True, z, "yellow"
 
-    z = calc_z_value(yellow_white_mask(image))
+    z = calc_z_value(yellow_white_mask(frame))
     if z > yw_value:
         return True, z, "yellow white"
 
-    z = calc_z_value(green_white_mask(image))
+    z = calc_z_value(green_white_mask(frame))
     if z > gw_value:
         return True, z, "green white"
 

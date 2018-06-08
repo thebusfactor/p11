@@ -1,3 +1,6 @@
+from kivy import Config
+Config.set('graphics','resizable',0)
+
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
@@ -51,4 +54,5 @@ def setup_button(controller, res):
     button_layout.add_widget(set_lights_button)
     button_layout.add_widget(set_line_button)
     button_layout.add_widget(capture_button)
+
     return button_layout

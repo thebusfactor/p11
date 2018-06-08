@@ -13,10 +13,13 @@ def main(argv):
 
     res = (1280, 720)
 
-    video_model = Video('C:/Users/User/Music/8_6_18 bus factor/Bus-Factor/resources/vid.avi')
-    model = Model(video=video_model, fps=fps, res=res)
+    fixed_path = os.path.abspath(os.path.dirname(__file__))
+    path = os.path.join(fixed_path, "../resources/vid.avi")
 
-    view = ConfigView(video=video_model, fps=fps, res=res)
+    video = Video(path)
+    model = Model(video=video, fps=fps, res=res)
+
+    view = ConfigView(video=video, fps=fps, res=res)
 
     Controller(model,view, res)
 

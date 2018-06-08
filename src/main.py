@@ -1,3 +1,4 @@
+import os
 import sys
 import threading
 
@@ -10,13 +11,14 @@ from ui.view.config_view import ConfigView
 def main(argv):
     fps: int = 24
 
-    video_model = Video('./resources/vid.avi')
-    video_view = Video('./resources/vid.avi')
-    model = Model(video=video_model, fps=fps)
+    res = (1280, 720)
 
-    view = ConfigView(video=video_view, fps=fps)
+    video_model = Video('C:/Users/User/Music/8_6_18 bus factor/Bus-Factor/resources/vid.avi')
+    model = Model(video=video_model, fps=fps, res=res)
 
-    Controller(model,view)
+    view = ConfigView(video=video_model, fps=fps, res=res)
+
+    Controller(model,view, res)
 
     model_thread = threading.Thread(target=model.start)
     model_thread.daemon = True

@@ -30,7 +30,6 @@ class Model:
             if self.frame_count % 30 == 0:
                 self.red = False
                 if self.traffic_light.check_traffic_light(self.frame, self.res):
-                    print("YES IT IS RED VERY NICE")
                     self.red = True
 
                     self.bus_detection.crop(self.frame)

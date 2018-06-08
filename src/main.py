@@ -10,6 +10,7 @@ from ui.view.config_view import ConfigView
 
 def main(argv):
     fps: int = 24
+
     res = (1280, 720)
 
     video_model = Video('C:/Users/User/Music/8_6_18 bus factor/Bus-Factor/resources/vid.avi')

@@ -18,6 +18,7 @@ class Controller:
     line_coords = []
 
     calculated_crop = False
+    capture_counter = 1
 
     line = False
     rectangle = False
@@ -84,7 +85,8 @@ class Controller:
         """
             Method to capture the image currently displayed in the camera input pane.
         """
-        pass
+        cv2.imwrite("frame_capture_%d.png" % self.capture_counter, self.model.frame)
+        self.capture_counter += 1
 
     def reset_tool(self):
         self.line = False

@@ -11,7 +11,7 @@ from ui.view.config_view import ConfigView
 def main(argv):
     fps: int = 30
 
-    video_model = Video('C:/Users/Brandon/Documents/Git Projects/Bus-Factor/resources/vid.avi')
+    video_model = Video('C:/Users/James/OneDrive/Documents/GitHub/Bus-Factor/resources/vid.avi')
     res = (1280, 720)
     model = Model(video=video_model, fps=fps, res=res)
     view = ConfigView(video=video_model, fps=fps, res=res)

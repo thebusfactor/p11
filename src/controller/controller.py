@@ -1,3 +1,7 @@
+from controller import crop
+from controller.observer import Observer
+from external import clip
+from model import config, model
 import cv2
 
 from controller.observer import Observer
@@ -11,6 +15,9 @@ class Controller:
     y1 = -1
     x2 = -1
     y2 = -1
+    line_coords = []
+
+    calculated_crop = False
     capture_counter = 1
 
     line = False
@@ -24,6 +31,10 @@ class Controller:
 
         self.click_observer = ClickObserver(self)
         self.drawable_widget.add_observer(self.click_observer)
+        config_view.button_layout = setup_button(self, res)
+        self.res = res
+        self.width = res[0]
+        self.height = res[1]
         self.frame_observer = FrameObserver(self)
 
         self.model.add_observer(self.frame_observer)
@@ -38,6 +49,10 @@ class Controller:
         self.y1 = -1
         self.x2 = -1
         self.y2 = -1
+        # self.x3 = -1
+        # self.y3 = -1
+        # self.x4 = -1
+        # self.y4 = -1
 
     def set_line(self, button):
         """
@@ -78,6 +93,10 @@ class Controller:
         self.rectangle = False
 
 
+    def crop(self, line_coords):
+        self.model.bus_detection.crop_with_line(line_coords, self.width, self.height, self.calculated_crop)
+        self.calculated_crop = True
+
 class FrameObserver(Observer):
 
     def __init__(self, controller: Controller):
@@ -117,9 +136,15 @@ class ClickObserver(Observer):
             self.controller.y2 = touch.y
 
             if self.controller.line:
+                self.controller.line_coords.append([self.controller.x1, self.controller.y1, self.controller.x2, self.controller.y2])
                 self.drawable_widget.draw_line(x1=self.controller.x1, y1=self.controller.y1, touch=touch)
+                print(self.controller.line_coords)
+                if(len(self.controller.line_coords) >= 2):
+                    self.controller.crop(self.controller.line_coords)
+
             elif self.controller.rectangle:
                 self.drawable_widget.draw_rectangle(x1=self.controller.x1, y1=self.controller.y1, touch=touch)
                 self.controller.model.traffic_light.box = config.get_box()
 
             self.controller.reset_tool()
+

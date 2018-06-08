@@ -11,6 +11,9 @@ class Video:
         ret, frame = self.video.read()
         return frame
 
+    def reset_video(self):
+        self.video = cv2.VideoCapture(self.path)
+
 
 def open_video(path):
     video = cv2.VideoCapture(path)

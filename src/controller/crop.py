@@ -42,6 +42,6 @@ def crop_image(x1, y1, x2, y2, x4, y4, x3, y3, image):
     crop_img = masked_image[min_y:min_y+(max_y-min_y), min_x:min_x+(max_x-min_x)]
 
     # save the result (FOR TESTING)
-    cv2.imwrite('yeet.png', crop_img)
+    cv2.imwrite('/Users/Sean/Desktop/ENGR301/Bus-Factor/Bus-Factor/resources/bus/yeet/yeet.png', crop_img)
 
     return crop_img

@@ -27,7 +27,7 @@ class BusDetection:
 
     def crop(self, frame):
         if self.variables_set:
-            crop.crop_image(self.x1_ratio, self.y1_ratio, self.x2_ratio,
+            return crop.crop_image(self.x1_ratio, self.y1_ratio, self.x2_ratio,
                             self.y2_ratio, self.x3_ratio,
                             self.y3_ratio, self.x4_ratio,
                             self.y4_ratio, frame)

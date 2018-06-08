@@ -2,9 +2,9 @@ import cv2
 import time
 
 from controller.observer import Observer
-from model import traffic_light
 from external.video import Video
 from model.bus_detection import BusDetection
+import model.output
 from model.traffic_light import TrafficLight
 from util.double_point import DoublePoint
 
@@ -13,6 +13,7 @@ class Model:
 
     frame_count: int = 30
     red: bool = False
+    bus: bool = False
 
     def __init__(self, video: Video, fps: int, res):
         self.video = video
@@ -30,11 +31,18 @@ class Model:
             if self.frame is None:
                 self.video.reset_video()
                 self.frame = self.video.get_frame()
-            if self.frame_count % 30 == 0:
+            if self.bus:
+                if self.frame_count % 300 == 0:
+                    self.bus = False
+            elif self.frame_count % 30 == 0:
                 self.red = False
                 if self.traffic_light.check_traffic_light(self.frame, self.res):
                     self.red = True
                     self.bus_detection.crop(self.frame)
+                    check, z, colour = model.output.determine_bus()
+                    if check and colour != 'none':
+                        self.bus = True
+
             time.sleep(1/self.fps)
             self.frame_count += 1
 

@@ -14,7 +14,6 @@ class TrafficLight:
         clipped_frame = clip_frame(frame, self.box, res)
         light, hsv = Image.apply_light_mask(clipped_frame)
         z = calc_z_value(light)
-        print(z)
         if z > 20:
             return True
         else:

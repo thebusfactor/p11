@@ -38,11 +38,13 @@ class Model:
                 self.red = False
                 if self.traffic_light.check_traffic_light(self.frame, self.res):
                     self.red = True
-                    self.bus_detection.crop(self.frame)
-                    check, z, colour = model.output.determine_bus(self.frame)
+                    img = self.bus_detection.crop(self.frame)
+                    check, z, colour = model.output.determine_bus(img)
                     if check and colour != 'none':
                         self.bus = True
                         print("Bus crossed skipped light")
+                        print("colour: ", colour)
+                        print("z: ", z)
 
             time.sleep(1/self.fps)
             self.frame_count += 1

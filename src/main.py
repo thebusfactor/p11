@@ -9,14 +9,15 @@ from ui.view.config_view import ConfigView
 
 def main(argv):
     fps: int = 24
+    res = [1280, 720]
 
-    video_model = Video('./resources/vid.avi')
-    video_view = Video('./resources/vid.avi')
+    video_model = Video('C:/Users/User/Music/8_6_18 bus factor/Bus-Factor/resources/vid.avi')
+    video_view = Video('C:/Users/User/Music/8_6_18 bus factor/Bus-Factor/resources/vid.avi')
     model = Model(video=video_model, fps=fps)
 
     view = ConfigView(video=video_view, fps=fps)
 
-    Controller(model,view)
+    Controller(model,view, res)
 
     model_thread = threading.Thread(target=model.start)
     model_thread.daemon = True

@@ -1,27 +1,32 @@
+from controller import crop
 from controller.observer import Observer
-from model import config
+from model import config, model
 from ui.view.config_view import setup_button
 
 
 class Controller:
 
-
-
     x1 = -1
     y1 = -1
     x2 = -1
     y2 = -1
+    line_coords = []
+
+    calculated_crop = False
 
     line = False
     rectangle = False
 
-    def __init__(self, model, config_view):
+    def __init__(self, model, config_view, res):
         self.model = model
         self.config_view = config_view
         self.drawable_widget = config_view.drawable_widget
         self.click_observer = ClickObserver(self)
         self.drawable_widget.add_observer(self.click_observer)
         config_view.button_layout = setup_button(self)
+        self.res = res
+        self.width = res[0]
+        self.height = res[1]
 
     def reset_coordinates(self):
         """
@@ -31,6 +36,10 @@ class Controller:
         self.y1 = -1
         self.x2 = -1
         self.y2 = -1
+        # self.x3 = -1
+        # self.y3 = -1
+        # self.x4 = -1
+        # self.y4 = -1
 
     def set_line(self, button):
         """
@@ -69,6 +78,34 @@ class Controller:
         self.rectangle = False
 
 
+    def crop_with_line(self):
+
+        if not self.calculated_crop:
+            print(self.line_coords[0][0], self.height - self.line_coords[0][1], self.line_coords[0][2],
+                      self.height - self.line_coords[0][3], self.line_coords[1][0], self.height - self.line_coords[1][1],
+                      self.line_coords[1][2], self.height - self.line_coords[1][3])
+
+            img_width = self.width
+            img_height = self.height
+            print(img_width)
+            print(img_height)
+
+            x1_ratio = self.line_coords[0][0] / img_width
+            y1_ratio = (self.height - self.line_coords[0][1]) / img_height
+            print(x1_ratio)
+            print(y1_ratio)
+            x2_ratio = self.line_coords[0][2] / img_width
+            y2_ratio = (self.height - self.line_coords[0][3]) / img_height
+            x3_ratio = self.line_coords[1][0] / img_width
+            y3_ratio = (self.height - self.line_coords[1][1]) / img_height
+            x4_ratio = self.line_coords[1][2] / img_width
+            y4_ratio = (self.height - self.line_coords[1][3]) / img_height
+
+        crop.crop_image(x1_ratio, y1_ratio, x2_ratio,
+                        y2_ratio, x3_ratio,
+                        y3_ratio, x4_ratio,
+                        y4_ratio, self.model.frame)
+
 class ClickObserver(Observer):
 
     def __init__(self, controller: Controller):
@@ -94,8 +131,14 @@ class ClickObserver(Observer):
             self.controller.y2 = touch.y
 
             if self.controller.line:
+                self.controller.line_coords.append([self.controller.x1, self.controller.y1, self.controller.x2, self.controller.y2])
                 self.drawable_widget.draw_line(x1=self.controller.x1, y1=self.controller.y1, touch=touch)
+                print(self.controller.line_coords)
+                if(len(self.controller.line_coords) >= 2):
+                    self.controller.crop_with_line()
+
             elif self.controller.rectangle:
                 self.drawable_widget.draw_rectangle(x1=self.controller.x1, y1=self.controller.y1, touch=touch)
 
             self.controller.reset_tool()
+

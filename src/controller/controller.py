@@ -1,11 +1,10 @@
-from controller import crop
-from controller.observer import Observer
-from external import clip
-from model import config, model
+#MIT License
+#Copyright (c) 2018 ENGR301-302-2018 / Project-11
+
 import cv2
 
 from controller.observer import Observer
-from model import config, traffic_light
+from model import config
 from ui.view.config_view import setup_button
 
 

@@ -6,6 +6,9 @@ from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 
 from kivy.uix.widget import Widget
+#MIT License
+#Copyright (c) 2018 ENGR301-302-2018 / Project-11
+
 from kivy.core.window import Window
 
 from ui.view.drawable_widget import DrawableWidget

@@ -1,6 +1,6 @@
-import cv2
+#MIT License
+#Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
-from controller import crop
 from util.double_point import DoublePoint
 
 

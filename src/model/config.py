@@ -1,3 +1,6 @@
+#MIT License
+#Copyright (c) 2018 ENGR301-302-2018 / Project-11
+
 import configparser as cp
 
 from src.util.double_point import DoublePoint

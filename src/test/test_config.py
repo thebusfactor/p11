@@ -2,7 +2,8 @@ import unittest
 
 from src.model import config
 from src.util.double_point import DoublePoint
-
+#MIT License
+#Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 class ConfigTests(unittest.TestCase):
 

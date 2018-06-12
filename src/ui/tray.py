@@ -1,3 +1,6 @@
+#MIT License
+#Copyright (c) 2018 ENGR301-302-2018 / Project-11
+
 from kivy.app import App
 from pystray import Icon, Menu, MenuItem
 from PIL import Image

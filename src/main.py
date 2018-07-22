@@ -22,15 +22,9 @@ def main(argv):
     video = Video(path)
     model = Model(video=video, fps=fps, res=res)
 
-    view = ConfigView(video=video, fps=fps, res=res)
-
-    Controller(model,view, res)
-
     model_thread = threading.Thread(target=model.start)
     model_thread.daemon = True
     model_thread.start()
-
-    view.run()
     sys.exit(1)
 
     pass

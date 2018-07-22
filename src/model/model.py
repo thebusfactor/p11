@@ -1,10 +1,8 @@
 #MIT License
 #Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
-import cv2
 import time
 
-from controller.observer import Observer
 from external.video import Video
 from model.bus_detection import BusDetection
 import model.output

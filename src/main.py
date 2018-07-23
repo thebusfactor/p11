@@ -5,10 +5,8 @@ import os
 import sys
 import threading
 
-from controller.controller import Controller
 from model.model import Model
 from external.video import Video
-from ui.view.config_view import ConfigView
 
 
 def main(argv):

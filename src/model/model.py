@@ -1,6 +1,7 @@
 #MIT License
 #Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
+import cv2
 import time
 
 from controller.observer import Observer
@@ -36,20 +37,25 @@ class Model:
             # if self.bus:
             #     if self.frame_count % 300 == 0:
             #         self.bus = False
-            # elif self.frame_count % 30 == 0:
+            # else:
             #     self.red = False
-            #     if self.traffic_light.check_traffic_light(self.frame, self.res):
-            #         self.red = True
-            #         img = self.bus_detection.crop(self.frame)
-            #         check, z, colour = model.output.determine_bus(img)
-            #         if check and colour != 'none':
-            #             self.bus = True
-            #             print("Bus crossed skipped light")
-            #             print("colour: ", colour)
-            #             print("z: ", z)
+            #     self.bus_detection.detect(self.frame)
+            elif self.frame_count % 30 == 0:
+                self.red = False
+                self.bus_detection.detect(self.frame)
+                # if self.traffic_light.check_traffic_light(self.frame, self.res):
+                #     self.red = True
+                #     img = self.bus_detection.crop(self.frame)
+                #     check, z, colour = model.output.determine_bus(img)
+                #     if check and colour != 'none':
+                #         self.bus = True
+                #         print("Bus crossed skipped light")
+                #         print("colour: ", colour)
+                #         print("z: ", z)
 
             time.sleep(1/self.fps)
             self.frame_count += 1
+
 
     def add_observer(self, observer: Observer):
         self.observer = observer

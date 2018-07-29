@@ -1,5 +1,6 @@
 opencv-python
 numpy
-Cython
 pystray
-pygments
+matplotlib
+tensorflow
+Cython

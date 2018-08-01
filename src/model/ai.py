@@ -5,23 +5,21 @@ import numpy
 
 from util.classification import Classification
 
-options = {"model": "cfg/yolo.cfg", "load": "bin/yolov2.weights", "threshold": 0.1}
+tfnet: TFNet
 
-tfnet = TFNet(options)
-
-
-img = cv.imread("bin/Bus1.jpg")
-img = cv.resize(img, (1920, 1080))
-
-results = tfnet.return_predict(img)
-# cv.imshow("result", img)
-# print(result)
-
-for res in results:
-    clf = Classification(res)
-    print(clf)
+def start_ai(self):
+    options = {"model": "cfg/yolo.cfg", "load": "bin/yolov2.weights", "threshold": 0.1}
+    self.tfnet = TFNet(options)
 
 
 
+def classify(frame):
+    frame = cv.resize(frame, (1920, 1080))
 
-cv.waitKey(0)
+    results = tfnet.return_predict(frame)
+    out = []
+    for res in results:
+        clf = Classification(res)
+        out.append(clf)
+        print(clf)
+    return out

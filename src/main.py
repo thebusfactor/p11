@@ -5,13 +5,13 @@ import os
 import sys
 import threading
 
+from model.ai import *
 from model.model import Model
 from external.video import Video
 
 
 def main(argv):
     fps: int = 24
-
     res = (1280, 720)
 
     fixed_path = os.path.abspath(os.path.dirname(__file__))
@@ -19,6 +19,8 @@ def main(argv):
 
     video = Video(path)
     model = Model(video=video, fps=fps, res=res)
+
+    start_ai()
 
     model_thread = threading.Thread(target=model.start)
     model_thread.daemon = True

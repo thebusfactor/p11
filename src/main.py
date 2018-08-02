@@ -7,7 +7,8 @@ import threading
 
 from model.ai import *
 from model.model import Model
-from external.video import Video
+from ui.debug_ui import DebugGUI
+from external.cam import Cam
 
 
 def main(argv):
@@ -17,17 +18,19 @@ def main(argv):
     fixed_path = os.path.abspath(os.path.dirname(__file__))
     path = os.path.join(fixed_path, "../resources/vid.avi")
 
-    video = Video(path)
-    model = Model(video=video, fps=fps, res=res)
+    cam = Cam()
+    model = Model(cam=cam, fps=fps, res=res)
+    model.start()
 
-    start_ai()
+    # start_ai()
 
-    model_thread = threading.Thread(target=model.start)
-    model_thread.daemon = True
-    model_thread.start()
-    sys.exit(1)
+    # model_thread = threading.Thread(target=model.start)
+    # model_thread.daemon = True
+    # model_thread.start()
+    # sys.exit(1)
+    #
 
-    pass
+
 
 
 if __name__ == "__main__":

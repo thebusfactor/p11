@@ -2,11 +2,16 @@
 #Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 import cv2
-class Video:
 
-    def __init__(self, path):
-        self.path = path
-        self.video = open_video(path)
+
+class Cam:
+
+    def __init__(self, path=None):
+        if path is None:
+            self.video = open_cam()
+        else:
+            self.path = path
+            self.video = open_video(path)
 
     def get_frame(self):
         ret, frame = self.video.read()
@@ -18,4 +23,9 @@ class Video:
 
 def open_video(path):
     video = cv2.VideoCapture(path)
+    return video
+
+
+def open_cam():
+    video = cv2.VideoCapture(0)
     return video

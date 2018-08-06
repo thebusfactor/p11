@@ -4,3 +4,4 @@ pystray
 matplotlib
 tensorflow
 Cython
+lxml

@@ -1,4 +1,5 @@
 import os
+import sys
 import matplotlib.pyplot as plt
 import cv2 as cv
 from matplotlib.widgets import RectangleSelector
@@ -14,7 +15,8 @@ path = os.path.join(fixed_path, "../../../resources")
 
 image_folder = "/toClass"
 save_dir = "/annotations"
-obj = "bus"
+out_image = "/imgData"
+obj = ""
 
 
 def select(clk, rls):
@@ -33,6 +35,7 @@ def on_key_press(event):
     global img
     if event.key == "q":
         write_xml(path+image_folder, img, object_list, tl_list, br_list, path+save_dir)
+        os.rename(img.path, "../resources/imgData/" + img.name)
         tl_list = []
         br_list = []
         object_list = []
@@ -45,9 +48,7 @@ def toggle_selector(event):
 
 
 if __name__ == '__main__':
-    print(fixed_path)
-    print(path)
-    print(path+image_folder)
+    obj = str(sys.argv[1])
     for n, image_file in enumerate(os.scandir(path+image_folder)):
         img = image_file
         fig, ax = plt.subplots(1)

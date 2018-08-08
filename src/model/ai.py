@@ -15,7 +15,7 @@ def start_ai():
 
 
 def classify(frame):
-    frame = cv.resize(frame, (1920, 1080))
+    # frame = cv.resize(frame, (1920, 1080))
 
     results = tfnet.return_predict(frame)
     out = []

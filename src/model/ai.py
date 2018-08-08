@@ -7,10 +7,11 @@ from util.classification import Classification
 
 tfnet: TFNet
 
-def start_ai(self):
-    options = {"model": "cfg/yolo.cfg", "load": "bin/yolov2.weights", "threshold": 0.1}
-    self.tfnet = TFNet(options)
 
+def start_ai():
+    global tfnet
+    options = {"model": "cfg/yolo.cfg", "load": "bin/yolov2.weights", "threshold": 0.1}
+    tfnet = TFNet(options)
 
 
 def classify(frame):

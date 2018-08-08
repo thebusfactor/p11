@@ -6,6 +6,7 @@ import time
 
 from controller.observer import Observer
 from external.cam import Cam
+from external.stored_frames import StoredFrames
 from model.bus_detection import BusDetection
 import model.output
 from model.traffic_light import TrafficLight
@@ -26,6 +27,7 @@ class Model:
         self.fps = fps
         self.res = res
         self.frame = self.cam.get_frame()
+        self.vid_clipper = StoredFrames(fps, res, 150)
         self.debug_ui = DebugGUI(self.frame)
 
     def start(self):
@@ -33,38 +35,11 @@ class Model:
             print("Starting Model")
             self.frame = self.cam.get_frame()
             self.debug_ui.update_frame(self.frame)
-
+            # upon event
+                # call method in StoredFrames to clip event
             if cv.waitKey(50) == 27:
                 break
         cv.destroyAllWindows()
-
-
-            # self.frame = self.video.get_frame()
-            # self.observer.update(self.frame)
-            # if self.frame is None:
-            #     self.video.reset_video()
-            #     self.frame = self.video.get_frame()
-            # # if self.bus:
-            # #     if self.frame_count % 300 == 0:
-            # #         self.bus = False
-            # # else:
-            # #     self.red = False
-            # #     self.bus_detection.detect(self.frame)
-            # elif self.frame_count % 30 == 0:
-            #     self.red = False
-            #     self.bus_detection.detect(self.frame)
-            #     # if self.traffic_light.check_traffic_light(self.frame, self.res):
-            #     #     self.red = True
-            #     #     img = self.bus_detection.crop(self.frame)
-            #     #     check, z, colour = model.output.determine_bus(img)
-            #     #     if check and colour != 'none':
-            #     #         self.bus = True
-            #     #         print("Bus crossed skipped light")
-            #     #         print("colour: ", colour)
-            #     #         print("z: ", z)
-            #
-            # time.sleep(1/self.fps)
-            # self.frame_count += 1
 
 
     def add_observer(self, observer: Observer):

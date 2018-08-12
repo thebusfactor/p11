@@ -5,7 +5,7 @@ class DebugGUI:
 
     ui_name = "Bus-Factor"
     classifications = None
-    confidence_threshold = 0.01
+    confidence_threshold = 0.1
     frame = None
     bus_colour = (0, 191, 255)
     not_bus_colour = (0, 0, 0)

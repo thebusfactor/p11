@@ -15,7 +15,8 @@ class Model:
     frame_observers = []
     classifications_observers = []
 
-    # frame_count: int = 30
+    frame_count: int = 30
+    fps_to_check: int = 2
     # red: bool = False
     # bus: bool = False
 
@@ -27,12 +28,18 @@ class Model:
         start_ai()
 
     def start(self):
+        cur_frame = 0
         while True:
+            # only check 'fps_to_check' frames per second.
+            cur_frame += 1
             self.frame = self.cam.get_frame()
-            self.update_classifications_observer(classify(self.frame))
+            if cur_frame >= self.frame_count / self.fps_to_check:
+
+                self.update_classifications_observer(classify(self.frame))
+                # upon event
+                    # call method in StoredFrames to clip event
+                cur_frame = 0
             self.update_frame_observer(self.frame)
-            # upon event
-                # call method in StoredFrames to clip event
             if cv.waitKey(50) == 27:
                 break
         cv.destroyAllWindows()

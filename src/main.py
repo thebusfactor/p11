@@ -1,10 +1,11 @@
-#MIT License
-#Copyright (c) 2018 ENGR301-302-2018 / Project-11
+# MIT License
+# Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 import os
 import sys
 import threading
 
+from controller.controller import Controller
 from model.ai import *
 from model.model import Model
 from ui.debug_ui import DebugGUI
@@ -16,10 +17,14 @@ def main(argv):
     res = (1280, 720)
 
     fixed_path = os.path.abspath(os.path.dirname(__file__))
-    path = os.path.join(fixed_path, "../resources/vid.avi")
+    path = os.path.join(fixed_path, "../../resources/vid.avi")
 
-    cam = Cam()
-    model = Model(cam=cam, fps=fps, res=res)
+    cam = Cam(path)
+    model = Model(cam, fps, res)
+    view = DebugGUI()
+
+    Controller(model, view)
+
     model.start()
 
     # start_ai()
@@ -28,9 +33,6 @@ def main(argv):
     # model_thread.daemon = True
     # model_thread.start()
     # sys.exit(1)
-    #
-
-
 
 
 if __name__ == "__main__":

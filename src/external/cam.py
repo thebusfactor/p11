@@ -27,11 +27,5 @@ def open_video(path):
 
 
 def open_cam():
-    video: None
-    if(cv2.VideoCapture(1) is not None):
-        print("Capture from source_0")
-        video = cv2.VideoCapture(1)
-    elif(cv2.VideoCapture(0) is not None):
-        print("Capture from source_0")
-        video = cv2.VideoCapture(0)
+    video = cv2.VideoCapture(1)
     return video

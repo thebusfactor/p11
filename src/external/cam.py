@@ -11,7 +11,7 @@ class Cam:
             self.video = open_cam()
         else:
             self.path = path
-            self.video = open_video(path)
+            self.video = open_cam()
 
     def get_frame(self):
         ret, frame = self.video.read()
@@ -28,4 +28,11 @@ def open_video(path):
 
 def open_cam():
     video = cv2.VideoCapture(0)
+
+    # n = 1
+    # while video is None and n < 10:
+    #     video = cv2.VideoCapture(n)
+    #     print("trying source ", n)
+    #     n += 1
+
     return video

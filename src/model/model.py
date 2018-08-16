@@ -8,6 +8,7 @@ from external.cam import Cam
 from external.stored_frames import StoredFrames
 from model.ai import start_ai
 from model.ai import classify
+import model.bus_counter as count_gen
 
 class Model:
 
@@ -17,8 +18,8 @@ class Model:
 
     frame_count: int = 30
     fps_to_check: int = 2
-    # red: bool = False
-    # bus: bool = False
+
+    violation_count: int = 0
 
     def __init__(self, cam: Cam, fps: int, res=(1280, 720)):
         self.cam = cam
@@ -27,14 +28,17 @@ class Model:
         self.vid_clipper = StoredFrames(fps, res, 150)
         start_ai()
 
+
     def start(self):
+
+        count_gen.traffic_violation_detected(self.violation_count)
+
         cur_frame = 0
         while True:
             # only check 'fps_to_check' frames per second.
             cur_frame += 1
             self.frame = self.cam.get_frame()
             if cur_frame >= self.frame_count / self.fps_to_check:
-
                 self.update_classifications_observer(classify(self.frame))
                 # upon event
                     # call method in StoredFrames to clip event

@@ -14,7 +14,7 @@ class DebugGUI:
 
     def __init__(self):
         self.frame = None
-        self.play()
+        #self.play()
 
     def click_and_crop(self, event, x, y, flags, params):
         if event == cv.EVENT_MOUSEMOVE and self.line:
@@ -32,14 +32,13 @@ class DebugGUI:
     def update_frame(self, frame):
         self.frame = frame
         self.draw_classifications_on_frame()
+        cv.imshow(self.ui_name, self.frame)
         cv.setMouseCallback(self.ui_name, self.click_and_crop)
 
         if (self.linePt != None and len(self.linePt) > 1):
             print(self.linePt[0])
             print(self.linePt[1])
             cv.line(self.frame, self.linePt[0], self.linePt[1], (0, 255, 0), 5)
-
-        cv.imshow(self.ui_name, self.frame)
 
     def update_classifications(self, classifications):
         self.classifications = classifications
@@ -59,8 +58,10 @@ class DebugGUI:
                     cv.putText(self.frame, c.label, (c.tl.get('x'), c.tl.get('y') + 15), cv.FONT_HERSHEY_SIMPLEX, 0.7, self.not_bus_colour, 2)
 
     def play(self):
-
-        while cv.getWindowProperty(self.ui_name, 0) >= 0:
+        while True:
+            if self.frame is None:
+                print("None")
+                continue
             cv.imshow(self.ui_name, self.frame)
             # waits forever for the esc key to be pressed before exiting
             if cv.waitKey(50) == 27:

@@ -11,7 +11,7 @@ class Cam:
             self.video = open_cam()
         else:
             self.path = path
-            self.video = open_video(path)
+            self.video = open_cam()
 
     def get_frame(self):
         ret, frame = self.video.read()
@@ -27,5 +27,5 @@ def open_video(path):
 
 
 def open_cam():
-    video = cv2.VideoCapture(1)
+    video = cv2.VideoCapture(0)
     return video

@@ -34,7 +34,6 @@ class Model:
             cur_frame += 1
             self.frame = self.cam.get_frame()
             if cur_frame >= self.frame_count / self.fps_to_check:
-
                 self.update_classifications_observer(classify(self.frame))
                 # upon event
                     # call method in StoredFrames to clip event

@@ -16,10 +16,11 @@ def main(argv):
     fps: int = 24
     res = (1280, 720)
 
+
+
     fixed_path = os.path.abspath(os.path.dirname(__file__))
     path = os.path.join(fixed_path, "../../resources/vid.avi")
 
-    # cam = Cam(path)
     cam = Cam(None)
     model = Model(cam, fps, res)
     view = DebugGUI()
@@ -28,12 +29,10 @@ def main(argv):
 
     model.start()
 
-    # start_ai()
+    start_ai()
 
-    # model_thread = threading.Thread(target=model.start)
-    # model_thread.daemon = True
-    # model_thread.start()
-    # sys.exit(1)
+
+    sys.exit(1)
 
 
 if __name__ == "__main__":

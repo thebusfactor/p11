@@ -17,6 +17,6 @@ def generate_txt(path, count):
 
 
 def traffic_violation_detected(count):
-    dir_path = str(Path.home())+  "\\Documents\\busfactor-resources\\Bus-Factor"
+    dir_path = str(Path.cwd())
     generate_txt(dir_path, count)
 

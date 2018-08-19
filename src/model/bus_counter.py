@@ -18,5 +18,7 @@ def generate_txt(path, count):
 
 def traffic_violation_detected(count):
     dir_path = str(Path.cwd())
+    count += 1
     generate_txt(dir_path, count)
+    return count
 

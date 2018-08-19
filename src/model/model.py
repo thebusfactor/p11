@@ -18,7 +18,6 @@ class Model:
 
     frame_count: int = 30
     fps_to_check: int = 2
-
     violation_count: int = 0
 
     def __init__(self, cam: Cam, fps: int, res=(1280, 720)):
@@ -31,7 +30,8 @@ class Model:
 
     def start(self):
 
-        count_gen.traffic_violation_detected(self.violation_count)
+        #need to move to when violation has been detected, not initially on startup
+        self.violation_count = count_gen.traffic_violation_detected(self.violation_count)
 
         cur_frame = 0
         while True:

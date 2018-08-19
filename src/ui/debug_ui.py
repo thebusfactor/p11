@@ -54,15 +54,16 @@ class DebugGUI:
             # confidence level of detected object has to be above threshold
             if c.conf > self.confidence_threshold:
 
-                self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
+                smallBox = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
 
                 if c.label == "bus":
                     rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.bus_colour, 2)
-                    self.detect_event(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
+                    self.detect_event(smallBox[0][0], smallBox[0][1], smallBox[1][0], smallBox[1][1])
                     cv.putText(self.frame, c.label,(c.tl.get('x'), c.tl.get('y') + 15), cv.FONT_HERSHEY_SIMPLEX, 0.7, self.bus_colour, 2)
                 else:
                     rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.not_bus_colour, 2)
-                    self.detect_event(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
+                    # self.detect_event(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y')) - bounding for bix box
+                    self.detect_event(smallBox[0][0], smallBox[0][1], smallBox[1][0], smallBox[1][1])
                     cv.putText(self.frame, c.label, (c.tl.get('x'), c.tl.get('y') + 15), cv.FONT_HERSHEY_SIMPLEX, 0.7, self.not_bus_colour, 2)
 
 
@@ -80,6 +81,7 @@ class DebugGUI:
         newY2 = int(y2 - removedSectionHeight)
 
         rectangle = cv.rectangle(self.frame, (newX1, newY1), (newX2, newY2), self.bus_colour, 2)
+        return [(newX1, newY1), (newX2, newY2)]
 
     def detect_event(self, x1: int, y1: int, x2: int, y2: int):
 
@@ -90,24 +92,33 @@ class DebugGUI:
                 lineXPoints = []
                 lineYPoints = []
 
-                xWidth = abs(self.linePt[1][0] - self.linePt[0][0])
-                yWidth = abs(self.linePt[1][1] - self.linePt[0][1])
+                xWidth = (self.linePt[1][0] - self.linePt[0][0])
+                yWidth = (self.linePt[1][1] - self.linePt[0][1])
 
-                xIteration = xWidth/50
-                yIteration = yWidth/50
+                xIteration = (xWidth/50)
+                yIteration = (yWidth/50)
 
-                currentXPoint = self.linePt[0][0]
-                currentYPoint = self.linePt[0][1]
+                #Required to account for different directions that the line can be drawn.
+                currentXPoint = self.linePt[1][0]
+                currentYPoint = self.linePt[1][1]
+                yIteration = yIteration * -1
+                xIteration = xIteration * -1
 
+                #Iterates through the line and selects 50 intervals/points.
                 for i in range(50):
-                    lineXPoints.append(currentXPoint + xIteration)
-                    lineYPoints.append(currentYPoint + yIteration)
+                    lineXPoints.append(currentXPoint)
+                    lineYPoints.append(currentYPoint)
+                    currentXPoint += xIteration
+                    currentYPoint += yIteration
 
+                #Iterates through the 50 points and checks if the point is within the box, if it is then
+                #we can determine that the object intersects the line.
                 for i in range(50):
                     if(self.contains(x1, y1, x2, y2, int(lineXPoints[i]), int(lineYPoints[i]))):
                         intersects = True
                         print(intersects)
-                        cv.line(self.frame, (int(lineXPoints[i]), int(lineYPoints[i])), (int(lineXPoints[i])+10, int(lineYPoints[i])+10), (244, 40, 0), 4)
+                        print(lineXPoints[i])
+                        cv.circle(self.frame, (int(lineXPoints[i]), int(lineYPoints[i])), 5, (244, 40, 0))
 
     def contains(self, x1: int, y1: int, x2: int, y2: int, px: int, py: int):
         return x1 < px < x2 and y1 < py < y2

@@ -34,13 +34,13 @@ class DebugGUI:
     def update_frame(self, frame):
         self.frame = frame
         self.draw_classifications_on_frame()
-        cv.imshow(self.ui_name, self.frame)
         cv.setMouseCallback(self.ui_name, self.click_and_crop)
 
+        print("X:" + str(self.linePt))
         if (self.linePt != None and len(self.linePt) > 1):
-            print(self.linePt[0])
-            print(self.linePt[1])
             self.line_obj = cv.line(self.frame, self.linePt[0], self.linePt[1], (0, 255, 0), 5)
+
+        cv.imshow(self.ui_name, self.frame)
 
     def update_classifications(self, classifications):
         self.classifications = classifications

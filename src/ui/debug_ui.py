@@ -7,29 +7,62 @@ class DebugGUI:
     classifications = None
     confidence_threshold = 0.01
     frame = None
+
     bus_colour = (0, 191, 255)
     not_bus_colour = (0, 0, 0)
+
+    # points of line
     linePt = None
+    # points for traffic light
+    rectPt = None
+
     line = False
+    rect = False
     line_obj = None
     intersects = False
+    rect_obj = None
+
+    #the chosen tool, -1 for none, 0 for rectangle, 1 for line
+    chosen_tool = 0
 
     def __init__(self):
         self.frame = None
         #self.play()
 
     def click_and_crop(self, event, x, y, flags, params):
-        if event == cv.EVENT_MOUSEMOVE and self.line:
-            self.linePt.append((x, y))
-        if event == cv.EVENT_LBUTTONDOWN:
-            self.linePt = [(x, y)]
-            self.line = True
-            # check to see if the left mouse button was released
-        elif event == cv.EVENT_LBUTTONUP:
-            # record the ending (x, y) coordinates
-            self.linePt[1] = (x, y)
-            self.line = False
+        
+        # # select rectangle tool
+        # if cv.waitKey(40) == ord('z'):
+        #     self.chosen_tool = 0
+        #     print("Z PRESSED")
+        #
+        # # select line tool
+        # if cv.waitKey(45) == ord('x'):
+        #     self.chosen_tool = 1
 
+        if self.chosen_tool == 1:
+            if event == cv.EVENT_MOUSEMOVE and self.line:
+                self.linePt.append((x, y))
+            if event == cv.EVENT_LBUTTONDOWN:
+                self.linePt = [(x, y)]
+                self.line = True
+                # check to see if the left mouse button was released
+            elif event == cv.EVENT_LBUTTONUP:
+                # record the ending (x, y) coordinates
+                self.linePt[1] = (x, y)
+                self.line = False
+        elif self.chosen_tool == 0:
+            print('enters')
+            if event == cv.EVENT_MOUSEMOVE and self.rect:
+                self.rectPt.append((x, y))
+            if event == cv.EVENT_LBUTTONDOWN:
+                self.rectPt = [(x, y)]
+                self.rect = True
+                # check to see if the left mouse button was released
+            elif event == cv.EVENT_LBUTTONUP:
+                # record the ending (x, y) coordinates
+                self.rectPt[1] = (x, y)
+                self.rect = False
 
     def update_frame(self, frame):
         self.frame = frame
@@ -39,6 +72,8 @@ class DebugGUI:
         print("X:" + str(self.linePt))
         if (self.linePt != None and len(self.linePt) > 1):
             self.line_obj = cv.line(self.frame, self.linePt[0], self.linePt[1], (0, 255, 0), 5)
+        if(self.rectPt != None and len(self.rectPt) > 1):
+            self.rect_obj = cv.rectangle(self.frame, self.rectPt[0], self.rectPt[1], (0,0,255), 5)
 
         cv.imshow(self.ui_name, self.frame)
 

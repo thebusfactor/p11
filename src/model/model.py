@@ -15,6 +15,7 @@ class Model:
     ui_name = "Bus-Factor"
     frame_observers = []
     classifications_observers = []
+    line_observers = []
 
     frame_count: int = 30
     fps_to_check: int = 2
@@ -44,6 +45,7 @@ class Model:
                     # call method in StoredFrames to clip event
                 cur_frame = 0
             self.update_frame_observer(self.frame)
+            self.update_tool_observer()
             if cv.waitKey(50) == 27:
                 break
         cv.destroyAllWindows()
@@ -61,3 +63,10 @@ class Model:
     def update_classifications_observer(self, classifications):
         for classifications_observer in self.classifications_observers:
             classifications_observer.update(classifications)
+
+    def add_tool_observer(self, observer: Observer):
+        self.line_observers.append(observer)
+
+    def update_tool_observer(self):
+        for line_observer in self.line_observers:
+            line_observer.update()

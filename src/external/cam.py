@@ -11,7 +11,7 @@ class Cam:
             self.video = open_cam()
         else:
             self.path = path
-            self.video = open_cam()
+            self.video = open_video(path)
 
     def get_frame(self):
         ret, frame = self.video.read()

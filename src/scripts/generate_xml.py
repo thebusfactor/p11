@@ -34,7 +34,7 @@ def write_xml(folder, img, objects, tl, br, save_dir):
     xml_str = ET.tostring(annotation)
     root = etree.fromstring(xml_str)
     xml_str = etree.tostring(root, pretty_print=True)
-    save_path = os.path.join(save_dir, img.name+".xml")
+    save_path = os.path.join(save_dir, img.name[0:-4]+".xml")
     with open(save_path, "wb") as temp_xml:
         temp_xml.write(xml_str)
 

@@ -34,8 +34,15 @@ def on_key_press(event):
     global br_list
     global img
     if event.key == "q":
-        write_xml(path+image_folder, img, object_list, tl_list, br_list, path+save_dir)
+        write_xml("imgData", img, object_list, tl_list, br_list, path+save_dir)
         os.rename(img.path, "../resources/imgData/" + img.name)
+        tl_list = []
+        br_list = []
+        object_list = []
+        img = None
+        plt.close()
+    if event.key == "w":
+        os.remove(img.path)
         tl_list = []
         br_list = []
         object_list = []

@@ -10,7 +10,9 @@ tfnet: TFNet
 
 def start_ai():
     global tfnet
-    options = {"model": "../cfg/tiny-yolo-voc.cfg", "load": "../bin/tiny-yolo-voc.weights", "threshold": 0.1}
+    options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
+               "load": 150,
+               "threshold": 0.1}
     tfnet = TFNet(options)
 
 

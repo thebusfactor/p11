@@ -21,7 +21,7 @@ def main(argv):
     fixed_path = os.path.abspath(os.path.dirname(__file__))
     path = os.path.join(fixed_path, "../../resources/vid.avi")
 
-    cam = Cam(None)
+    cam = Cam(path)
     model = Model(cam, fps, res)
     view = DebugGUI()
 

@@ -6,7 +6,7 @@ import sys
 import threading
 
 from controller.controller import Controller
-from model.ai import *
+from model.ai import Ai
 from model.model import Model
 from ui.debug_ui import DebugGUI
 from external.cam import Cam
@@ -22,15 +22,14 @@ def main(argv):
     path = os.path.join(fixed_path, "../../resources/vid.avi")
 
     cam = Cam(path)
-    model = Model(cam, fps, res)
+    ai = Ai()
+
+    model = Model(cam, ai, fps, res)
     view = DebugGUI()
 
-    Controller(model, view)
+    Controller(model, ai, view)
 
     model.start()
-
-    start_ai()
-
 
     sys.exit(1)
 

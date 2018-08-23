@@ -1,19 +1,29 @@
 from controller.observer import Observer
 from model.model import Model
 from ui.debug_ui import DebugGUI
+from model.ai import Ai
 
 
 class Controller:
 
-    def __init__(self, model: Model, debug_ui: DebugGUI):
+    def __init__(self, model: Model, ai: Ai, debug_ui: DebugGUI):
         self.model = model
         self.debug_ui = debug_ui
+        self.ai = ai
+
         self.line_observer = ToolObservers(self.debug_ui)
         self.frame_observer_debug = FrameObserver(debug_ui.frame, debug_ui)
+
         self.classifications_observer_debug = ClassificationsObservers(debug_ui)
+        self.classifications_observer_model = ClassificationsObservers(model)
+
         self.model.add_frame_observer(self.frame_observer_debug)
-        self.model.add_classifications_observer(self.classifications_observer_debug)
         self.model.add_tool_observer(self.line_observer)
+
+        self.ai.add_classifications_observer(self.classifications_observer_debug)
+        self.ai.add_classifications_observer(self.classifications_observer_model)
+
+
 
 
 class FrameObserver(Observer):
@@ -55,4 +65,4 @@ class ToolObservers(Observer):
         if self.update_target.update_rect() is not None:
             self.rect = self.update_target.update_rect()
         self.intersects = self.update_target.update_collision_boolean()
-        print(self.intersects)
+        # print(self.intersects)

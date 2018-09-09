@@ -45,9 +45,10 @@ class Ai:
         for res in results:
             clf = Classification(res)
             out.append(clf)
-            print(clf)
+            # print(clf)
         self.frame = None
         self.update_classifications_observer(out)
+        return out
 
     def add_classifications_observer(self, observer: Observer):
         self.classifications_observers.append(observer)

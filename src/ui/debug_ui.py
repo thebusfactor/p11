@@ -12,6 +12,7 @@ class DebugGUI:
 
     bus_colour = (0, 191, 255)
     not_bus_colour = (0, 0, 0)
+    white = (255, 255, 255)
 
     # points of line
     linePt = []
@@ -33,9 +34,6 @@ class DebugGUI:
 
     def __init__(self):
         self.frame = None
-        # cv.createButton('toolToggle', self.toggleTools, 0,, 1);
-
-        #self.play()
 
     def update_line(self):
         return self.linePt
@@ -76,7 +74,7 @@ class DebugGUI:
                 self.linePt[1] = (x, y)
                 self.line = False
         elif not self.line_tool:
-            print('enters')
+            # print('enters')
             if event == cv.EVENT_MOUSEMOVE and self.rect:
                 self.rectPt.append((x, y))
             if event == cv.EVENT_LBUTTONDOWN:
@@ -88,8 +86,6 @@ class DebugGUI:
                 self.rectPt[1] = (x, y)
                 self.rect = False
 
-
-
     def update_frame(self, frame):
         """
             Updates the frame by drawing the line and/or rectangle shape using the information
@@ -99,15 +95,13 @@ class DebugGUI:
         self.draw_classifications_on_frame()
         cv.setMouseCallback(self.ui_name, self.click_and_crop)
 
-        print("X:" + str(self.linePt))
+        # print("X:" + str(self.linePt))
         if len(self.linePt) > 1:
             self.line_obj = cv.line(self.frame, self.linePt[0], self.linePt[1], (0, 255, 0), 5)
         if len(self.rectPt) > 1:
             self.rect_obj = cv.rectangle(self.frame, self.rectPt[0], self.rectPt[1], (0,0,255), 5)
 
         cv.imshow(self.ui_name, self.frame)
-
-
 
     def draw_classifications_on_frame(self):
         """
@@ -127,20 +121,20 @@ class DebugGUI:
                 smallBox = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
 
                 if c.label == "bus":
-                    rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.bus_colour, 2)
+                    rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.bus_colour, 1)
                     if(self.detect_event(smallBox[0][0], smallBox[0][1], smallBox[1][0], smallBox[1][1])):
                         # event has been detected, increment counter
-                        print("bus has past the intersection")
+                        # print("bus has past the intersection")
                         self.intersects = True
                     else:
                         # Reset intersection boolean
                         self.intersects = False
-                    cv.putText(self.frame, c.label,(c.tl.get('x'), c.tl.get('y') + 15), cv.FONT_HERSHEY_SIMPLEX, 0.7, self.bus_colour, 2)
+                    cv.putText(self.frame, c.label + " " + str(c.conf*100)[0:2] + "%",(c.tl.get('x')+10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
                 else:
-                    rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.not_bus_colour, 2)
+                    rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.not_bus_colour, 1)
                     # self.detect_event(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y')) - bounding for bix box
                     self.detect_event(smallBox[0][0], smallBox[0][1], smallBox[1][0], smallBox[1][1])
-                    cv.putText(self.frame, c.label, (c.tl.get('x'), c.tl.get('y') + 15), cv.FONT_HERSHEY_SIMPLEX, 0.7, self.not_bus_colour, 2)
+                    cv.putText(self.frame, c.label + " " + str(c.conf * 100)[0:2] + "%", (c.tl.get('x') + 10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
 
 
     def small_box(self, x1: int, y1: int, x2: int, y2: int):
@@ -160,7 +154,7 @@ class DebugGUI:
         newX2 = int(x2 - removedSectionWidth)
         newY2 = int(y2 - removedSectionHeight)
 
-        rectangle = cv.rectangle(self.frame, (newX1, newY1), (newX2, newY2), self.bus_colour, 2)
+        rectangle = cv.rectangle(self.frame, (newX1, newY1), (newX2, newY2), self.bus_colour, 1)
         return [(newX1, newY1), (newX2, newY2)]
 
 
@@ -200,7 +194,7 @@ class DebugGUI:
                 for i in range(50):
                     if(self.contains(x1, y1, x2, y2, int(lineXPoints[i]), int(lineYPoints[i]))):
                         self.intersects = True
-                        print(lineXPoints[i])
+                        # print(lineXPoints[i])
                         cv.circle(self.frame, (int(lineXPoints[i]), int(lineYPoints[i])), 5, (244, 40, 0))
 
 
@@ -215,7 +209,7 @@ class DebugGUI:
     def play(self):
         while True:
             if self.frame is None:
-                print("None")
+                # print("None")
                 continue
             cv.imshow(self.ui_name, self.frame)
             # waits forever for the esc key to be pressed before exiting

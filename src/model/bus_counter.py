@@ -21,4 +21,3 @@ def traffic_violation_detected(count):
     count += 1
     generate_txt(dir_path, count)
     return count
-

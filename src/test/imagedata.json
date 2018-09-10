@@ -1,0 +1,20 @@
+{
+  "images": [
+    {
+    "id":0,
+      "path":"../../../resources/testImages/empty.png",
+      "count":0
+    },
+    {
+    "id":1,
+      "path":"../../../resources/testImages/one.jpg",
+      "count":1
+    },
+    {
+    "id":2,
+      "path":"../../../resources/testImages/two.jpg",
+      "count":2
+    }
+  ]
+
+}

@@ -1,5 +1,5 @@
-#MIT License
-#Copyright (c) 2018 ENGR301-302-2018 / Project-11
+# MIT License
+# Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 import cv2 as cv
 
@@ -29,7 +29,7 @@ class Model:
 
     def start(self):
 
-        #need to move to when violation has been detected, not initially on startup
+        # need to move to when violation has been detected, not initially on startup
         self.violation_count = count_gen.traffic_violation_detected(self.violation_count)
 
         while True:
@@ -51,7 +51,6 @@ class Model:
 
     def update_classifications(self, classifications):
         self.classifications = classifications
-
 
     def add_frame_observer(self, observer: Observer):
         self.frame_observers.append(observer)

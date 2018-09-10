@@ -25,7 +25,10 @@ with open("imagedata.json", "r") as read_file:
         print(len(test_val))
         print("---")
 
-        if id == len(test_val):
+        if count == len(test_val):
             correct_test_data += 1
+
+    accuracy = correct_test_data/test_data_size
+    print(float("{0:.2f}".format(accuracy)))
 
     assert(correct_test_data == test_data_size)

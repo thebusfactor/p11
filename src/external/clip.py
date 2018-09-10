@@ -12,6 +12,13 @@ def clip_frame(frame, double_point: DoublePoint, res):
     y1 = int(res[1] - p1[1])
     y2 = int(res[1] - p2[1])
 
+    print(p1[1])
+    print(p2[1])
+
+    # y1 = int(p1[1])
+    # y2 = int(p2[1])
+
+
     # WARNING KIVY 0,0 STARTS AT BOTTOM LEFT
     # CV2 0,0 START AT TOP LEFT (THE NORMAL WAY)
     f = frame[y2: y1, x1: x2]

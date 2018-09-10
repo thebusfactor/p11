@@ -15,40 +15,40 @@ class DebugGUI:
     white = (255, 255, 255)
 
     # points of line
-    linePt = []
+    line_pt = []
     # points for traffic light
-    rectPt = []
+    rect_pt = []
 
     # booleans for whether you should draw a new line/rect or not
     # false means draw, else true means its in process of being drawn).
     line = False
     rect = False
 
-    #the objects
+    # the objects
     line_obj = None
     rect_obj = None
     intersects = False
 
-    #the chosen tool, -1 for none, 0 for rectangle, 1 for line
+    # the chosen tool, -1 for none, 0 for rectangle, 1 for line
     line_tool = True
 
     def __init__(self):
         self.frame = None
 
     def update_line(self):
-        return self.linePt
+        return self.line_pt
 
     def update_classifications(self, classifications):
         self.classifications = classifications
 
     def update_rect(self):
-        return self.linePt
+        return self.rect_pt
 
     def update_collision_boolean(self):
         return self.intersects
 
 
-    def toggleTools(self):
+    def toggle_tools(self):
         pass
 
     """
@@ -63,27 +63,22 @@ class DebugGUI:
             self.line_tool = not self.line_tool
 
         if self.line_tool:
-            if event == cv.EVENT_MOUSEMOVE and self.line:
-                self.linePt.append((x, y))
             if event == cv.EVENT_LBUTTONDOWN:
-                self.linePt = [(x, y)]
+                self.line_pt = [(x, y)]
                 self.line = True
                 # check to see if the left mouse button was released
             elif event == cv.EVENT_LBUTTONUP:
                 # record the ending (x, y) coordinates
-                self.linePt[1] = (x, y)
+                self.line_pt.append((x, y))
                 self.line = False
         elif not self.line_tool:
-            # print('enters')
-            if event == cv.EVENT_MOUSEMOVE and self.rect:
-                self.rectPt.append((x, y))
             if event == cv.EVENT_LBUTTONDOWN:
-                self.rectPt = [(x, y)]
+                self.rect_pt = [(x, y)]
                 self.rect = True
                 # check to see if the left mouse button was released
             elif event == cv.EVENT_LBUTTONUP:
                 # record the ending (x, y) coordinates
-                self.rectPt[1] = (x, y)
+                self.rect_pt.append((x, y))
                 self.rect = False
 
     def update_frame(self, frame):
@@ -96,10 +91,10 @@ class DebugGUI:
         cv.setMouseCallback(self.ui_name, self.click_and_crop)
 
         # print("X:" + str(self.linePt))
-        if len(self.linePt) > 1:
-            self.line_obj = cv.line(self.frame, self.linePt[0], self.linePt[1], (0, 255, 0), 5)
-        if len(self.rectPt) > 1:
-            self.rect_obj = cv.rectangle(self.frame, self.rectPt[0], self.rectPt[1], (0,0,255), 5)
+        if len(self.line_pt) > 1:
+            self.line_obj = cv.line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
+        if len(self.rect_pt) > 1:
+            self.rect_obj = cv.rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 5)
 
         cv.imshow(self.ui_name, self.frame)
 
@@ -136,7 +131,6 @@ class DebugGUI:
                     self.detect_event(smallBox[0][0], smallBox[0][1], smallBox[1][0], smallBox[1][1])
                     cv.putText(self.frame, c.label + " " + str(c.conf * 100)[0:2] + "%", (c.tl.get('x') + 10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
 
-
     def small_box(self, x1: int, y1: int, x2: int, y2: int):
         """
             This returns the top left and bottom right coordinates that define a small bounding box
@@ -157,28 +151,27 @@ class DebugGUI:
         rectangle = cv.rectangle(self.frame, (newX1, newY1), (newX2, newY2), self.bus_colour, 1)
         return [(newX1, newY1), (newX2, newY2)]
 
-
     def detect_event(self, x1: int, y1: int, x2: int, y2: int):
         """
             Method to check if a classified object is intersecting the intersection
             line specified by the user. point (x1, y2) are top left and (x2, y2)
             is bottom right of rectangle.
         """
-        if(self.linePt != None):
-            if(len(self.linePt) >= 2):
+        if(self.line_pt != None):
+            if(len(self.line_pt) >= 2):
 
                 lineXPoints = []
                 lineYPoints = []
 
-                xWidth = (self.linePt[1][0] - self.linePt[0][0])
-                yWidth = (self.linePt[1][1] - self.linePt[0][1])
+                xWidth = (self.line_pt[1][0] - self.line_pt[0][0])
+                yWidth = (self.line_pt[1][1] - self.line_pt[0][1])
 
                 xIteration = (xWidth/50)
                 yIteration = (yWidth/50)
 
                 #Required to account for different directions that the line can be drawn.
-                currentXPoint = self.linePt[1][0]
-                currentYPoint = self.linePt[1][1]
+                currentXPoint = self.line_pt[1][0]
+                currentYPoint = self.line_pt[1][1]
                 yIteration = yIteration * -1
                 xIteration = xIteration * -1
 
@@ -196,8 +189,6 @@ class DebugGUI:
                         self.intersects = True
                         # print(lineXPoints[i])
                         cv.circle(self.frame, (int(lineXPoints[i]), int(lineYPoints[i])), 5, (244, 40, 0))
-
-
 
     def contains(self, x1: int, y1: int, x2: int, y2: int, px: int, py: int):
         """

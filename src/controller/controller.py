@@ -2,6 +2,7 @@ from controller.observer import Observer
 from model.model import Model
 from ui.debug_ui import DebugGUI
 from model.ai import Ai
+from util.double_point import DoublePoint
 
 
 class Controller:
@@ -11,14 +12,14 @@ class Controller:
         self.debug_ui = debug_ui
         self.ai = ai
 
-        self.line_observer = ToolObservers(self.debug_ui)
+        self.tool_observer = ToolObservers(self.debug_ui)
         self.frame_observer_debug = FrameObserver(debug_ui.frame, debug_ui)
 
         self.classifications_observer_debug = ClassificationsObservers(debug_ui)
         self.classifications_observer_model = ClassificationsObservers(model)
 
         self.model.add_frame_observer(self.frame_observer_debug)
-        self.model.add_tool_observer(self.line_observer)
+        self.model.add_tool_observer(self.tool_observer)
 
         self.ai.add_classifications_observer(self.classifications_observer_debug)
         self.ai.add_classifications_observer(self.classifications_observer_model)
@@ -66,3 +67,8 @@ class ToolObservers(Observer):
             self.rect = self.update_target.update_rect()
         self.intersects = self.update_target.update_collision_boolean()
         # print(self.intersects)
+
+    def get_rectangle(self):
+        if self.rect is None or len(self.rect) < 2:
+            return -1
+        return DoublePoint(self.rect[0], self.rect[1])

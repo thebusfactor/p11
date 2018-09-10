@@ -16,8 +16,6 @@ def main(argv):
     fps: int = 24
     res = (1280, 720)
 
-
-
     fixed_path = os.path.abspath(os.path.dirname(__file__))
     path = os.path.join(fixed_path, "../../resources/vid.mp4")
 
@@ -36,4 +34,3 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv)
-

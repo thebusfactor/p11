@@ -47,7 +47,6 @@ class DebugGUI:
     def update_collision_boolean(self):
         return self.intersects
 
-
     def toggle_tools(self):
         pass
 
@@ -175,14 +174,14 @@ class DebugGUI:
                 yIteration = yIteration * -1
                 xIteration = xIteration * -1
 
-                #Iterates through the line and selects 50 intervals/points.
+                # Iterates through the line and selects 50 intervals/points.
                 for i in range(50):
                     lineXPoints.append(currentXPoint)
                     lineYPoints.append(currentYPoint)
                     currentXPoint += xIteration
                     currentYPoint += yIteration
 
-                #Iterates through the 50 points and checks if the point is within the box, if it is then
+                # Iterates through the 50 points and checks if the point is within the box, if it is then
                 #we can determine that the object intersects the line.
                 for i in range(50):
                     if(self.contains(x1, y1, x2, y2, int(lineXPoints[i]), int(lineYPoints[i]))):

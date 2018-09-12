@@ -35,7 +35,6 @@ class Ai:
                 self.classify(self.frame)
                 self.frame_count = 0
 
-
     def classify(self, frame):
         # frame = cv.resize(frame, (1920, 1080))
         if frame is None:
@@ -45,9 +44,9 @@ class Ai:
         for res in results:
             clf = Classification(res)
             out.append(clf)
-            print(clf)
         self.frame = None
         self.update_classifications_observer(out)
+        return out
 
     def add_classifications_observer(self, observer: Observer):
         self.classifications_observers.append(observer)

@@ -1,7 +1,5 @@
-#MIT License
-#Copyright (c) 2018 ENGR301-302-2018 / Project-11
-
-from util.double_point import DoublePoint
+# MIT License
+# Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 
 def clip_frame(frame, point, res):
@@ -17,7 +15,6 @@ def clip_frame(frame, point, res):
 
     # y1 = int(p1[1])
     # y2 = int(p2[1])
-
 
     # WARNING KIVY 0,0 STARTS AT BOTTOM LEFT
     # CV2 0,0 START AT TOP LEFT (THE NORMAL WAY)

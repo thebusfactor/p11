@@ -1,3 +1,6 @@
+# MIT License
+# Copyright (c) 2018 ENGR301-302-2018 / Project-11
+
 import json
 import os
 
@@ -54,4 +57,4 @@ def build_json_file(filepath):
 
 
 # build the json file with absolute pathing, since its just a utility script
-build_json_file("C:/Users/nicks/Desktop/Bus Factor/resources/TestImages")
+build_json_file("../../../resources/TestImages")

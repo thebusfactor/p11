@@ -19,16 +19,13 @@ with open("imagedata.json", "r") as read_file:
         count = test_case.get("count")
         # Load image
         img = cv2.imread(test_case.get("path"))
-        print("---")
-        print(id)
+        print(image_id)
         test_val = (ai.classify(img))
-        print(len(test_val))
-        print("---")
 
         if count == len(test_val):
             correct_test_data += 1
 
     accuracy = correct_test_data/test_data_size
-    print(float("{0:.2f}".format(accuracy)))
+    print(float("{0:.5f}".format(accuracy)))
 
-    assert(correct_test_data == test_data_size)
+    assert(accuracy >= 0.9)

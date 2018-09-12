@@ -71,4 +71,4 @@ class ToolObservers(Observer):
     def get_rectangle(self):
         if self.rect is None or len(self.rect) < 2:
             return -1
-        return DoublePoint(self.rect[0], self.rect[1])
+        return self.rect

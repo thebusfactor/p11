@@ -42,8 +42,7 @@ class Model:
 
             if self.tool_observers.get_rectangle() != -1:
                 self.traffic_light.update_box(self.tool_observers.get_rectangle())
-                # print(self.traffic_light.check_traffic_light(self.frame, (1280, 720)))
-
+                print(self.traffic_light.check_traffic_light(self.frame, (1280, 720)))
 
             if cv.waitKey(50) == 27:
                 break

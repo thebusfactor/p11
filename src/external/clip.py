@@ -4,9 +4,9 @@
 from util.double_point import DoublePoint
 
 
-def clip_frame(frame, double_point: DoublePoint, res):
-    p1 = double_point.point1
-    p2 = double_point.point2
+def clip_frame(frame, point, res):
+    p1 = point[0]
+    p2 = point[1]
     x1 = int(p1[0])
     x2 = int(p2[0])
     y1 = int(res[1] - p1[1])

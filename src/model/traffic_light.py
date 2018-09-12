@@ -1,40 +1,37 @@
 #MIT License
 #Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
-import cv2
-
 from external.clip import clip_frame
-from model import config
 from model.image import Image
 from model.output import calc_z_value
-from util.double_point import DoublePoint
 
 
 class TrafficLight:
 
-    box: DoublePoint
+    box: []
+    z_threshold: int = 20
 
     def check_traffic_light(self, frame, res):
-        print("BOX P1:", self.box.point1)
-        print("BOX P2:", self.box.point2)
+        """
+        Uses points from the rectangle drawn on the screen by the user to clip the frame into a smaller region.
+        This region has colour masks applied and the Z value is calculated to determine how much white is present in
+        the selected frame after the colour masking.
+        :param frame: entire frame of the visible video feed window
+        :param res: resolution of the frame, (width, height)
+        :return: True or False if masked traffic light result is greater than the threshold
+        """
 
-        point1 = (self.box.point1[0], res[1] - self.box.point1[1])
-        point2 = (self.box.point2[0], res[1] - self.box.point2[1])
-
-        print("AFTER P1:", point1)
-        print("AFTER P2:", point2)
-
-        new_dp = DoublePoint(point2, point1)
+        # get x and y points from the rectangle drawn by the user
+        point1 = (self.box[0][0], res[1] - self.box[1][1])
+        point2 = (self.box[1][0], res[1] - self.box[0][1])
+        new_dp = (point1, point2)
 
         clipped_frame = clip_frame(frame, new_dp, res)
         light, hsv = Image.apply_light_mask(clipped_frame)
         z = calc_z_value(light)
-        #cv2.imshow("image", light)
         print("Z value:", z)
-        if z > 20:
-            return True
-        else:
-            return False
 
-    def update_box(self, box: DoublePoint):
+        return z > self.z_threshold
+
+    def update_box(self, box):
         self.box = box

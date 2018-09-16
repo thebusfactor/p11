@@ -33,7 +33,6 @@ deploy:
     - echo "Deploy project"
   environment:
     name: staging
+  when: manual
   only:
     - dev
-  when:
-    - manual

@@ -36,3 +36,5 @@ deploy:
   when: manual
   only:
     - dev
+  tags:
+    - docker

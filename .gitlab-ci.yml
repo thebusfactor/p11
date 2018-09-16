@@ -1,12 +1,23 @@
 image: python
 
 stages:
+  - build
+  - compile
   - test
+  
+build:
+  stage: build
+  script:
+    - pip install --user -r requirements.txt
+    
+compile:
+  stage: compile
+  script:
+    - python -m compileall 'src'
   
 test:
   stage: test
   script:
-    - pip install --user -r requirements.txt
     - python -m unittest discover src/test/
   tags:
     - docker

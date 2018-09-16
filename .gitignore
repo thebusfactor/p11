@@ -239,5 +239,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# __pycache__
+/__pycache__
+
 
 # End of https://www.gitignore.io/api/linux,macos,python,windows,pycharm

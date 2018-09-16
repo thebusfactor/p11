@@ -1,12 +1,40 @@
 image: python
 
 stages:
+  - build
+  - compile
   - test
+  - deploy
+  
+build:
+  stage: build
+  script:
+    - pip install --user -r requirements.txt
+  tags:
+    - docker
+    
+compile:
+  stage: compile
+  script:
+    - python -m compileall 'src'
+  tags:
+    - docker
   
 test:
   stage: test
   script:
-    - pip install --user -r requirements.txt
     - python -m unittest discover src/test/
+  tags:
+    - docker
+    
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploy project"
+  environment:
+    name: staging
+  when: manual
+  only:
+    - dev
   tags:
     - docker

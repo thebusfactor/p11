@@ -9,11 +9,15 @@ build:
   stage: build
   script:
     - pip install --user -r requirements.txt
+  tags:
+    - docker
     
 compile:
   stage: compile
   script:
     - python -m compileall 'src'
+  tags:
+    - docker
   
 test:
   stage: test

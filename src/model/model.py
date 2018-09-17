@@ -8,6 +8,7 @@ from external.cam import Cam
 from external.stored_frames import StoredFrames
 from model.ai import Ai
 import model.bus_counter as count_gen
+from model.bus_tracker import BusTracker
 from model.traffic_light import TrafficLight
 
 
@@ -16,6 +17,7 @@ class Model:
     tool_observers: Observer
 
     violation_count: int = 0
+    red_light: bool = True
 
     def __init__(self, cam: Cam, ai: Ai, fps: int, res=(1280, 720)):
         self.classifications = None
@@ -26,6 +28,8 @@ class Model:
         self.vid_clipper = StoredFrames(fps, res, 150)
         self.ai.start_ai()
         self.traffic_light = TrafficLight()
+        self.stored_frames = StoredFrames()
+        self.bus_tracker = BusTracker()
 
     def start(self):
 
@@ -36,10 +40,11 @@ class Model:
             # only check 'fps_to_check' frames per second.
             self.frame = self.cam.get_frame()
 
+            self.stored_frames.append_frame(self.frame, self.red_light)
             self.ai.update_ai_frame(self.frame)
             self.update_frame_observer(self.frame)
             self.update_tool_observer()
-
+            self.bus_tracker.update(self.classifications)
             if self.tool_observers.get_rectangle() != -1:
                 self.traffic_light.update_box(self.tool_observers.get_rectangle())
                 print(self.traffic_light.check_traffic_light(self.frame, (1280, 720)))

@@ -14,11 +14,14 @@ class StoredFrames:
         self.after_que = deque(maxlen=length)
         self.count = 0
 
-    def append_before(self, frame):
-        self.before_que.append(frame)
-
-    def append_after(self, frame):
-        self.after_que.append(frame)
+    def append_frame(self, frame, no_viol):
+        """
+        Appends frame to either the queue before or after the violation
+        """
+        if no_viol:
+            self.before_que.append(frame)
+        else:
+            self.after_que.append(frame)
 
     def combine_videos(self):
         """
@@ -42,6 +45,7 @@ class StoredFrames:
         self.count += 1
         out = cv2.VideoWriter(path_out, cv2.VideoWriter_fourcc(*'DIVX'), self.fps, size)
 
+        # Return tuple of frame and boolean, frame for making video and boolean to either fill before or after queue
         for i in range(len(frame_array)):
             out.write(frame_array[i])
         out.release()

@@ -18,7 +18,7 @@ class TrafficLight:
         the selected frame after the colour masking.
         :param frame: entire frame of the visible video feed window
         :param res: resolution of the frame, (width, height)
-        :return: True or False if masked traffic light result is greater than the threshold
+        :return: True or False depending on if the masked traffic light result is greater than the threshold
         """
 
         # get x and y points from the rectangle drawn by the user

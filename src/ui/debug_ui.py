@@ -48,6 +48,9 @@ class DebugGUI:
     def toggle_tools(self):
         pass
 
+    def set_intersects_bool(self):
+        self.intersects = False
+
     def click_and_crop(self, event, x, y, flags, params):
         """
         Method is responsible for performing the correct actions depending on
@@ -101,7 +104,8 @@ class DebugGUI:
             br = bottom right of classification box.
         """
 
-        if self.classifications is None or self.frame is None: return
+        if self.classifications is None or self.frame is None:
+            return
         # check every detected object
         for i in range(0, len(self.classifications)):
             c = self.classifications[i]
@@ -112,13 +116,16 @@ class DebugGUI:
 
                 if c.label == "bus":
                     rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.bus_colour, 1)
-                    if self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1]):
-                        # event has been detected, increment counter
-                        self.intersects = True
-                    else:
-                        # Reset intersection boolean
-                        self.intersects = False
-                    cv.putText(self.frame, c.label + " " + str(c.conf*100)[0:2] + "%",(c.tl.get('x')+10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
+                    self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1])
+                    # if self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1]):
+                    #     # event has been detected, increment counter
+                    #     self.intersects = True
+                    #     print(">intersects set to true")
+                    # else:
+                    #     # Reset intersection boolean
+                    #     # self.intersects = False
+                    #     # print(">intersects set to false")
+                    cv.putText(self.frame, c.label + " " + str(c.conf*100)[0:2] + "%", (c.tl.get('x')+10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
                 else:
                     rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.not_bus_colour, 1)
                     self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1])
@@ -178,9 +185,11 @@ class DebugGUI:
                 # Iterates through the 50 points and checks if the point is within the box, if it is then
                 # we can determine that the object intersects the line.
                 for i in range(50):
-                    if self.contains(x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
+                    if self.contains(self, x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
                         self.intersects = True
                         cv.circle(self.frame, (int(line_x_points[i]), int(line_y_points[i])), 5, (244, 40, 0))
+                    else:
+                        self.intersects = False
 
     @staticmethod
     def contains(self, x1: int, y1: int, x2: int, y2: int, px: int, py: int):

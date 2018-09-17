@@ -1,10 +1,8 @@
-# MIT License
-# Copyright (c) 2018 ENGR301-302-2018 / Project-11
-
 from controller.observer import Observer
 from model.model import Model
 from ui.debug_ui import DebugGUI
 from model.ai import Ai
+from util.double_point import DoublePoint
 
 
 class Controller:
@@ -72,3 +70,6 @@ class ToolObservers(Observer):
         if self.rect is None or len(self.rect) < 2:
             return -1
         return self.rect
+
+    def get_intersects(self):
+        return self.intersects

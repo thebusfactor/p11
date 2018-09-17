@@ -1,5 +1,5 @@
-#MIT License
-#Copyright (c) 2018 ENGR301-302-2018 / Project-11
+# MIT License
+# Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 import cv2
 import numpy
@@ -11,7 +11,7 @@ class Image:
     def convert_image_to_grayscale(frame):
         """
         Converts image to Grayscale mask, and returns the masked image as a binary black and white file
-        :param image: the image to be converted
+        :param frame: the image to be converted
         :return: the converted image
         """
         img_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -21,7 +21,7 @@ class Image:
     def convert_image_to_edge_mask(frame):
         """
         Converts image to Edge mask, and returns the masked image as a Canny converted image
-        :param image: the image to be masked
+        :param frame: the image to be masked
         :return: the masked image
         """
         v = numpy.median(frame)
@@ -87,7 +87,6 @@ class Image:
         hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         lower_bound = numpy.array([0, 10, 170])
         upper_bound = numpy.array([20, 160, 255])
-        print("HSV IMAGE", hsv_image)
         mask = cv2.inRange(hsv_image, lower_bound, upper_bound)
         cv2.imshow("HSV VAL", mask)
         cv2.imshow("lll", hsv_image)

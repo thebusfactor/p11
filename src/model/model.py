@@ -7,7 +7,7 @@ from controller.observer import Observer
 from external.cam import Cam
 from external.stored_frames import StoredFrames
 from model.ai import Ai
-import model.bus_counter as count_gen
+from model.bus_counter import BusCounter
 from model.traffic_light import TrafficLight
 
 
@@ -16,6 +16,7 @@ class Model:
     tool_observers: Observer
 
     violation_count: int = 0
+    z_threshold_exceeded: bool
 
     def __init__(self, cam: Cam, ai: Ai, fps: int, res=(1280, 720)):
         self.classifications = None
@@ -26,13 +27,13 @@ class Model:
         self.vid_clipper = StoredFrames(fps, res, 150)
         self.ai.start_ai()
         self.traffic_light = TrafficLight()
+        self.z_threshold_exceeded = False
 
     def start(self):
 
-        # need to move to when violation has been detected, not initially on startup
-        self.violation_count = count_gen.traffic_violation_detected(self.violation_count)
-
+        i = 0
         while True:
+
             # only check 'fps_to_check' frames per second.
             self.frame = self.cam.get_frame()
 
@@ -40,12 +41,27 @@ class Model:
             self.update_frame_observer(self.frame)
             self.update_tool_observer()
 
-            if self.tool_observers.get_rectangle() != -1:
-                self.traffic_light.update_box(self.tool_observers.get_rectangle())
-                print(self.traffic_light.check_traffic_light(self.frame, (1280, 720)))
+            if i % self.fps == 0:
+                if self.tool_observers.get_rectangle() != -1:
+                    self.traffic_light.update_box(self.tool_observers.get_rectangle())
+                    self.z_threshold_exceeded = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
+
+                    if self.z_threshold_exceeded:
+                        print("Tool get intersects:", self.tool_observers.get_intersects())
+
+                        if not self.tool_observers.get_intersects():
+                            print("VIOLATION OCCURRED")
+                            # self.violation_count = bus_counter.traffic_violation_detected(self.violation_count)
+                            self.violation_count = BusCounter.traffic_violation_detected(BusCounter, count=self.violation_count)
+                            self.tool_observers.set_intersects_bool()
 
             if cv.waitKey(50) == 27:
                 break
+
+            i += 1
+            if i % self.fps == 0:
+                print("I =", i % self.fps == 0)
+
         cv.destroyAllWindows()
 
     def update_classifications(self, classifications):

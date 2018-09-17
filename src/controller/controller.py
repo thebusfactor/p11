@@ -25,8 +25,6 @@ class Controller:
         self.ai.add_classifications_observer(self.classifications_observer_model)
 
 
-
-
 class FrameObserver(Observer):
 
     def __init__(self, frame, update_target):
@@ -72,3 +70,6 @@ class ToolObservers(Observer):
         if self.rect is None or len(self.rect) < 2:
             return -1
         return self.rect
+
+    def get_intersects(self):
+        return self.intersects

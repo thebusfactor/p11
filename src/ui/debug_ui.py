@@ -178,7 +178,7 @@ class DebugGUI:
                 # Iterates through the 50 points and checks if the point is within the box, if it is then
                 # we can determine that the object intersects the line.
                 for i in range(50):
-                    if self.contains(x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
+                    if self.contains(self, x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
                         self.intersects = True
                         cv.circle(self.frame, (int(line_x_points[i]), int(line_y_points[i])), 5, (244, 40, 0))
 

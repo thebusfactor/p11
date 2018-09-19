@@ -4,6 +4,7 @@ stages:
   - build
   - compile
   - test
+  - deploy
   
 build:
   stage: build
@@ -23,5 +24,17 @@ test:
   stage: test
   script:
     - python -m unittest discover src/test/
+  tags:
+    - docker
+    
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploy project"
+  environment:
+    name: staging
+  when: manual
+  only:
+    - dev
   tags:
     - docker

@@ -1,20 +1,18 @@
 
 
 class Bus:
-    tl: (float, float)
-    br: (float, float)
+    t1_x: int = 0
+    tl_y: int = 0
     flagged: bool = 0
     dir = "up"
 
-    def __init__(self, tl, br):
-        self.tl = tl
-        self.br = br
+    def __init__(self, tl_x, tl_y):
+        self.tl_x = tl_x
+        self.tl_y = tl_y
 
-    def set_t1(self, t1):
-        self.tl = t1
-
-    def set_br(self, br):
-        self.br = br
+    def set_t1(self, new_tl_x, new_tl_y):
+        self.tl_x = new_tl_x
+        self.tl_y = new_tl_y
 
     def set_flagged(self, change):
         self.flagged = change

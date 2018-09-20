@@ -24,13 +24,14 @@ class Model:
     def __init__(self, cam: Cam, ai: Ai, fps: int, res=(1280, 720)):
         self.classifications = None
         self.cam = cam
+        self.res = res
         self.fps = fps
         self.ai = ai
         self.frame = self.cam.get_frame()
-        self.vid_clipper = StoredFrames(fps, res, 150)
+        self.vid_clipper = StoredFrames(fps, self.res, 150)
         self.ai.start_ai()
         self.traffic_light = TrafficLight()
-        self.stored_frames = StoredFrames()
+        # self.stored_frames = StoredFrames()
         self.bus_tracker = BusTracker()
         self.z_threshold_exceeded = False
 
@@ -42,11 +43,14 @@ class Model:
             # only check 'fps_to_check' frames per second.
             self.frame = self.cam.get_frame()
 
-            self.stored_frames.append_frame(self.frame, self.red_light)
+            # self.stored_frames.append_frame(self.frame, self.red_light)
             self.ai.update_ai_frame(self.frame)
             self.update_frame_observer(self.frame)
             self.update_tool_observer()
-            self.bus_tracker.update(self.classifications)
+
+            if self.classifications is not None:
+                self.bus_tracker.update(self.classifications, self.res)
+
             if self.tool_observers.get_rectangle() != -1:
                 self.traffic_light.update_box(self.tool_observers.get_rectangle())
                 print(self.traffic_light.check_traffic_light(self.frame, (1280, 720)))

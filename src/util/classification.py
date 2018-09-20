@@ -19,5 +19,5 @@ class Classification:
         return False
 
     def __str__(self):
-        out = "Label: " + self.label + " Confidence: " + str(self.conf) + " Top Right " + str(self.tl) + " Bottom Right: " + str(self.br)
+        out = "Label: " + self.label + " Confidence: " + str(self.conf) + " Top Left " + str(self.tl) + " Bottom Right: " + str(self.br)
         return out

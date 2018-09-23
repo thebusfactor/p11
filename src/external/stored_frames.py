@@ -2,23 +2,45 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 import cv2
+import threading
 from collections import deque
 import time
 
 
 class StoredFrames:
+
     count: int = 0
+    trigger: bool = False
+    fps: int = -1
+    length: int = -1
+    res = None
 
     def __init__(self, fps, res, length):
+
+        self.fps = fps
+        self.res = res
+        self.length = length
+
         self.before_que = deque(maxlen=length)
         self.after_que = deque(maxlen=length)
         self.count = 0
 
-    def append_frame(self, frame, no_viol):
+    def start_clipping(self):
+        """
+        Starts the clipping checks in parallel,
+        as the operation of producing a video file is quite expensive
+        """
+        threading.Thread(target=self.__run__).start()
+
+    def trigger_event(self):
+        self.trigger = True
+
+    def append_frame(self, frame):
         """
             Appends frame to either the queue before or after the violation
         """
-        if no_viol:
+
+        if not self.trigger:
             self.before_que.append(frame)
         else:
             self.after_que.append(frame)
@@ -30,6 +52,7 @@ class StoredFrames:
         b_q = list(self.before_que)
         a_q = list(self.after_que)
         combined = b_q + a_q
+
         self.convert_frames_to_video(combined)
 
     def convert_frames_to_video(self, frame_array):
@@ -45,10 +68,22 @@ class StoredFrames:
         size = (width, height)
         date = time.strftime("%c")
         path_out = str(date) + '_' + str(self.count) + '.avi'
+        path_out = path_out.replace(" ", "_")
+        path_out = path_out.replace(":", "")
         self.count += 1
-        out = cv2.VideoWriter(path_out, cv2.VideoWriter_fourcc(*'DIVX'), self.fps, size)
+        out = cv2.VideoWriter(path_out, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
 
-        # Return tuple of frame and boolean, frame for making video and boolean to either fill before or after queue
         for i in range(len(frame_array)):
             out.write(frame_array[i])
         out.release()
+
+    def __run__(self):
+        """
+            Continuously checks to see if the video queues are full.
+            If the 'after' queue is full, and an event has been triggered, then build a video file of the violation
+        """
+        while True:
+            if self.trigger and len(self.after_que) >= 120:
+                self.combine_videos()
+                self.after_que = deque(maxlen=self.length)
+                self.trigger = False

@@ -22,6 +22,15 @@ class BusDetection:
 
 
     def detect(self, frame):
+        """
+            Detects the bus object within the frame.
+
+            Parameters
+            ----------
+                frame : Frame
+                    The current frame displayed from the video feed.
+        """
+
         image = frame
         (h, w) = image.shape[:2]
         blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5)

@@ -17,7 +17,7 @@ def main(argv):
     res = (1280, 720)
 
     fixed_path = os.path.abspath(os.path.dirname(__file__))
-    path = os.path.join(fixed_path, "../../resources/vid.avi")
+    path = os.path.join(fixed_path, "../../resources/EP_55_violation.mp4")
 
     cam = Cam(path)
     ai = Ai()

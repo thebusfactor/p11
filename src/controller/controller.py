@@ -1,13 +1,27 @@
+# MIT License
+# Copyright (c) 2018 ENGR301-302-2018 / Project-11
+
 from controller.observer import Observer
 from model.model import Model
 from ui.debug_ui import DebugGUI
 from model.ai import Ai
-from util.double_point import DoublePoint
 
 
 class Controller:
 
     def __init__(self, model: Model, ai: Ai, debug_ui: DebugGUI):
+        """
+                Initial method setting up controller observers and references to other classes.
+
+                Parameters
+                ----------
+                model : Model
+                    Reference to programs model class.
+                ai : Ai
+                    Reference to programs AI class.
+                debug_ui : DebugGUI
+                    Reference to programs debug UI class.
+        """
         self.model = model
         self.debug_ui = debug_ui
         self.ai = ai
@@ -32,6 +46,15 @@ class FrameObserver(Observer):
         self.update_target = update_target
 
     def update(self, frame):
+        """
+            Updates the current frame for all classes which use the frame.
+
+            Parameters
+            -----------
+            frame :  Cam
+                the current frame of the camera being used
+
+        """
         if frame is None:
             return
         self.frame = frame
@@ -45,6 +68,14 @@ class ClassificationsObservers(Observer):
         self.classifications = None
 
     def update(self, classifications):
+        """
+            Updates the current frame for all classes which use the frame.
+
+            Parameters
+            ----------
+            classifications : []
+                array of classified objects within the frame
+        """
         if classifications is None:
             return
         self.classifications = classifications
@@ -59,6 +90,14 @@ class ToolObservers(Observer):
         self.intersects = False
 
     def update(self):
+        """
+            Updates the current frame for all classes which use the frame.
+
+            Parameters
+            ----------
+            classifications : []
+                array of classified objects within the frame
+        """
         if self.update_target.update_line() is not None:
             self.line = self.update_target.update_line()
         if self.update_target.update_rect() is not None:
@@ -67,6 +106,14 @@ class ToolObservers(Observer):
         # print(self.intersects)
 
     def get_rectangle(self):
+        """
+        Returns the rectangle object representing the traffic light object.
+
+        Returns
+        -------
+        rect:
+            Rectangle traffic light object.
+        """
         if self.rect is None or len(self.rect) < 2:
             return -1
         return self.rect

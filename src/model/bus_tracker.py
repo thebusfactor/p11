@@ -21,7 +21,13 @@ class BusTracker:
         :param classifications: classified buses from camera
         :return:
         """
-        if len(classifications) > 0:
+
+        # set all flags to false (refactor out to method)
+        for bus in self.detected_buses:
+            bus.set_flagged(False)
+        if classifications is None:
+            self.detected_buses = []
+        elif len(classifications) > 0:
             for classed_bus in classifications:
                 self.closest_dist = 9999999  # largest number
                 selected_bus = None
@@ -36,22 +42,45 @@ class BusTracker:
                 # If the closest bus is sufficiently close enough
                 if self.closest_dist < self.threshold_dist:
                     selected_bus.set_t1(classed_bus.tl["x"], classed_bus.tl["y"])
-                    print("x +", classed_bus.tl["x"])
-                    # print("y +", classed_bus.tl["y"])
+                    selected_bus.set_flagged(True)
                 else:
                     # The bus is not very close, so this may be a new bus
-                    self.detected_buses.append(Bus(classed_bus.tl["x"], classed_bus.tl["y"]))
+                    self.detected_buses.append(Bus(classed_bus.tl["x"], classed_bus.tl["y"], True))
 
-        #     remove_buses = []
-        #     if len(self.detected_buses) > 0:
-        #         for bus in self.detected_buses:
-        #             if bus.t1_x == 0:
-        #                 remove_buses.append(bus)
-        #         if len(remove_buses) > 0:
-        #             print(remove_buses)
-        #             print(self.detected_buses)
-        #             self.detected_buses.remove(remove_buses)
-        # # print(len(self.detected_buses))
+            remove_buses = []
+            remove_bus = None
+            if len(self.detected_buses) > 0:
+                for bus in self.detected_buses:
+                    if not bus.flagged:
+                        remove_buses.append(bus)
+                    # print("dab ", bus.tl_x)
+                    # if bus.tl_x == 0:
+                    #     remove_buses.append(bus)
+                    #     remove_bus = bus
+                    # elif bus.tl_x == 530:
+                    #     remove_buses.append(bus)
+                    #     remove_bus = bus
+                if len(remove_buses) > 0:
+                    # print("test ", remove_buses)
+                    # print(self.detected_buses)
+                    # for bus in self.detected_buses:
+                    #     for remove in remove_buses:
+                    #         if bus == remove:
+                    #
 
-    def get_detected_buses(self):
-        return self.detected_buses
+                    # self.detected_buses.remove(remove_buses)
+                    # self.detected_buses.remove(remove_bus)
+                    print("check")
+                    print(self.detected_buses)
+                    self.detected_buses = [b for b in self.detected_buses if b not in remove_buses]
+                    print(self.detected_buses)
+
+        # print(self.detected_buses)
+        print(len(self.detected_buses))
+
+def get_detected_buses(self):
+    return self.detected_buses
+
+
+def flush_buses(self):
+    print("in flushing buses that go past the screen")

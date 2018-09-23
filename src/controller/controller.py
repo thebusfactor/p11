@@ -2,7 +2,6 @@ from controller.observer import Observer
 from model.model import Model
 from ui.debug_ui import DebugGUI
 from model.ai import Ai
-from util.double_point import DoublePoint
 
 
 class Controller:
@@ -73,3 +72,6 @@ class ToolObservers(Observer):
 
     def get_intersects(self):
         return self.intersects
+
+    def set_intersects_bool(self, value):
+        self.intersects = value

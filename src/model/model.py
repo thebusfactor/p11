@@ -49,18 +49,16 @@ class Model:
                     if self.z_threshold_exceeded:
                         print("Tool get intersects:", self.tool_observers.get_intersects())
 
-                        if not self.tool_observers.get_intersects():
+                        if self.tool_observers.get_intersects():
                             print("VIOLATION OCCURRED")
-                            # self.violation_count = bus_counter.traffic_violation_detected(self.violation_count)
-                            self.violation_count = BusCounter.traffic_violation_detected(BusCounter, count=self.violation_count)
-                            self.tool_observers.set_intersects_bool()
+                            self.violation_count = BusCounter.traffic_violation_detected(BusCounter,
+                                                                                         count=self.violation_count)
+                            self.tool_observers.set_intersects_bool(False)
 
             if cv.waitKey(50) == 27:
                 break
 
             i += 1
-            if i % self.fps == 0:
-                print("I =", i % self.fps == 0)
 
         cv.destroyAllWindows()
 

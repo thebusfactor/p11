@@ -18,18 +18,34 @@ bgr_colours = {'Orange': (numpy.array([0, 100, 200]), numpy.array([50, 180, 255]
 
 def determine_bus(frame):
     """
-    Main algorithm to detect bus, needs clipped part of frame
-    Ordered in priority of colour bus is potentially
-    1st. Yellow
-    2nd. Yellow + White
-    3rd. Green + White
-    4th. Blue + white
-    5th. Pink
-    No data for: Orange, Green
-    :param image: Clipped image from raw feed
-    :return: Whether a bus has been detected
-    """
+        TODO: DELETE???
+        Main algorithm to detect bus, needs clipped part of frame
+        Ordered in priority of colour bus is potentially
+        1st. Yellow
+        2nd. Yellow + White
+        3rd. Green + White
+        4th. Blue + white
+        5th. Pink
+        No data for: Orange, Green
 
+        Parameters
+        ----------
+        frame : Frame
+            The current frame provided by the video.
+
+        Returns
+        -------
+        True, z, "yellow" :
+            If the bus is valid and is a yellow.
+        True, z, "green white":
+            If the light is valid and is green. "white" is to account
+            for the high exposure.
+        True, z, "yellow white":
+            If the light is valid and is yellow. "white" is to account
+            for the high exposure.
+        False, 0, "none":
+            If the light is neither yellow or green.
+    """
 
     y_value = 19800
     yw_value = 19800

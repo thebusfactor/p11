@@ -16,7 +16,7 @@ class StoredFrames:
 
     def append_frame(self, frame, no_viol):
         """
-        Appends frame to either the queue before or after the violation
+            Appends frame to either the queue before or after the violation
         """
         if no_viol:
             self.before_que.append(frame)
@@ -25,7 +25,7 @@ class StoredFrames:
 
     def combine_videos(self):
         """
-        Combines both frame lists and passes them through for conversion
+            Combines both frame lists and passes them through for conversion
         """
         b_q = list(self.before_que)
         a_q = list(self.after_que)
@@ -34,9 +34,12 @@ class StoredFrames:
 
     def convert_frames_to_video(self, frame_array):
         """
-        Takes list of frames and converts them to a video
-        :param frame_array: frames to be converted
-        :return: output video of event
+            Takes list of frames and converts them to a video
+
+            Parameters
+            ----------
+            frame_array : []
+                Frames to be converted.
         """
         height, width, layers = frame_array[0].shape
         size = (width, height)

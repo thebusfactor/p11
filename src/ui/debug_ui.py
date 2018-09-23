@@ -53,10 +53,20 @@ class DebugGUI:
 
     def click_and_crop(self, event, x, y, flags, params):
         """
-        Method is responsible for performing the correct actions depending on
-        the mouse event passed in. First it checks the appropriate tool being used.
-        Then, it will mark the first point of the shape and follow the mouse until
-        it is released where it records the second point.
+            Method is responsible for performing the correct actions depending on
+            the mouse event passed in. First it checks the appropriate tool being used.
+            Then, it will mark the first point of the shape and follow the mouse until
+            it is released where it records the second point.
+
+
+            Parameters
+            ----------
+            Event : Mouse Event
+                the event when a user makes a mouse action.
+            x : int
+                the x point where the event occurred.
+            y : int
+                the y point where the event occurred.
         """
         if event == cv.EVENT_RBUTTONDOWN:
             self.line_tool = not self.line_tool
@@ -84,6 +94,11 @@ class DebugGUI:
         """
             Updates the frame by drawing the line and/or rectangle shape using the information
             stored from the user's clicks.
+
+            Parameters
+            ----------
+            frame : Cam
+                current camera frame
         """
         self.frame = frame
         self.draw_classifications_on_frame()
@@ -135,6 +150,22 @@ class DebugGUI:
         """
             This returns the top left and bottom right coordinates that define a small bounding box
             that make up a certain percentage. x1, y1 are top left, x2, y2 are bottom right.
+
+            Parameters
+            ----------
+            x1 : int
+                x position of the top left point of the larger, classification box.
+            y1 : int
+                y position of the top left point of the larger, classification box.
+            x2 : int
+                x position of the bottom right point of the larger, classification box.
+            y2 : int
+                y position of the bottom right point of the larger, classification box.
+
+            Returns
+            -------
+            smallBox : []
+                2d array representing the small box
         """
         width = abs(x2-x1)
         height = abs(y2-y1)
@@ -153,10 +184,21 @@ class DebugGUI:
 
     def detect_event(self, x1: int, y1: int, x2: int, y2: int):
         """
-        Method to check if a classified object is intersecting the intersection
-        line specified by the user. point (x1, y2) are top left and (x2, y2) is bottom right of rectangle.
-        """
+            Method to check if a classified object is intersecting the intersection
+            line specified by the user. point (x1, y2) are top left and (x2, y2)
+            is bottom right of rectangle.
 
+            Parameters
+            ----------
+            x1 : int
+                x position of top left point of square
+            y1 : int
+                y position of top left point of square
+            x2 : int
+                x position of bottom right point of square
+            y2 : int
+                x position of bottom right point of square
+        """
         if self.line_pt is not None:
             if len(self.line_pt) >= 2:
 
@@ -196,10 +238,28 @@ class DebugGUI:
         """
             Check if point (px, py) is contained within rectangle [(x1, y1), (x2, y2)],
             where points are top left and bottom right respectively.
+
+            Parameters
+            ----------
+            x1 : int
+                x value of top left point of containing box.
+            y1 : int
+                y value of top left point of containing box.
+            x2 : int
+                x value of bottom right point of containing box.
+            y2 : int
+                y value of bottom right point of containing box.
+            px : int
+                x value of point that is being checked for.
+            py : int
+                y value of point that is being checked for.
         """
         return x1 < px < x2 and y1 < py < y2
 
     def play(self):
+        """
+            Plays the video feed on the debug ui screen.
+        """
         while True:
             if self.frame is None:
                 # print("None")

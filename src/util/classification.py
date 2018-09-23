@@ -13,7 +13,9 @@ class Classification:
         self.br = clf["bottomright"]
 
     def __eq__(self, other):
-        """Overrides the default implementation"""
+        """
+            Overrides the default implementation
+        """
         if isinstance(self, other.__class__):
             return self.__dict__ == other.__dict__
         return False

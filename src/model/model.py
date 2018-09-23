@@ -36,7 +36,9 @@ class Model:
         self.z_threshold_exceeded = False
 
     def start(self):
-
+        """
+            Method sets up the frame object and updates the classes which observe the frame object.
+        """
         i = 0
         while True:
 
@@ -79,17 +81,47 @@ class Model:
         cv.destroyAllWindows()
 
     def update_classifications(self, classifications):
+        """
+            Update the classifications when new objects are detected.
+        """
         self.classifications = classifications
 
     def add_frame_observer(self, observer: Observer):
+        """
+            Adds an observer to the model to observe the frame.
+
+            Parameters
+            ----------
+            observer : Observer
+                The observer to be added.
+        """
         self.frame_observers.append(observer)
 
     def update_frame_observer(self, frame):
+        """
+            Updates the frame for every observer of the model.
+
+           Parameters
+           ----------
+           frame : Frame
+               Current frame from video input.
+        """
         for frame_observer in self.frame_observers:
             frame_observer.update(frame)
 
     def add_tool_observer(self, observer: Observer):
+        """
+           Adds an observer for the line tool of the model.
+
+           Parameters
+           ----------
+           observer : Observer
+               The observer to be added to the model.
+        """
         self.tool_observers = observer
 
     def update_tool_observer(self):
+        """
+            Updates the line tool for every observer of the model.
+        """
         self.tool_observers.update()

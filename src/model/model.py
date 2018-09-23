@@ -48,8 +48,8 @@ class Model:
             self.update_frame_observer(self.frame)
             self.update_tool_observer()
 
-            if self.classifications is not None:
-                self.bus_tracker.update(self.classifications, self.res)
+            # if self.classifications is not None:
+            self.bus_tracker.update(self.classifications, self.res)
 
             if self.tool_observers.get_rectangle() != -1:
                 self.traffic_light.update_box(self.tool_observers.get_rectangle())
@@ -73,8 +73,8 @@ class Model:
                 break
 
             i += 1
-            if i % self.fps == 0:
-                print("I =", i % self.fps == 0)
+            # if i % self.fps == 0:
+                # print("I =", i % self.fps == 0)
 
         cv.destroyAllWindows()
 

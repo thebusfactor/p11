@@ -16,6 +16,8 @@ class DebugGUI:
     line_pt = []
     # points for traffic light
     rect_pt = []
+    # points for small box
+    small_box_pt = []
 
     # booleans for whether you should draw a new line/rect or not
     # false means draw, else true means its in process of being drawn).
@@ -40,7 +42,7 @@ class DebugGUI:
         self.classifications = classifications
 
     def update_rect(self):
-        return self.rect_pt
+        return self.small_box_pt
 
     def update_collision_boolean(self):
         return self.intersects
@@ -127,23 +129,17 @@ class DebugGUI:
             # confidence level of detected object has to be above threshold
             if c.conf > self.confidence_threshold:
 
-                small_box = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
+                self.small_box_pt = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
+                print(self.small_box_pt)
 
                 if c.label == "bus":
                     rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.bus_colour, 1)
-                    self.intersects = self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1])
-                    # if self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1]):
-                    #     # event has been detected, increment counter
-                    #     self.intersects = True
-                    #     # print(">intersects set to true")
-                    # else:
-                    #     # Reset intersection boolean
-                    #     self.intersects = False
-                    #     # print(">intersects set to false")
+                    # self.intersects = self.detect_event(small_box[0][0], small_box[0][1],
+                    #  small_box[1][0], small_box[1][1])
                     cv.putText(self.frame, c.label + " " + str(c.conf*100)[0:2] + "%", (c.tl.get('x')+10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
                 else:
                     rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.not_bus_colour, 1)
-                    self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1])
+                    # self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1])
                     cv.putText(self.frame, c.label + " " + str(c.conf * 100)[0:2] + "%", (c.tl.get('x') + 10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
 
     def small_box(self, x1: int, y1: int, x2: int, y2: int):
@@ -182,84 +178,6 @@ class DebugGUI:
         cv.rectangle(self.frame, (new_x1, new_y1), (new_x2, new_y2), self.bus_colour, 1)
         return [(new_x1, new_y1), (new_x2, new_y2)]
 
-    def detect_event(self, x1: int, y1: int, x2: int, y2: int):
-        """
-            Method to check if a classified object is intersecting the intersection
-            line specified by the user. point (x1, y2) are top left and (x2, y2)
-            is bottom right of rectangle.
-
-            Parameters
-            ----------
-            x1 : int
-                x position of top left point of square
-            y1 : int
-                y position of top left point of square
-            x2 : int
-                x position of bottom right point of square
-            y2 : int
-                x position of bottom right point of square
-        """
-        if self.line_pt is not None:
-            if len(self.line_pt) >= 2:
-
-                line_x_points = []
-                line_y_points = []
-
-                x_width = (self.line_pt[1][0] - self.line_pt[0][0])
-                y_width = (self.line_pt[1][1] - self.line_pt[0][1])
-
-                x_iteration = (x_width/50)
-                y_iteration = (y_width/50)
-
-                # Required to account for different directions that the line can be drawn.
-                current_x_point = self.line_pt[1][0]
-                current_y_point = self.line_pt[1][1]
-                y_iteration *= -1
-                x_iteration *= -1
-
-                # Iterates through the line and selects 50 intervals/points.
-                for i in range(50):
-                    line_x_points.append(current_x_point)
-                    line_y_points.append(current_y_point)
-                    current_x_point += x_iteration
-                    current_y_point += y_iteration
-
-                # Iterates through the 50 points and checks if the point is within the box, if it is then
-                # we can determine that the object intersects the line.
-                while not self.intersects:
-                    for i in range(50):
-                        if self.contains(self, x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
-                            self.intersects = True
-                            cv.circle(self.frame, (int(line_x_points[i]), int(line_y_points[i])), 5, (244, 40, 0))
-                        else:
-                            self.intersects = False
-                    break
-
-        # print("Intersects bool:", self.intersects)
-        return self.intersects
-
-    @staticmethod
-    def contains(self, x1: int, y1: int, x2: int, y2: int, px: int, py: int):
-        """
-            Check if point (px, py) is contained within rectangle [(x1, y1), (x2, y2)],
-            where points are top left and bottom right respectively.
-
-            Parameters
-            ----------
-            x1 : int
-                x value of top left point of containing box.
-            y1 : int
-                y value of top left point of containing box.
-            x2 : int
-                x value of bottom right point of containing box.
-            y2 : int
-                y value of bottom right point of containing box.
-            px : int
-                x value of point that is being checked for.
-            py : int
-                y value of point that is being checked for.
-        """
-        return x1 <= px <= x2 and y1 <= py <= y2
 
     def play(self):
         """

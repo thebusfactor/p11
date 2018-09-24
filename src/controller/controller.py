@@ -121,5 +121,8 @@ class ToolObservers(Observer):
     def get_intersects(self):
         return self.intersects
 
+    def get_line(self):
+        return self.line
+
     def set_intersects_bool(self, value):
         self.intersects = value

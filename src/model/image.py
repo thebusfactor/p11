@@ -10,9 +10,17 @@ class Image:
     @staticmethod
     def convert_image_to_grayscale(frame):
         """
-        Converts image to Grayscale mask, and returns the masked image as a binary black and white file
-        :param frame: the image to be converted
-        :return: the converted image
+            Converts image to Grayscale mask, and returns the masked image as a binary black and white file.
+
+            Parameters
+            ----------
+            frame : Frame
+                Frame from the video feed which is to be converted.
+
+            Returns
+            -------
+            image : Image
+                The converted image.
         """
         img_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         return img_gray
@@ -20,9 +28,17 @@ class Image:
     @staticmethod
     def convert_image_to_edge_mask(frame):
         """
-        Converts image to Edge mask, and returns the masked image as a Canny converted image
-        :param frame: the image to be masked
-        :return: the masked image
+            Converts image to Edge mask, and returns the masked image as a Canny converted image.
+
+            Parameters
+            ----------
+            frame : Frame
+                Frame from the video feed which is to be converted.
+
+            Returns
+            -------
+            image : Image
+                The image to be masked.
         """
         v = numpy.median(frame)
         sigma = 0.66
@@ -35,12 +51,22 @@ class Image:
     @staticmethod
     def apply_masks_colours(image, l_bound, u_bound):
         """
-        Converts image to HSV mask, and returns the masked image as a binary black and white file - white where green
-        is present and detected
-        :param u_bound: upper limit of colour to detect
-        :param l_bound: lower limit of colour to detect
-        :param image: the image to be masked
-        :return: the masked image
+            Converts image to HSV mask, and returns the masked image as a binary black and white file - white where green
+            is present and detected.
+
+            Parameters
+            ----------
+            u_bound :
+                Upper limit of colour to detect.
+            l_bound :
+                Lower limit of colour to detect.
+            image : Image
+                The image to be masked.
+
+            Returns
+            -------
+            image : Image
+                The masked image.
         """
         kernel_open = numpy.ones((7, 7))
         kernel_close = numpy.ones((20, 20))
@@ -53,11 +79,21 @@ class Image:
     @staticmethod
     def apply_masks_non_hsv(image, l_bound, u_bound):
         """
-        Converts image to white only mask
-        :param u_bound: upper limit of colour to detect
-        :param l_bound: lower limit of colour to detect
-        :param image: image to be masked
-        :return: the masked image
+            Converts image to white only mask.
+
+            Parameters
+            ----------
+            u_bound :
+                Upper limit of colour to detect.
+            l_bound :
+                Lower limit of colour to detect.
+            image : Image
+                The image to be masked.
+
+            Returns
+            -------
+            image : Image
+                The masked image.
         """
         mask = cv2.inRange(image, l_bound, u_bound)
         kernel_open = numpy.ones((5, 5))
@@ -69,10 +105,19 @@ class Image:
     @staticmethod
     def add_two_images(image_one, image_two):
         """
-        Takes two images and adds pixel's together
-        :param image_one: first image to be combined
-        :param image_two: second image to be combined
-        :return: comb_img: combined image
+            Takes two images and adds pixel's together.
+
+            Parameters
+            ----------
+            image_one : Image
+                First image to be combined.
+            image_two : Image
+                Second image to be combined.
+
+            Returns
+            -------
+            comb_img :
+                combined image.
         """
         comb = image_one + image_two
         return comb
@@ -80,9 +125,12 @@ class Image:
     @staticmethod
     def apply_light_mask(image):
         """
-        Converts traffic light to mask
-        :param image: image of traffic light to be masked
-        :return: the masked image
+            Converts traffic light to mask.
+
+            Parameters
+            ----------
+            image : Image
+                Image of traffic light to be masked.
         """
         hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         lower_bound = numpy.array([0, 10, 170])

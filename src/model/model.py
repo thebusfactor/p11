@@ -31,7 +31,8 @@ class Model:
         self.vid_clipper = StoredFrames(fps, self.res, 150)
         self.ai.start_ai()
         self.traffic_light = TrafficLight()
-        # self.stored_frames = StoredFrames()
+        self.stored_frames = StoredFrames(self.fps, self.res, 120)
+        self.stored_frames.start_clipping()
         self.bus_tracker = BusTracker()
         self.z_threshold_exceeded = False
 
@@ -44,6 +45,7 @@ class Model:
 
             # only check 'fps_to_check' frames per second.
             self.frame = self.cam.get_frame()
+            self.stored_frames.append_frame(self.frame)
 
             # self.stored_frames.append_frame(self.frame, self.red_light)
             self.ai.update_ai_frame(self.frame)
@@ -72,7 +74,11 @@ class Model:
                             self.tool_observers.set_intersects_bool(False)
 
             if cv.waitKey(50) == 27:
+                self.stored_frames.trigger_event()
                 break
+
+            # If there is a violation
+                # self.stored_frames.trigger_event()
 
             i += 1
             # if i % self.fps == 0:

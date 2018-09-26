@@ -62,7 +62,8 @@ class Model:
 
                 if red_light:
                     # TODO make statement shorter/clean
-                    if buses is not None and len(buses) > 0 and self.tool_observers is not None and self.tool_observers.get_line() != -1:
+                    if buses is not None and len(buses) > 0 and self.tool_observers is not None and self.tool_observers\
+                            .get_line() != -1:
                         for bus in buses:
                             if not bus.get_has_intersected():
                                 if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
@@ -91,8 +92,6 @@ class Model:
                 # self.stored_frames.trigger_event()
 
             i += 1
-            # if i % self.fps == 0:
-                # print("I =", i % self.fps == 0)
 
         cv.destroyAllWindows()
 
@@ -158,6 +157,7 @@ class Model:
                 x position of bottom right point of square
             y2 : int
                 x position of bottom right point of square
+            line_pt: []
         """
         if line_pt is not None:
             if len(line_pt) >= 2:
@@ -201,7 +201,7 @@ class Model:
         return intersects
 
     @staticmethod
-    def contains(self, x1: int, y1: int, x2: int, y2: int, px: int, py: int):
+    def contains(x1: int, y1: int, x2: int, y2: int, px: int, py: int):
         """
             Check if point (px, py) is contained within rectangle [(x1, y1), (x2, y2)],
             where points are top left and bottom right respectively.

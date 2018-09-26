@@ -92,11 +92,6 @@ class ToolObservers(Observer):
     def update(self):
         """
             Updates the current frame for all classes which use the frame.
-
-            Parameters
-            ----------
-            classifications : []
-                array of classified objects within the frame
         """
         if self.update_target.update_line() is not None:
             self.line = self.update_target.update_line()

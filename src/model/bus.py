@@ -7,6 +7,7 @@ class Bus:
     br_y: int
     flagged: bool
     dir = "up"
+    has_intersected: bool
 
     def __init__(self, tl_x, tl_y, br_x, br_y, flagged):
         self.tl_x = tl_x
@@ -14,6 +15,7 @@ class Bus:
         self.br_x = br_x
         self.br_y = br_y
         self.flagged = flagged
+        self.has_intersected = False
 
     def set_t1(self, new_tl_x, new_tl_y, new_br_x, new_br_y):
         self.tl_x = new_tl_x
@@ -29,3 +31,9 @@ class Bus:
 
     def get_tl_x(self):
         return self.tl_x
+
+    def set_has_intersected(self, has_intersected):
+        self.has_intersected = has_intersected
+
+    def get_has_intersected(self):
+        return self.has_intersected

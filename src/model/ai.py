@@ -13,7 +13,7 @@ class Ai:
 
     def __init__(self):
         options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
-                   "load": 875,
+                   "load": 1625,
                    "threshold": 0.1}
         self.tfnet = TFNet(options)
         self.frame = None

@@ -30,14 +30,11 @@ class BusTracker:
 
             remove_buses = []
             remove_bus = None
-            print("len1: ", len(self.detected_buses))
             if len(self.detected_buses) > 0:
                 for bus in self.detected_buses:
-                    print("x1: ", bus.flagged)
                     if not bus.flagged:
                         remove_buses.append(bus)
                 if len(remove_buses) > 0:
-                    print("check1")
                     self.detected_buses = [b for b in self.detected_buses if b not in remove_buses]
 
         elif len(classifications) > 0:
@@ -59,20 +56,18 @@ class BusTracker:
                     selected_bus.set_flagged(True)
                 else:
                     # The bus is not very close, so this may be a new bus
-                    print("ADDED")
                     self.detected_buses.append(Bus(classed_bus.tl["x"], classed_bus.tl["y"],
                                                    classed_bus.br["x"], classed_bus.br["y"], True))
 
             remove_buses = []
             remove_bus = None
-            print("len: ", len(self.detected_buses))
+
             if len(self.detected_buses) > 0:
                 for bus in self.detected_buses:
-                    print("x", bus.flagged)
                     if not bus.flagged:
                         remove_buses.append(bus)
                 if len(remove_buses) > 0:
                     self.detected_buses = [b for b in self.detected_buses if b not in remove_buses]
 
-        print(len(self.detected_buses))
         return self.detected_buses
+    

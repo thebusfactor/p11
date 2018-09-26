@@ -27,8 +27,6 @@ def clip_frame(frame, point, res):
     y1 = int(res[1] - p1[1])
     y2 = int(res[1] - p2[1])
 
-    print(p1[1])
-    print(p2[1])
 
     # y1 = int(p1[1])
     # y2 = int(p2[1])

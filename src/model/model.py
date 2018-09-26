@@ -52,31 +52,36 @@ class Model:
             self.update_frame_observer(self.frame)
             self.update_tool_observer()
 
-            # if self.classifications is not None:
+            # track bus position every frame
             buses = self.bus_tracker.update(self.classifications, self.res)
-            if buses is not None and len(buses) > 0 and self.tool_observers is not None:
-                for bus in buses:
-                    # if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
-                    #     print("intersection")
 
+            # if traffic light rectangle has been placed down
             if self.tool_observers.get_rectangle() != -1:
-
                 self.traffic_light.update_box(self.tool_observers.get_rectangle())
-                print(self.traffic_light.check_traffic_light(self.frame, (1280, 720)))
+                red_light = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
 
-            if i % self.fps == 0:
-                if self.tool_observers.get_rectangle() != -1:
-                    self.traffic_light.update_box(self.tool_observers.get_rectangle())
-                    self.z_threshold_exceeded = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
+                if red_light:
+                    # TODO make statement shorter/clean
+                    if buses is not None and len(buses) > 0 and self.tool_observers is not None and self.tool_observers.get_line() != -1:
+                        for bus in buses:
+                            if not bus.get_has_intersected():
+                                if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
+                                    print("intersection")
+                                    bus.set_has_intersected(True)
 
-                    if self.z_threshold_exceeded:
-                        print("Tool get intersects:", self.tool_observers.get_intersects())
-
-                        if self.tool_observers.get_intersects():
-                            print("VIOLATION OCCURRED")
-                            self.violation_count = BusCounter.traffic_violation_detected(BusCounter,
-                                                                                         count=self.violation_count)
-                            self.tool_observers.set_intersects_bool(False)
+            # ## TODO CHANGE
+            # if i % self.fps == 0:
+            #     if self.tool_observers.get_rectangle() != -1:
+            #         self.traffic_light.update_box(self.tool_observers.get_rectangle())
+            #         self.z_threshold_exceeded = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
+            #
+            #         if self.z_threshold_exceeded:
+            #             print("Tool get intersects:", self.tool_observers.get_intersects())
+            #
+            #             if self.tool_observers.get_intersects():
+            #                 self.violation_count = BusCounter.traffic_violation_detected(BusCounter,
+            #                                                                              count=self.violation_count)
+            #                 self.tool_observers.set_intersects_bool(False)
 
             if cv.waitKey(50) == 27:
                 self.stored_frames.trigger_event()

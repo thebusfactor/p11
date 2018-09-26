@@ -130,7 +130,6 @@ class DebugGUI:
             if c.conf > self.confidence_threshold:
 
                 self.small_box_pt = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
-                print(self.small_box_pt)
 
                 if c.label == "bus":
                     rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.bus_colour, 1)
@@ -185,7 +184,6 @@ class DebugGUI:
         """
         while True:
             if self.frame is None:
-                # print("None")
                 continue
             cv.imshow(self.ui_name, self.frame)
             # waits forever for the esc key to be pressed before exiting

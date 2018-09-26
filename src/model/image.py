@@ -136,6 +136,4 @@ class Image:
         lower_bound = numpy.array([0, 10, 170])
         upper_bound = numpy.array([20, 160, 255])
         mask = cv2.inRange(hsv_image, lower_bound, upper_bound)
-        cv2.imshow("HSV VAL", mask)
-        cv2.imshow("lll", hsv_image)
         return mask, hsv_image

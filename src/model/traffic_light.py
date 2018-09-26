@@ -3,8 +3,7 @@
 
 from external.clip import clip_frame
 from model.image import Image
-from model.output import calc_z_value
-
+import cv2
 
 class TrafficLight:
 
@@ -28,10 +27,12 @@ class TrafficLight:
 
         clipped_frame = clip_frame(frame, new_dp, res)
         light, hsv = Image.apply_light_mask(clipped_frame)
-        z = calc_z_value(light)
-        print("Z value:", z)
+        z = self.calc_z_value(light)
 
         return z > self.z_threshold
 
     def update_box(self, box):
         self.box = box
+
+    def calc_z_value(self, mask):
+        return cv2.countNonZero(mask)

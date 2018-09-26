@@ -36,6 +36,5 @@ class TrafficLight:
     def update_box(self, box):
         self.box = box
 
-    @staticmethod
     def calc_z_value(self, mask):
         return cv2.countNonZero(mask)

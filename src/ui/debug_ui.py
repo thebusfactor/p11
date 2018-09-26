@@ -109,8 +109,6 @@ class DebugGUI:
         self.frame = frame
         self.draw_classifications_on_frame()
 
-
-
         if len(self.line_pt) > 1:
             self.line_obj = cv.line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
         if len(self.rect_pt) > 1:

@@ -7,6 +7,7 @@ class DebugGUI:
     classifications = None
     confidence_threshold = 0.01
     frame = None
+    once = True
 
     bus_colour = (0, 191, 255)
     not_bus_colour = (0, 0, 0)
@@ -107,7 +108,6 @@ class DebugGUI:
         """
         self.frame = frame
         self.draw_classifications_on_frame()
-        cv.setMouseCallback(self.ui_name, self.click_and_crop)
 
         if len(self.line_pt) > 1:
             self.line_obj = cv.line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
@@ -115,6 +115,10 @@ class DebugGUI:
             self.rect_obj = cv.rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 5)
 
         cv.imshow(self.ui_name, self.frame)
+
+        if self.once:
+            cv.setMouseCallback(self.ui_name, self.click_and_crop)
+            self.once = False
 
     def draw_classifications_on_frame(self):
         """
@@ -180,7 +184,6 @@ class DebugGUI:
         cv.rectangle(self.frame, (new_x1, new_y1), (new_x2, new_y2), self.bus_colour, 1)
         return [(new_x1, new_y1), (new_x2, new_y2)]
 
-
     def play(self):
         """
             Plays the video feed on the debug ui screen.
@@ -189,7 +192,7 @@ class DebugGUI:
             if self.frame is None:
                 continue
             cv.imshow(self.ui_name, self.frame)
-            # waits forever for the esc key to be pressed before exiting
+            #waits forever for the esc key to be pressed before exiting
             if cv.waitKey(50) == 27:
                 break  # esc to quit
         cv.destroyAllWindows()

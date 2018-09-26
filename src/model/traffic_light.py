@@ -29,7 +29,7 @@ class TrafficLight:
 
         clipped_frame = clip_frame(frame, new_dp, res)
         light, hsv = Image.apply_light_mask(clipped_frame)
-        z = self.calc_z_value(self, light)
+        z = self.calc_z_value(light)
 
         return z > self.z_threshold
 

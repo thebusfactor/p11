@@ -41,8 +41,11 @@ class DebugGUI:
     def update_classifications(self, classifications):
         self.classifications = classifications
 
-    def update_rect(self):
+    def update_collision_rect(self):
         return self.small_box_pt
+
+    def update_traffic_rect(self):
+        return self.rect_pt
 
     def update_collision_boolean(self):
         return self.intersects

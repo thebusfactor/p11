@@ -20,6 +20,7 @@ class TrafficLight:
         :return: True or False depending on if the masked traffic light result is greater than the threshold
         """
 
+        print(self.box)
         # get x and y points from the rectangle drawn by the user
         point1 = (self.box[0][0], res[1] - self.box[1][1])
         point2 = (self.box[1][0], res[1] - self.box[0][1])

@@ -86,7 +86,7 @@ class ToolObservers(Observer):
     def __init__(self, update_target):
         self.update_target = update_target
         self.line = None
-        self.rect = None
+        self.traffic_rect = None
         self.intersects = False
 
     def update(self):
@@ -100,12 +100,13 @@ class ToolObservers(Observer):
         """
         if self.update_target.update_line() is not None:
             self.line = self.update_target.update_line()
-        if self.update_target.update_rect() is not None:
-            self.rect = self.update_target.update_rect()
+        if self.update_target.update_traffic_rect() is not None:
+            self.traffic_rect = self.update_target.update_traffic_rect()
+
         self.intersects = self.update_target.update_collision_boolean()
         # print(self.intersects)
 
-    def get_rectangle(self):
+    def get_traffic_rectangle(self):
         """
         Returns the rectangle object representing the traffic light object.
 
@@ -114,9 +115,9 @@ class ToolObservers(Observer):
         rect:
             Rectangle traffic light object.
         """
-        if self.rect is None or len(self.rect) < 2:
+        if self.traffic_rect is None or len(self.traffic_rect) < 2:
             return -1
-        return self.rect
+        return self.traffic_rect
 
     def get_intersects(self):
         return self.intersects

@@ -56,8 +56,8 @@ class Model:
             buses = self.bus_tracker.update(self.classifications, self.res)
 
             # if traffic light rectangle has been placed down
-            if self.tool_observers.get_rectangle() != -1:
-                self.traffic_light.update_box(self.tool_observers.get_rectangle())
+            if self.tool_observers.get_traffic_rectangle() != -1:
+                self.traffic_light.update_box(self.tool_observers.get_traffic_rectangle())
                 red_light = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
 
                 if red_light:

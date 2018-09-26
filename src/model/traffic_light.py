@@ -5,6 +5,7 @@ from external.clip import clip_frame
 from model.image import Image
 import cv2
 
+
 class TrafficLight:
 
     box: []
@@ -20,9 +21,11 @@ class TrafficLight:
         :return: True or False depending on if the masked traffic light result is greater than the threshold
         """
 
+        print(self.box)
         # get x and y points from the rectangle drawn by the user
         point1 = (self.box[0][0], res[1] - self.box[1][1])
         point2 = (self.box[1][0], res[1] - self.box[0][1])
+
         new_dp = (point1, point2)
 
         clipped_frame = clip_frame(frame, new_dp, res)
@@ -34,5 +37,6 @@ class TrafficLight:
     def update_box(self, box):
         self.box = box
 
+    @staticmethod
     def calc_z_value(self, mask):
         return cv2.countNonZero(mask)

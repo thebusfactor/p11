@@ -59,7 +59,6 @@ class Model:
             if self.tool_observers.get_traffic_rectangle() != -1:
                 self.traffic_light.update_box(self.tool_observers.get_traffic_rectangle())
                 red_light = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
-                print(red_light)
                 if red_light:
                     if buses is not None and len(buses) > 0 and self.tool_observers is not None and self.tool_observers\
                             .get_line() != -1:

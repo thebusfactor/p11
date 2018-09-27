@@ -154,8 +154,6 @@ class DebugGUI:
         else:
             cv.putText(self.frame, 'TL', (15, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
 
-        cv.setMouseCallback(self.ui_name, self.click_and_crop)
-
         if len(self.line_pt) > 1:
             self.line_obj = cv.line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
         if len(self.rect_pt) > 1:

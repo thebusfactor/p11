@@ -44,8 +44,9 @@ class BusTracker:
 
                 # Find closest stored bus to classification
                 for bus in self.detected_buses:
-                    x1, y1 = self.small_box(classed_bus.tl["x"], classed_bus.tl["y"], classed_bus.br["x"], classed_bus.br["y"])
-                    dist = calc_distance(x1, bus.tl_x, y1, bus.tl_y)
+                    # x1, y1 = self.small_box(classed_bus.tl["x"], classed_bus.tl["y"], classed_bus.br["x"], classed_bus.br["y"])
+                    # dist = calc_distance(x1, bus.tl_x, y1, bus.tl_y)
+                    dist = calc_distance(classed_bus.tl["x"], bus.tl_x, classed_bus.tl["y"], bus.tl_y)
                     if dist < self.closest_dist:
                         selected_bus = bus
                         self.closest_dist = dist

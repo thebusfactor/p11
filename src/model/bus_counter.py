@@ -3,7 +3,7 @@ from pathlib import Path
 
 class BusCounter:
 
-    count: int
+    count: int = 0
 
     def write_to_file(self, file_path, text):
         """
@@ -24,12 +24,11 @@ class BusCounter:
         finally:
             f.close()
 
-    def generate_txt(self, path, count):
+    def generate_txt(self, path):
         file_path = path + "\\bus_counter.txt"
-        self.write_to_file(self, file_path, "Traffic Violations: " + str(count))
+        self.write_to_file(file_path, "Traffic Violations: " + str(self.count))
 
-    def traffic_violation_detected(self, count):
+    def traffic_violation_detected(self):
         dir_path = str(Path.cwd())
-        count += 1
-        self.generate_txt(self, dir_path, count)
-        return count
+        self.count += 1
+        self.generate_txt(dir_path)

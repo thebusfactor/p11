@@ -67,13 +67,11 @@ class Model:
                                 if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
                                     print("Violation Detected")
                                     bus.set_has_intersected(True)
+                                    self.stored_frames.trigger_event()
 
             if cv.waitKey(50) == 27:
                 self.stored_frames.trigger_event()
                 break
-
-            # If there is a violation
-                # self.stored_frames.trigger_event()
 
             i += 1
 

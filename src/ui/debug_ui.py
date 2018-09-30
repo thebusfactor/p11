@@ -41,7 +41,6 @@ class DebugGUI:
     # the objects
     line_obj = None
     rect_obj = None
-    intersects = False
 
     # the chosen tool, -1 for none, 0 for rectangle, 1 for line
     line_tool = True
@@ -62,14 +61,8 @@ class DebugGUI:
     def update_traffic_rect(self):
         return self.rect_pt
 
-    def update_collision_boolean(self):
-        return self.intersects
-
     def toggle_tools(self):
         pass
-
-    def set_intersects_bool(self, value):
-        self.intersects = value
 
     def click_and_crop(self, event, x, y, flags, params):
         """

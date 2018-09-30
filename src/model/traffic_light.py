@@ -41,7 +41,7 @@ class TrafficLight:
         self.box = box
 
     def distance_check(self, x1, x2, y1, y2):
-        return math.sqrt(math.pow((x2-x1),2) + math.pow((y2-y1), 2)) > 1
+        return math.sqrt(math.pow((x2-x1), 2) + math.pow((y2-y1), 2)) > 1
 
     def apply_light_mask(self, frame):
         hsv_image = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)

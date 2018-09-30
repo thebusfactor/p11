@@ -35,6 +35,9 @@ class DebugGUI:
     line = False
     rect = False
 
+    # boolean to detect if the user is currently drawing a shape, supports rubber banding functionality.
+    drawing = False
+
     # the objects
     line_obj = None
     rect_obj = None
@@ -93,23 +96,50 @@ class DebugGUI:
 
         if not self.check_mouse_coords(x, y):
             if self.line_tool:
+
                 if event == cv.EVENT_LBUTTONDOWN:
-                    self.line_pt = [(x, y)]
-                    self.line = True
-                    # check to see if the left mouse button was released
+                    if not self.drawing:
+                        self.line_pt = [(x, y)]
+                        self.line = True
+                        self.drawing = True
+                        # check to see if the left mouse button was released
+
+                elif event == cv.EVENT_MOUSEMOVE:
+                    # if in drawing mode
+                    if self.drawing:
+                        if len(self.line_pt) > 1:
+                            # change second point to current mouse position if it already exists
+                            self.line_pt[1] = (x, y)
+                        else:
+                            self.line_pt.append((x, y))
+
                 elif event == cv.EVENT_LBUTTONUP:
                     # record the ending (x, y) coordinates
                     self.line_pt.append((x, y))
                     self.line = False
+                    self.drawing = False
+
             elif not self.line_tool:
                 if event == cv.EVENT_LBUTTONDOWN:
                     self.rect_pt = [(x, y)]
                     self.rect = True
+                    self.drawing = True
                     # check to see if the left mouse button was released
+
+                elif event == cv.EVENT_MOUSEMOVE:
+                    # if in drawing mode
+                    if self.drawing:
+                        if len(self.rect_pt) > 1:
+                            # change second point to current mouse position if it already exists
+                            self.rect_pt[1] = (x, y)
+                        else:
+                            self.rect_pt.append((x, y))
+
                 elif event == cv.EVENT_LBUTTONUP:
                     # record the ending (x, y) coordinates
                     self.rect_pt.append((x, y))
                     self.rect = False
+                    self.drawing = False
 
     def check_mouse_coords(self, x, y):
         """
@@ -128,9 +158,7 @@ class DebugGUI:
             in_coords :
                 True if mouse is within box, False if not
         """
-        if self.toggle_x1 <= x <= self.toggle_x2 and self.toggle_y1 <= y <= self.toggle_y2:
-            return True
-        return False
+        return self.toggle_x1 <= x <= self.toggle_x2 and self.toggle_y1 <= y <= self.toggle_y2
 
     def toggle_tool(self):
         """

@@ -87,7 +87,6 @@ class ToolObservers(Observer):
         self.update_target = update_target
         self.line = None
         self.traffic_rect = None
-        self.intersects = False
 
     def update(self):
         """
@@ -97,9 +96,6 @@ class ToolObservers(Observer):
             self.line = self.update_target.update_line()
         if self.update_target.update_traffic_rect() is not None:
             self.traffic_rect = self.update_target.update_traffic_rect()
-
-        self.intersects = self.update_target.update_collision_boolean()
-        # print(self.intersects)
 
     def get_traffic_rectangle(self):
         """
@@ -114,10 +110,15 @@ class ToolObservers(Observer):
             return -1
         return self.traffic_rect
 
-    def get_intersects(self):
-        return self.intersects
-
     def get_line(self):
+        """
+        Returns the line object representing the intersection line.
+
+        Returns
+        -------
+        line:
+            intersection line object.
+        """
         if self.line is None or len(self.line) < 2:
             return -1
         return self.line

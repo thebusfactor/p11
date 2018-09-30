@@ -2,6 +2,7 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 import cv2 as cv
 from external.cam import Cam
+import os
 
 
 class DebugGUI:
@@ -235,4 +236,3 @@ class DebugGUI:
             # waits forever for the esc key to be pressed before exiting
             if cv.waitKey(50) == 27:
                 break  # esc to quit
-        cv.destroyAllWindows()

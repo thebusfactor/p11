@@ -28,8 +28,8 @@ def main(argv):
     Controller(model, ai, view)
 
     model.start()
+    os.kill(os.getpid(), 1)
 
-    sys.exit(1)
     pass
 
 

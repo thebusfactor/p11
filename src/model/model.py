@@ -77,12 +77,8 @@ class Model:
                                         self.bus_counter.traffic_violation_detected()
 
             if cv.waitKey(50) == 27:
-                self.stored_frames.trigger_event()
                 break
-
             i += 1
-            # if i % self.fps == 0:
-                # print("I =", i % self.fps == 0)
 
         cv.destroyAllWindows()
 

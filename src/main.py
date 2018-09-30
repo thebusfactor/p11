@@ -23,7 +23,7 @@ def main(argv):
     ai = Ai()
 
     model = Model(cam, ai, fps, res)
-    view = DebugGUI()
+    view = DebugGUI(cam)
 
     Controller(model, ai, view)
 

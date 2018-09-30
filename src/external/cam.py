@@ -22,6 +22,9 @@ class Cam:
             self.path = path
             self.video = open_video(path)
 
+        self.video.set(3, 1280)
+        self.video.set(4, 720)
+
     def get_frame(self):
         """
             Returns the current camera frame.
@@ -65,12 +68,5 @@ def open_cam():
         video : VideoCapture
             The video capture of the webcam.
     """
-    video = cv2.VideoCapture(0)
-
-    # n = 1
-    # while video is None and n < 10:
-    #     video = cv2.VideoCapture(n)
-    #     print("trying source ", n)
-    #     n += 1
-
+    video = cv2.VideoCapture(1)
     return video

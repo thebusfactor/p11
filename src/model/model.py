@@ -64,6 +64,7 @@ class Model:
                     red_light = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
 
                     if red_light:
+                        print("red")
                         if buses is not None and len(buses) > 0 and \
                                 self.tool_observers is not None and \
                                 self.tool_observers.get_line() != -1:

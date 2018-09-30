@@ -2,17 +2,17 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 #import cv2
-from model.traffic_light import TrafficLight
+#from model.traffic_light import TrafficLight
 
 
-def test_red_classification(light: TrafficLight, image, resolution):
-    # return light.check_traffic_light(image, resolution)
-    assert True
-
-
-def test_not_red_classification(light: TrafficLight, image, resolution):
-    # return light.check_traffic_light(image, resolution)
-    assert True
+# def test_red_classification(light: TrafficLight, image, resolution):
+#      return light.check_traffic_light(image, resolution)
+#     assert True
+#
+#
+# def test_not_red_classification(light: TrafficLight, image, resolution):
+#      return light.check_traffic_light(image, resolution)
+#     assert True
 #
 #
 # tl = TrafficLight()
@@ -37,3 +37,4 @@ def test_not_red_classification(light: TrafficLight, image, resolution):
 # box[1][1] = 0
 # tl.update_box(box)
 # assert test_not_red_classification(frame, res)
+assert True

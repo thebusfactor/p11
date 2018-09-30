@@ -7,6 +7,7 @@ class DebugGUI:
     classifications = None
     confidence_threshold = 0.01
     frame = None
+    once = True
 
     bus_colour = (0, 191, 255)
     not_bus_colour = (0, 0, 0)
@@ -18,6 +19,13 @@ class DebugGUI:
     rect_pt = []
     # points for small box
     small_box_pt = []
+
+    # toggle tool box
+    toggle_x1 = 5
+    toggle_x2 = 55
+    toggle_y1 = 665
+    toggle_y2 = 715
+    toggle_bool = False
 
     # booleans for whether you should draw a new line/rect or not
     # false means draw, else true means its in process of being drawn).
@@ -41,8 +49,11 @@ class DebugGUI:
     def update_classifications(self, classifications):
         self.classifications = classifications
 
-    def update_rect(self):
+    def update_collision_rect(self):
         return self.small_box_pt
+
+    def update_traffic_rect(self):
+        return self.rect_pt
 
     def update_collision_boolean(self):
         return self.intersects
@@ -72,25 +83,56 @@ class DebugGUI:
         """
         if event == cv.EVENT_RBUTTONDOWN:
             self.line_tool = not self.line_tool
+        elif event == cv.EVENT_LBUTTONDOWN:
+            if self.check_mouse_coords(x, y):
+                self.toggle_tool()
 
-        if self.line_tool:
-            if event == cv.EVENT_LBUTTONDOWN:
-                self.line_pt = [(x, y)]
-                self.line = True
-                # check to see if the left mouse button was released
-            elif event == cv.EVENT_LBUTTONUP:
-                # record the ending (x, y) coordinates
-                self.line_pt.append((x, y))
-                self.line = False
-        elif not self.line_tool:
-            if event == cv.EVENT_LBUTTONDOWN:
-                self.rect_pt = [(x, y)]
-                self.rect = True
-                # check to see if the left mouse button was released
-            elif event == cv.EVENT_LBUTTONUP:
-                # record the ending (x, y) coordinates
-                self.rect_pt.append((x, y))
-                self.rect = False
+        if not self.check_mouse_coords(x, y):
+            if self.line_tool:
+                if event == cv.EVENT_LBUTTONDOWN:
+                    self.line_pt = [(x, y)]
+                    self.line = True
+                    # check to see if the left mouse button was released
+                elif event == cv.EVENT_LBUTTONUP:
+                    # record the ending (x, y) coordinates
+                    self.line_pt.append((x, y))
+                    self.line = False
+            elif not self.line_tool:
+                if event == cv.EVENT_LBUTTONDOWN:
+                    self.rect_pt = [(x, y)]
+                    self.rect = True
+                    # check to see if the left mouse button was released
+                elif event == cv.EVENT_LBUTTONUP:
+                    # record the ending (x, y) coordinates
+                    self.rect_pt.append((x, y))
+                    self.rect = False
+
+    def check_mouse_coords(self, x, y):
+        """
+            Checks if the mouse points (x, y) are within the grey toggle box at the bottom left of the screen.
+            This box has boundaries of toggle_x1, toggle_x2, toggle_y1, and toggle_y2.
+
+            Parameters
+            ----------
+            x : int
+                x value of mouse location.
+            y : int
+                y value of mouse location.
+
+            Returns
+            -------
+            in_coords :
+                True if mouse is within box, False if not
+        """
+        if self.toggle_x1 <= x <= self.toggle_x2 and self.toggle_y1 <= y <= self.toggle_y2:
+            return True
+        return False
+
+    def toggle_tool(self):
+        """
+            Toggles the line tool.
+        """
+        self.line_tool = not self.line_tool
 
     def update_frame(self, frame):
         """
@@ -104,6 +146,14 @@ class DebugGUI:
         """
         self.frame = frame
         self.draw_classifications_on_frame()
+        cv.rectangle(self.frame, (self.toggle_x1, self.toggle_y1), (self.toggle_x2, self.toggle_y2),
+                     (167, 170, 175), -2)
+
+        if self.line_tool:
+            cv.putText(self.frame, 'I', (25, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
+        else:
+            cv.putText(self.frame, 'TL', (15, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
+
         cv.setMouseCallback(self.ui_name, self.click_and_crop)
 
         if len(self.line_pt) > 1:
@@ -112,6 +162,10 @@ class DebugGUI:
             self.rect_obj = cv.rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 5)
 
         cv.imshow(self.ui_name, self.frame)
+
+        if self.once:
+            cv.setMouseCallback(self.ui_name, self.click_and_crop)
+            self.once = False
 
     def draw_classifications_on_frame(self):
         """
@@ -176,7 +230,6 @@ class DebugGUI:
 
         cv.rectangle(self.frame, (new_x1, new_y1), (new_x2, new_y2), self.bus_colour, 1)
         return [(new_x1, new_y1), (new_x2, new_y2)]
-
 
     def play(self):
         """

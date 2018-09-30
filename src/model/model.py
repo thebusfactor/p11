@@ -58,8 +58,8 @@ class Model:
 
             # if traffic light rectangle has been placed down
             if i % self.fps == 0:
-                if self.tool_observers.get_rectangle() != -1:
-                    self.traffic_light.update_box(self.tool_observers.get_rectangle())
+                if self.tool_observers.get_traffic_rectangle() != -1:
+                    self.traffic_light.update_box(self.tool_observers.get_traffic_rectangle())
                     red_light = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
 
                     if red_light:
@@ -147,6 +147,7 @@ class Model:
                 x position of bottom right point of square
             y2 : int
                 x position of bottom right point of square
+            line_pt: []
         """
         if line_pt is not None:
             if len(line_pt) >= 2:
@@ -179,7 +180,7 @@ class Model:
                 # we can determine that the object intersects the line.
                 while not intersects:
                     for i in range(50):
-                        if self.contains(self, x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
+                        if self.contains(x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
                             intersects = True
                             cv.circle(self.frame, (int(line_x_points[i]), int(line_y_points[i])), 5, (244, 40, 0))
                         else:
@@ -190,7 +191,7 @@ class Model:
         return intersects
 
     @staticmethod
-    def contains(self, x1: int, y1: int, x2: int, y2: int, px: int, py: int):
+    def contains(x1: int, y1: int, x2: int, y2: int, px: int, py: int):
         """
             Check if point (px, py) is contained within rectangle [(x1, y1), (x2, y2)],
             where points are top left and bottom right respectively.

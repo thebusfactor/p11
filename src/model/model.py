@@ -54,29 +54,26 @@ class Model:
             self.update_tool_observer()
 
             # track bus position every frame
-            if i % int(self.fps/6) == 0:
-                buses = self.bus_tracker.update(self.classifications, self.res)
+            buses = self.bus_tracker.update(self.classifications, self.res)
 
             # if traffic light rectangle has been placed down
-            if i % self.fps == 0:
-                if self.tool_observers.get_traffic_rectangle() != -1:
-                    self.traffic_light.update_box(self.tool_observers.get_traffic_rectangle())
-                    red_light = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
+            if self.tool_observers.get_traffic_rectangle() != -1:
+                self.traffic_light.update_box(self.tool_observers.get_traffic_rectangle())
+                red_light = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
 
-                    if red_light:
-                        print("red")
-                        if buses is not None and len(buses) > 0 and \
-                                self.tool_observers is not None and \
-                                self.tool_observers.get_line() != -1:
-                            for bus in buses:
-                                if not bus.get_has_intersected():
-                                    if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
-                                        print("Violation Detected")
-                                        bus.set_has_intersected(True)
-                                        self.stored_frames.trigger_event()
-                                        self.bus_counter.traffic_violation_detected()
+                if red_light:
+                    if buses is not None and len(buses) > 0 and \
+                            self.tool_observers is not None and \
+                            self.tool_observers.get_line() != -1:
+                        for bus in buses:
+                            if not bus.get_has_intersected():
+                                if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
+                                    print("Violation Detected")
+                                    bus.set_has_intersected(True)
+                                    self.stored_frames.trigger_event()
+                                    self.bus_counter.traffic_violation_detected()
 
-            if cv.waitKey(50) == 27:
+            if cv.waitKey(1) == 27:
                 break
             i += 1
 

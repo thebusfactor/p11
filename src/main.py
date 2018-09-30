@@ -23,13 +23,13 @@ def main(argv):
     ai = Ai()
 
     model = Model(cam, ai, fps, res)
-    view = DebugGUI()
+    view = DebugGUI(cam)
 
     Controller(model, ai, view)
 
     model.start()
+    os.kill(os.getpid(), 1)
 
-    sys.exit(1)
     pass
 
 

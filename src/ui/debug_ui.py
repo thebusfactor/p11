@@ -1,8 +1,11 @@
+# MIT License
+# Copyright (c) 2018 ENGR301-302-2018 / Project-11
 import cv2 as cv
+from external.cam import Cam
+import os
 
 
 class DebugGUI:
-
     ui_name = "Bus-Factor"
     classifications = None
     confidence_threshold = 0.01
@@ -39,8 +42,9 @@ class DebugGUI:
     # the chosen tool, -1 for none, 0 for rectangle, 1 for line
     line_tool = True
 
-    def __init__(self):
+    def __init__(self, cam: Cam):
         self.frame = None
+        self.cam = cam
 
     def update_line(self):
         return self.line_pt
@@ -176,7 +180,6 @@ class DebugGUI:
             c = classifications_to_draw[i]
             # confidence level of detected object has to be above threshold
             if c.conf > self.confidence_threshold:
-
                 self.small_box_pt = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
 
     def small_box(self, x1: int, y1: int, x2: int, y2: int):
@@ -200,8 +203,8 @@ class DebugGUI:
             smallBox : []
                 2d array representing the small box
         """
-        width = abs(x2-x1)
-        height = abs(y2-y1)
+        width = abs(x2 - x1)
+        height = abs(y2 - y1)
 
         percentage_to_remove = 0.3
         removed_section_width = width * percentage_to_remove
@@ -226,4 +229,3 @@ class DebugGUI:
             # waits forever for the esc key to be pressed before exiting
             if cv.waitKey(50) == 27:
                 break  # esc to quit
-        cv.destroyAllWindows()

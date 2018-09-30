@@ -34,6 +34,7 @@ class Model:
         self.stored_frames = StoredFrames(self.fps, self.res, 120)
         self.stored_frames.start_clipping()
         self.bus_tracker = BusTracker()
+        self.bus_counter = BusCounter()
         self.z_threshold_exceeded = False
 
     def start(self):
@@ -69,15 +70,14 @@ class Model:
                             for bus in buses:
                                 if not bus.get_has_intersected():
                                     if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
-                                        print("intersection")
+                                        print("Violation Detected")
                                         bus.set_has_intersected(True)
+                                        self.stored_frames.trigger_event()
+                                        self.bus_counter.traffic_violation_detected()
 
             if cv.waitKey(50) == 27:
                 self.stored_frames.trigger_event()
                 break
-
-            # If there is a violation
-                # self.stored_frames.trigger_event()
 
             i += 1
             # if i % self.fps == 0:

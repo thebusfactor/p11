@@ -154,8 +154,6 @@ class DebugGUI:
         else:
             cv.putText(self.frame, 'TL', (15, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
 
-        cv.setMouseCallback(self.ui_name, self.click_and_crop)
-
         if len(self.line_pt) > 1:
             self.line_obj = cv.line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
         if len(self.rect_pt) > 1:
@@ -177,23 +175,16 @@ class DebugGUI:
 
         if self.classifications is None or self.frame is None:
             return
+
+        classifications_to_draw = self.classifications
+
         # check every detected object
-        for i in range(0, len(self.classifications)):
-            c = self.classifications[i]
+        for i in range(0, len(classifications_to_draw)):
+            c = classifications_to_draw[i]
             # confidence level of detected object has to be above threshold
             if c.conf > self.confidence_threshold:
 
                 self.small_box_pt = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
-
-                if c.label == "bus":
-                    rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.bus_colour, 1)
-                    # self.intersects = self.detect_event(small_box[0][0], small_box[0][1],
-                    #  small_box[1][0], small_box[1][1])
-                    cv.putText(self.frame, c.label + " " + str(c.conf*100)[0:2] + "%", (c.tl.get('x')+10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
-                else:
-                    rect = cv.rectangle(self.frame, (c.tl.get('x'), c.tl.get('y')), (c.br.get('x'), c.br.get('y')), self.not_bus_colour, 1)
-                    # self.detect_event(small_box[0][0], small_box[0][1], small_box[1][0], small_box[1][1])
-                    cv.putText(self.frame, c.label + " " + str(c.conf * 100)[0:2] + "%", (c.tl.get('x') + 10, c.tl.get('y') + 30), cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
 
     def small_box(self, x1: int, y1: int, x2: int, y2: int):
         """

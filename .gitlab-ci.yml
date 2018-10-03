@@ -29,8 +29,33 @@ test:
     
 deploy:
   stage: deploy
+
+#   before_script:
+
+#     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#     - eval $(ssh-agent -s)
+
+#     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+
+#     - mkdir -p ~/.ssh
+#     - chmod 700 ~/.ssh
+
   script:
     - echo "Deploy project"
+    
+    # - mkdir -p ~/.ssh
+    # Paste the PRIVATE key into a gitlab variable. Pay attention to the linebreak at the end when pasting
+    # - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    # - chmod 600 ~/.ssh/id_rsa
+    # - eval "$(ssh-agent -s)"
+    # - ssh-add ~/.ssh/id_rsa
+    # - ssh-keyscan -H 'gitlab.ecs.vuw.ac.nz' >> ~/.ssh/known_hosts
+    
+    # - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
+    - ssh xXx~skrillex~xXx@103.23.18.230
+    - git pull origin dev
+    
   environment:
     name: staging
   when: manual

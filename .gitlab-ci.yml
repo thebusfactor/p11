@@ -31,6 +31,8 @@ deploy:
   stage: deploy
   script:
     - echo "Deploy project"
+    - ssh xXx~skrillex~xXx@103.23.18.230
+    - git pull
   environment:
     name: staging
   when: manual

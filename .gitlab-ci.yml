@@ -34,7 +34,7 @@ deploy:
     - mkdir -p ~/.ssh
     # Paste the PRIVATE key into a gitlab variable. Pay attention to the linebreak at the end when pasting
     - echo "$CD-scotthbran" | tr -d '\r' > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
     - eval "$(ssh-agent -s)"
     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
     - ssh-keyscan -H 'gitlab.ecs.vuw.ac.nz' >> ~/.ssh/known_hosts

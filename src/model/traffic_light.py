@@ -11,7 +11,7 @@ import math
 class TrafficLight:
 
     box: []
-    z_threshold: int = 20
+    z_threshold: int = 10
 
     def __init__(self):
         self.lower_bound = numpy.array([0, 10, 170])
@@ -26,13 +26,27 @@ class TrafficLight:
         :param res: resolution of the frame, (width, height)
         :return: True or False depending on if the masked traffic light result is greater than the threshold
         """
+        x1 = self.box[0][0]
+        y1 = res[1] - self.box[0][1]
+        
+        x2 = self.box[1][0]
+        y2 = res[1] - self.box[1][1]
 
-        # get x and y points from the rectangle drawn by the user
-        if self.distance_check(self.box[0][0], self.box[1][0], res[1]-self.box[1][1], res[1] - self.box[0][1]):
-            point1 = (self.box[0][0], res[1] - self.box[1][1])
-            point2 = (self.box[1][0], res[1] - self.box[0][1])
+        if self.distance_check(x1, x2, y2, y1):
+            point1 = (x1, y2)
+            point2 = (x2, y1)
+            if x2 > x1 and y1 < y2:
+                point1 = (x1, y1)
+                point2 = (x2, y2)
+            elif x2 < x1 and y1 > y2:
+                point1 = (x2, y2)
+                point2 = (x1, y1)
+            elif x2 < x1 and y1 < y2:
+                point1 = (x2, y1)
+                point2 = (x1, y2)
             new_dp = (point1, point2)
             clipped_frame = clip_frame(frame, new_dp, res)
+            cv2.imshow("frame",clipped_frame)
             z = self.apply_light_mask(clipped_frame)
             return z > self.z_threshold
         return 0
@@ -41,7 +55,7 @@ class TrafficLight:
         self.box = box
 
     def distance_check(self, x1, x2, y1, y2):
-        return math.sqrt(math.pow((x2-x1), 2) + math.pow((y2-y1), 2)) > 1
+        return math.sqrt(math.pow((x2-x1), 2) + math.pow((y2-y1), 2)) > 5
 
     def apply_light_mask(self, frame):
         hsv_image = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)

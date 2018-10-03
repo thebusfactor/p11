@@ -46,7 +46,6 @@ class TrafficLight:
                 point2 = (x1, y2)
             new_dp = (point1, point2)
             clipped_frame = clip_frame(frame, new_dp, res)
-            cv2.imshow("frame",clipped_frame)
             z = self.apply_light_mask(clipped_frame)
             return z > self.z_threshold
         return 0

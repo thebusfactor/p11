@@ -39,7 +39,7 @@ deploy:
     - ssh-add ~/.ssh/id_rsa
     - ssh-keyscan -H 'your.server.hostname' >> ~/.ssh/known_hosts
     - ssh xXx~skrillex~xXx@103.23.18.230
-    - git pull
+    - git pull origin dev
   environment:
     name: staging
   when: manual

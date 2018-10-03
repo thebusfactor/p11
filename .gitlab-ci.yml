@@ -65,7 +65,7 @@ deploy:
     # - ssh-add ~/.ssh/id_rsa
     # - ssh-keyscan -H 'gitlab.ecs.vuw.ac.nz' >> ~/.ssh/known_hosts
     
-    # - eval $(ssh-agent -s)
+    - eval $(ssh-agent -s)
     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
     - ssh xXx~skrillex~xXx@103.23.18.230
     - git pull origin dev

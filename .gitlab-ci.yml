@@ -30,15 +30,15 @@ test:
 deploy:
   stage: deploy
 
-  before_script:
+#   before_script:
 
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
+#     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#     - eval $(ssh-agent -s)
 
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+#     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
 
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
+#     - mkdir -p ~/.ssh
+#     - chmod 700 ~/.ssh
 
   script:
     - echo "Deploy project"
@@ -52,7 +52,7 @@ deploy:
     # - ssh-keyscan -H 'gitlab.ecs.vuw.ac.nz' >> ~/.ssh/known_hosts
     
     # - eval $(ssh-agent -s)
-    # - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 --decode)
     - ssh xXx~skrillex~xXx@103.23.18.230
     - git pull origin dev
     

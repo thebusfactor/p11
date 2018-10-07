@@ -16,11 +16,22 @@ def main(argv):
     fps: int = 24
     res = (1280, 720)
 
-    fixed_path = os.path.abspath(os.path.dirname(__file__))
-    path = os.path.join(fixed_path, "../../resources/full_vid.mp4")
+    try:
+        classification_rate = argv[1]
+        classification_rate = int(classification_rate)
+        ai = Ai(classification_rate)
+    except (TypeError, IndexError):
+        ai = Ai()
 
-    cam = Cam(path)
-    ai = Ai()
+    global path
+    try:
+        path = argv[2]
+        path = int(path)
+        cam = Cam(path)
+    except IndexError:
+        cam = Cam()
+    except ValueError:
+        cam = Cam(path)
 
     model = Model(cam, ai, fps, res)
     view = DebugGUI(cam)

@@ -1,6 +1,17 @@
-
-
 class Bus:
+
+    """
+        Parameters
+        ----------
+        tl_x: int
+            Top left x coordinate.
+        tl_y: int
+            Top left y coordinate.
+        br_x: int
+            Bottom right x coordinate.
+        br_y: int
+            Bottom right y coordinate.
+    """
     tl_x: int
     tl_y: int
     br_x: int

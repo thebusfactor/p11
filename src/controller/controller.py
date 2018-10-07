@@ -122,6 +122,3 @@ class ToolObservers(Observer):
         if self.line is None or len(self.line) < 2:
             return -1
         return self.line
-
-    def set_intersects_bool(self, value):
-        self.intersects = value

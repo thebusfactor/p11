@@ -6,7 +6,7 @@ import cv2
 
 class Cam:
 
-    def __init__(self, path=None):
+    def __init__(self, path=0):
         """
             Initial method to set up the video feed. If there is not video at the specified
             location it will automatically use the live web cam footage.
@@ -16,11 +16,8 @@ class Cam:
             path : String
                 The location of the video footage to be used.
         """
-        if path is None:
-            self.video = open_cam()
-        else:
-            self.path = path
-            self.video = open_video(path)
+        self.path = path
+        self.video = open_video(path)
 
         self.video.set(3, 1280)
         self.video.set(4, 720)
@@ -56,17 +53,4 @@ def open_video(path):
            The video capture of the video at the specified path
     """
     video = cv2.VideoCapture(path)
-    return video
-
-
-def open_cam():
-    """
-        Opens the devices webcam. Method called if there is no specified video path.
-
-        Returns
-        -------
-        video : VideoCapture
-            The video capture of the webcam.
-    """
-    video = cv2.VideoCapture(1)
     return video

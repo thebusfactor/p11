@@ -10,7 +10,7 @@ def clip_frame(frame, point, res):
         ----------
         frame : Frame
             Current frame of the video feed being used.
-        double_point : DoublePoint
+        point : DoublePoint
             ares that the frame must be clipped within.
         res : []
             resolution of the video feed.
@@ -27,11 +27,5 @@ def clip_frame(frame, point, res):
     y1 = int(res[1] - p1[1])
     y2 = int(res[1] - p2[1])
 
-
-    # y1 = int(p1[1])
-    # y2 = int(p2[1])
-
-    # WARNING KIVY 0,0 STARTS AT BOTTOM LEFT
-    # CV2 0,0 START AT TOP LEFT (THE NORMAL WAY)
     f = frame[y2: y1, x1: x2]
     return f

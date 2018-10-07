@@ -27,8 +27,8 @@ class StoredFrames:
 
     def start_clipping(self):
         """
-        Starts the clipping checks in parallel,
-        as the operation of producing a video file is quite expensive
+            Starts the clipping checks in parallel,
+            as the operation of producing a video file is quite expensive
         """
         threading.Thread(target=self.__run__).start()
 

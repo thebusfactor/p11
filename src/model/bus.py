@@ -1,5 +1,3 @@
-
-
 class Bus:
     tl_x: int
     tl_y: int

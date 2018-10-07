@@ -1,5 +1,4 @@
 from model.bus import Bus
-from util.classification import Classification
 import math
 
 
@@ -16,10 +15,19 @@ class BusTracker:
 
     def update(self, classifications, res):
         """
-        Iterates over the buses already detected and the new ones passed in, to see if the proximity between buses
-        is small enough it classes the buses as the same and updates the detected_bus, else adds it as a new bus
-        :param classifications: classified buses from camera
-        :return:
+            Iterates over the buses already detected and the new ones passed in, to see if the proximity between buses
+            is small enough it classes the buses as the same and updates the detected_bus, else adds it as a new bus.
+
+            Parameters
+            ----------
+            classifications: []
+                Classified buses from camera.
+            res: []
+                Resolution of the video feed.
+
+            Returns
+            -------
+                List of detected buses.
         """
 
         # set all flags to false (refactor out to method)
@@ -29,7 +37,6 @@ class BusTracker:
             # self.detected_buses = []
 
             remove_buses = []
-            remove_bus = None
             if len(self.detected_buses) > 0:
                 for bus in self.detected_buses:
                     if not bus.flagged:
@@ -60,7 +67,6 @@ class BusTracker:
                                                    classed_bus.br["x"], classed_bus.br["y"], True))
 
             remove_buses = []
-            remove_bus = None
 
             if len(self.detected_buses) > 0:
                 for bus in self.detected_buses:

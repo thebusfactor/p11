@@ -26,11 +26,11 @@ class Controller:
         self.debug_ui = debug_ui
         self.ai = ai
 
-        self.tool_observer = ToolObservers(self.debug_ui)
+        self.tool_observer = ToolObserver(self.debug_ui)
         self.frame_observer_debug = FrameObserver(debug_ui.frame, debug_ui)
 
-        self.classifications_observer_debug = ClassificationsObservers(debug_ui)
-        self.classifications_observer_model = ClassificationsObservers(model)
+        self.classifications_observer_debug = ClassificationsObserver(debug_ui)
+        self.classifications_observer_model = ClassificationsObserver(model)
 
         self.model.add_frame_observer(self.frame_observer_debug)
         self.model.add_tool_observer(self.tool_observer)
@@ -61,7 +61,7 @@ class FrameObserver(Observer):
         self.update_target.update_frame(frame)
 
 
-class ClassificationsObservers(Observer):
+class ClassificationsObserver(Observer):
 
     def __init__(self, update_target):
         self.update_target = update_target
@@ -82,11 +82,12 @@ class ClassificationsObservers(Observer):
         self.update_target.update_classifications(classifications)
 
 
-class ToolObservers(Observer):
+class ToolObserver(Observer):
     def __init__(self, update_target):
         self.update_target = update_target
         self.line = None
         self.traffic_rect = None
+        self.intersects = None
 
     def update(self):
         """
@@ -124,4 +125,12 @@ class ToolObservers(Observer):
         return self.line
 
     def set_intersects_bool(self, value):
+        """
+        Sets the intersecting boolean to the value passed in.
+
+        Parameters
+        ----------
+        value: bool
+            Boolean value to be set.
+        """
         self.intersects = value

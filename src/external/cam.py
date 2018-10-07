@@ -68,5 +68,8 @@ def open_cam():
         video : VideoCapture
             The video capture of the webcam.
     """
-    video = cv2.VideoCapture(1)
+    if cv2.VideoCapture(0) is None:
+        video = cv2.VideoCapture(1)
+    else:
+        video = cv2.VideoCapture(0)
     return video

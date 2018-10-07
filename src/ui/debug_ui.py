@@ -95,6 +95,8 @@ class DebugGUI:
             if self.line_tool:
                 if event == cv.EVENT_LBUTTONDOWN:
                     if not self.drawing:
+                        # Clear the list of points for redrawing before adding initial point
+                        self.line_pt = []
                         self.line_pt = [(x, y)]
                         self.line = True
                         self.drawing = True
@@ -115,6 +117,8 @@ class DebugGUI:
 
             elif not self.line_tool:
                 if event == cv.EVENT_LBUTTONDOWN:
+                    # Clear the list of points for redrawing before adding initial point
+                    self.rect_pt = []
                     self.rect_pt = [(x, y)]
                     self.rect = True
                     self.drawing = True
@@ -202,14 +206,16 @@ class DebugGUI:
 
         if len(self.line_pt) > 1:
             self.line_obj = cv.line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
-        else:
+        elif len(self.line_pt) == 0:
             # set line points to be points gathered from config
+            print("Reading line point from config")
             self.line_pt = config.get_line()
 
         if len(self.rect_pt) > 1:
             self.rect_obj = cv.rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 5)
-        else:
+        elif len(self.rect_pt) == 0:
             # set line points to be points gathered from config
+            print("Reading box point from config")
             self.rect_pt = config.get_box()
 
         cv.imshow(self.ui_name, self.frame)

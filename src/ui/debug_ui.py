@@ -2,7 +2,7 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 import cv2 as cv
 from external.cam import Cam
-import os
+import model.config as config
 
 
 class DebugGUI:
@@ -25,10 +25,15 @@ class DebugGUI:
 
     # toggle tool box
     toggle_x1 = 5
-    toggle_x2 = 55
     toggle_y1 = 665
+    toggle_x2 = 55
     toggle_y2 = 715
-    toggle_bool = False
+
+    # save config box
+    config_x1 = 1225
+    config_y1 = 665
+    config_x2 = 1275
+    config_y2 = 715
 
     # booleans for whether you should draw a new line/rect or not
     # false means draw, else true means its in process of being drawn).
@@ -61,9 +66,6 @@ class DebugGUI:
     def update_traffic_rect(self):
         return self.rect_pt
 
-    def toggle_tools(self):
-        pass
-
     def click_and_crop(self, event, x, y, flags, params):
         """
             Method is responsible for performing the correct actions depending on
@@ -74,7 +76,7 @@ class DebugGUI:
 
             Parameters
             ----------
-            Event : Mouse Event
+            event : Mouse Event
                 the event when a user makes a mouse action.
             x : int
                 the x point where the event occurred.
@@ -84,18 +86,20 @@ class DebugGUI:
         if event == cv.EVENT_RBUTTONDOWN:
             self.line_tool = not self.line_tool
         elif event == cv.EVENT_LBUTTONDOWN:
-            if self.check_mouse_coords(x, y):
+            if self.check_mouse_coords(x, y, 'toggle'):
                 self.toggle_tool()
+            elif self.check_mouse_coords(x, y, 'config'):
+                self.save_config()
 
-        if not self.check_mouse_coords(x, y):
+        if not self.check_mouse_coords(x, y, 'toggle') and not self.check_mouse_coords(x, y, 'config'):
             if self.line_tool:
-
                 if event == cv.EVENT_LBUTTONDOWN:
                     if not self.drawing:
+                        # Clear the list of points for redrawing before adding initial point
+                        self.line_pt = []
                         self.line_pt = [(x, y)]
                         self.line = True
                         self.drawing = True
-                        # check to see if the left mouse button was released
 
                 elif event == cv.EVENT_MOUSEMOVE:
                     # if in drawing mode
@@ -107,17 +111,17 @@ class DebugGUI:
                             self.line_pt.append((x, y))
 
                 elif event == cv.EVENT_LBUTTONUP:
-                    # record the ending (x, y) coordinates
-                    self.line_pt.append((x, y))
+                    # set drawing booleans to false
                     self.line = False
                     self.drawing = False
 
             elif not self.line_tool:
                 if event == cv.EVENT_LBUTTONDOWN:
+                    # Clear the list of points for redrawing before adding initial point
+                    self.rect_pt = []
                     self.rect_pt = [(x, y)]
                     self.rect = True
                     self.drawing = True
-                    # check to see if the left mouse button was released
 
                 elif event == cv.EVENT_MOUSEMOVE:
                     # if in drawing mode
@@ -129,12 +133,11 @@ class DebugGUI:
                             self.rect_pt.append((x, y))
 
                 elif event == cv.EVENT_LBUTTONUP:
-                    # record the ending (x, y) coordinates
-                    self.rect_pt.append((x, y))
+                    # set drawing booleans to false
                     self.rect = False
                     self.drawing = False
 
-    def check_mouse_coords(self, x, y):
+    def check_mouse_coords(self, x, y, mode):
         """
             Checks if the mouse points (x, y) are within the grey toggle box at the bottom left of the screen.
             This box has boundaries of toggle_x1, toggle_x2, toggle_y1, and toggle_y2.
@@ -145,19 +148,34 @@ class DebugGUI:
                 x value of mouse location.
             y : int
                 y value of mouse location.
+            mode : str
+                the mode of the box the function should check. Can be either 'toggle' or 'config', relating to the
+                specified boxes.
 
             Returns
             -------
             in_coords :
                 True if mouse is within box, False if not
         """
-        return self.toggle_x1 <= x <= self.toggle_x2 and self.toggle_y1 <= y <= self.toggle_y2
+        if mode == 'toggle':
+            return self.toggle_x1 <= x <= self.toggle_x2 and self.toggle_y1 <= y <= self.toggle_y2
+        elif mode == 'config':
+            return self.config_x1 <= x <= self.config_x2 and self.config_y1 <= y <= self.config_y2
 
     def toggle_tool(self):
         """
             Toggles the line tool.
         """
         self.line_tool = not self.line_tool
+
+    def save_config(self):
+        """
+            Saves points to the config file
+        """
+        config.set_points(config.INTERSECTION_LINE, self.line_pt)
+        config.set_points(config.LIGHT_BOX, self.rect_pt)
+        config.write()
+        print("Config successfully saved")
 
     def update_frame(self, frame):
         """
@@ -171,18 +189,34 @@ class DebugGUI:
         """
         self.frame = frame
         self.draw_classifications_on_frame()
-        cv.rectangle(self.frame, (self.toggle_x1, self.toggle_y1), (self.toggle_x2, self.toggle_y2),
-                     (167, 170, 175), -2)
 
+        # Add tool toggle box and text in bottom left corner of screen
+        cv.rectangle(self.frame, (self.toggle_x1, self.toggle_y1), (self.toggle_x2, self.toggle_y2),
+                     (104, 82, 69), -2)
         if self.line_tool:
             cv.putText(self.frame, 'I', (25, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
         else:
             cv.putText(self.frame, 'TL', (15, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
 
+        # Add save config box and text in bottom right corner of screen
+        cv.rectangle(self.frame, (self.config_x1, self.config_y1), (self.config_x2, self.config_y2),
+                     (104, 82, 69), -2)
+        cv.putText(self.frame, 'CF', (1230, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
+        # old grey box colour = (167, 170, 175)
+
         if len(self.line_pt) > 1:
             self.line_obj = cv.line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
+        elif len(self.line_pt) == 0:
+            # set line points to be points gathered from config
+            print("Reading line point from config")
+            self.line_pt = config.get_line()
+
         if len(self.rect_pt) > 1:
             self.rect_obj = cv.rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 5)
+        elif len(self.rect_pt) == 0:
+            # set line points to be points gathered from config
+            print("Reading box point from config")
+            self.rect_pt = config.get_box()
 
         cv.imshow(self.ui_name, self.frame)
 

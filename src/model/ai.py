@@ -8,15 +8,15 @@ from util.classification import Classification
 class Ai:
 
     classifications_observers = []
-    ai_update_frame = 4
     frame_count = 0
 
-    def __init__(self):
+    def __init__(self, classification_rate=4):
         options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
                    "load": 1625,
                    "threshold": 0.1}
         self.tfnet = TFNet(options)
         self.frame = None
+        self.classification_rate = classification_rate
 
     def start_ai(self):
         """
@@ -45,7 +45,7 @@ class Ai:
             Calls methods to classify the current frame when the frame count reaches a certain value.
         """
         while True:
-            if self.frame_count >= self.ai_update_frame:
+            if self.frame_count >= self.classification_rate:
                 self.classify(self.frame)
                 self.frame_count = 0
 

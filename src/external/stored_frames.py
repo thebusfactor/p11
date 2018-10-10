@@ -77,6 +77,7 @@ class StoredFrames:
         for i in range(len(frame_array)):
             out.write(frame_array[i])
         out.release()
+        self.trigger = False
 
     def __run__(self):
         """
@@ -87,4 +88,3 @@ class StoredFrames:
             if self.trigger and len(self.after_que) >= 120:
                 self.combine_videos()
                 self.after_que = deque(maxlen=self.length)
-                self.trigger = False

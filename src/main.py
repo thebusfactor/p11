@@ -19,13 +19,15 @@ def main(argv):
     try:
         classification_rate = argv[1]
         classification_rate = int(classification_rate)
-        ai = Ai(classification_rate)
+        mode = str(argv[2])
+        weights = int(argv[3])
+        ai = Ai(classification_rate, mode, weights)
     except (TypeError, IndexError):
         ai = Ai()
 
     global path
     try:
-        path = argv[2]
+        path = argv[4]
         path = int(path)
         cam = Cam(path)
     except IndexError:
@@ -34,7 +36,7 @@ def main(argv):
         cam = Cam(path)
 
     model = Model(cam, ai, fps, res)
-    view = DebugGUI(cam)
+    view = DebugGUI(cam, model)
 
     Controller(model, ai, view)
 

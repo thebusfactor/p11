@@ -212,7 +212,7 @@ class DebugGUI:
             self.line_pt = config.get_line()
 
         if len(self.rect_pt) > 1:
-            self.rect_obj = cv.rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 5)
+            self.rect_obj = cv.rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 2)
         elif len(self.rect_pt) == 0:
             # set line points to be points gathered from config
             print("Reading box point from config")

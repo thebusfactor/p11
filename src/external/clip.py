@@ -10,7 +10,7 @@ def clip_frame(frame, point, res):
         ----------
         frame : Frame
             Current frame of the video feed being used.
-        double_point : DoublePoint
+        point : DoublePoint
             ares that the frame must be clipped within.
         res : []
             resolution of the video feed.

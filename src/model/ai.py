@@ -58,6 +58,11 @@ class Ai:
             ----------
             frame :
                 Captured frame from the video feed.
+
+            Returns
+            -------
+            out : []
+                List used in classification
         """
         # frame = cv.resize(frame, (1920, 1080))
         if frame is None:

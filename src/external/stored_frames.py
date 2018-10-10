@@ -27,8 +27,8 @@ class StoredFrames:
 
     def start_clipping(self):
         """
-        Starts the clipping checks in parallel,
-        as the operation of producing a video file is quite expensive
+            Starts the clipping checks in parallel,
+            as the operation of producing a video file is quite expensive
         """
         threading.Thread(target=self.__run__).start()
 
@@ -70,6 +70,7 @@ class StoredFrames:
         path_out = str(date) + '_' + str(self.count) + '.avi'
         path_out = path_out.replace(" ", "_")
         path_out = path_out.replace(":", "")
+        print(path_out)
         self.count += 1
         out = cv2.VideoWriter(path_out, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
 

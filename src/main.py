@@ -32,7 +32,7 @@ def main(argv):
         cam = Cam()
     except ValueError:
         cam = Cam(path)
-
+    cam.start()
     model = Model(cam, ai, fps, res)
     view = DebugGUI(cam)
 

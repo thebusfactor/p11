@@ -2,6 +2,7 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 import cv2
+from threading import Thread
 
 
 class Cam:
@@ -17,40 +18,44 @@ class Cam:
                 The location of the video footage to be used.
         """
         self.path = path
-        self.video = open_video(path)
+        self.video = self.open_video(path)
 
         self.video.set(3, 1280)
         self.video.set(4, 720)
 
-    def get_frame(self):
+        (self.grabbed, self.frame) = self.video.read()
+
+        self.stopped = False
+
+    def start(self):
+        Thread(target=self.update, args=()).start()
+        return self
+
+    def update(self):
+        while True:
+            if self.stopped:
+                return
+            (self.grabbed, self.frame) = self.video.read()
+
+    def read(self):
+        return self.frame
+
+    def stop(self):
+        self.stopped = True
+
+    def open_video(self, path):
         """
-            Returns the current camera frame.
+        Sets the video feed used by the program to the video location at the path specified in the parameters.
 
-            Returns
-            -------
-            frame : Frame
-                the current frame of the video feed being used.
+        Parameters
+        ----------
+        path : String
+               The location of the video feed to be opened
+
+        Returns
+        -------
+        video : VideoCapture
+               The video capture of the video at the specified path
         """
-        ret, frame = self.video.read()
-        return frame
-
-    def reset_video(self):
-        self.video = cv2.VideoCapture(self.path)
-
-
-def open_video(path):
-    """
-       Sets the video feed used by the program to the video location at the path specified in the parameters.
-
-       Parameters
-       ----------
-       path : String
-           The location of the video feed to be opened
-
-       Returns
-       -------
-       video : VideoCapture
-           The video capture of the video at the specified path
-    """
-    video = cv2.VideoCapture(path)
-    return video
+        video = cv2.VideoCapture(path)
+        return video

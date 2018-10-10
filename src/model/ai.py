@@ -13,7 +13,8 @@ class Ai:
     def __init__(self, classification_rate=4):
         options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
                    "load": 1625,
-                   "threshold": 0.1}
+                   "threshold": 0.1,
+                   "gpu": 0.8}
         self.tfnet = TFNet(options)
         self.frame = None
         self.classification_rate = classification_rate

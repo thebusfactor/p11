@@ -289,5 +289,5 @@ class DebugGUI:
                 continue
             cv.imshow(self.ui_name, self.frame)
             # waits forever for the esc key to be pressed before exiting
-            if cv.waitKey(50) == 27:
+            if cv.waitKey(1) == 27:
                 break  # esc to quit

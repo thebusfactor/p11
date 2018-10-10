@@ -27,7 +27,7 @@ class Model:
         self.res = res
         self.fps = fps
         self.ai = ai
-        self.frame = self.cam.read()
+        self.frame = self.cam.get_frame()
         self.vid_clipper = StoredFrames(fps, self.res, 150)
         self.ai.start_ai()
         self.traffic_light = TrafficLight()
@@ -46,7 +46,7 @@ class Model:
         while True:
 
             # only check 'fps_to_check' frames per second.
-            self.frame = self.cam.read()
+            self.frame = self.cam.get_frame()
             self.stored_frames.append_frame(self.frame)
 
             # self.stored_frames.append_frame(self.frame, self.red_light)

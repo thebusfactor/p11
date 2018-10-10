@@ -87,6 +87,7 @@ class ToolObserver(Observer):
         self.update_target = update_target
         self.line = None
         self.traffic_rect = None
+        self.traffic_light_red = False
 
     def update(self):
         """
@@ -122,3 +123,12 @@ class ToolObserver(Observer):
         if self.line is None or len(self.line) < 2:
             return -1
         return self.line
+
+    def set_traffic_light_red(self, traffic_light_red):
+        """
+        Sets whether the traffic light has been detected red or not,
+        and passes that information into the debug_ui so the visual
+        display of the traffic light detection can be shown.
+        """
+        self.traffic_light_red = traffic_light_red
+        self.update_target.set_traffic_light_red(self.traffic_light_red)

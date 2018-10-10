@@ -50,9 +50,15 @@ class DebugGUI:
     # the chosen tool, -1 for none, 0 for rectangle, 1 for line
     line_tool = True
 
+    # boolean that shows whether traffic light has been detected red or not
+    traffic_light_red = False
+
     def __init__(self, cam: Cam):
         self.frame = None
         self.cam = cam
+
+    def set_traffic_light_red(self, traffic_light_red):
+        self.traffic_light_red = traffic_light_red
 
     def update_line(self):
         return self.line_pt
@@ -189,6 +195,12 @@ class DebugGUI:
         """
         self.frame = frame
         self.draw_classifications_on_frame()
+
+        # display circle that shows whether traffic light is red or not.
+        if self.traffic_light_red:
+            cv.circle(self.frame, (25, 25), 25, (0, 0, 255), -1)
+        else:
+            cv.circle(self.frame, (25, 25), 25, (0, 255, 0), -1)
 
         # Add tool toggle box and text in bottom left corner of screen
         cv.rectangle(self.frame, (self.toggle_x1, self.toggle_y1), (self.toggle_x2, self.toggle_y2),

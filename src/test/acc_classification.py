@@ -3,7 +3,6 @@
 
 import json
 import cv2
-import unittest
 from model.ai import Ai
 
 # set up the ai classification

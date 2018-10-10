@@ -14,12 +14,22 @@ class Classification:
 
     def __eq__(self, other):
         """
-            Overrides the default implementation
+            Checks if a different classification is equal to the classification of what this function is called on.
+
+            Parameters
+            ----------
+            other : Classification
+                Different classification to what this function is being called on.
+
+            Returns
+            -------
+                True if classes match, False if not.
         """
         if isinstance(self, other.__class__):
             return self.__dict__ == other.__dict__
         return False
 
     def __str__(self):
-        out = "Label: " + self.label + " Confidence: " + str(self.conf) + " Top Left " + str(self.tl) + " Bottom Right: " + str(self.br)
+        out = "Label: " + self.label + " Confidence: " + str(self.conf) + " Top Left " + str(self.tl) + \
+              " Bottom Right: " + str(self.br)
         return out

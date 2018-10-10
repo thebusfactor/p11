@@ -34,7 +34,7 @@ def main(argv):
         cam = Cam(path)
 
     model = Model(cam, ai, fps, res)
-    view = DebugGUI(cam)
+    view = DebugGUI(cam, model)
 
     Controller(model, ai, view)
 

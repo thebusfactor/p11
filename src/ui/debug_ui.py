@@ -3,6 +3,7 @@
 import cv2 as cv
 from external.cam import Cam
 import model.config as config
+import os
 
 
 class DebugGUI:
@@ -50,9 +51,10 @@ class DebugGUI:
     # the chosen tool, -1 for none, 0 for rectangle, 1 for line
     line_tool = True
 
-    def __init__(self, cam: Cam):
+    def __init__(self, cam: Cam, model):
         self.frame = None
         self.cam = cam
+        self.model = model
 
     def update_line(self):
         return self.line_pt
@@ -187,6 +189,9 @@ class DebugGUI:
             frame : Cam
                 current camera frame
         """
+        if self.model.return_i() > 10 and cv.getWindowProperty('Bus-Factor', 0) < 0:
+            os.kill(os.getpid(), 1)
+
         self.frame = frame
         self.draw_classifications_on_frame()
 

@@ -23,6 +23,7 @@ class Model:
 
     def __init__(self, cam: Cam, ai: Ai, fps: int, res=(1280, 720)):
         self.classifications = None
+        self.i = 0
         self.cam = cam
         self.res = res
         self.fps = fps
@@ -41,7 +42,6 @@ class Model:
         """
             Method sets up the frame object and updates the classes which observe the frame object.
         """
-        i = 0
         while True:
 
             # only check 'fps_to_check' frames per second.
@@ -75,7 +75,7 @@ class Model:
 
             if cv.waitKey(1) == 27:
                 break
-            i += 1
+            self.i += 1
 
         cv.destroyAllWindows()
 
@@ -206,3 +206,10 @@ class Model:
                 y value of point that is being checked for.
         """
         return x1 <= px <= x2 and y1 <= py <= y2
+
+    def return_i(self):
+        """
+        For pressing exit usage
+        :return: frame count
+        """
+        return self.i

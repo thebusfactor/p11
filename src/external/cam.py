@@ -28,19 +28,31 @@ class Cam:
         self.stopped = False
 
     def start(self):
+        """
+        Start the reading of the video
+        """
         Thread(target=self.update, args=()).start()
         return self
 
     def update(self):
+        """
+        Update frame loop for threading
+        """
         while True:
             if self.stopped:
                 return
             (self.grabbed, self.frame) = self.video.read()
 
     def read(self):
+        """
+        Reads a frame from the video
+        """
         return self.frame
 
     def stop(self):
+        """
+        Stops the video thread
+        """
         self.stopped = True
 
     def open_video(self, path):

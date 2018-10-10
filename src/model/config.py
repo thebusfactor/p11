@@ -23,12 +23,12 @@ config.add_section(INTERSECTION_LINE)
 
 def check_valid():
     """
-        checks if the config is valid
+        Checks to see if the config is valid.
 
         Returns
         -------
-        valid: Boolean
-            if the config file is valid or not
+        valid: bool
+            True if the config file is valid, False if not
     """
     is_valid = ("True" if ((get_box() is not None) and (
                 get_line() is not None)) else "False")
@@ -38,7 +38,7 @@ def check_valid():
 
 def reset_config():
     """
-        resets the config file
+        Resets the config file and points attached to the traffic light box and the intersection line.
     """
     config.set(VALID, "value", "False")
     set_points(LIGHT_BOX, ((None, None), (None, None)))
@@ -48,25 +48,23 @@ def reset_config():
 
 def get_valid():
     """
-        gets the valid value from the config file
+        Gets the valid value from the config file.
 
         Returns
         -------
-        valid: Boolean
-            represents if the config is valid or not
+            The boolean value retrieved from the config object using the VALID variable.
     """
     return config.getboolean(VALID)
 
 
 def set_box(light_box):
     """
-        writes a double point as a box in config file
-        if config files doesn't exist, the config file is created
+        Writes a tuple of coordinates as a box in config file. If the config file doesn't exist, a new one is created.
 
         Parameters
         ----------
-        light_box : (int, int)
-            the points that make up the box
+        light_box : []
+            List of points that make up the traffic light box.
     """
     set_points(LIGHT_BOX, light_box)
     write()
@@ -74,12 +72,12 @@ def set_box(light_box):
 
 def get_box():
     """
-        gets the light box values from the config file
+        Gets the light box values from the config file.
 
         Returns
         -------
-        light_box: DoublePoint
-            two sets of tuples in DoublePoint object representing the two points the light box
+        light_box: []
+            List of points that make up the traffic light box.
     """
     config.read(PATH)
     return _get(LIGHT_BOX)
@@ -87,12 +85,12 @@ def get_box():
 
 def get_line():
     """
-        gets the intersection line values from the config file
+        Gets the intersection line values from the config file.
 
         Returns
         -------
-        intersection_line: DoublePoint
-            two sets of tuples in DoublePoint object representing the two points of the intersection line
+        intersection_line: []
+            List of points that make up the intersection line.
 
     """
     config.read(PATH)
@@ -101,13 +99,12 @@ def get_line():
 
 def set_line(intersection_line):
     """
-        writes a double point as a line in config file
-        if config files doesn't exist, the config file is created
+        Writes a double point as a line in config file. If the config files doesn't exist, a new one is created.
 
         Parameters
         ----------
-        intersection_line : DoublePoint
-            the points that make up the intersection line
+        intersection_line : []
+            List of points that make up the intersection line.
     """
     set_points(INTERSECTION_LINE, intersection_line)
     write()

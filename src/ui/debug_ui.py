@@ -1,8 +1,10 @@
 # MIT License
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
+
 import cv2 as cv
 from external.cam import Cam
 import model.config as config
+import os
 
 
 class DebugGUI:
@@ -50,9 +52,16 @@ class DebugGUI:
     # the chosen tool, -1 for none, 0 for rectangle, 1 for line
     line_tool = True
 
-    def __init__(self, cam: Cam):
+    # boolean that shows whether traffic light has been detected red or not
+    traffic_light_red = False
+
+    def __init__(self, cam: Cam, model):
         self.frame = None
         self.cam = cam
+        self.model = model
+
+    def set_traffic_light_red(self, traffic_light_red):
+        self.traffic_light_red = traffic_light_red
 
     def update_line(self):
         return self.line_pt
@@ -68,10 +77,10 @@ class DebugGUI:
 
     def click_and_crop(self, event, x, y, flags, params):
         """
-            Method is responsible for performing the correct actions depending on
-            the mouse event passed in. First it checks the appropriate tool being used.
-            Then, it will mark the first point of the shape and follow the mouse until
-            it is released where it records the second point.
+            Method is responsible for performing the correct actions depending on the mouse event passed in. First it
+            checks the appropriate tool being used. Then, it will mark the first point of the shape and follow the mouse
+            until it is released where it records the second point.
+            Needs flags and params parameters as it gives 5 arguments when used on mouse callback function.
 
 
             Parameters
@@ -154,8 +163,7 @@ class DebugGUI:
 
             Returns
             -------
-            in_coords :
-                True if mouse is within box, False if not
+                True if mouse is within box specified by the given mode, False if not.
         """
         if mode == 'toggle':
             return self.toggle_x1 <= x <= self.toggle_x2 and self.toggle_y1 <= y <= self.toggle_y2
@@ -170,7 +178,7 @@ class DebugGUI:
 
     def save_config(self):
         """
-            Saves points to the config file
+            Sets intersection line and light box points, then saves them to the config file.
         """
         config.set_points(config.INTERSECTION_LINE, self.line_pt)
         config.set_points(config.LIGHT_BOX, self.rect_pt)
@@ -187,8 +195,17 @@ class DebugGUI:
             frame : Cam
                 current camera frame
         """
+        if self.model.return_i() > 10 and cv.getWindowProperty('Bus-Factor', 0) < 0:
+            os.kill(os.getpid(), 1)
+
         self.frame = frame
         self.draw_classifications_on_frame()
+
+        # display circle that shows whether traffic light is red or not.
+        if self.traffic_light_red:
+            cv.circle(self.frame, (25, 25), 25, (0, 0, 255), -1)
+        else:
+            cv.circle(self.frame, (25, 25), 25, (0, 255, 0), -1)
 
         # Add tool toggle box and text in bottom left corner of screen
         cv.rectangle(self.frame, (self.toggle_x1, self.toggle_y1), (self.toggle_x2, self.toggle_y2),
@@ -226,8 +243,8 @@ class DebugGUI:
 
     def draw_classifications_on_frame(self):
         """
-            Method to display a box around a classified object, using the points from the
-            classifications made by the model.
+            Method to display a box around a classified object, using the points from the classifications made by the
+            model.
             tl = top left of classification box.
             br = bottom right of classification box.
         """
@@ -252,18 +269,18 @@ class DebugGUI:
             Parameters
             ----------
             x1 : int
-                x position of the top left point of the larger, classification box.
+                X position of the top left point of the larger, classification box.
             y1 : int
-                y position of the top left point of the larger, classification box.
+                Y position of the top left point of the larger, classification box.
             x2 : int
-                x position of the bottom right point of the larger, classification box.
+                X position of the bottom right point of the larger, classification box.
             y2 : int
-                y position of the bottom right point of the larger, classification box.
+                Y position of the bottom right point of the larger, classification box.
 
             Returns
             -------
             smallBox : []
-                2d array representing the small box
+                2d array representing the points that make up the small box.
         """
         width = abs(x2 - x1)
         height = abs(y2 - y1)

@@ -87,7 +87,7 @@ class ToolObserver(Observer):
         self.update_target = update_target
         self.line = None
         self.traffic_rect = None
-        self.intersects = None
+        self.traffic_light_red = False
 
     def update(self):
         """
@@ -124,13 +124,11 @@ class ToolObserver(Observer):
             return -1
         return self.line
 
-    def set_intersects_bool(self, value):
+    def set_traffic_light_red(self, traffic_light_red):
         """
-        Sets the intersecting boolean to the value passed in.
-
-        Parameters
-        ----------
-        value: bool
-            Boolean value to be set.
+        Sets whether the traffic light has been detected red or not,
+        and passes that information into the debug_ui so the visual
+        display of the traffic light detection can be shown.
         """
-        self.intersects = value
+        self.traffic_light_red = traffic_light_red
+        self.update_target.set_traffic_light_red(self.traffic_light_red)

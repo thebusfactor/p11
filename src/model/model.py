@@ -7,7 +7,6 @@ from controller.observer import Observer
 from external.cam import Cam
 from external.stored_frames import StoredFrames
 from model.ai import Ai
-import model.bus_counter as count_gen
 from model.bus_tracker import BusTracker
 from model.bus_counter import BusCounter
 from model.traffic_light import TrafficLight
@@ -23,6 +22,7 @@ class Model:
 
     def __init__(self, cam: Cam, ai: Ai, fps: int, res=(1280, 720)):
         self.classifications = None
+        self.i = 0
         self.cam = cam
         self.res = res
         self.fps = fps
@@ -36,12 +36,13 @@ class Model:
         self.bus_tracker = BusTracker()
         self.bus_counter = BusCounter()
         self.z_threshold_exceeded = False
+        self.tool_observers = None
 
     def start(self):
         """
             Method sets up the frame object and updates the classes which observe the frame object.
+            Closes all windows upon escape key press.
         """
-        i = 0
         while True:
 
             # only check 'fps_to_check' frames per second.
@@ -60,6 +61,7 @@ class Model:
             if self.tool_observers.get_traffic_rectangle() != -1:
                 self.traffic_light.update_box(self.tool_observers.get_traffic_rectangle())
                 red_light = self.traffic_light.check_traffic_light(self.frame, (1280, 720))
+                self.tool_observers.set_traffic_light_red(red_light)
 
                 if red_light:
                     if buses is not None and len(buses) > 0 and \
@@ -75,13 +77,13 @@ class Model:
 
             if cv.waitKey(1) == 27:
                 break
-            i += 1
+            self.i += 1
 
         cv.destroyAllWindows()
 
     def update_classifications(self, classifications):
         """
-            Update the classifications when new objects are detected.
+            Updates the classifications when new objects are detected.
         """
         self.classifications = classifications
 
@@ -127,21 +129,26 @@ class Model:
 
     def detect_event(self, x1: int, y1: int, x2: int, y2: int, line_pt):
         """
-            Method to check if a classified object is intersecting the intersection
-            line specified by the user. point (x1, y2) are top left and (x2, y2)
-            is bottom right of rectangle.
+            Method to check if a classified object is intersecting the intersection line specified by the user.
+            Point (x1, y2) are top left and (x2, y2) is bottom right of rectangle.
 
             Parameters
             ----------
             x1 : int
-                x position of top left point of square
+                X position of top left point of square.
             y1 : int
-                y position of top left point of square
+                Y position of top left point of square.
             x2 : int
-                x position of bottom right point of square
+                X position of bottom right point of square.
             y2 : int
-                x position of bottom right point of square
+                Y position of bottom right point of square.
             line_pt: []
+                List of points that make up the rectangle box.
+
+            Returns
+            -------
+            intersects : bool
+                Boolean representing if there is a bus detection intersecting with the user-specified intersection line.
         """
         if line_pt is not None:
             if len(line_pt) >= 2:
@@ -181,7 +188,6 @@ class Model:
                             intersects = False
                     break
 
-        # print("Intersects bool:", self.intersects)
         return intersects
 
     @staticmethod
@@ -193,16 +199,27 @@ class Model:
             Parameters
             ----------
             x1 : int
-                x value of top left point of containing box.
+                X value of top left point of containing box.
             y1 : int
-                y value of top left point of containing box.
+                Y value of top left point of containing box.
             x2 : int
-                x value of bottom right point of containing box.
+                X value of bottom right point of containing box.
             y2 : int
-                y value of bottom right point of containing box.
+                Y value of bottom right point of containing box.
             px : int
-                x value of point that is being checked for.
+                X value of point that is being checked for.
             py : int
-                y value of point that is being checked for.
+                Y value of point that is being checked for.
+
+            Returns
+            -------
+                True if specified point is within rectangle points, False if not.
         """
         return x1 <= px <= x2 and y1 <= py <= y2
+
+    def return_i(self):
+        """
+        For pressing exit usage
+        :return: frame count
+        """
+        return self.i

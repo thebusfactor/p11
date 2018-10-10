@@ -10,11 +10,16 @@ class Ai:
     classifications_observers = []
     frame_count = 0
 
-    def __init__(self, classification_rate=4):
-        options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
-                   "load": 1625,
-                   "threshold": 0.1,
-                   "gpu": 0.8}
+    def __init__(self, classification_rate=4, mode="cpu", weights=1625):
+        if mode == "gpu":
+            options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
+                       "load": weights,
+                       "threshold": 0.1,
+                       "gpu": 0.8}
+        else:
+            options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
+                       "load": weights,
+                       "threshold": 0.1}
         self.tfnet = TFNet(options)
         self.frame = None
         self.classification_rate = classification_rate

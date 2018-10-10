@@ -1,5 +1,6 @@
 # MIT License
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
+
 import cv2 as cv
 from external.cam import Cam
 import model.config as config
@@ -70,10 +71,10 @@ class DebugGUI:
 
     def click_and_crop(self, event, x, y, flags, params):
         """
-            Method is responsible for performing the correct actions depending on
-            the mouse event passed in. First it checks the appropriate tool being used.
-            Then, it will mark the first point of the shape and follow the mouse until
-            it is released where it records the second point.
+            Method is responsible for performing the correct actions depending on the mouse event passed in. First it
+            checks the appropriate tool being used. Then, it will mark the first point of the shape and follow the mouse
+            until it is released where it records the second point.
+            Needs flags and params parameters as it gives 5 arguments when used on mouse callback function.
 
 
             Parameters
@@ -156,8 +157,7 @@ class DebugGUI:
 
             Returns
             -------
-            in_coords :
-                True if mouse is within box, False if not
+                True if mouse is within box specified by the given mode, False if not.
         """
         if mode == 'toggle':
             return self.toggle_x1 <= x <= self.toggle_x2 and self.toggle_y1 <= y <= self.toggle_y2
@@ -172,7 +172,7 @@ class DebugGUI:
 
     def save_config(self):
         """
-            Saves points to the config file
+            Sets intersection line and light box points, then saves them to the config file.
         """
         config.set_points(config.INTERSECTION_LINE, self.line_pt)
         config.set_points(config.LIGHT_BOX, self.rect_pt)
@@ -231,8 +231,8 @@ class DebugGUI:
 
     def draw_classifications_on_frame(self):
         """
-            Method to display a box around a classified object, using the points from the
-            classifications made by the model.
+            Method to display a box around a classified object, using the points from the classifications made by the
+            model.
             tl = top left of classification box.
             br = bottom right of classification box.
         """
@@ -257,18 +257,18 @@ class DebugGUI:
             Parameters
             ----------
             x1 : int
-                x position of the top left point of the larger, classification box.
+                X position of the top left point of the larger, classification box.
             y1 : int
-                y position of the top left point of the larger, classification box.
+                Y position of the top left point of the larger, classification box.
             x2 : int
-                x position of the bottom right point of the larger, classification box.
+                X position of the bottom right point of the larger, classification box.
             y2 : int
-                y position of the bottom right point of the larger, classification box.
+                Y position of the bottom right point of the larger, classification box.
 
             Returns
             -------
             smallBox : []
-                2d array representing the small box
+                2d array representing the points that make up the small box.
         """
         width = abs(x2 - x1)
         height = abs(y2 - y1)

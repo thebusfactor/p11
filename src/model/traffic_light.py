@@ -60,33 +60,33 @@ class TrafficLight:
 
     def update_box(self, box):
         """
-            Update the box to be the new value
+            Update the box to be the new value.
 
             Parameters
             ----------
             box: []
-                The box representing the traffic light region points
+                The box representing the traffic light region points.
         """
         self.box = box
 
     def distance_check(self, x1, x2, y1, y2):
         """
-            Calculates vector distance between coordinates
+            Calculates vector distance between coordinates.
 
             Parameters
             ----------
             x1: int
-                X value of first coordinate created on mouse action
+                X value of first coordinate created on mouse action.
             x2: int
-                X value of second coordinate created on mouse action
+                X value of second coordinate created on mouse action.
             y1: int
-                Y value of first coordinate created on mouse action
+                Y value of first coordinate created on mouse action.
             y2: int
-                Y value of second coordinate created on mouse action
+                Y value of second coordinate created on mouse action.
 
             Returns
             -------
-                True if the value of the distance is calculated to be greater than 5, False if not
+                True if the value of the distance is calculated to be greater than 5, False if not.
         """
         return math.sqrt(math.pow((x2-x1), 2) + math.pow((y2-y1), 2)) > 5
 

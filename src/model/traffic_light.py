@@ -74,6 +74,20 @@ class TrafficLight:
         self.box = box
 
     def size_check(self, point1, point2):
+        """
+            Calculates distance between the points and the resolution, to make sure they are not out of bounds.
+
+            Parameters
+            ----------
+            point1: tuple of ints
+                X and Y values of first coordinate created on mouse action.
+            point2: tuple of ints
+                X and Y values of second coordinate created on mouse action.
+
+            Returns
+            -------
+                True if the points are outside the box
+        """
         if point2[0] - point1[0] < 10 or point2[1] - point1[1] < 10:
             print("box is too small, please redraw")
             return True

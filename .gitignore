@@ -1,8 +1,17 @@
-
 # Created by https://www.gitignore.io/api/linux,macos,python,windows,pycharm
 
 ### Linux ###
 *~
+
+# Ai stuff
+ckpt
+src/ckpt
+src/test/ckpt
+src/bin
+src/cfg
+src/test/labels.txt
+vid.avi
+
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
@@ -51,6 +60,7 @@ Temporary Items
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
+.idea/inspectionProfiles/profiles_settings.xml
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
@@ -228,6 +238,9 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# __pycache__
+/__pycache__
 
 
 # End of https://www.gitignore.io/api/linux,macos,python,windows,pycharm

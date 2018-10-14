@@ -3,3 +3,6 @@ numpy
 Cython
 pystray
 pygments
+lxml
+matplotlib
+tensorflow

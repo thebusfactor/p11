@@ -2,7 +2,7 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 from darkflow.net.build import TFNet
-import threading
+from threading import Thread
 
 from controller.observer import Observer
 from util.classification import Classification
@@ -31,7 +31,7 @@ class Ai:
         """
             Begins the bus detection ai.
         """
-        class_thread = threading.Thread(target=self.classify_loop)
+        class_thread = Thread(target=self.classify_loop)
         class_thread.daemon = True
         class_thread.start()
 

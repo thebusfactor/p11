@@ -4,7 +4,7 @@
 import os
 import sys
 import matplotlib.pyplot as plt
-import cv2 as cv
+from cv2 import imread, cvtColor
 from matplotlib.widgets import RectangleSelector
 from generate_xml import write_xml
 
@@ -62,8 +62,8 @@ if __name__ == '__main__':
     for n, image_file in enumerate(os.scandir(path+image_folder)):
         img = image_file
         fig, ax = plt.subplots(1)
-        image = cv.imread(image_file.path)
-        image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+        image = imread(image_file.path)
+        image = cvtColor(image, cv.COLOR_BGR2RGB)
         ax.imshow(image)
         toggle_selector.RS = RectangleSelector(
             ax, select,

@@ -2,7 +2,7 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 import os
-import cv2 as cv
+from cv2 import imread
 from lxml import etree
 import xml.etree.cElementTree as ET
 
@@ -10,7 +10,7 @@ import xml.etree.cElementTree as ET
 def write_xml(folder, img, objects, tl, br, save_dir):
     if not os.path.isdir(save_dir):
         os.mkdir(save_dir)
-    image = cv.imread(img.path)
+    image = imread(img.path)
     height, width, depth = image.shape
     annotation = ET.Element("annotation")
     ET.SubElement(annotation, "folder").text = folder

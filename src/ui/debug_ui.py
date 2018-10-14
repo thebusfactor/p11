@@ -1,10 +1,12 @@
 # MIT License
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
-import cv2 as cv
+from cv2 import EVENT_RBUTTONDOWN, EVENT_LBUTTONDOWN, EVENT_MOUSEMOVE, \
+    EVENT_LBUTTONUP, getWindowProperty, circle, rectangle, imshow,\
+    setMouseCallback, FONT_HERSHEY_SIMPLEX, LINE_8, line, putText
 from external.cam import Cam
 import model.config as config
-import os
+from os import kill, getpid
 
 
 class DebugGUI:
@@ -92,9 +94,9 @@ class DebugGUI:
             y : int
                 the y point where the event occurred.
         """
-        if event == cv.EVENT_RBUTTONDOWN:
+        if event == EVENT_RBUTTONDOWN:
             self.line_tool = not self.line_tool
-        elif event == cv.EVENT_LBUTTONDOWN:
+        elif event == EVENT_LBUTTONDOWN:
             if self.check_mouse_coords(x, y, 'toggle'):
                 self.toggle_tool()
             elif self.check_mouse_coords(x, y, 'config'):
@@ -102,7 +104,7 @@ class DebugGUI:
 
         if not self.check_mouse_coords(x, y, 'toggle') and not self.check_mouse_coords(x, y, 'config'):
             if self.line_tool:
-                if event == cv.EVENT_LBUTTONDOWN:
+                if event == EVENT_LBUTTONDOWN:
                     if not self.drawing:
                         # Clear the list of points for redrawing before adding initial point
                         self.line_pt = []
@@ -110,7 +112,7 @@ class DebugGUI:
                         self.line = True
                         self.drawing = True
 
-                elif event == cv.EVENT_MOUSEMOVE:
+                elif event == EVENT_MOUSEMOVE:
                     # if in drawing mode
                     if self.drawing:
                         if len(self.line_pt) > 1:
@@ -119,20 +121,20 @@ class DebugGUI:
                         else:
                             self.line_pt.append((x, y))
 
-                elif event == cv.EVENT_LBUTTONUP:
+                elif event == EVENT_LBUTTONUP:
                     # set drawing booleans to false
                     self.line = False
                     self.drawing = False
 
             elif not self.line_tool:
-                if event == cv.EVENT_LBUTTONDOWN:
+                if event == EVENT_LBUTTONDOWN:
                     # Clear the list of points for redrawing before adding initial point
                     self.rect_pt = []
                     self.rect_pt = [(x, y)]
                     self.rect = True
                     self.drawing = True
 
-                elif event == cv.EVENT_MOUSEMOVE:
+                elif event == EVENT_MOUSEMOVE:
                     # if in drawing mode
                     if self.drawing:
                         if len(self.rect_pt) > 1:
@@ -141,7 +143,7 @@ class DebugGUI:
                         else:
                             self.rect_pt.append((x, y))
 
-                elif event == cv.EVENT_LBUTTONUP:
+                elif event == EVENT_LBUTTONUP:
                     # set drawing booleans to false
                     self.rect = False
                     self.drawing = False
@@ -195,50 +197,50 @@ class DebugGUI:
             frame : Cam
                 current camera frame
         """
-        if self.model.return_i() > 10 and cv.getWindowProperty('Bus-Factor', 0) < 0:
-            os.kill(os.getpid(), 1)
+        if self.model.return_i() > 10 and getWindowProperty('Bus-Factor', 0) < 0:
+            kill(getpid(), 1)
 
         self.frame = frame
         self.draw_classifications_on_frame()
 
         # display circle that shows whether traffic light is red or not.
         if self.traffic_light_red:
-            cv.circle(self.frame, (25, 25), 25, (0, 0, 255), -1)
+            circle(self.frame, (25, 25), 25, (0, 0, 255), -1)
         else:
-            cv.circle(self.frame, (25, 25), 25, (0, 255, 0), -1)
+            circle(self.frame, (25, 25), 25, (0, 255, 0), -1)
 
         # Add tool toggle box and text in bottom left corner of screen
-        cv.rectangle(self.frame, (self.toggle_x1, self.toggle_y1), (self.toggle_x2, self.toggle_y2),
+        rectangle(self.frame, (self.toggle_x1, self.toggle_y1), (self.toggle_x2, self.toggle_y2),
                      (104, 82, 69), -2)
         if self.line_tool:
-            cv.putText(self.frame, 'I', (25, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
+            putText(self.frame, 'I', (25, 700), FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, LINE_8, False)
         else:
-            cv.putText(self.frame, 'TL', (15, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
+            putText(self.frame, 'TL', (15, 700), FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, LINE_8, False)
 
         # Add save config box and text in bottom right corner of screen
-        cv.rectangle(self.frame, (self.config_x1, self.config_y1), (self.config_x2, self.config_y2),
+        rectangle(self.frame, (self.config_x1, self.config_y1), (self.config_x2, self.config_y2),
                      (104, 82, 69), -2)
-        cv.putText(self.frame, 'CF', (1230, 700), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_8, False)
+        putText(self.frame, 'CF', (1230, 700), FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, LINE_8, False)
         # old grey box colour = (167, 170, 175)
 
         if len(self.line_pt) > 1:
-            self.line_obj = cv.line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
+            self.line_obj = line(self.frame, self.line_pt[0], self.line_pt[1], (0, 255, 0), 5)
         elif len(self.line_pt) == 0:
             # set line points to be points gathered from config
             print("Reading line point from config")
             self.line_pt = config.get_line()
 
         if len(self.rect_pt) > 1:
-            self.rect_obj = cv.rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 2)
+            self.rect_obj = rectangle(self.frame, self.rect_pt[0], self.rect_pt[1], (0, 0, 255), 2)
         elif len(self.rect_pt) == 0:
             # set line points to be points gathered from config
             print("Reading box point from config")
             self.rect_pt = config.get_box()
 
-        cv.imshow(self.ui_name, self.frame)
+        imshow(self.ui_name, self.frame)
 
         if self.once:
-            cv.setMouseCallback(self.ui_name, self.click_and_crop)
+            setMouseCallback(self.ui_name, self.click_and_crop)
             self.once = False
 
     def draw_classifications_on_frame(self):
@@ -294,17 +296,6 @@ class DebugGUI:
         new_x2 = int(x2 - removed_section_width)
         new_y2 = int(y2 - removed_section_height)
 
-        cv.rectangle(self.frame, (new_x1, new_y1), (new_x2, new_y2), self.bus_colour, 1)
+        rectangle(self.frame, (new_x1, new_y1), (new_x2, new_y2), self.bus_colour, 1)
         return [(new_x1, new_y1), (new_x2, new_y2)]
 
-    def play(self):
-        """
-            Plays the video feed on the debug ui screen.
-        """
-        while True:
-            if self.frame is None:
-                continue
-            cv.imshow(self.ui_name, self.frame)
-            # waits forever for the esc key to be pressed before exiting
-            if cv.waitKey(1) == 27:
-                break  # esc to quit

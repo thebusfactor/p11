@@ -2,11 +2,11 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 from model.bus import Bus
-import math
+from math import sqrt, pow
 
 
 def calc_distance(tl1, tl2, br1, br2):
-    return math.sqrt(math.pow((tl1 - tl2), 2) + math.pow((br1 - br2), 2))
+    return sqrt(pow((tl1 - tl2), 2) + pow((br1 - br2), 2))
 
 
 class BusTracker:

@@ -1,7 +1,7 @@
 # MIT License
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
-import json
+from json import dump
 import os
 
 
@@ -53,7 +53,7 @@ def build_json_file(filepath):
 
     # saves the to json file
     with open('imagedata.json', 'w') as outfile:
-        json.dump(data, outfile, sort_keys=True, indent=4)
+        dump(data, outfile, sort_keys=True, indent=4)
 
 
 # build the json file with absolute pathing, since its just a utility script

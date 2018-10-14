@@ -1,7 +1,7 @@
 # MIT License
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
-import cv2
+from cv2 import VideoCapture
 
 
 class Cam:
@@ -35,7 +35,7 @@ class Cam:
         return frame
 
     def reset_video(self):
-        self.video = cv2.VideoCapture(self.path)
+        self.video = VideoCapture(self.path)
 
 
 def open_video(path):
@@ -52,5 +52,5 @@ def open_video(path):
        video : VideoCapture
            The video capture of the video at the specified path
     """
-    video = cv2.VideoCapture(path)
+    video = VideoCapture(path)
     return video

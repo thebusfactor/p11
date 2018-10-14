@@ -37,7 +37,7 @@ def refresh_pressed(props, prop):
 # ------------------------------------------------------------
 
 def script_description():
-	return "Updates a text source to the text retrieved from a URL at every specified interval.\n\nBy Jim"
+	return "Updates a text source to the text retrieved from a URL at every specified interval."
 
 def script_update(settings):
 	global url

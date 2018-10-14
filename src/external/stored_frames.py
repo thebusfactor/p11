@@ -1,8 +1,8 @@
 # MIT License
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
-import cv2
-import threading
+from cv2 import VideoWriter, VideoWriter_fourcc
+from threading import Thread
 from collections import deque
 import time
 
@@ -30,7 +30,7 @@ class StoredFrames:
             Starts the clipping checks in parallel,
             as the operation of producing a video file is quite expensive
         """
-        threading.Thread(target=self.__run__).start()
+        Thread(target=self.__run__).start()
 
     def trigger_event(self):
         self.trigger = True
@@ -72,7 +72,7 @@ class StoredFrames:
         path_out = path_out.replace(":", "")
         print(path_out)
         self.count += 1
-        out = cv2.VideoWriter(path_out, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
+        out = VideoWriter(path_out, VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
 
         for i in range(len(frame_array)):
             out.write(frame_array[i])

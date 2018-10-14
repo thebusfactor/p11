@@ -2,9 +2,9 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 from external.clip import clip_frame
-import cv2
-import numpy
-import math
+from cv2 import cvtColor, inRange, countNonZero, COLOR_BGR2HSV
+from numpy import array
+from math import sqrt, pow
 
 
 class TrafficLight:
@@ -13,8 +13,8 @@ class TrafficLight:
     z_threshold: int = 10
 
     def __init__(self):
-        self.lower_bound = numpy.array([0, 10, 170])
-        self.upper_bound = numpy.array([20, 160, 255])
+        self.lower_bound = array([0, 10, 170])
+        self.upper_bound = array([20, 160, 255])
         self.box = []
 
     def check_traffic_light(self, frame, res):
@@ -40,7 +40,7 @@ class TrafficLight:
         x2 = self.box[1][0]
         y2 = res[1] - self.box[1][1]
 
-        if self.distance_check(x1, x2, y2, y1):
+        if self.draw_check(x1, x2, y2, y1):
             point1 = (x1, y2)
             point2 = (x2, y1)
             if x2 > x1 and y1 < y2:
@@ -52,7 +52,12 @@ class TrafficLight:
             elif x2 < x1 and y1 < y2:
                 point1 = (x2, y1)
                 point2 = (x1, y2)
+
+            if self.size_check(point1, point2):
+                print("box is too small, please redraw")
+                return 0
             new_dp = (point1, point2)
+
             clipped_frame = clip_frame(frame, new_dp, res)
             z = self.apply_light_mask(clipped_frame)
             return z > self.z_threshold
@@ -69,7 +74,12 @@ class TrafficLight:
         """
         self.box = box
 
-    def distance_check(self, x1, x2, y1, y2):
+    def size_check(self, point1, point2):
+        if point2[0] - point1[0] < 10 or point2[1] - point1[1] < 10:
+            return True
+        return False
+
+    def draw_check(self, x1, x2, y1, y2):
         """
             Calculates vector distance between coordinates.
 
@@ -88,7 +98,7 @@ class TrafficLight:
             -------
                 True if the value of the distance is calculated to be greater than 5, False if not.
         """
-        return math.sqrt(math.pow((x2-x1), 2) + math.pow((y2-y1), 2)) > 5
+        return sqrt(pow((x2-x1), 2) + pow((y2-y1), 2)) > 5
 
     def apply_light_mask(self, frame):
         """
@@ -104,6 +114,6 @@ class TrafficLight:
             -------
                 The mask object of the black and white binary mask.
         """
-        hsv_image = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        mask = cv2.inRange(hsv_image, self.lower_bound, self.upper_bound)
-        return cv2.countNonZero(mask)
+        hsv_image = cvtColor(frame, COLOR_BGR2HSV)
+        mask = inRange(hsv_image, self.lower_bound, self.upper_bound)
+        return countNonZero(mask)

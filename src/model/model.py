@@ -1,7 +1,7 @@
 # MIT License
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
-import cv2 as cv
+from cv2 import circle, waitKey, destroyAllWindows
 
 from controller.observer import Observer
 from external.cam import Cam
@@ -75,11 +75,11 @@ class Model:
                                     self.stored_frames.trigger_event()
                                     self.bus_counter.traffic_violation_detected()
 
-            if cv.waitKey(1) == 27:
+            if waitKey(1) == 27:
                 break
             self.i += 1
 
-        cv.destroyAllWindows()
+        destroyAllWindows()
 
     def update_classifications(self, classifications):
         """
@@ -183,7 +183,7 @@ class Model:
                     for i in range(50):
                         if self.contains(x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
                             intersects = True
-                            cv.circle(self.frame, (int(line_x_points[i]), int(line_y_points[i])), 5, (244, 40, 0))
+                            circle(self.frame, (int(line_x_points[i]), int(line_y_points[i])), 5, (244, 40, 0))
                         else:
                             intersects = False
                     break

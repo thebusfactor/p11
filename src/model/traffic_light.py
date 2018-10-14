@@ -54,13 +54,12 @@ class TrafficLight:
                 point2 = (x1, y2)
 
             if self.size_check(point1, point2):
-                print("box is too small, please redraw")
                 return 0
-            new_dp = (point1, point2)
-
-            clipped_frame = clip_frame(frame, new_dp, res)
-            z = self.apply_light_mask(clipped_frame)
-            return z > self.z_threshold
+            else:
+                new_dp = (point1, point2)
+                clipped_frame = clip_frame(frame, new_dp, res)
+                z = self.apply_light_mask(clipped_frame)
+                return z > self.z_threshold
         return 0
 
     def update_box(self, box):
@@ -76,6 +75,10 @@ class TrafficLight:
 
     def size_check(self, point1, point2):
         if point2[0] - point1[0] < 10 or point2[1] - point1[1] < 10:
+            print("box is too small, please redraw")
+            return True
+        elif point2[0] >= 1280 or point1[0] <= 0 or point2[1] >= 720 or point1[1] <= 0:
+            print("box is out of bounds, please redraw")
             return True
         return False
 

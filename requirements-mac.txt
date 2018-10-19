@@ -1,8 +1,0 @@
-opencv-python
-numpy
-Cython
-pystray
-pygments
-lxml
-matplotlib
-tensorflow

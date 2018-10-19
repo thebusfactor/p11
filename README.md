@@ -9,19 +9,19 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites and Installation
 
-See the Installation Documentation for instructions on setting up the 
+See the [Installation Documentation](https://github.com/thebusfactor/p11/wiki/Installation-Documentation) for instructions on setting up the project and dependencies.
 
 ### Tech Notes
 
-Techical Details for the project can be found in the Technical Documentation
+Techical Details for the project can be found in the [Technical Documentation](https://github.com/thebusfactor/p11/wiki/Technical-Documentation)
 
 ## Usage
 
-See the User Documentation for information on deploying the project on your system.
+See the [User Documentation](https://github.com/thebusfactor/p11/wiki/User-Documentation) for information on deploying the project on your system.
 
 ## Training
 
-See the AI Documentation for instructions on how to interact with the Darkflow machine learning system in this project.
+See the [AI Documentation](https://github.com/thebusfactor/p11/wiki/AI-Documentation) for instructions on how to interact with the Darkflow machine learning system in this project.
 
 
 ## Built With

@@ -261,9 +261,9 @@ class DebugGUI:
             c = classifications_to_draw[i]
             # confidence level of detected object has to be above threshold
             if c.conf > self.confidence_threshold:
-                self.small_box_pt = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'))
+                self.small_box_pt = self.small_box(c.tl.get('x'), c.tl.get('y'), c.br.get('x'), c.br.get('y'), c.conf)
 
-    def small_box(self, x1: int, y1: int, x2: int, y2: int):
+    def small_box(self, x1: int, y1: int, x2: int, y2: int, confidence: float):
         """
             This returns the top left and bottom right coordinates that define a small bounding box
             that make up a certain percentage. x1, y1 are top left, x2, y2 are bottom right.
@@ -296,6 +296,7 @@ class DebugGUI:
         new_x2 = int(x2 - removed_section_width)
         new_y2 = int(y2 - removed_section_height)
 
+        putText(self.frame, 'confidence: ' + str(confidence), (new_x1, new_y1), FONT_HERSHEY_SIMPLEX, 0.5, self.bus_colour, 2, LINE_8, False)
         rectangle(self.frame, (new_x1, new_y1), (new_x2, new_y2), self.bus_colour, 1)
         return [(new_x1, new_y1), (new_x2, new_y2)]
 

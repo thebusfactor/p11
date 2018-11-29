@@ -67,6 +67,7 @@ class StoredFrames:
         height, width, layers = frame_array[0].shape
         size = (width, height)
         date = time.strftime("%c")
+        date = time.strftime("%Y-%m-%d %H:%M")
         path_out = str(date) + '_' + str(self.count) + '.avi'
         path_out = path_out.replace(" ", "_")
         path_out = path_out.replace(":", "")

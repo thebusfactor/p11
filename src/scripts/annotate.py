@@ -5,6 +5,7 @@ import os
 import sys
 import matplotlib.pyplot as plt
 from cv2 import imread, cvtColor
+import cv2
 from matplotlib.widgets import RectangleSelector
 from generate_xml import write_xml
 
@@ -63,7 +64,7 @@ if __name__ == '__main__':
         img = image_file
         fig, ax = plt.subplots(1)
         image = imread(image_file.path)
-        image = cvtColor(image, cv.COLOR_BGR2RGB)
+        image = cvtColor(image, cv2.COLOR_BGR2RGB)
         ax.imshow(image)
         toggle_selector.RS = RectangleSelector(
             ax, select,

@@ -7,6 +7,8 @@ from threading import Thread
 from controller.observer import Observer
 from util.classification import Classification
 
+import time
+from cv2 import imwrite
 
 class Ai:
 
@@ -80,6 +82,10 @@ class Ai:
         out = []
         for res in results:
             clf = Classification(res)
+            if clf.conf < 0.5:
+                date = time.strftime("%Y-%m-%d_%H-%M")
+                path_out = str(date) + '_' + str(self.frame_count) + '.jpg'
+                imwrite(path_out, frame)
             out.append(clf)
         self.frame = None
         self.update_classifications_observer(out)

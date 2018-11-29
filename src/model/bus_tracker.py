@@ -67,7 +67,8 @@ class BusTracker:
                 else:
                     # The bus is not very close, so this may be a new bus
                     self.detected_buses.append(Bus(classed_bus.tl["x"], classed_bus.tl["y"],
-                                                   classed_bus.br["x"], classed_bus.br["y"], True))
+                                                   classed_bus.br["x"], classed_bus.br["y"],
+                                                   True))
 
             remove_buses = []
 

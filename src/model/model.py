@@ -10,6 +10,7 @@ from model.ai import Ai
 from model.bus_tracker import BusTracker
 from model.bus_counter import BusCounter
 from model.traffic_light import TrafficLight
+import numpy
 
 
 class Model:
@@ -43,14 +44,16 @@ class Model:
             Method sets up the frame object and updates the classes which observe the frame object.
             Closes all windows upon escape key press.
         """
+        count = 0
         while True:
 
             # only check 'fps_to_check' frames per second.
             self.frame = self.cam.get_frame()
-            self.stored_frames.append_frame(self.frame)
+            original_frame = numpy.copy(self.frame)
+            self.stored_frames.append_frame(original_frame)
 
             # self.stored_frames.append_frame(self.frame, self.red_light)
-            self.ai.update_ai_frame(self.frame)
+            self.ai.update_ai_frame(original_frame)
             self.update_frame_observer(self.frame)
             self.update_tool_observer()
 

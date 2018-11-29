@@ -14,6 +14,7 @@ class Ai:
 
     classifications_observers = []
     frame_count = 0
+    count = 0
 
     def __init__(self, classification_rate=4, mode="cpu", weights=1625):
         if mode == "gpu":
@@ -50,6 +51,7 @@ class Ai:
         self.frame_count += 1
         if frame is None or self.frame is not None:
             return
+        self.count += 1
         self.frame = frame
         self.debug_frame = debug_frame
 
@@ -86,7 +88,7 @@ class Ai:
             clf = Classification(res)
             if clf.conf < 0.5:
                 date = time.strftime("%Y-%m-%d_%H-%M")
-                path_out = str(date) + '_' + str(self.frame_count) + '.jpg'
+                path_out = str(date) + '_' + str(self.count) + '_' + str(clf.conf) + '.jpg'
                 imwrite(path_out, frame)
                 path_out = "debug-" + path_out
                 imwrite(path_out, self.debug_frame)

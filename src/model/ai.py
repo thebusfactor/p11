@@ -27,6 +27,7 @@ class Ai:
                        "threshold": 0.1}
         self.tfnet = TFNet(options)
         self.frame = None
+        self.debug_frame = None
         self.classification_rate = classification_rate
 
     def start_ai(self):
@@ -37,7 +38,7 @@ class Ai:
         class_thread.daemon = True
         class_thread.start()
 
-    def update_ai_frame(self, frame):
+    def update_ai_frame(self, frame, debug_frame):
         """
             Changes the current frame and increments the number of frames used.
 
@@ -50,6 +51,7 @@ class Ai:
         if frame is None or self.frame is not None:
             return
         self.frame = frame
+        self.debug_frame = debug_frame
 
     def classify_loop(self):
         """
@@ -86,6 +88,8 @@ class Ai:
                 date = time.strftime("%Y-%m-%d_%H-%M")
                 path_out = str(date) + '_' + str(self.frame_count) + '.jpg'
                 imwrite(path_out, frame)
+                path_out = "debug-" + path_out
+                imwrite(path_out, self.debug_frame)
             out.append(clf)
         self.frame = None
         self.update_classifications_observer(out)

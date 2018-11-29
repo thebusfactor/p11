@@ -22,7 +22,9 @@ class StoredFrames:
         self.length = length
 
         self.before_que = deque(maxlen=length)
+        self.before_que_debug = deque(maxlen=length)
         self.after_que = deque(maxlen=length)
+        self.after_que_debug = deque(maxlen=length)
         self.count = 0
 
     def start_clipping(self):
@@ -35,15 +37,17 @@ class StoredFrames:
     def trigger_event(self):
         self.trigger = True
 
-    def append_frame(self, frame):
+    def append_frame(self, frame, debug_frame):
         """
             Appends frame to either the queue before or after the violation
         """
 
         if not self.trigger:
             self.before_que.append(frame)
+            self.before_que_debug.append(debug_frame)
         else:
             self.after_que.append(frame)
+            self.after_que_debug.append(debug_frame)
 
     def combine_videos(self):
         """
@@ -52,10 +56,13 @@ class StoredFrames:
         b_q = list(self.before_que)
         a_q = list(self.after_que)
         combined = b_q + a_q
+        b_q = list(self.before_que_debug)
+        a_q = list(self.after_que_debug)
+        combined_debug = b_q + a_q
 
-        self.convert_frames_to_video(combined)
+        self.convert_frames_to_video(combined, combined_debug)
 
-    def convert_frames_to_video(self, frame_array):
+    def convert_frames_to_video(self, frame_array, debug_frame_array):
         """
             Takes list of frames and converts them to a video
 
@@ -78,6 +85,12 @@ class StoredFrames:
         for i in range(len(frame_array)):
             out.write(frame_array[i])
         out.release()
+        path_out = "debug-" + path_out
+        out = VideoWriter(path_out, VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
+
+        for i in range(len(debug_frame_array)):
+            out.write(debug_frame_array[i])
+        out.release()
         self.trigger = False
 
     def __run__(self):
@@ -89,3 +102,4 @@ class StoredFrames:
             if self.trigger and len(self.after_que) >= 120:
                 self.combine_videos()
                 self.after_que = deque(maxlen=self.length)
+                self.after_que_debug = deque(maxlen=self.length)

@@ -50,10 +50,10 @@ class Model:
             # only check 'fps_to_check' frames per second.
             self.frame = self.cam.get_frame()
             original_frame = numpy.copy(self.frame)
-            self.stored_frames.append_frame(original_frame)
+            self.stored_frames.append_frame(original_frame, self.frame)
 
             # self.stored_frames.append_frame(self.frame, self.red_light)
-            self.ai.update_ai_frame(original_frame)
+            self.ai.update_ai_frame(original_frame, self.frame)
             self.update_frame_observer(self.frame)
             self.update_tool_observer()
 

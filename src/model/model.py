@@ -12,6 +12,8 @@ from model.bus_counter import BusCounter
 from model.traffic_light import TrafficLight
 import numpy
 
+import time
+from cv2 import imwrite
 
 class Model:
     frame_observers = []
@@ -20,6 +22,8 @@ class Model:
     violation_count: int = 0
     red_light: bool = True
     z_threshold_exceeded: bool
+    updated: bool = False
+    count: int = 0
 
     def __init__(self, cam: Cam, ai: Ai, fps: int, res=(1280, 720)):
         self.classifications = None
@@ -38,6 +42,9 @@ class Model:
         self.bus_counter = BusCounter()
         self.z_threshold_exceeded = False
         self.tool_observers = None
+        self.updated = False
+        self.count = 0
+        self.last = 0
 
     def start(self):
         """
@@ -49,6 +56,7 @@ class Model:
 
             # only check 'fps_to_check' frames per second.
             self.frame = self.cam.get_frame()
+            self.count += 1
             original_frame = numpy.copy(self.frame)
             self.stored_frames.append_frame(original_frame, self.frame)
 
@@ -57,8 +65,21 @@ class Model:
             self.update_frame_observer(self.frame)
             self.update_tool_observer()
 
+            if not self.updated:
+                next
             # track bus position every frame
             buses = self.bus_tracker.update(self.classifications, self.res)
+            self.updated = False
+
+            if (self.last == 0 or self.last + 8 < self.count) and not self.classifications == None:
+                for clf in self.classifications:
+                    if clf.conf < 0.5:
+                        date = time.strftime("%Y-%m-%d_%H-%M")
+                        path_out = str(date) + '_' + str(self.count) + '_' + str(clf.conf) + '.jpg'
+                        imwrite(path_out, original_frame)
+                        path_out = "debug-" + path_out
+                        imwrite(path_out, self.frame)
+                        self.last = self.count
 
             # if traffic light rectangle has been placed down
             if self.tool_observers.get_traffic_rectangle() != -1:
@@ -89,6 +110,7 @@ class Model:
             Updates the classifications when new objects are detected.
         """
         self.classifications = classifications
+        self.updated = True
 
     def add_frame_observer(self, observer: Observer):
         """

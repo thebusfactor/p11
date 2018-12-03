@@ -288,6 +288,7 @@ class DebugGUI:
         height = abs(y2 - y1)
 
         percentage_to_remove = 0.3
+        percentage_to_remove = 0.0
         removed_section_width = width * percentage_to_remove
         removed_section_height = height * percentage_to_remove
 

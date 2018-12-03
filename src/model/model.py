@@ -91,14 +91,16 @@ class Model:
                     if buses is not None and len(buses) > 0 and \
                             self.tool_observers is not None and \
                             self.tool_observers.get_line() != -1:
+                        intersected = False
                         for bus in buses:
                             if not bus.get_has_intersected():
                                 if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
+                                    self.bus_counter.traffic_violation_detected()
+                                    intersected = True
                                     print("Violation Detected")
                                     bus.set_has_intersected(True)
-                                    self.stored_frames.trigger_event()
-                                    self.bus_counter.traffic_violation_detected()
-
+                        if intersected:
+                            self.stored_frames.trigger_event()
             if waitKey(1) == 27:
                 break
             self.i += 1
@@ -204,15 +206,11 @@ class Model:
 
                 # Iterates through the 50 points and checks if the point is within the box, if it is then
                 # we can determine that the object intersects the line.
-                while not intersects:
-                    for i in range(50):
-                        if self.contains(x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
-                            intersects = True
-                            circle(self.frame, (int(line_x_points[i]), int(line_y_points[i])), 5, (244, 40, 0))
-                        else:
-                            intersects = False
-                    break
-
+                for i in range(50):
+                    if self.contains(x1, y1, x2, y2, int(line_x_points[i]), int(line_y_points[i])):
+                        circle(self.frame, (int(line_x_points[i]), int(line_y_points[i])), 5, (244, 40, 0))
+                        return True
+                return False
         return intersects
 
     @staticmethod

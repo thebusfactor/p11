@@ -2,6 +2,7 @@
 # Copyright (c) 2018 ENGR301-302-2018 / Project-11
 
 from cv2 import VideoCapture
+import os
 
 
 class Cam:
@@ -52,5 +53,6 @@ def open_video(path):
        video : VideoCapture
            The video capture of the video at the specified path
     """
+    os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "rtsp_transport;udp"
     video = VideoCapture(path)
     return video

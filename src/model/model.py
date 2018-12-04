@@ -76,9 +76,9 @@ class Model:
                     if clf.conf < 0.5:
                         date = time.strftime("%Y-%m-%d_%H-%M")
                         path_out = str(date) + '_' + str(self.count) + '_' + str(clf.conf) + '.jpg'
-                        imwrite(path_out, original_frame)
+                        imwrite("images/" + path_out, original_frame)
                         path_out = "debug-" + path_out
-                        imwrite(path_out, self.frame)
+                        imwrite("images/" + path_out, self.frame)
                         self.last = self.count
 
             # if traffic light rectangle has been placed down

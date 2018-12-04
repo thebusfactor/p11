@@ -13,12 +13,12 @@ class Ai:
     frame_count = 0
     count = 0
 
-    def __init__(self, classification_rate=4, mode="cpu", weights=1625):
+    def __init__(self, classification_rate=1, mode="gpu", weights=-1):
         if mode == "gpu":
             options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
                        "load": weights,
                        "threshold": 0.1,
-                       "gpu": 0.8}
+                       "gpu": 0.9}
         else:
             options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
                        "load": weights,

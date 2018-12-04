@@ -7,11 +7,14 @@ from threading import Thread
 from controller.observer import Observer
 from util.classification import Classification
 
+import time
+
 class Ai:
 
     classifications_observers = []
     frame_count = 0
     count = 0
+    needs_classifing = False
 
     def __init__(self, classification_rate=1, mode="gpu", weights=-1):
         if mode == "gpu":
@@ -50,6 +53,7 @@ class Ai:
             return
         self.count += 1
         self.frame = frame
+        self.needs_classifing = True
         self.debug_frame = debug_frame
 
     def classify_loop(self):
@@ -57,9 +61,12 @@ class Ai:
             Calls methods to classify the current frame when the frame count reaches a certain value.
         """
         while True:
-            if self.frame_count >= self.classification_rate:
+            if self.needs_classifing:
+                self.needs_classifing = False
                 self.classify(self.frame)
                 self.frame_count = 0
+            else:
+                time.sleep(1.0/30)
 
     def classify(self, frame):
         """

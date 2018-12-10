@@ -91,16 +91,16 @@ class Model:
                     if buses is not None and len(buses) > 0 and \
                             self.tool_observers is not None and \
                             self.tool_observers.get_line() != -1:
-                        intersected = False
+                        intersected = None
                         for bus in buses:
                             if not bus.get_has_intersected():
                                 if self.detect_event(bus.tl_x, bus.tl_y, bus.br_x, bus.br_y, self.tool_observers.get_line()):
                                     self.bus_counter.traffic_violation_detected()
-                                    intersected = True
+                                    intersected = bus
                                     print("Violation Detected")
                                     bus.set_has_intersected(True)
-                        if intersected:
-                            self.stored_frames.trigger_event()
+                        if intersected is not None:
+                            self.stored_frames.trigger_event(intersected.get_confidence())
             if waitKey(1) == 27:
                 break
             self.i += 1

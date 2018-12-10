@@ -34,8 +34,9 @@ class StoredFrames:
         """
         Thread(target=self.__run__).start()
 
-    def trigger_event(self):
+    def trigger_event(self, confidence):
         self.trigger = True
+        self.confidence = confidence
 
     def append_frame(self, frame, debug_frame):
         """
@@ -75,18 +76,18 @@ class StoredFrames:
         size = (width, height)
         date = time.strftime("%c")
         date = time.strftime("%Y-%m-%d %H:%M")
-        path_out = str(date) + '_' + str(self.count) + '.avi'
+        path_out = str(date) + '_' + str(self.count)
         path_out = path_out.replace(" ", "_")
         path_out = path_out.replace(":", "")
         print(path_out)
         self.count += 1
-        out = VideoWriter(path_out, VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
+        out = VideoWriter(path_out + '.avi', VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
 
         for i in range(len(frame_array)):
             out.write(frame_array[i])
         out.release()
-        path_out = "debug-" + path_out
-        out = VideoWriter(path_out, VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
+        path_out = "debug-" + path_out + '_' + str(self.confidence)
+        out = VideoWriter(path_out + '.avi', VideoWriter_fourcc('M', 'J', 'P', 'G'), self.fps, size)
 
         for i in range(len(debug_frame_array)):
             out.write(debug_frame_array[i])

@@ -62,12 +62,14 @@ class BusTracker:
                 # If the closest bus is sufficiently close enough
                 if self.closest_dist < self.threshold_dist:
                     selected_bus.set_t1(classed_bus.tl["x"], classed_bus.tl["y"],
-                                        classed_bus.br["x"], classed_bus.br["y"])
+                                        classed_bus.br["x"], classed_bus.br["y"],
+                                        classed_bus.conf)
                     selected_bus.set_flagged(True)
                 else:
                     # The bus is not very close, so this may be a new bus
                     self.detected_buses.append(Bus(classed_bus.tl["x"], classed_bus.tl["y"],
                                                    classed_bus.br["x"], classed_bus.br["y"],
+                                                   classed_bus.conf,
                                                    True))
 
             remove_buses = []

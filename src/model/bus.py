@@ -24,7 +24,7 @@ class Bus:
     has_intersected: bool
     confidence: float
 
-    def __init__(self, tl_x, tl_y, br_x, br_y, flagged, confidence):
+    def __init__(self, tl_x, tl_y, br_x, br_y, confidence, flagged):
         self.tl_x = tl_x
         self.tl_y = tl_y
         self.br_x = br_x

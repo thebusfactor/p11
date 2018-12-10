@@ -16,16 +16,16 @@ class Ai:
     count = 0
     needs_classifing = False
 
-    def __init__(self, classification_rate=1, mode="gpu", weights=-1):
+    def __init__(self, classification_rate=1, mode="gpu", weights=-1, threshold=0.2):
         if mode == "gpu":
             options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
                        "load": weights,
-                       "threshold": 0.1,
+                       "threshold": threshold,
                        "gpu": 0.9}
         else:
             options = {"model": "../cfg/tiny-yolo-voc-1c.cfg",
                        "load": weights,
-                       "threshold": 0.1}
+                       "threshold": threshold}
         self.tfnet = TFNet(options)
         self.frame = None
         self.debug_frame = None

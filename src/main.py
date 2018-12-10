@@ -21,7 +21,8 @@ def main(argv):
         classification_rate = int(classification_rate)
         mode = str(argv[2])
         weights = int(argv[3])
-        ai = Ai(classification_rate, mode, weights)
+        threshold = float(argv[4])
+        ai = Ai(classification_rate, mode, weights, threshold)
     except (TypeError, IndexError):
         ai = Ai()
 

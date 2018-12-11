@@ -73,7 +73,7 @@ class Model:
 
             if (self.last == 0 or self.last + 8 < self.count) and not self.classifications == None:
                 for clf in self.classifications:
-                    if 0.2 < clf.conf < 0.5:
+                    if 0.4 < clf.conf < 0.5:
                         date = time.strftime("%Y-%m-%d_%H-%M")
                         path_out = str(date) + '_' + str(self.count) + '_' + str(clf.conf) + '.jpg'
                         imwrite("images/" + path_out, original_frame)
